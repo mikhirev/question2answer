@@ -39,7 +39,7 @@
 ?>
 <html>
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 		<style type="text/css">
 			body,input {font-size:16px; font-family:Verdana, Arial, Helvetica, sans-serif;}
 			body {text-align:center; width:640px; margin:64px auto;}
