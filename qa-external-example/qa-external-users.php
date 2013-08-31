@@ -502,7 +502,7 @@
 		
 		return '<a href="http://www.mysite.com/'.htmlspecialchars(urlencode($publicusername)).'/" class="qa-user-link">'.
 			'<img src="http://www.mysite.com/'.htmlspecialchars(urlencode($publicusername)).'/photo-small.jpeg" '.
-			'style="width:16px; height:16px; border:none; margin-right:4px;">'.htmlspecialchars($publicusername).'</a>';
+			'style="width:16px; height:16px; border:none; margin-right:4px;"/>'.htmlspecialchars($publicusername).'</a>';
 	*/
 
 	}
@@ -587,7 +587,7 @@
 			$publicusername=$useridtopublic[$userid];
 			
 			$usershtml[$userid]='<img src="http://www.mysite.com/'.htmlspecialchars(urlencode($publicusername)).'/photo-small.jpeg" '.
-				'style="width:16px; height:16px; border:0; margin-right:4px;">'.htmlspecialchars($publicusername);
+				'style="width:16px; height:16px; border:0; margin-right:4px;"/>'.htmlspecialchars($publicusername);
 			
 			if ($should_include_link)
 				$usershtml[$userid]='<a href="http://www.mysite.com/'.htmlspecialchars(urlencode($publicusername)).
