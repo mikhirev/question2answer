@@ -91,11 +91,11 @@
 			}
 ?>
 				<td class="qa-form-tall-data" style="padding:8px;" width="*">
-					<input name="title" type="text" class="qa-form-tall-text" style="width:95%;">
+					<input name="title" type="text" class="qa-form-tall-text" style="width:95%;"/>
 				</td>
 			</tr>
 		</table>
-		<input type="hidden" name="doask1" value="1">
+		<input type="hidden" name="doask1" value="1"/>
 	</form>
 </div>
 <?php

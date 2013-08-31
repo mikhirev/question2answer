@@ -300,7 +300,7 @@
 		echo '<table>';
 		
 		foreach ($fields as $name => $prompt) {
-			echo '<tr><td>'.qa_html($prompt).'</td><td><input type="text" size="24" name="'.qa_html($name).'" value="'.qa_html(@${'in'.$name}).'"></td>';
+			echo '<tr><td>'.qa_html($prompt).'</td><td><input type="text" size="24" name="'.qa_html($name).'" value="'.qa_html(@${'in'.$name}).'"/></td>';
 			if (isset($fielderrors[$name]))
 				echo '<td><font color="#990000"><small>'.qa_html($fielderrors[$name]).'</small></font></td>';
 			echo '</tr>';
@@ -310,10 +310,10 @@
 	}
 	
 	foreach ($buttons as $name => $value)
-		echo '<input type="submit" name="'.qa_html($name).'" value="'.qa_html($value).'">';
+		echo '<input type="submit" name="'.qa_html($name).'" value="'.qa_html($value).'"/>';
 		
 	foreach ($hidden as $name => $value)
-		echo '<input type="hidden" name="'.qa_html($name).'" value="'.qa_html($value).'">';
+		echo '<input type="hidden" name="'.qa_html($name).'" value="'.qa_html($value).'"/>';
 
 	qa_db_disconnect();
 ?>

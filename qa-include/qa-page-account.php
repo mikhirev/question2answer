@@ -315,7 +315,7 @@
 		}
 
 		if (qa_has_gd_image() && qa_opt('avatar_allow_upload')) {
-			$avataroptions['uploaded']='<input name="file" type="file">';
+			$avataroptions['uploaded']='<input name="file" type="file"/>';
 
 			if (isset($useraccount['avatarblobid']))
 				$avataroptions['uploaded']='<span style="margin:2px 0; display:inline-block;">'.
