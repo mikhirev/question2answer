@@ -66,8 +66,6 @@
 		function output_array($elements)
 	/*
 		Output each element in $elements on a separate line, with automatic HTML indenting.
-		This should be passed markup which uses the <tag/> form for unpaired tags, to help keep
-		track of indenting, although its actual output converts these to <tag> for W3C validation
 	*/
 		{
 			foreach ($elements as $element) {
@@ -76,7 +74,7 @@
 				if ($delta<0)
 					$this->indent+=$delta;
 				
-				echo str_repeat("\t", max(0, $this->indent)).str_replace('/>', '>', $element)."\n";
+				echo str_repeat("\t", max(0, $this->indent)).$element."\n";
 				
 				if ($delta>0)
 					$this->indent+=$delta;
