@@ -933,9 +933,7 @@
 			$tworows=($columns==1) && (!empty($field['label'])) && (!$skipdata) &&
 				( (!($prefixed||$suffixed)) || (!empty($field['error'])) || (!empty($field['note'])) );
 			
-			if (($columns==1) && isset($field['id']))
-				$this->output('<tbody id="'.$field['id'].'">', '<tr>');
-			elseif (isset($field['id']))
+			if (isset($field['id']))
 				$this->output('<tr id="'.$field['id'].'">');
 			else
 				$this->output('<tr>');
@@ -953,9 +951,6 @@
 				$this->form_data($field, $style, $columns, !($prefixed||$suffixed), $colspan);
 			
 			$this->output('</tr>');
-			
-			if (($columns==1) && isset($field['id']))
-				$this->output('</tbody>');
 		}
 		
 		function form_label($field, $style, $columns, $prefixed, $suffixed, $colspan)
