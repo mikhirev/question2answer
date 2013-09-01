@@ -1153,7 +1153,7 @@
 		
 		function form_checkbox($field, $style)
 		{
-			$this->output('<input '.@$field['tags'].' type="checkbox" value="1"'.(@$field['value'] ? ' checked' : '').' class="qa-form-'.$style.'-checkbox"/>');
+			$this->output('<input '.@$field['tags'].' type="checkbox" value="1"'.(@$field['value'] ? ' checked="checked"' : '').' class="qa-form-'.$style.'-checkbox"/>');
 		}
 		
 		function form_static($field, $style)
@@ -1189,7 +1189,7 @@
 				if ($radios++)
 					$this->output('<br/>');
 					
-				$this->output('<input '.@$field['tags'].' type="radio" value="'.$tag.'"'.(($value==@$field['value']) ? ' checked' : '').' class="qa-form-'.$style.'-radio"/> '.$value);
+				$this->output('<input '.@$field['tags'].' type="radio" value="'.$tag.'"'.(($value==@$field['value']) ? ' checked="checked"' : '').' class="qa-form-'.$style.'-radio"/> '.$value);
 			}
 		}
 		

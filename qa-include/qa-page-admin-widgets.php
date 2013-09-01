@@ -292,7 +292,7 @@
 	foreach ($templateoptions as $template => $optionhtml)
 		$qa_content['form']['fields']['templates']['html'].=
 			'<input type="checkbox" name="template_'.qa_html($template).'"'.
-			(is_numeric(strpos(','.@$editwidget['tags'].',', ','.$template.',')) ? ' checked' : '').
+			(is_numeric(strpos(','.@$editwidget['tags'].',', ','.$template.',')) ? ' checked="checked"' : '').
 			'/> '.$optionhtml.'<br/>';
 			
 	if (isset($editwidget['widgetid']))
