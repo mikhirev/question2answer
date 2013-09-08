@@ -1171,7 +1171,7 @@
 			$this->output('<select '.@$field['tags'].' class="qa-form-'.$style.'-select">');
 			
 			foreach ($field['options'] as $tag => $value)
-				$this->output('<option value="'.$tag.'"'.(($value==@$field['value']) ? ' selected' : '').'>'.$value.'</option>');
+				$this->output('<option value="'.$tag.'"'.(($value==@$field['value']) ? ' selected="selected"' : '').'>'.$value.'</option>');
 			
 			$this->output('</select>');
 		}
