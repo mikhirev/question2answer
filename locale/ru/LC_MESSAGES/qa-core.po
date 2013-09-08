@@ -1,0 +1,528 @@
+# Russian translations for question package.
+# Copyright (C) 2013 THE question'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the question package.
+# Dmitry Mikhirev <mikhirev@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: question 2answer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-08 13:48+0400\n"
+"PO-Revision-Date: 2013-09-08 10:40+0400\n"
+"Last-Translator: Dmitry Mikhirev <mikhirev@gmail.com>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: qa-include/qa-app-format.php:47
+#, php-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] "%d год"
+msgstr[1] "%d года"
+msgstr[2] "%d лет"
+
+#: qa-include/qa-app-format.php:50
+#, php-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] "%d месяц"
+msgstr[1] "%d месяца"
+msgstr[2] "%d месяцев"
+
+#: qa-include/qa-app-format.php:53
+#, php-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] "%d неделю"
+msgstr[1] "%d недели"
+msgstr[2] "%d недель"
+
+#: qa-include/qa-app-format.php:56
+#, php-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d день"
+msgstr[1] "%d дня"
+msgstr[2] "%d дней"
+
+#: qa-include/qa-app-format.php:59
+#, php-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d час"
+msgstr[1] "%d часа"
+msgstr[2] "%d часов"
+
+#: qa-include/qa-app-format.php:62
+#, php-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d минуту"
+msgstr[1] "%d минуты"
+msgstr[2] "%d минут"
+
+#: qa-include/qa-app-format.php:64
+#, php-format
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] "%d секунду"
+msgstr[1] "%d секунды"
+msgstr[2] "%d секунд"
+
+#: qa-include/qa-app-format.php:242
+#, php-format
+msgid "IP address %s"
+msgstr "IP-адрес %s"
+
+#: qa-include/qa-app-format.php:322
+msgid "^ answer"
+msgid_plural "^ answers"
+msgstr[0] "^ ответ"
+msgstr[1] "^ ответа"
+msgstr[2] "^ ответов"
+
+#: qa-include/qa-app-format.php:330
+msgid "^ view"
+msgid_plural "^ views"
+msgstr[0] "^ показ"
+msgstr[1] "^ показа"
+msgstr[2] "^ показов"
+
+#: qa-include/qa-app-format.php:346
+msgid "in ^"
+msgstr "в категории ^"
+
+#: qa-include/qa-app-format.php:358
+msgid "Best answer"
+msgstr "Лучший ответ"
+
+#: qa-include/qa-app-format.php:433
+msgid "^ like"
+msgid_plural "^ like"
+msgstr[0] "^ за"
+msgstr[1] "^ за"
+msgstr[2] "^ за"
+
+#: qa-include/qa-app-format.php:435
+msgid "^ dislike"
+msgid_plural "^ dislike"
+msgstr[0] "^ против"
+msgstr[1] "^ против"
+msgstr[2] "^ против"
+
+#: qa-include/qa-app-format.php:437
+msgid "^ vote"
+msgid_plural "^ votes"
+msgstr[0] "^ голос"
+msgstr[1] "^ голоса"
+msgstr[2] "^ голосов"
+
+#: qa-include/qa-app-format.php:446
+msgid "You cannot vote on hidden answers"
+msgstr "Вы не можете голосовать за скрытые ответы"
+
+#: qa-include/qa-app-format.php:446
+msgid "You cannot vote on hidden questions"
+msgstr "Вы не можете голосовать за скрытые вопросы"
+
+#: qa-include/qa-app-format.php:451
+msgid "You cannot vote on your own answers"
+msgstr "Вы не можете голосовать за свои ответы"
+
+#: qa-include/qa-app-format.php:451
+msgid "You cannot vote on your own questions"
+msgstr "Вы не можете голосовать за свои вопросы"
+
+#: qa-include/qa-app-format.php:458
+msgid "Please view this question to vote"
+msgstr "Пожалуйста, просмотрите этот вопрос, чтобы проголосовать"
+
+#: qa-include/qa-app-format.php:460
+msgid "You account must be approved before you can vote"
+msgstr "Для голосования необходимо утверждение учётной записи"
+
+#: qa-include/qa-app-format.php:462
+msgid "Voting is only available to some users"
+msgstr "Голосование доступно только некоторым пользователям"
+
+#: qa-include/qa-app-format.php:468
+msgid "You have voted this up - click to remove vote"
+msgstr "Вы голосовали ЗА — нажмите, чтобы отменить голос"
+
+#: qa-include/qa-app-format.php:474
+msgid "You have voted this down - click to remove vote"
+msgstr "Вы голосовали ПРОТИВ — нажмите, чтобы отменить голос"
+
+#: qa-include/qa-app-format.php:477
+msgid "Click to vote up"
+msgstr "Нажмите, чтобы проголосовать ЗА"
+
+#: qa-include/qa-app-format.php:481
+msgid "Voting down is only available to some users"
+msgstr "Голосование ПРОТИВ доступно только некоторым пользователям"
+
+#: qa-include/qa-app-format.php:485
+msgid "Your account must be approved before you can vote down"
+msgstr "Для голосования ПРОТИВ необходимо утверждение учётной записи"
+
+#: qa-include/qa-app-format.php:489
+msgid "Click to vote down"
+msgstr "Нажмите, чтобы проголосовать ПРОТИВ"
+
+#: qa-include/qa-app-format.php:497 qa-include/qa-app-format.php:856
+msgid "^ flag"
+msgid_plural "^ flags"
+msgstr[0] "^ жалоба"
+msgstr[1] "^ жалобы"
+msgstr[2] "^ жалоб"
+
+#. TRANSLATORS: you can reorder but DO NOT translate!
+#. e.g. <answered> <15 hours ago> <in Problems> <by me (500 points)>
+#. Set ordering of meta elements which can be language-specific
+#: qa-include/qa-app-format.php:504 qa-include/qa-app-format.php:632
+msgid "^what^when^where^who"
+msgstr "^what^who^when^where"
+
+#: qa-include/qa-app-format.php:507 qa-include/qa-app-format.php:731
+msgid "asked"
+msgstr "спросил"
+
+#: qa-include/qa-app-format.php:507 qa-include/qa-app-format.php:757
+msgid "answered"
+msgstr "ответил"
+
+#: qa-include/qa-app-format.php:507 qa-include/qa-app-format.php:780
+#: qa-include/qa-app-format.php:784 qa-include/qa-app-format.php:788
+#: qa-include/qa-app-format.php:792
+msgid "commented"
+msgstr "прокомментировал"
+
+#: qa-include/qa-app-format.php:526 qa-include/qa-app-format.php:844
+msgid "^ point"
+msgid_plural "^ points"
+msgstr[0] "^ балл"
+msgstr[1] "^ балла"
+msgstr[2] "^ баллов"
+
+#: qa-include/qa-app-format.php:560
+msgid "moved"
+msgstr "перемещено"
+
+#: qa-include/qa-app-format.php:564 qa-include/qa-app-format.php:753
+msgid "recategorized"
+msgstr "категория изменена"
+
+#: qa-include/qa-app-format.php:568 qa-include/qa-app-format.php:738
+#: qa-include/qa-app-format.php:768 qa-include/qa-app-format.php:803
+msgid "hidden"
+msgstr "скрыто"
+
+#: qa-include/qa-app-format.php:568 qa-include/qa-app-format.php:738
+msgid "reshown"
+msgstr "показано повторно"
+
+#: qa-include/qa-app-format.php:572 qa-include/qa-app-format.php:745
+msgid "closed"
+msgstr "закрыто"
+
+#: qa-include/qa-app-format.php:572 qa-include/qa-app-format.php:745
+msgid "reopened"
+msgstr "открыто повторно"
+
+#: qa-include/qa-app-format.php:576 qa-include/qa-app-format.php:749
+msgid "retagged"
+msgstr "теги изменены"
+
+#: qa-include/qa-app-format.php:580
+msgid "selected"
+msgstr "выбрано"
+
+#: qa-include/qa-app-format.php:584 qa-include/qa-app-format.php:812
+msgid "edited"
+msgstr "отредактировано"
+
+#: qa-include/qa-app-format.php:645 qa-include/qa-app-format.php:681
+msgid "by ^"
+msgstr "^"
+
+#: qa-include/qa-app-format.php:673
+msgid "me"
+msgstr "я"
+
+#: qa-include/qa-app-format.php:675
+msgid "anonymous"
+msgstr "аноним"
+
+#. TRANSLATORS: date format for current year
+#. see http://www.php.net/manual/en/function.strftime.php for details
+#: qa-include/qa-app-format.php:703
+#, php-format
+msgid "%b %e"
+msgstr "%e %b"
+
+#. TRANSLATORS: date format for other years
+#. see http://www.php.net/manual/en/function.strftime.php for details
+#: qa-include/qa-app-format.php:706
+msgid "%b %e, %Y"
+msgstr "%e %B %Y"
+
+#. ago-style date
+#: qa-include/qa-app-format.php:711
+msgid "^ ago"
+msgstr "^ назад"
+
+#: qa-include/qa-app-format.php:736
+msgid "your question hidden"
+msgstr "ваш вопрос скрыт"
+
+#: qa-include/qa-app-format.php:736
+msgid "your question reshown"
+msgstr "ваш вопрос снова отображён"
+
+#: qa-include/qa-app-format.php:743
+msgid "your question closed"
+msgstr "ваш вопрос закрыт"
+
+#: qa-include/qa-app-format.php:743
+msgid "your question reopened"
+msgstr "ваш вопрос открыт повторно"
+
+#: qa-include/qa-app-format.php:749
+msgid "your question retagged"
+msgstr "теги вашего вопроса изменены"
+
+#: qa-include/qa-app-format.php:753
+msgid "your question recategorized"
+msgstr "категория вашего вопроса изменена"
+
+#: qa-include/qa-app-format.php:757
+msgid "your question answered"
+msgstr "на ваш вопрос дан ответ"
+
+#: qa-include/qa-app-format.php:761
+msgid "your answer selected"
+msgstr "ваш ответ выбран"
+
+#: qa-include/qa-app-format.php:761
+msgid "answer selected"
+msgstr "ответ выбран"
+
+#: qa-include/qa-app-format.php:766
+msgid "your answer hidden"
+msgstr "ваш ответ скрыт"
+
+#: qa-include/qa-app-format.php:766
+msgid "your answer reshown"
+msgstr "ваш ответ снова отображён"
+
+#: qa-include/qa-app-format.php:768
+msgid "answer reshown"
+msgstr "ответ снова отображён"
+
+#: qa-include/qa-app-format.php:772
+msgid "your answer edited"
+msgstr "ваш ответ отредактирован"
+
+#: qa-include/qa-app-format.php:772
+msgid "answer edited"
+msgstr "ответ отредактирован"
+
+#: qa-include/qa-app-format.php:776
+msgid "your answer questioned"
+msgstr "к вашему ответу задан вопрос"
+
+#: qa-include/qa-app-format.php:776
+msgid "asked related question"
+msgstr "задан связанный вопрос"
+
+#: qa-include/qa-app-format.php:784
+msgid "your question commented"
+msgstr "ваш вопрос прокомментирован"
+
+#: qa-include/qa-app-format.php:788
+msgid "your answer commented"
+msgstr "ваш ответ прокомментирован"
+
+#: qa-include/qa-app-format.php:792
+msgid "your comment followed"
+msgstr "после вашего комментария добавили ещё один"
+
+#: qa-include/qa-app-format.php:796
+msgid "your comment moved"
+msgstr "ваш комментарий перемещен"
+
+#: qa-include/qa-app-format.php:796
+msgid "comment moved"
+msgstr "комментарий перемещен"
+
+#: qa-include/qa-app-format.php:801
+msgid "your comment hidden"
+msgstr "ваш комментарий скрыт"
+
+#: qa-include/qa-app-format.php:801
+msgid "your comment reshown"
+msgstr "ваш комментарий снова отображён"
+
+#: qa-include/qa-app-format.php:803
+msgid "comment reshown"
+msgstr "комментарий снова отображён"
+
+#: qa-include/qa-app-format.php:807
+msgid "your comment edited"
+msgstr "ваш комментарий отредактирован"
+
+#: qa-include/qa-app-format.php:807
+msgid "comment edited"
+msgstr "комментарий отредактирован"
+
+#: qa-include/qa-app-format.php:812
+msgid "your question edited"
+msgstr "ваш вопрос отредактирован"
+
+#: qa-include/qa-app-format.php:1055
+msgid "Page:"
+msgstr "Страница:"
+
+#: qa-include/qa-app-format.php:1067
+msgid "prev"
+msgstr "пред."
+
+#: qa-include/qa-app-format.php:1083
+msgid "next"
+msgstr "след."
+
+#: qa-include/qa-app-format.php:1111
+msgid "To see more, click for all the ^1questions in this category^2."
+msgstr "Для получения более полной информации посмотрите ^1все вопросы в этой категории^2."
+
+#: qa-include/qa-app-format.php:1112
+msgid "To see more, click for the ^1full list of questions^2 or ^3popular tags^4."
+msgstr "Для получения более полной информации посмотрите в ^1списке вопросов^2 или в ^3популярных тегах^4."
+
+#: qa-include/qa-app-format.php:1113
+msgid "To see more, click for the ^1full list of questions^2."
+msgstr "Для получения более полной информации посмотрите ^1список вопросов^2."
+
+#: qa-include/qa-app-format.php:1135
+msgid "Help get things started by ^1asking a question^2."
+msgstr "Вы можете начать, ^1задав вопрос^2."
+
+#: qa-include/qa-app-format.php:1180
+msgid "All categories"
+msgstr "Все категории"
+
+#: qa-include/qa-app-format.php:1212
+msgid "Top scoring users"
+msgstr "Рейтинг лучших пользователей"
+
+#: qa-include/qa-app-format.php:1216
+msgid "Special users"
+msgstr "Специальные пользователи"
+
+#: qa-include/qa-app-format.php:1221
+msgid "Blocked users"
+msgstr "Заблокированные пользователи"
+
+#: qa-include/qa-app-format.php:1238
+#, php-format
+msgid "User %s"
+msgstr "Пользователь %s"
+
+#: qa-include/qa-app-format.php:1243
+msgid "Wall"
+msgstr "Стена"
+
+#: qa-include/qa-app-format.php:1248
+msgid "Recent activity"
+msgstr "Последняя активность"
+
+#: qa-include/qa-app-format.php:1253
+msgid "All questions"
+msgstr "Все вопросы"
+
+#: qa-include/qa-app-format.php:1258
+msgid "All answers"
+msgstr "Все ответы"
+
+#: qa-include/qa-app-format.php:1280
+msgid "My details"
+msgstr "Мои данные"
+
+#: qa-include/qa-app-format.php:1285
+msgid "My favorites"
+msgstr "Моё избранное"
+
+#: qa-include/qa-app-format.php:1396
+msgid "Tags - use comma (,) as a separator:"
+msgstr "Теги (используйте запятую как разделитель):"
+
+#: qa-include/qa-app-format.php:1396
+msgid "Tags - use hyphens to combine words:"
+msgstr "Теги (используйте дефис для объединения слов):"
+
+#: qa-include/qa-app-format.php:1403
+msgid "Example tags: "
+msgstr "Примеры тегов: "
+
+#: qa-include/qa-app-format.php:1404
+msgid "Matching tags: "
+msgstr "Соответствующие теги: "
+
+#: qa-include/qa-app-format.php:1464
+msgid "No category"
+msgstr "Без категории"
+
+#: qa-include/qa-app-format.php:1514
+msgid "To select any category, please enable Javascript in your web browser."
+msgstr "Для выбора категории включите, пожалуйста, JavaScript в своём обозревателе."
+
+#: qa-include/qa-app-format.php:1546
+msgid "Your name to display (optional):"
+msgstr "Отображаемое имя (по желанию):"
+
+#: qa-include/qa-app-format.php:1569
+msgid "Email me at this address if my question is answered or commented on:"
+msgstr "Напишите мне на этот адрес, если на мой вопрос отвечают или комментируют:"
+
+#: qa-include/qa-app-format.php:1570
+msgid "Email me if my question is answered or commented on"
+msgstr "Отправьте мне письмо, если на мой вопрос отвечают или комментируют"
+
+#: qa-include/qa-app-format.php:1571
+#, php-format
+msgid "Email me (%s) if my question is answered or commented on"
+msgstr "Напишите мне (%s), если на мой вопрос отвечают или комментируют"
+
+#: qa-include/qa-app-format.php:1575
+msgid "Email me at this address if my answer is selected or commented on:"
+msgstr "Напишите мне на этот адрес, если мой ответ выбран или прокомментирован:"
+
+#: qa-include/qa-app-format.php:1576
+msgid "Email me if my answer is selected or commented on"
+msgstr "Отправьте мне письмо, если мой ответ выбран или прокомментирован"
+
+#: qa-include/qa-app-format.php:1577
+#, php-format
+msgid "Email me (%s) if my answer is selected or commented on"
+msgstr "Напишите мне (%s), если мой ответ выбран или прокомментирован"
+
+#: qa-include/qa-app-format.php:1581
+msgid "Email me at this address if a comment is added after mine:"
+msgstr "Напишите мне на этот адрес, если после меня будет добавлен комментарий:"
+
+#: qa-include/qa-app-format.php:1582
+msgid "Email me if a comment is added after mine"
+msgstr "Отправьте мне письмо, если после меня будет добавлен комментарий"
+
+#: qa-include/qa-app-format.php:1583
+#, php-format
+msgid "Email me (%s) if a comment is added after mine"
+msgstr "Напишите мне (%s), если после меня будет добавлен комментарий"
+
+#: qa-include/qa-app-format.php:1599
+msgid "Privacy: Your email address will only be used for sending these notifications."
+msgstr "Конфиденциальность: Ваш электронный адрес будет использоваться только для отправки уведомлений."

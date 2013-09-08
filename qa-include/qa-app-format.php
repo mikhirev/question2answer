@@ -42,27 +42,27 @@
 		
 		$seconds=max($seconds, 1);
 		
-		$scales=array(
-			31557600 => array( 'main/1_year'   , 'main/x_years'   ),
-			 2629800 => array( 'main/1_month'  , 'main/x_months'  ),
-			  604800 => array( 'main/1_week'   , 'main/x_weeks'   ),
-			   86400 => array( 'main/1_day'    , 'main/x_days'    ),
-			    3600 => array( 'main/1_hour'   , 'main/x_hours'   ),
-			      60 => array( 'main/1_minute' , 'main/x_minutes' ),
-			       1 => array( 'main/1_second' , 'main/x_seconds' ),
-		);
-		
-		foreach ($scales as $scale => $phrases)
-			if ($seconds>=$scale) {
-				$count=floor($seconds/$scale);
-			
-				if ($count==1)
-					$string=qa_lang($phrases[0]);
-				else
-					$string=qa_lang_sub($phrases[1], $count);
-					
-				break;
-			}
+		if ($seconds>=31557600) {
+			$count=floor($seconds/31557600);
+			$string=sprintf(ngettext('%d year', '%d years', $count), $count);
+		} else if ($seconds>=2629800) {
+			$count=floor($seconds/2629800);
+			$string=sprintf(ngettext('%d month', '%d months', $count), $count);
+		} else if ($seconds>=604800) {
+			$count=floor($seconds/604800);
+			$string=sprintf(ngettext('%d week', '%d weeks', $count), $count);
+		} else if ($seconds>=86400) {
+			$count=floor($seconds/86400);
+			$string=sprintf(ngettext('%d day', '%d days', $count), $count);
+		} else if ($seconds>=3600) {
+			$count=floor($seconds/3600);
+			$string=sprintf(ngettext('%d hour', '%d hours', $count), $count);
+		} else if ($seconds>=60) {
+			$count=floor($seconds/60);
+			$string=sprintf(ngettext('%d minute', '%d minutes', $count), $count);
+		} else if ($seconds>=1) {
+			$string=sprintf(ngettext('%d second', '%d seconds', $seconds), $seconds);
+		}
 			
 		return $string;
 	}
@@ -239,7 +239,7 @@
 		if (!strlen($anchorhtml))
 			$anchorhtml=qa_html($ip);
 		
-		return '<a href="'.qa_path_html('ip/'.$ip).'" title="'.qa_lang_html_sub('main/ip_address_x', qa_html($ip)).'" class="qa-ip-link">'.$anchorhtml.'</a>';
+		return '<a href="'.qa_path_html('ip/'.$ip).'" title="'.sprintf(_('IP address %s'), qa_html($ip)).'" class="qa-ip-link">'.$anchorhtml.'</a>';
 	}
 	
 	
@@ -319,8 +319,7 @@
 			if (@$options['answersview'] && isset($post['acount'])) {
 				$fields['answers_raw']=$post['acount'];
 				
-				$fields['answers']=($post['acount']==1) ? qa_lang_html_sub_split('main/1_answer', '1', '1')
-					: qa_lang_html_sub_split('main/x_answers', number_format($post['acount']));
+				$fields['answers']=qa_html_sub_split(ngettext("^ answer", "^ answers", $post['acount']), number_format($post['acount']));
 					
 				$fields['answer_selected']=isset($post['selchildid']);
 			}
@@ -328,8 +327,7 @@
 			if (@$options['viewsview'] && isset($post['views'])) {
 				$fields['views_raw']=$post['views'];
 				
-				$fields['views']=($post['views']==1) ? qa_lang_html_sub_split('main/1_view', '1', '1') :
-					qa_lang_html_sub_split('main/x_views', number_format($post['views']));
+				$fields['views']=qa_html_sub_split(ngettext("^ view", "^ views", $post['views']), number_format($post['views']));
 			}
 
 			if (@$options['categoryview'] && isset($post['categoryname']) && isset($post['categorybackpath'])) {
@@ -345,7 +343,7 @@
 								$favoriteclass=' qa-cat-parent-favorited';
 				}
 				
-				$fields['where']=qa_lang_html_sub_split('main/in_category_x',
+				$fields['where']=qa_html_sub_split(_('in ^'),
 					'<a href="'.qa_path_html(@$options['categorypathprefix'].implode('/', array_reverse(explode('/', $post['categorybackpath'])))).
 					'" class="qa-category-link'.$favoriteclass.'">'.qa_html($post['categoryname']).'</a>');
 			}
@@ -357,7 +355,7 @@
 			$fields['selected']=$isselected;
 			
 			if ($isselected)
-				$fields['select_text']=qa_lang_html('question/select_text');
+				$fields['select_text']=qa_html(_('Best answer'));
 		}
 
 	//	Post content
@@ -432,14 +430,11 @@
 			
 			$fields['vote_on_page']=strpos($voteview, '-disabled-page') ? 'disabled' : 'enabled';
 			
-			$fields['upvotes_view']=($upvotes==1) ? qa_lang_html_sub_split('main/1_liked', $upvoteshtml, '1')
-				: qa_lang_html_sub_split('main/x_liked', $upvoteshtml);
+			$fields['upvotes_view']=qa_html_sub_split(ngettext("^ like", "^ like", $upvotes), $upvoteshtml);
 	
-			$fields['downvotes_view']=($downvotes==1) ? qa_lang_html_sub_split('main/1_disliked', $downvoteshtml, '1')
-				: qa_lang_html_sub_split('main/x_disliked', $downvoteshtml);
+			$fields['downvotes_view']=qa_html_sub_split(ngettext("^ dislike", "^ dislike", $downvotes), $downvoteshtml);
 			
-			$fields['netvotes_view']=(abs($netvotes)==1) ? qa_lang_html_sub_split('main/1_vote', $netvoteshtml, '1')
-				: qa_lang_html_sub_split('main/x_votes', $netvoteshtml);
+			$fields['netvotes_view']=qa_html_sub_split(ngettext("^ vote", "^ votes", abs($netvotes)), $netvoteshtml);
 		
 		//	Voting buttons
 			
@@ -448,50 +443,50 @@
 			
 			if ($fields['hidden']) {
 				$fields['vote_state']='disabled';
-				$fields['vote_up_tags']='title="'.qa_lang_html($isanswer ? 'main/vote_disabled_hidden_a' : 'main/vote_disabled_hidden_q').'"';
+				$fields['vote_up_tags']='title="'.qa_html($isanswer ? _('You cannot vote on hidden answers') : _('You cannot vote on hidden questions')).'"';
 				$fields['vote_down_tags']=$fields['vote_up_tags'];
 			
 			} elseif ($isbyuser) {
 				$fields['vote_state']='disabled';
-				$fields['vote_up_tags']='title="'.qa_lang_html($isanswer ? 'main/vote_disabled_my_a' : 'main/vote_disabled_my_q').'"';
+				$fields['vote_up_tags']='title="'.qa_html($isanswer ? _('You cannot vote on your own answers') : _('You cannot vote on your own questions')).'"';
 				$fields['vote_down_tags']=$fields['vote_up_tags'];
 				
 			} elseif (strpos($voteview, '-disabled-')) {
 				$fields['vote_state']=(@$post['uservote']>0) ? 'voted_up_disabled' : ((@$post['uservote']<0) ? 'voted_down_disabled' : 'disabled');
 				
 				if (strpos($voteview, '-disabled-page'))
-					$fields['vote_up_tags']='title="'.qa_lang_html('main/vote_disabled_q_page_only').'"';
+					$fields['vote_up_tags']='title="'.qa_html(_('Please view this question to vote')).'"';
 				elseif (strpos($voteview, '-disabled-approve'))
-					$fields['vote_up_tags']='title="'.qa_lang_html('main/vote_disabled_approve').'"';
+					$fields['vote_up_tags']='title="'.qa_html(_('You account must be approved before you can vote')).'"';
 				else
-					$fields['vote_up_tags']='title="'.qa_lang_html('main/vote_disabled_level').'"';
+					$fields['vote_up_tags']='title="'.qa_html(_('Voting is only available to some users')).'"';
 					
 				$fields['vote_down_tags']=$fields['vote_up_tags'];
 
 			} elseif (@$post['uservote']>0) {
 				$fields['vote_state']='voted_up';
-				$fields['vote_up_tags']='title="'.qa_lang_html('main/voted_up_popup').'" name="'.qa_html('vote_'.$postid.'_0_'.$elementid).'" '.$onclick;
+				$fields['vote_up_tags']='title="'.qa_html(_('You have voted this up - click to remove vote')).'" name="'.qa_html('vote_'.$postid.'_0_'.$elementid).'" '.$onclick;
 				$fields['vote_down_tags']=' ';
 
 			} elseif (@$post['uservote']<0) {
 				$fields['vote_state']='voted_down';
 				$fields['vote_up_tags']=' ';
-				$fields['vote_down_tags']='title="'.qa_lang_html('main/voted_down_popup').'" name="'.qa_html('vote_'.$postid.'_0_'.$elementid).'" '.$onclick;
+				$fields['vote_down_tags']='title="'.qa_html(_('You have voted this down - click to remove vote')).'" name="'.qa_html('vote_'.$postid.'_0_'.$elementid).'" '.$onclick;
 				
 			} else {
-				$fields['vote_up_tags']='title="'.qa_lang_html('main/vote_up_popup').'" name="'.qa_html('vote_'.$postid.'_1_'.$elementid).'" '.$onclick;
+				$fields['vote_up_tags']='title="'.qa_html(_('Click to vote up')).'" name="'.qa_html('vote_'.$postid.'_1_'.$elementid).'" '.$onclick;
 				
 				if (strpos($voteview, '-uponly-level')) {
 					$fields['vote_state']='up_only';
-					$fields['vote_down_tags']='title="'.qa_lang_html('main/vote_disabled_down').'"';
+					$fields['vote_down_tags']='title="'.qa_html(_('Voting down is only available to some users')).'"';
 				
 				} elseif (strpos($voteview, '-uponly-approve')) {
 					$fields['vote_state']='up_only';
-					$fields['vote_down_tags']='title="'.qa_lang_html('main/vote_disabled_down_approve').'"';
+					$fields['vote_down_tags']='title="'.qa_html(_('Your account must be approved before you can vote down')).'"';
 				
 				} else {
 					$fields['vote_state']='enabled';
-					$fields['vote_down_tags']='title="'.qa_lang_html('main/vote_down_popup').'" name="'.qa_html('vote_'.$postid.'_-1_'.$elementid).'" '.$onclick;
+					$fields['vote_down_tags']='title="'.qa_html(_('Click to vote down')).'" name="'.qa_html('vote_'.$postid.'_-1_'.$elementid).'" '.$onclick;
 				}
 			}
 		}
@@ -499,15 +494,17 @@
 	//	Flag count
 	
 		if (@$options['flagsview'] && @$post['flagcount'])
-			$fields['flags']=($post['flagcount']==1) ? qa_lang_html_sub_split('main/1_flag', '1', '1')
-				: qa_lang_html_sub_split('main/x_flags', $post['flagcount']);
+			$fields['flags']=qa_html_sub_split(ngettext('^ flag', '^ flags', $post['flagcount']), $post['flagcount']);
 	
 	//	Created when and by whom
 		
-		$fields['meta_order']=qa_lang_html('main/meta_order'); // sets ordering of meta elements which can be language-specific
+		$fields['meta_order']=qa_html(
+			/* TRANSLATORS: you can reorder but DO NOT translate!
+			e.g. <answered> <15 hours ago> <in Problems> <by me (500 points)> */
+			_('^what^when^where^who')); // sets ordering of meta elements which can be language-specific
 		
 		if (@$options['whatview'] ) {
-			$fields['what']=qa_lang_html($isquestion ? 'main/asked' : ($isanswer ? 'main/answered' : 'main/commented'));
+			$fields['what']=qa_html($isquestion ? _('asked') : ($isanswer ? _('answered') : _('commented')));
 				
 			if (@$options['whatlink'] && strlen(@$options['q_request']))
 				$fields['what_url']=($post['basetype']=='Q') ? qa_path_html($options['q_request'])
@@ -526,8 +523,7 @@
 			
 			if (isset($post['points'])) {
 				if (@$options['pointsview'])
-					$fields['who']['points']=($post['points']==1) ? qa_lang_html_sub_split('main/1_point', '1', '1')
-						: qa_lang_html_sub_split('main/x_points', qa_html(number_format($post['points'])));
+					$fields['who']['points']=qa_html_sub_split(ngettext('^ point', '^ points', abs($post['points'])), qa_html(number_format($post['points'])));
 				
 				if (isset($options['pointstitle']))
 					$fields['who']['title']=qa_get_points_title_html($post['points'], $options['pointstitle']);
@@ -561,35 +557,35 @@
 			switch ($post['updatetype']) {
 				case QA_UPDATE_TYPE:
 				case QA_UPDATE_PARENT:
-					$langstring='main/moved';
+					$langstring=_('moved');
 					break;
 					
 				case QA_UPDATE_CATEGORY:
-					$langstring='main/recategorized';
+					$langstring=_('recategorized');
 					break;
 
 				case QA_UPDATE_VISIBLE:
-					$langstring=$post['hidden'] ? 'main/hidden' : 'main/reshown';
+					$langstring=$post['hidden'] ? _('hidden') : _('reshown');
 					break;
 					
 				case QA_UPDATE_CLOSED:
-					$langstring=isset($post['closedbyid']) ? 'main/closed' : 'main/reopened';
+					$langstring=isset($post['closedbyid']) ? _('closed') : _('reopened');
 					break;
 					
 				case QA_UPDATE_TAGS:
-					$langstring='main/retagged';
+					$langstring=_('retagged');
 					break;
 				
 				case QA_UPDATE_SELECTED:
-					$langstring='main/selected';
+					$langstring=_('selected');
 					break;
 				
 				default:
-					$langstring='main/edited';
+					$langstring=_('edited');
 					break;
 			}
 			
-			$fields['what_2']=qa_lang_html($langstring);
+			$fields['what_2']=qa_html($langstring);
 			
 			if (@$options['whenview']) {
 				$fields['when_2']=qa_when_to_html($post['updated'], @$options['fulldatedays']);
@@ -633,9 +629,10 @@
 		
 	//	Set ordering of meta elements which can be language-specific
 		
-		$fields['meta_order']=qa_lang_html('main/meta_order'); 
+		$fields['meta_order']=qa_html(_('^what^when^where^who')); 
 		
-		$fields['what']=qa_lang_html('main/written');
+	// FIXME: have no idea how to gettextify it...
+		$fields['what']=qa_html('');
 
 	//	When it was written
 	
@@ -645,7 +642,7 @@
 	//	Who wrote it, and their avatar
 	
 		if (@$options['whoview'])
-			$fields['who']=qa_lang_html_sub_split('main/by_x', qa_get_one_user_html($message['fromhandle'], false));
+			$fields['who']=qa_html_sub_split(_('by ^'), qa_get_one_user_html($message['fromhandle'], false));
 
 		if (@$options['avatarsize']>0)
 			$fields['avatar']=qa_get_user_avatar_html(@$message['fromflags'], @$message['fromemail'], @$message['fromhandle'],
@@ -673,15 +670,15 @@
 			if (strlen($name))
 				$whohtml=qa_html($name);
 			elseif ($isbyuser)
-				$whohtml=qa_lang_html('main/me');
+				$whohtml=qa_html(_('me'));
 			else
-				$whohtml=qa_lang_html('main/anonymous');
+				$whohtml=qa_html(_('anonymous'));
 			
 			if (isset($ip))
 				$whohtml=qa_ip_anchor_html($ip, $whohtml);
 		}
 			
-		return qa_lang_html_sub_split('main/by_x', $whohtml);
+		return qa_html_sub_split(_('by ^'), $whohtml);
 	}
 	
 	
@@ -700,15 +697,18 @@
 			$thisyear=date('Y', qa_opt('db_time'));
 			
 			return array(
-				'data' => qa_html(strtr(qa_lang(($stampyear==$thisyear) ? 'main/date_format_this_year' : 'main/date_format_other_years'), array(
-					'^day' => date((qa_lang('main/date_day_min_digits')==2) ? 'd' : 'j', $timestamp),
-					'^month' => qa_lang('main/date_month_'.date('n', $timestamp)),
-					'^year' => date((qa_lang('main/date_year_digits')==2) ? 'y' : 'Y', $timestamp),
-				))),
+				'data' => qa_html(strftime(($stampyear==$thisyear) ? 
+			/* TRANSLATORS: date format for current year
+			see http://www.php.net/manual/en/function.strftime.php for details */
+				_('%b %e') :
+			/* TRANSLATORS: date format for other years
+			see http://www.php.net/manual/en/function.strftime.php for details */
+				_('%b %e, %Y'),
+				$timestamp))
 			);
 
 		} else // ago-style date
-			return qa_lang_html_sub_split('main/x_ago', qa_html(qa_time_to_string($interval)));
+			return qa_html_sub_split(_('^ ago'), qa_html(qa_time_to_string($interval)));
 	}
 
 	
@@ -728,92 +728,92 @@
 		
 		switch ($question['obasetype'].'-'.@$question['oupdatetype']) { 
 			case 'Q-':
-				$langstring='main/asked';
+				$langstring=_('asked');
 				break;
 			
 			case 'Q-'.QA_UPDATE_VISIBLE:
 				if (@$question['opersonal'])
-					$langstring=$question['hidden'] ? 'misc/your_q_hidden' : 'misc/your_q_reshown';
+					$langstring=$question['hidden'] ? _('your question hidden') : _('your question reshown');
 				else
-					$langstring=$question['hidden'] ? 'main/hidden' : 'main/reshown';
+					$langstring=$question['hidden'] ? _('hidden') : _('reshown');
 				break;
 				
 			case 'Q-'.QA_UPDATE_CLOSED:
 				if (@$question['opersonal'])
-					$langstring=isset($question['closedbyid']) ? 'misc/your_q_closed' : 'misc/your_q_reopened';
+					$langstring=isset($question['closedbyid']) ? _('your question closed') : _('your question reopened');
 				else
-					$langstring=isset($question['closedbyid']) ? 'main/closed' : 'main/reopened';
+					$langstring=isset($question['closedbyid']) ? _('closed') : _('reopened');
 				break;
 				
 			case 'Q-'.QA_UPDATE_TAGS:
-				$langstring=@$question['opersonal'] ? 'misc/your_q_retagged' : 'main/retagged';
+				$langstring=@$question['opersonal'] ? _('your question retagged') : _('retagged');
 				break;
 				
 			case 'Q-'.QA_UPDATE_CATEGORY:
-				$langstring=@$question['opersonal'] ? 'misc/your_q_recategorized' : 'main/recategorized';
+				$langstring=@$question['opersonal'] ? _('your question recategorized') : _('recategorized');
 				break;
 
 			case 'A-':
-				$langstring=@$question['opersonal'] ? 'misc/your_q_answered' : 'main/answered';
+				$langstring=@$question['opersonal'] ? _('your question answered') : _('answered');
 				break;
 			
 			case 'A-'.QA_UPDATE_SELECTED:
-				$langstring=@$question['opersonal'] ? 'misc/your_a_selected' : 'main/answer_selected';
+				$langstring=@$question['opersonal'] ? _('your answer selected') : _('answer selected');
 				break;
 			
 			case 'A-'.QA_UPDATE_VISIBLE:
 				if (@$question['opersonal'])
-					$langstring=$question['ohidden'] ? 'misc/your_a_hidden' : 'misc/your_a_reshown';
+					$langstring=$question['ohidden'] ? _('your answer hidden') : _('your answer reshown');
 				else
-					$langstring=$question['ohidden'] ? 'main/hidden' : 'main/answer_reshown';
+					$langstring=$question['ohidden'] ? _('hidden') : _('answer reshown');
 				break;
 				
 			case 'A-'.QA_UPDATE_CONTENT:
-				$langstring=@$question['opersonal'] ? 'misc/your_a_edited' : 'main/answer_edited';
+				$langstring=@$question['opersonal'] ? _('your answer edited') : _('answer edited');
 				break;
 				
 			case 'Q-'.QA_UPDATE_FOLLOWS:
-				$langstring=@$question['opersonal'] ? 'misc/your_a_questioned' : 'main/asked_related_q';
+				$langstring=@$question['opersonal'] ? _('your answer questioned') : _('asked related question');
 				break;
 			
 			case 'C-':
-				$langstring='main/commented';
+				$langstring=_('commented');
 				break;
 				
 			case 'C-'.QA_UPDATE_C_FOR_Q:
-				$langstring=@$question['opersonal'] ? 'misc/your_q_commented' : 'main/commented';
+				$langstring=@$question['opersonal'] ? _('your question commented') : _('commented');
 				break;
 			
 			case 'C-'.QA_UPDATE_C_FOR_A:
-				$langstring=@$question['opersonal'] ? 'misc/your_a_commented' : 'main/commented';
+				$langstring=@$question['opersonal'] ? _('your answer commented') : _('commented');
 				break;
 			
 			case 'C-'.QA_UPDATE_FOLLOWS:
-				$langstring=@$question['opersonal'] ? 'misc/your_c_followed' : 'main/commented';
+				$langstring=@$question['opersonal'] ? _('your comment followed') : _('commented');
 				break;
 			
 			case 'C-'.QA_UPDATE_TYPE:
-				$langstring=@$question['opersonal'] ? 'misc/your_c_moved' : 'main/comment_moved';
+				$langstring=@$question['opersonal'] ? _('your comment moved') : _('comment moved');
 				break;
 				
 			case 'C-'.QA_UPDATE_VISIBLE:
 				if (@$question['opersonal'])
-					$langstring=$question['ohidden'] ? 'misc/your_c_hidden' : 'misc/your_c_reshown';
+					$langstring=$question['ohidden'] ? _('your comment hidden') : _('your comment reshown');
 				else
-					$langstring=$question['ohidden'] ? 'main/hidden' : 'main/comment_reshown';
+					$langstring=$question['ohidden'] ? _('hidden') : _('comment reshown');
 				break;
 				
 			case 'C-'.QA_UPDATE_CONTENT:
-				$langstring=@$question['opersonal'] ? 'misc/your_c_edited' : 'main/comment_edited';
+				$langstring=@$question['opersonal'] ? _('your comment edited') : _('comment edited');
 				break;
 			
 			case 'Q-'.QA_UPDATE_CONTENT:
 			default:
-				$langstring=@$question['opersonal'] ? 'misc/your_q_edited' : 'main/edited';
+				$langstring=@$question['opersonal'] ? _('your question edited') : _('edited');
 				break;
 		}
 		
-		$fields['what']=qa_lang_html($langstring);
+		$fields['what']=qa_html($langstring);
 		
 		if (@$question['opersonal'])
 			$fields['what_your']=true;
@@ -841,8 +841,7 @@
 	
 			if (isset($question['opoints'])) {
 				if (@$options['pointsview'])
-					$fields['who']['points']=($question['opoints']==1) ? qa_lang_html_sub_split('main/1_point', '1', '1')
-						: qa_lang_html_sub_split('main/x_points', qa_html(number_format($question['opoints'])));
+					$fields['who']['points']=qa_html_sub_split(ngettext('^ point', '^ points', $question['opoints']), qa_html(number_format($question['opoints'])));
 						
 				if (isset($options['pointstitle']))
 					$fields['who']['title']=qa_get_points_title_html($question['opoints'], $options['pointstitle']);
@@ -854,8 +853,7 @@
 		
 		unset($fields['flags']);
 		if (@$options['flagsview'] && @$question['oflagcount'])
-			$fields['flags']=($question['oflagcount']==1) ? qa_lang_html_sub_split('main/1_flag', '1', '1')
-				: qa_lang_html_sub_split('main/x_flags', $question['oflagcount']);
+			$fields['flags']=qa_html_sub_split(ngettext('^ flag', '^flags', $question['oflagcount']), $question['oflagcount']);
 
 		unset($fields['avatar']);
 		if (@$options['avatarsize']>0) {
@@ -1054,7 +1052,7 @@
 		$lastpage=ceil(min($count, 1+QA_MAX_LIMIT_START)/$pagesize);
 		
 		if (($thispage>1) || ($lastpage>$thispage)) {
-			$links=array('label' => qa_lang_html('main/page_label'), 'items' => array());
+			$links=array('label' => qa_html(_('Page:')), 'items' => array());
 			
 			$keypages[1]=true;
 			
@@ -1066,7 +1064,7 @@
 			if ($thispage>1)
 				$links['items'][]=array(
 					'type' => 'prev',
-					'label' => qa_lang_html('main/page_prev'),
+					'label' => qa_html(_('prev')),
 					'page' => $thispage-1,
 					'ellipsis' => false,
 				);
@@ -1082,7 +1080,7 @@
 			if ($thispage<$lastpage)
 				$links['items'][]=array(
 					'type' => 'next',
-					'label' => qa_lang_html('main/page_next'),
+					'label' => qa_html(_('next')),
 					'page' => $thispage+1,
 					'ellipsis' => false,
 				);
@@ -1110,8 +1108,9 @@
 		
 		$hascategory=strlen($categoryrequest);
 		
-		$htmlmessage=$hascategory ? qa_lang_html('main/suggest_category_qs') :
-			($usingtags ? qa_lang_html('main/suggest_qs_tags') : qa_lang_html('main/suggest_qs'));
+		$htmlmessage=$hascategory ? qa_html(_('To see more, click for all the ^1questions in this category^2.')) :
+			($usingtags ? qa_html(_('To see more, click for the ^1full list of questions^2 or ^3popular tags^4.')) :
+			qa_html(_('To see more, click for the ^1full list of questions^2.')));
 		
 		return strtr(
 			$htmlmessage,
@@ -1133,7 +1132,7 @@
 	{
 		if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 		
-		$htmlmessage=qa_lang_html('main/suggest_ask');
+		$htmlmessage=qa_html(_('Help get things started by ^1asking a question^2.'));
 		
 		return strtr(
 			$htmlmessage,
@@ -1178,7 +1177,7 @@
 		if (!isset($parentid))
 			$navigation['all']=array(
 				'url' => qa_path_html($pathprefix, $pathparams),
-				'label' => qa_lang_html('main/all_categories'),
+				'label' => qa_html(_('All categories')),
 				'selected' => !count($selecteds),
 				'categoryid' => null,
 			);
@@ -1210,16 +1209,16 @@
 			return array(
 				'users$' => array(
 					'url' => qa_path_html('users'),
-					'label' => qa_lang_html('main/highest_users'),
+					'label' => qa_html(_('Top scoring users')),
 				),
 	
 				'users/special' => array(
-					'label' => qa_lang('users/special_users'),
+					'label' => _('Special users'),
 					'url' => qa_path_html('users/special'),
 				),
 	
 				'users/blocked' => array(
-					'label' => qa_lang('users/blocked_users'),
+					'label' => _('Blocked users'),
 					'url' => qa_path_html('users/blocked'),
 				),
 			);
@@ -1236,27 +1235,27 @@
 	{
 		$navigation=array(
 			'profile' => array(
-				'label' => qa_lang_html_sub('profile/user_x', qa_html($handle)),
+				'label' => qa_html(sprintf(_('User %s'), qa_html($handle))),
 				'url' => qa_path_html('user/'.$handle),
 			),
 			
 			'wall' => array(
-				'label' => qa_lang_html('misc/nav_user_wall'),
+				'label' => qa_html(_('Wall')),
 				'url' => qa_path_html('user/'.$handle.'/wall'),
 			),
 			
 			'activity' => array(
-				'label' => qa_lang_html('misc/nav_user_activity'),
+				'label' => qa_html(_('Recent activity')),
 				'url' => qa_path_html('user/'.$handle.'/activity'),
 			),
 			
 			'questions' => array(
-				'label' => qa_lang_html('misc/nav_user_qs'),
+				'label' => qa_html(_('All questions')),
 				'url' => qa_path_html('user/'.$handle.'/questions'),
 			),
 			
 			'answers' => array(
-				'label' => qa_lang_html('misc/nav_user_as'),
+				'label' => qa_html(_('All answers')),
 				'url' => qa_path_html('user/'.$handle.'/answers'),
 			),
 		);
@@ -1278,12 +1277,12 @@
 	{
 		return array(
 			'account' => array(
-				'label' => qa_lang_html('misc/nav_my_details'),
+				'label' => qa_html(_('My details')),
 				'url' => qa_path_html('account'),
 			),
 			
 			'favorites' => array(
-				'label' => qa_lang_html('misc/nav_my_favorites'),
+				'label' => qa_html(_('My favorites')),
 				'url' => qa_path_html('favorites'),
 			),
 		);
@@ -1394,15 +1393,15 @@
 		
 		$separatorcomma=qa_opt('tag_separator_comma');
 		
-		$field['label']=qa_lang_html($separatorcomma ? 'question/q_tags_comma_label' : 'question/q_tags_label');
+		$field['label']=qa_html($separatorcomma ? _('Tags - use comma (,) as a separator:') : _('Tags - use hyphens to combine words:'));
 		$field['value']=qa_html(implode($separatorcomma ? ', ' : ' ', $tags));
 		$field['tags']='name="'.$fieldname.'" id="tags" autocomplete="off" onkeyup="qa_tag_hints();" onmouseup="qa_tag_hints();"';
 		
 		$sdn=' style="display:none;"';
 		
 		$field['note']=
-			'<span id="tag_examples_title"'.(count($exampletags) ? '' : $sdn).'>'.qa_lang_html('question/example_tags').'</span>'.
-			'<span id="tag_complete_title"'.$sdn.'>'.qa_lang_html('question/matching_tags').'</span><span id="tag_hints">';
+			'<span id="tag_examples_title"'.(count($exampletags) ? '' : $sdn).'>'.qa_html(_('Example tags: ')).'</span>'.
+			'<span id="tag_complete_title"'.$sdn.'>'.qa_html(_('Matching tags: ')).'</span><span id="tag_hints">';
 
 		foreach ($exampletags as $tag)
 			$field['note'].=str_replace('^', qa_html($tag), $template).' ';
@@ -1462,7 +1461,7 @@
 		// create the menu that will be shown if Javascript is disabled
 		
 		if ($allownone)
-			$field['options']['']=qa_lang_html('main/no_category'); // this is also copied to first menu created by Javascript
+			$field['options']['']=qa_html(_('No category')); // this is also copied to first menu created by Javascript
 		
 		$keycategoryids=array();
 		
@@ -1512,7 +1511,7 @@
 				$field['options'][$keycategoryid]=qa_category_path_html($navcategories, $keycategoryid);
 			
 		$field['value']=@$field['options'][$categoryid];
-		$field['note']='<div id="'.$fieldname.'_note"><noscript style="color:red;">'.qa_lang_html('question/category_js_note').'</noscript></div>';
+		$field['note']='<div id="'.$fieldname.'_note"><noscript style="color:red;">'.qa_html(_('To select any category, please enable Javascript in your web browser.')).'</noscript></div>';
 	}
 	
 	
@@ -1544,7 +1543,7 @@
 */
 	{
 		$fields['name']=array(
-			'label' => qa_lang_html('question/anon_name_label'),
+			'label' => qa_html(_('Your name to display (optional):')),
 			'tags' => 'name="'.$fieldprefix.'name"',
 			'value' => qa_html($inname),
 		);
@@ -1567,21 +1566,21 @@
 
 		switch ($basetype) {
 			case 'Q':
-				$labelaskemail=qa_lang_html('question/q_notify_email');
-				$labelonly=qa_lang_html('question/q_notify_label');
-				$labelgotemail=qa_lang_html('question/q_notify_x_label');
+				$labelaskemail=qa_html(_('Email me at this address if my question is answered or commented on:'));
+				$labelonly=qa_html(_('Email me if my question is answered or commented on'));
+				$labelgotemail=qa_html(_('Email me (%s) if my question is answered or commented on'));
 				break;
 				
 			case 'A':
-				$labelaskemail=qa_lang_html('question/a_notify_email');
-				$labelonly=qa_lang_html('question/a_notify_label');
-				$labelgotemail=qa_lang_html('question/a_notify_x_label');
+				$labelaskemail=qa_html(_('Email me at this address if my answer is selected or commented on:'));
+				$labelonly=qa_html(_('Email me if my answer is selected or commented on'));
+				$labelgotemail=qa_html(_('Email me (%s) if my answer is selected or commented on'));
 				break;
 				
 			case 'C':
-				$labelaskemail=qa_lang_html('question/c_notify_email');
-				$labelonly=qa_lang_html('question/c_notify_label');
-				$labelgotemail=qa_lang_html('question/c_notify_x_label');
+				$labelaskemail=qa_html(_('Email me at this address if a comment is added after mine:'));
+				$labelonly=qa_html(_('Email me if a comment is added after mine'));
+				$labelgotemail=qa_html(_('Email me (%s) if a comment is added after mine'));
 				break;
 		}
 			
@@ -1597,7 +1596,7 @@
 				'id' => $fieldprefix.'email_display',
 				'tags' => 'name="'.$fieldprefix.'email" id="'.$fieldprefix.'email"',
 				'value' => qa_html($inemail),
-				'note' => qa_lang_html('question/notify_email_note'),
+				'note' => qa_html(_('Privacy: Your email address will only be used for sending these notifications.')),
 				'error' => qa_html($errors_email),
 			);
 			
@@ -1608,7 +1607,7 @@
 			));
 		
 		} else {
-			$fields['notify']['label']=str_replace('^', qa_html($login_email), $labelgotemail);
+			$fields['notify']['label']=sprintf($labelgotemail, qa_html($login_email));
 		}
 	}
 

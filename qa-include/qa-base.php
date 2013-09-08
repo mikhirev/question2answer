@@ -46,6 +46,7 @@
 
 	qa_db_allow_connect();
 	
+	qa_set_locale();
 
 //	Version comparison functions
 
@@ -109,7 +110,7 @@
 		
 		@ini_set('magic_quotes_runtime', 0);
 		
-		@setlocale(LC_CTYPE, 'C'); // prevent strtolower() et al affecting non-ASCII characters (appears important for IIS)
+//		@setlocale(LC_CTYPE, 'C'); // prevent strtolower() et al affecting non-ASCII characters (appears important for IIS)
 		
 		if (function_exists('date_default_timezone_set') && function_exists('date_default_timezone_get'))
 			@date_default_timezone_set(@date_default_timezone_get()); // prevent PHP notices where default timezone not set
@@ -349,6 +350,23 @@
 		}
 	}
 	
+
+	function qa_set_locale()
+/*
+	Prepare for i18n
+*/
+	{
+		require_once QA_INCLUDE_DIR.'qa-app-options.php';
+		$locale=qa_opt('site_language');
+		//setlocale(LC_ALL, $locale);
+        putenv('LANG=ru_RU.UTF-8');
+		setlocale(LC_ALL, 'ru_RU.UTF8');
+		$domain='qa-core';
+		bindtextdomain($domain, QA_BASE_DIR.'locale/');
+		bind_textdomain_codeset($domain, 'UTF-8');
+		textdomain($domain);
+	}
+
 
 //	Functions for registering different varieties of Q2A modularity
 	
@@ -1102,6 +1120,25 @@
 	}
 
 	
+	function qa_html_sub_split($string, $htmlparam, $symbol='^')
+/*
+	Return an array containing the string converted to HTML, then split into three,
+	with $symbol substituted for $htmlparam in the 'data' element, and obvious 'prefix' and 'suffix' elements
+*/
+	{
+		$html=qa_html($string);
+
+		$symbolpos=strpos($html, $symbol);
+		if (!is_numeric($symbolpos))
+			qa_fatal_error('Missing '.$symbol.' in string '.$string);
+		return array(
+			'prefix' => substr($html, 0, $symbolpos),
+			'data' => $htmlparam,
+			'suffix' => substr($html, $symbolpos+1),
+		);
+	}
+
+
 //	Request and path generation 
 
 	function qa_path_to_root()
