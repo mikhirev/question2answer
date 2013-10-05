@@ -251,12 +251,12 @@
 						foreach ($modules as $modulename => $module) {
 							$queries=$module->init_queries($tables);
 							if (!empty($queries)) { // also allows single query to be returned
-								$errorhtml=strtr(qa_lang_html('admin/module_x_database_init'), array(
-									'^1' => qa_html($modulename),
-									'^2' => qa_html($moduletype),
-									'^3' => '',
-									'^4' => '',
-								));
+								$errorhtml=sprintf(qa_html(_('The %s %s module requires some %sdatabase initialization%s.')),
+									qa_html($modulename),
+									 qa_html($moduletype),
+									'',
+									''
+								);
 								
 								$buttons=array('module' => 'Initialize Database');
 	

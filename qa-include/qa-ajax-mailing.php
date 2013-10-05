@@ -43,10 +43,10 @@
 		if (isset($message))
 			$continue=true;
 		else
-			$message=qa_lang('admin/mailing_complete');
+			$message=_('The mailing is complete');
 	
 	} else
-		$message=qa_lang('admin/no_privileges');
+		$message=_('Only administrators may access this page.');
 
 	
 	echo "QA_AJAX_RESPONSE\n".(int)$continue."\n".qa_html($message);

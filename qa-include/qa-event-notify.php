@@ -42,13 +42,13 @@
 			switch ($event) {
 				case 'q_post':
 					$followanswer=@$params['followanswer'];
-					$sendhandle=isset($handle) ? $handle : (strlen($params['name']) ? $params['name'] : qa_lang('main/anonymous'));
+					$sendhandle=isset($handle) ? $handle : (strlen($params['name']) ? $params['name'] : _('anonymous'));
 					
 					if (isset($followanswer['notify']) && !qa_post_is_by_user($followanswer, $userid, $cookieid)) {
 						$blockwordspreg=qa_get_block_words_preg();
 						$sendtext=qa_viewer_text($followanswer['content'], $followanswer['format'], array('blockwordspreg' => $blockwordspreg));
 						
-						qa_send_notification($followanswer['userid'], $followanswer['notify'], @$followanswer['handle'], qa_lang('emails/a_followed_subject'), qa_lang('emails/a_followed_body'), array(
+						qa_send_notification($followanswer['userid'], $followanswer['notify'], @$followanswer['handle'], _('Your ^site_title answer has a related question'), _("Your answer on ^site_title has a new related question by ^q_handle:\n\n^open^q_title^close\n\nYour answer was:\n\n^open^a_content^close\n\nClick below to answer the new question:\n\n^url\n\nThank you,\n\n^site_title"), array(
 							'^q_handle' => $sendhandle,
 							'^q_title' => qa_block_words_replace($params['title'], $blockwordspreg),
 							'^a_content' => $sendtext,
@@ -57,7 +57,7 @@
 					}
 					
 					if (qa_opt('notify_admin_q_post'))
-						qa_send_notification(null, qa_opt('feedback_email'), null, qa_lang('emails/q_posted_subject'), qa_lang('emails/q_posted_body'), array(
+						qa_send_notification(null, qa_opt('feedback_email'), null, _('^site_title has a new question'), _("A new question has been asked by ^q_handle:\n\n^open^q_title\n\n^q_content^close\n\nClick below to see the question:\n\n^url\n\nThank you,\n\n^site_title"), array(
 							'^q_handle' => $sendhandle,
 							'^q_title' => $params['title'], // don't censor title or content here since we want the admin to see bad words
 							'^q_content' => $params['text'],
@@ -71,8 +71,8 @@
 					$question=$params['parent'];
 					
 					if (isset($question['notify']) && !qa_post_is_by_user($question, $userid, $cookieid))
-						qa_send_notification($question['userid'], $question['notify'], @$question['handle'], qa_lang('emails/q_answered_subject'), qa_lang('emails/q_answered_body'), array(
-							'^a_handle' => isset($handle) ? $handle : (strlen($params['name']) ? $params['name'] : qa_lang('main/anonymous')),
+						qa_send_notification($question['userid'], $question['notify'], @$question['handle'], _('Your ^site_title question was answered'), _("Your question on ^site_title has been answered by ^a_handle:\n\n^open^a_content^close\n\nYour question was:\n\n^open^q_title^close\n\nIf you like this answer, you may select it as the best:\n\n^url\n\nThank you,\n\n^site_title"), array(
+							'^a_handle' => isset($handle) ? $handle : (strlen($params['name']) ? $params['name'] : _('anonymous')),
 							'^q_title' => $question['title'],
 							'^a_content' => qa_block_words_replace($params['text'], qa_get_block_words_preg()),
 							'^url' => qa_q_path($question['postid'], $question['title'], true, 'A', $params['postid']),
@@ -89,20 +89,20 @@
 					
 					switch ($parent['basetype']) {
 						case 'Q':
-							$subject=qa_lang('emails/q_commented_subject');
-							$body=qa_lang('emails/q_commented_body');
+							$subject=_('Your ^site_title question has a new comment');
+							$body=_("Your question on ^site_title has a new comment by ^c_handle:\n\n^open^c_content^close\n\nYour question was:\n\n^open^c_context^close\n\nYou may respond by adding your own comment:\n\n^url\n\nThank you,\n\n^site_title");
 							$context=$parent['title'];
 							break;
 							
 						case 'A':
-							$subject=qa_lang('emails/a_commented_subject');
-							$body=qa_lang('emails/a_commented_body');
+							$subject=_('Your ^site_title answer has a new comment');
+							$body=_("Your answer on ^site_title has a new comment by ^c_handle:\n\n^open^c_content^close\n\nYour answer was:\n\n^open^c_context^close\n\nYou may respond by adding your own comment:\n\n^url\n\nThank you,\n\n^site_title");
 							$context=qa_viewer_text($parent['content'], $parent['format']);
 							break;
 					}
 					
 					$blockwordspreg=qa_get_block_words_preg();
-					$sendhandle=isset($handle) ? $handle : (strlen($params['name']) ? $params['name'] : qa_lang('main/anonymous'));
+					$sendhandle=isset($handle) ? $handle : (strlen($params['name']) ? $params['name'] : _('anonymous'));
 					$sendcontext=qa_block_words_replace($context, $blockwordspreg);
 					$sendtext=qa_block_words_replace($params['text'], $blockwordspreg);
 					$sendurl=qa_q_path($question['postid'], $question['title'], true, $parent['basetype'], $parent['postid']);
@@ -142,7 +142,7 @@
 								$senttouserid[$senduserid]=true;
 							}
 		
-							qa_send_notification($senduserid, $sendemail, @$comment['handle'], qa_lang('emails/c_commented_subject'), qa_lang('emails/c_commented_body'), array(
+							qa_send_notification($senduserid, $sendemail, @$comment['handle'], _('Your ^site_title comment has been added to'), _("A new comment by ^c_handle has been added after your comment on ^site_title:\n\n^open^c_content^close\n\nThe discussion is following:\n\n^open^c_context^close\n\nYou may respond by adding another comment:\n\n^url\n\nThank you,\n\n^site_title"), array(
 								'^c_handle' => $sendhandle,
 								'^c_context' => $sendcontext,
 								'^c_content' => $sendtext,
@@ -156,11 +156,11 @@
 				case 'q_requeue':
 					if (qa_opt('moderate_notify_admin'))
 						qa_send_notification(null, qa_opt('feedback_email'), null,
-							($event=='q_requeue') ? qa_lang('emails/remoderate_subject') : qa_lang('emails/moderate_subject'),
-							($event=='q_requeue') ? qa_lang('emails/remoderate_body') : qa_lang('emails/moderate_body'),
+							($event=='q_requeue') ? _('^site_title moderation') : _('^site_title moderation'),
+							($event=='q_requeue') ? _("An edited post by ^p_handle requires your reapproval:\n\n^open^p_context^close\n\nClick below to approve or hide the edited post:\n\n^url\n\n\nClick below to review all queued posts:\n\n^a_url\n\n\nThank you,\n\n^site_title") : _("A post by ^p_handle requires your approval:\n\n^open^p_context^close\n\nClick below to approve or reject the post:\n\n^url\n\n\nClick below to review all queued posts:\n\n^a_url\n\n\nThank you,\n\n^site_title"),
 							array(
 								'^p_handle' => isset($handle) ? $handle : (strlen($params['name']) ? $params['name'] :
-									(strlen(@$oldquestion['name']) ? $oldquestion['name'] : qa_lang('main/anonymous'))),
+									(strlen(@$oldquestion['name']) ? $oldquestion['name'] : _('anonymous'))),
 								'^p_context' => trim(@$params['title']."\n\n".$params['text']),
 								'^url' => qa_q_path($params['postid'], $params['title'], true),
 								'^a_url' => qa_path_absolute('admin/moderate'),
@@ -173,11 +173,11 @@
 				case 'a_requeue':
 					if (qa_opt('moderate_notify_admin'))
 						qa_send_notification(null, qa_opt('feedback_email'), null,
-							($event=='a_requeue') ? qa_lang('emails/remoderate_subject') : qa_lang('emails/moderate_subject'),
-							($event=='a_requeue') ? qa_lang('emails/remoderate_body') : qa_lang('emails/moderate_body'),
+							($event=='a_requeue') ? _('^site_title moderation') : _('^site_title moderation'),
+							($event=='a_requeue') ? _("An edited post by ^p_handle requires your reapproval:\n\n^open^p_context^close\n\nClick below to approve or hide the edited post:\n\n^url\n\n\nClick below to review all queued posts:\n\n^a_url\n\n\nThank you,\n\n^site_title") : _("A post by ^p_handle requires your approval:\n\n^open^p_context^close\n\nClick below to approve or reject the post:\n\n^url\n\n\nClick below to review all queued posts:\n\n^a_url\n\n\nThank you,\n\n^site_title"),
 							array(
 								'^p_handle' => isset($handle) ? $handle : (strlen($params['name']) ? $params['name'] :
-									(strlen(@$oldanswer['name']) ? $oldanswer['name'] : qa_lang('main/anonymous'))),
+									(strlen(@$oldanswer['name']) ? $oldanswer['name'] : _('anonymous'))),
 								'^p_context' => $params['text'],
 								'^url' => qa_q_path($params['parentid'], $params['parent']['title'], true, 'A', $params['postid']),
 								'^a_url' => qa_path_absolute('admin/moderate'),
@@ -190,12 +190,12 @@
 				case 'c_requeue':
 					if (qa_opt('moderate_notify_admin'))
 						qa_send_notification(null, qa_opt('feedback_email'), null,
-							($event=='c_requeue') ? qa_lang('emails/remoderate_subject') : qa_lang('emails/moderate_subject'),
-							($event=='c_requeue') ? qa_lang('emails/remoderate_body') : qa_lang('emails/moderate_body'),
+							($event=='c_requeue') ? _('^site_title moderation') : _('^site_title moderation'),
+							($event=='c_requeue') ? _("An edited post by ^p_handle requires your reapproval:\n\n^open^p_context^close\n\nClick below to approve or hide the edited post:\n\n^url\n\n\nClick below to review all queued posts:\n\n^a_url\n\n\nThank you,\n\n^site_title") : _("A post by ^p_handle requires your approval:\n\n^open^p_context^close\n\nClick below to approve or reject the post:\n\n^url\n\n\nClick below to review all queued posts:\n\n^a_url\n\n\nThank you,\n\n^site_title"),
 							array(
 								'^p_handle' => isset($handle) ? $handle : (strlen($params['name']) ? $params['name'] :
 									(strlen(@$oldcomment['name']) ? $oldcomment['name'] : // could also be after answer converted to comment
-									(strlen(@$oldanswer['name']) ? $oldanswer['name'] : qa_lang('main/anonymous')))),
+									(strlen(@$oldanswer['name']) ? $oldanswer['name'] : _('anonymous')))),
 								'^p_context' => $params['text'],
 								'^url' => qa_q_path($params['questionid'], $params['question']['title'], true, 'C', $params['postid']),
 								'^a_url' => qa_path_absolute('admin/moderate'),
@@ -212,10 +212,10 @@
 					$notifycount=$flagcount-qa_opt('flagging_notify_first');
 					
 					if ( ($notifycount>=0) && (($notifycount % qa_opt('flagging_notify_every'))==0) )
-						qa_send_notification(null, qa_opt('feedback_email'), null, qa_lang('emails/flagged_subject'), qa_lang('emails/flagged_body'), array(
+						qa_send_notification(null, qa_opt('feedback_email'), null, _('^site_title has a flagged post'), _("A post by ^p_handle has received ^flags:\n\n^open^p_context^close\n\nClick below to see the post:\n\n^url\n\n\nClick below to review all flagged posts:\n\n^a_url\n\n\nThank you,\n\n^site_title"), array(
 							'^p_handle' => isset($oldpost['handle']) ? $oldpost['handle'] :
-								(strlen($oldpost['name']) ? $oldpost['name'] : qa_lang('main/anonymous')),
-							'^flags' => ($flagcount==1) ? qa_lang_html_sub('main/1_flag', '1', '1') : qa_lang_html_sub('main/x_flags', $flagcount),
+								(strlen($oldpost['name']) ? $oldpost['name'] : _('anonymous')),
+							'^flags' => sprintf(ngettext('%d flag', '%d flags', $flagcount), $flagcount),
 							'^p_context' => trim(@$oldpost['title']."\n\n".qa_viewer_text($oldpost['content'], $oldpost['format'])),
 							'^url' => qa_q_path($params['questionid'], $params['question']['title'], true, $oldpost['basetype'], $oldpost['postid']),
 							'^a_url' => qa_path_absolute('admin/flagged'),
@@ -230,8 +230,8 @@
 						$blockwordspreg=qa_get_block_words_preg();
 						$sendcontent=qa_viewer_text($answer['content'], $answer['format'], array('blockwordspreg' => $blockwordspreg));
 		
-						qa_send_notification($answer['userid'], $answer['notify'], @$answer['handle'], qa_lang('emails/a_selected_subject'), qa_lang('emails/a_selected_body'), array(
-							'^s_handle' => isset($handle) ? $handle : qa_lang('main/anonymous'),
+						qa_send_notification($answer['userid'], $answer['notify'], @$answer['handle'], _('Your ^site_title answer has been selected!'), _("Congratulations! Your answer on ^site_title has been selected as the best by ^s_handle:\n\n^open^a_content^close\n\nThe question was:\n\n^open^q_title^close\n\nClick below to see your answer:\n\n^url\n\nThank you,\n\n^site_title"), array(
+							'^s_handle' => isset($handle) ? $handle : _('anonymous'),
 							'^q_title' => qa_block_words_replace($params['parent']['title'], $blockwordspreg),
 							'^a_content' => $sendcontent,
 							'^url' => qa_q_path($params['parentid'], $params['parent']['title'], true, 'A', $params['postid']),
@@ -241,8 +241,8 @@
 				
 				case 'u_register':
 					if (qa_opt('register_notify_admin'))
-						qa_send_notification(null, qa_opt('feedback_email'), null, qa_lang('emails/u_registered_subject'),
-							qa_opt('moderate_users') ? qa_lang('emails/u_to_approve_body') : qa_lang('emails/u_registered_body'), array(
+						qa_send_notification(null, qa_opt('feedback_email'), null, _('^site_title has a new registered user'),
+							qa_opt('moderate_users') ? _("A new user has registered as ^u_handle.\n\nClick below to approve the user:\n\n^url\n\nClick below to review all users waiting for approval:\n\n^a_url\n\nThank you,\n\n^site_title") : _("A new user has registered as ^u_handle.\n\nClick below to view the user profile:\n\n^url\n\nThank you,\n\n^site_title"), array(
 							'^u_handle' => $handle,
 							'^url' => qa_path_absolute('user/'.$handle),
 							'^a_url' => qa_path_absolute('admin/approve'),
@@ -251,15 +251,15 @@
 					
 				case 'u_level':
 					if ( ($params['level']>=QA_USER_LEVEL_APPROVED) && ($params['oldlevel']<QA_USER_LEVEL_APPROVED) )
-						qa_send_notification($params['userid'], null, $params['handle'], qa_lang('emails/u_approved_subject'), qa_lang('emails/u_approved_body'), array(
+						qa_send_notification($params['userid'], null, $params['handle'], _("Your ^site_title user has been approved"), _("You can see your new user profile here:\n\n^url\n\nThank you,\n\n^site_title"), array(
 							'^url' => qa_path_absolute('user/'.$params['handle']),
 						));
 					break;
 				
 				case 'u_wall_post':
 					if ($userid!=$params['userid'])
-						qa_send_notification($params['userid'], null, $params['handle'], qa_lang('emails/wall_post_subject'), qa_lang('emails/wall_post_body'), array(
-							'^f_handle' => isset($handle) ? $handle : qa_lang('main/anonymous'),
+						qa_send_notification($params['userid'], null, $params['handle'], _('Post on your ^site_title wall'), _("^f_handle has posted on your user wall at ^site_title:\n\n^open^post^close\n\nYou may respond to the post here:\n\n^url\n\nThank you,\n\n^site_title"), array(
+							'^f_handle' => isset($handle) ? $handle : _('anonymous'),
 							'^post' => $params['text'],
 							'^url' => qa_path_absolute('user/'.$params['handle'], null, 'wall'),
 						));

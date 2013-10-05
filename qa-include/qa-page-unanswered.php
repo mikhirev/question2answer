@@ -79,24 +79,24 @@
 	switch ($by) {
 		case 'selected':
 			if ($countslugs) {
-				$sometitle=qa_lang_html_sub('main/unselected_qs_in_x', $categorytitlehtml);
-				$nonetitle=qa_lang_html_sub('main/no_una_questions_in_x', $categorytitlehtml);
+				$sometitle=sprintf(qa_html(_('Questions without a selected answer in %s')), $categorytitlehtml);
+				$nonetitle=sprintf(qa_html(_('No unanswered questions in %s')), $categorytitlehtml);
 			
 			} else {
-				$sometitle=qa_lang_html('main/unselected_qs_title');
-				$nonetitle=qa_lang_html('main/no_unselected_qs_found');
+				$sometitle=qa_html(_('Recent questions without a selected answer'));
+				$nonetitle=qa_html(_('No questions found without a selected answer'));
 				$count=qa_opt('cache_unselqcount');
 			}
 			break;
 			
 		case 'upvotes':
 			if ($countslugs) {
-				$sometitle=qa_lang_html_sub('main/unupvoteda_qs_in_x', $categorytitlehtml);
-				$nonetitle=qa_lang_html_sub('main/no_una_questions_in_x', $categorytitlehtml);
+				$sometitle=sprintf(qa_html(_('Questions without an upvoted answer in %s')), $categorytitlehtml);
+				$nonetitle=sprintf(qa_html(_('No unanswered questions in %s')), $categorytitlehtml);
 			
 			} else {
-				$sometitle=qa_lang_html('main/unupvoteda_qs_title');
-				$nonetitle=qa_lang_html('main/no_unupvoteda_qs_found');
+				$sometitle=qa_html(_('Recent questions without an upvoted answer'));
+				$nonetitle=qa_html(_('No questions found without an upvoted answer'));
 				$count=qa_opt('cache_unupaqcount');
 			}
 			break;
@@ -106,12 +106,12 @@
 			$linkparams=array();
 
 			if ($countslugs) {
-				$sometitle=qa_lang_html_sub('main/unanswered_qs_in_x', $categorytitlehtml);
-				$nonetitle=qa_lang_html_sub('main/no_una_questions_in_x', $categorytitlehtml);
+				$sometitle=sprintf(qa_html(_('Questions without answers in %s')), $categorytitlehtml);
+				$nonetitle=sprintf(qa_html(_('No unanswered questions in %s')), $categorytitlehtml);
 			
 			} else {
-				$sometitle=qa_lang_html('main/unanswered_qs_title');
-				$nonetitle=qa_lang_html('main/no_una_questions_found');
+				$sometitle=qa_html(_('Recent questions without answers'));
+				$nonetitle=qa_html(_('No unanswered questions found'));
 				$count=qa_opt('cache_unaqcount');
 			}
 			break;

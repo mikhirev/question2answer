@@ -87,7 +87,7 @@
 				return true;
 	
 			} else
-				$error=qa_lang_html('question/ask_limit');
+				$error=qa_html(_('Too many questions received - please try again in an hour'));
 		}
 		
 		if (qa_clicked('q_doflag') && $question['flagbutton'] && qa_page_q_click_check_form_code($question, $error)) {
@@ -182,7 +182,7 @@
 				return true;
 			
 			} else
-				$error=qa_lang_html('question/answer_limit');
+				$error=qa_html(_('Too many answers received - please try again in an hour'));
 		}
 		
 		if (qa_clicked($prefix.'doflag') && $answer['flagbutton'] && qa_page_q_click_check_form_code($answer, $error)) {
@@ -267,7 +267,7 @@
 				return true;
 				
 			} else
-				$error=qa_lang_html('question/comment_limit');
+				$error=qa_html(_('Too many comments received - please try again in an hour'));
 		}
 		
 		if (qa_clicked($prefix.'doflag') && $comment['flagbutton'] && qa_page_q_click_check_form_code($parent, $error)) {
@@ -309,7 +309,7 @@
 		$result=qa_check_form_security_code('buttons-'.$post['postid'], qa_post_text('code'));
 		
 		if (!$result)
-			$error=qa_lang_html('misc/form_security_again');
+			$error=qa_html(_('Please click again to confirm'));
 		
 		return $result;
 	}
@@ -334,7 +334,7 @@
 		$errors=array();
 
 		if (!qa_check_form_security_code('answer-'.$question['postid'], qa_post_text('code')))
-			$errors['content']=qa_lang_html('misc/form_security_again');
+			$errors['content']=qa_html(_('Please click again to confirm'));
 		
 		else {
 			$filtermodules=qa_load_modules_with('filter', 'filter_answer');
@@ -353,7 +353,7 @@
 				foreach ($answers as $answer)
 					if (!$answer['hidden'])
 						if (implode(' ', qa_string_to_words($answer['content'])) == $testwords)
-							$errors['content']=qa_lang_html('question/duplicate_content');
+							$errors['content']=qa_html(_('Your submission appears to be a duplicate.'));
 			}
 			
 			if (empty($errors)) {
@@ -396,7 +396,7 @@
 		$errors=array();
 		
 		if (!qa_check_form_security_code('comment-'.$parent['postid'], qa_post_text($prefix.'code')))
-			$errors['content']=qa_lang_html('misc/form_security_again');
+			$errors['content']=qa_html(_('Please click again to confirm'));
 		
 		else {
 			$filtermodules=qa_load_modules_with('filter', 'filter_comment');
@@ -415,7 +415,7 @@
 				foreach ($commentsfollows as $comment)
 					if (($comment['basetype']=='C') && ($comment['parentid']==$parentid) && !$comment['hidden'])
 						if (implode(' ', qa_string_to_words($comment['content'])) == $testwords)
-							$errors['content']=qa_lang_html('question/duplicate_content');
+							$errors['content']=qa_html(_('Your submission appears to be a duplicate.'));
 			}
 			
 			if (empty($errors)) {

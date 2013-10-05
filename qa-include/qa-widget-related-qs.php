@@ -61,7 +61,7 @@
 				if ($question['score']<$minscore) 
 					unset($questions[$key]);
 
-			$titlehtml=qa_lang_html(count($questions) ? 'main/related_qs_title' : 'main/no_related_qs_title');
+			$titlehtml=qa_html(count($questions) ? _('Related questions') : _('No related questions found'));
 			
 			if ($region=='side') {
 				$themeobject->output(

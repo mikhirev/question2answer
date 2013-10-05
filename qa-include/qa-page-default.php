@@ -77,14 +77,14 @@
 			if ($level>=QA_USER_LEVEL_ADMIN) {
 				$qa_content['navigation']['sub']=array(
 					'admin/pages' => array(
-						'label' => qa_lang('admin/edit_custom_page'),
+						'label' => _('Edit custom page'),
 						'url' => qa_path_html('admin/pages', array('edit' => $custompage['pageid'])),
 					),
 				);
 			}
 		
 		} else
-			$qa_content['error']=qa_lang_html('users/no_permission');
+			$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 		
 		return $qa_content;
 	}
@@ -136,12 +136,12 @@
 			return include QA_INCLUDE_DIR.'qa-page-not-found.php';
 
 		$categorytitlehtml=qa_html($categories[$categoryid]['title']);
-		$sometitle=qa_lang_html_sub('main/recent_qs_as_in_x', $categorytitlehtml);
-		$nonetitle=qa_lang_html_sub('main/no_questions_in_x', $categorytitlehtml);
+		$sometitle=sprintf(qa_html(_('Recent questions and answers in %s')), $categorytitlehtml);
+		$nonetitle=sprintf(qa_html(_('No questions in %s')), $categorytitlehtml);
 
 	} else {
-		$sometitle=qa_lang_html('main/recent_qs_as_title');
-		$nonetitle=qa_lang_html('main/no_questions_found');
+		$sometitle=qa_html(_('Recent questions and answers'));
+		$nonetitle=qa_html(_('No questions found'));
 	}
 	
 	

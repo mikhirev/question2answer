@@ -66,7 +66,7 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/admin_title').' - '.qa_lang_html('admin/plugins_title');
+	$qa_content['title']=qa_html(_('Administration center')).' - '.qa_html(_('Plugins'));
 	
 	$qa_content['error']=qa_admin_page_error();
 	
@@ -85,18 +85,18 @@
 					qa_redirect('install');
 				
 				else
-					$qa_content['error']=strtr(qa_lang_html('admin/module_x_database_init'), array(
-						'^1' => qa_html($name),
-						'^2' => qa_html($type),
-						'^3' => '<a href="'.qa_path_html('install').'">',
-						'^4' => '</a>',
-					));
+					$qa_content['error']=sprintf(qa_html(_('The %s %s module requires some %sdatabase initialization%s.')),
+						qa_html($name),
+						qa_html($type),
+						'<a href="'.qa_path_html('install').'">',
+						'</a>'
+					);
 			}
 		}
 	}
 	
 	if ( qa_is_http_post() && !qa_check_form_security_code('admin/plugins', qa_post_text('qa_form_security_code')) ) {
-		$qa_content['error']=qa_lang_html('misc/form_security_reload');
+		$qa_content['error']=qa_html('misc/form_security_reload');
 		$showpluginforms=false;
 	} else
 		$showpluginforms=true;
@@ -126,7 +126,7 @@
 			if (strlen(@$metadata['name']))
 				$namehtml=qa_html($metadata['name']);
 			else
-				$namehtml=qa_lang_html('admin/unnamed_plugin');
+				$namehtml=qa_html(_('Unnamed Plugin'));
 				
 			if (strlen(@$metadata['uri']))
 				$namehtml='<a href="'.qa_html($metadata['uri']).'">'.$namehtml.'</a>';
@@ -142,7 +142,7 @@
 				if (strlen(@$metadata['author_uri']))
 					$authorhtml='<a href="'.qa_html($metadata['author_uri']).'">'.$authorhtml.'</a>';
 					
-				$authorhtml=qa_lang_html_sub('main/by_x', $authorhtml);
+				$authorhtml=sprintf(qa_html(_('by %s')), $authorhtml);
 				
 			} else
 				$authorhtml='';
@@ -166,18 +166,18 @@
 			
 			if (isset($pluginoptionmodules[$plugindirectory]) && !$showthisform)
 				$deschtml.=(strlen($deschtml) ? ' - ' : '').'<a href="'.
-					qa_admin_plugin_options_path($plugindirectory).'">'.qa_lang_html('admin/options').'</a>';
+					qa_admin_plugin_options_path($plugindirectory).'">'.qa_html(_('options')).'</a>';
 				
 			$pluginhtml=$namehtml.' '.$authorhtml.' '.$updatehtml.'<br>'.$deschtml.(strlen($deschtml) ? '<br>' : '').
 				'<small style="color:#666">'.qa_html($plugindirectory).'</small>';
 				
 			if (qa_qa_version_below(@$metadata['min_q2a']))
 				$pluginhtml='<strike style="color:#999">'.$pluginhtml.'</strike><br><span style="color:#f00">'.
-					qa_lang_html_sub('admin/requires_q2a_version', qa_html($metadata['min_q2a'])).'</span>';
+					sprintf(qa_html(_('Disabled - requires Question2Answer %s or later')), qa_html($metadata['min_q2a'])).'</span>';
 					
 			elseif (qa_php_version_below(@$metadata['min_php']))
 				$pluginhtml='<strike style="color:#999">'.$pluginhtml.'</strike><br><span style="color:#f00">'.
-					qa_lang_html_sub('admin/requires_php_version', qa_html($metadata['min_php'])).'</span>';
+					sprintf(qa_html(_('Disabled - requires PHP %s or later')), qa_html($metadata['min_php'])).'</span>';
 				
 			$qa_content['form_plugin_'.$pluginindex]=array(
 				'tags' => 'id="'.qa_html($hash).'"',

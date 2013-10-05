@@ -47,7 +47,7 @@
 
 	if (qa_user_maximum_permit_error('permit_hide_show')) {
 		$qa_content=qa_content_prepare();
-		$qa_content['error']=qa_lang_html('users/no_permission');
+		$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 		return $qa_content;
 	}
 		
@@ -74,7 +74,7 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/most_flagged_title');
+	$qa_content['title']=qa_html(_('Flagged content'));
 	$qa_content['error']=isset($pageerror) ? $pageerror : qa_admin_page_error();
 	
 	$qa_content['q_list']=array(
@@ -115,12 +115,12 @@
 				'buttons' => array(
 					'clearflags' => array(
 						'tags' => 'name="admin_'.$postid.'_clearflags" onclick="return qa_admin_click(this);"',
-						'label' => qa_lang_html('question/clear_flags_button'),
+						'label' => qa_html(_('clear flags')),
 					),
 	
 					'hide' => array(
 						'tags' => 'name="admin_'.$postid.'_hide" onclick="return qa_admin_click(this);"',
-						'label' => qa_lang_html('question/hide_button'),
+						'label' => qa_html(_('hide')),
 					),
 				),
 			);
@@ -129,7 +129,7 @@
 		}
 
 	} else
-		$qa_content['title']=qa_lang_html('admin/no_flagged_found');
+		$qa_content['title']=qa_html(_('No flagged content found'));
 
 
 	$qa_content['navigation']['sub']=qa_admin_sub_navigation();

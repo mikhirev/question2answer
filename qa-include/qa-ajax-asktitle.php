@@ -96,7 +96,7 @@
 				break;
 				
 			if (!$count)
-				echo qa_lang_html('question/ask_same_q').'<br/>';
+				echo qa_html(_('Before proceeding, please check your question was not asked already:')).'<br/>';
 			
 			echo strtr(
 				'<a href="'.qa_q_path_html($question['postid'], $question['title']).'" target="_blank">'.qa_html($question['title']).'</a><br/>',

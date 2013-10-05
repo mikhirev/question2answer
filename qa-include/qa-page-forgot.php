@@ -52,7 +52,7 @@
 		$errors=array();
 		
 		if (!qa_check_form_security_code('forgot', qa_post_text('code')))
-			$errors['page']=qa_lang_html('misc/form_security_again');
+			$errors['page']=qa_html(_('Please click again to confirm'));
 		
 		else {
 			if (strpos($inemailhandle, '@')===false) { // handles can't contain @ symbols
@@ -65,7 +65,7 @@
 			}
 				
 			if (count($matchusers)!=1) // if we get more than one match (should be impossible) also give an error
-				$errors['emailhandle']=qa_lang('users/user_not_found');
+				$errors['emailhandle']=_('User not found');
 	
 			if (qa_opt('captcha_on_reset_password'))
 				qa_captcha_validate_post($errors);
@@ -85,7 +85,7 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('users/reset_title');
+	$qa_content['title']=qa_html(_('Reset Forgotten Password'));
 	$qa_content['error']=@$errors['page'];
 
 	$qa_content['form']=array(
@@ -95,17 +95,17 @@
 		
 		'fields' => array(
 			'email_handle' => array(
-				'label' => qa_lang_html('users/email_handle_label'),
+				'label' => qa_html(_('Email or Username:')),
 				'tags' => 'name="emailhandle" id="emailhandle"',
 				'value' => qa_html(@$inemailhandle),
 				'error' => qa_html(@$errors['emailhandle']),
-				'note' => qa_lang_html('users/send_reset_note'),
+				'note' => qa_html(_('A message will be sent to your email address with instructions.')),
 			),
 		),
 		
 		'buttons' => array(
 			'send' => array(
-				'label' => qa_lang_html('users/send_reset_button'),
+				'label' => qa_html(_('Send Reset Password Email')),
 			),
 		),
 		

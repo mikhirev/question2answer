@@ -71,10 +71,9 @@
 			$navigation[$key]['note']='';
 			
 			$navigation[$key]['note'].=
-				' - <a href="'.qa_path_html('questions/'.implode('/', array_reverse(explode('/', $category['backpath'])))).'">'.( ($category['qcount']==1)
-					? qa_lang_html_sub('main/1_question', '1', '1')
-					: qa_lang_html_sub('main/x_questions', number_format($category['qcount']))
-				).'</a>';
+				' - <a href="'.qa_path_html('questions/'.implode('/', array_reverse(explode('/', $category['backpath'])))).'">'.sprintf(ngettext('%s question', '%s questions', $category['qcount']),
+					number_format($category['qcount']))
+				.'</a>';
 				
 			if (strlen($category['content']))
 				$navigation[$key]['note'].=qa_html(' - '.$category['content']);
@@ -89,7 +88,7 @@
 
 	$qa_content=qa_content_prepare(false, array_keys(qa_category_path($categories, $categoryid)));
 
-	$qa_content['title']=qa_lang_html('misc/browse_categories');
+	$qa_content['title']=qa_html(_('Browse categories'));
 	
 	if (count($categories)) {
 		$navigation=qa_category_navigation($categories, $categoryid, 'categories/', false);
@@ -109,7 +108,7 @@
 		);
 
 	} else {
-		$qa_content['title']=qa_lang_html('main/no_categories_found');
+		$qa_content['title']=qa_html(_('No categories found'));
 		$qa_content['suggest_next']=qa_html_suggest_qs_tags(qa_using_tags());
 	}
 

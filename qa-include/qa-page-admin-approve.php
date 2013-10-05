@@ -51,7 +51,7 @@
 
 	if (qa_get_logged_in_level()<QA_USER_LEVEL_MODERATOR) {
 		$qa_content=qa_content_prepare();
-		$qa_content['error']=qa_lang_html('users/no_permission');
+		$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 		return $qa_content;
 	}
 		
@@ -65,7 +65,7 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/approve_users_title');
+	$qa_content['title']=qa_html(_('Approve users'));
 	$qa_content['error']=isset($pageerror) ? $pageerror : qa_admin_page_error();
 	
 	$qa_content['message_list']=array(
@@ -87,21 +87,21 @@
 			
 			$message['tags']='id="p'.qa_html($user['userid']).'"'; // use p prefix for qa_admin_click() in qa-admin.js
 						
-			$message['content']=qa_lang_html('users/registered_label').' '.
-				strtr(qa_lang_html('users/x_ago_from_y'), array(
-					'^1' => qa_time_to_string(qa_opt('db_time')-$user['created']),
-					'^2' => qa_ip_anchor_html($user['createip']),
-				)).'<br/>';
+			$message['content']=qa_html(_('Registered:')).' '.
+				sprintf(qa_html(_('%s ago from %s')),
+					qa_time_to_string(qa_opt('db_time')-$user['created']),
+					qa_ip_anchor_html($user['createip'])
+				).'<br/>';
 				
 			$htmlemail=qa_html($user['email']);
 			
-			$message['content'].=qa_lang_html('users/email_label').' <a href="mailto:'.$htmlemail.'">'.$htmlemail.'</a>';
+			$message['content'].=qa_html(_('Email:')).' <a href="mailto:'.$htmlemail.'">'.$htmlemail.'</a>';
 			
 			foreach ($userfields as $userfield)
 				if (strlen(@$user['profile'][$userfield['title']]))
 					$message['content'].='<br/>'.qa_html($userfield['content'].': '.$user['profile'][$userfield['title']]);
 				
-			$message['meta_order']=qa_lang_html('main/meta_order');
+			$message['meta_order']=qa_html(_('^what^when^where^who'));
 			$message['who']['data']=qa_get_one_user_html($user['handle']);
 			
 			$message['form']=array(
@@ -110,12 +110,12 @@
 				'buttons' => array(
 					'approve' => array(
 						'tags' => 'name="admin_'.$user['userid'].'_userapprove" onclick="return qa_admin_click(this);"',
-						'label' => qa_lang_html('question/approve_button'),
+						'label' => qa_html(_('approve')),
 					),
 
 					'block' => array(
 						'tags' => 'name="admin_'.$user['userid'].'_userblock" onclick="return qa_admin_click(this);"',
-						'label' => qa_lang_html('admin/block_button'),
+						'label' => qa_html(_('block')),
 					),
 				),
 			);
@@ -124,7 +124,7 @@
 		}
 		
 	} else
-		$qa_content['title']=qa_lang_html('admin/no_unapproved_found');
+		$qa_content['title']=qa_html(_('No users waiting for approval'));
 
 
 	$qa_content['navigation']['sub']=qa_admin_sub_navigation();

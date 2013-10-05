@@ -49,7 +49,7 @@
 
 	if (qa_get_logged_in_level() < QA_USER_LEVEL_MODERATOR) {
 		$qa_content=qa_content_prepare();
-		$qa_content['error']=qa_lang_html('users/no_permission');
+		$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 		return $qa_content;
 	}
 
@@ -63,7 +63,7 @@
 
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('users/special_users');
+	$qa_content['title']=qa_html(_('Special users'));
 	
 	$qa_content['ranking']=array(
 		'items' => array(),

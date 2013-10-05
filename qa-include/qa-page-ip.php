@@ -61,7 +61,7 @@
 
 	if (qa_user_maximum_permit_error('permit_anon_view_ips')) {
 		$qa_content=qa_content_prepare();
-		$qa_content['error']=qa_lang_html('users/no_permission');
+		$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 		return $qa_content;
 	}
 	
@@ -72,7 +72,7 @@
 
 	if (qa_clicked('doblock') || qa_clicked('dounblock') || qa_clicked('dohideall')) {
 		if (!qa_check_form_security_code('ip-'.$ip, qa_post_text('code')))
-			$pageerror=qa_lang_html('misc/form_security_again');
+			$pageerror=qa_html(_('Please click again to confirm'));
 
 		elseif ($blockable) {
 		
@@ -135,7 +135,7 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html_sub('main/ip_address_x', qa_html($ip));
+	$qa_content['title']=qa_html(sprintf(_('IP address %s'), $ip));
 	$qa_content['error']=@$pageerror;
 
 	$qa_content['form']=array(
@@ -146,7 +146,7 @@
 		'fields' => array(
 			'host' => array(
 				'type' => 'static',
-				'label' => qa_lang_html('misc/host_name'),
+				'label' => qa_html(_('Host name:')),
 				'value' => qa_html($hostname),
 			),
 		),
@@ -170,25 +170,25 @@
 		if (count($matchclauses)) {
 			$qa_content['form']['fields']['status']=array(
 				'type' => 'static',
-				'label' => qa_lang_html('misc/matches_blocked_ips'),
+				'label' => qa_html(_('Matches blocked IP addresses:')),
 				'value' => qa_html(implode("\n", $matchclauses), true),
 			);
 			
 			$qa_content['form']['buttons']['unblock']=array(
 				'tags' => 'name="dounblock"',
-				'label' => qa_lang_html('misc/unblock_ip_button'),
+				'label' => qa_html(_('Unblock IP address')),
 			);
 			
 			if (count($questions) && !qa_user_maximum_permit_error('permit_hide_show'))
 				$qa_content['form']['buttons']['hideall']=array(
 					'tags' => 'name="dohideall" onclick="qa_show_waiting_after(this, false);"',
-					'label' => qa_lang_html('misc/hide_all_ip_button'),
+					'label' => qa_html(_('Hide all posts from this IP')),
 				);
 
 		} else
 			$qa_content['form']['buttons']['block']=array(
 				'tags' => 'name="doblock"',
-				'label' => qa_lang_html('misc/block_ip_button'),
+				'label' => qa_html(_('Block IP address')),
 			);
 	}
 
@@ -196,7 +196,7 @@
 	$qa_content['q_list']['qs']=array();
 	
 	if (count($questions)) {
-		$qa_content['q_list']['title']=qa_lang_html_sub('misc/recent_activity_from_x', qa_html($ip));
+		$qa_content['q_list']['title']=qa_html(sprintf(_('Recent activity from %s'), $ip));
 	
 		foreach ($questions as $question) {
 			$htmloptions=qa_post_html_options($question);
@@ -215,7 +215,7 @@
 			$hasother=isset($question['opostid']);
 			
 			if ($question[$hasother ? 'ohidden' : 'hidden'] && !isset($question[$hasother ? 'oupdatetype' : 'updatetype'])) {
-				$htmlfields['what_2']=qa_lang_html('main/hidden');
+				$htmlfields['what_2']=qa_html(_('hidden'));
 
 				if (@$htmloptions['whenview']) {
 					$updated=@$question[$hasother ? 'oupdated' : 'updated'];
@@ -228,7 +228,7 @@
 		}
 
 	} else
-		$qa_content['q_list']['title']=qa_lang_html_sub('misc/no_activity_from_x', qa_html($ip));
+		$qa_content['q_list']['title']=qa_html(sprintf(_('No activity from %s'), $ip));
 	
 	
 	return $qa_content;

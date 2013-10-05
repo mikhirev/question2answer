@@ -71,23 +71,23 @@
 
 		switch ($permiterror) {
 			case 'login':
-				$qa_content['error']=qa_insert_login_links(qa_lang_html('question/ask_must_login'), qa_request(), isset($followpostid) ? array('follow' => $followpostid) : null);
+				$qa_content['error']=qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to ask a question.')), qa_request(), isset($followpostid) ? array('follow' => $followpostid) : null);
 				break;
 				
 			case 'confirm':
-				$qa_content['error']=qa_insert_login_links(qa_lang_html('question/ask_must_confirm'), qa_request(), isset($followpostid) ? array('follow' => $followpostid) : null);
+				$qa_content['error']=qa_insert_login_links(qa_html(_('Please ^5confirm your email address^6 to ask a question.')), qa_request(), isset($followpostid) ? array('follow' => $followpostid) : null);
 				break;
 				
 			case 'limit':
-				$qa_content['error']=qa_lang_html('question/ask_limit');
+				$qa_content['error']=qa_html(_('question/ask_limit'));
 				break;
 				
 			case 'approve':
-				$qa_content['error']=qa_lang_html('question/ask_must_be_approved');
+				$qa_content['error']=qa_html(_('Your account must be approved before you ask a question.'));
 				break;
 				
 			default:
-				$qa_content['error']=qa_lang_html('users/no_permission');
+				$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 				break;
 		}
 		
@@ -121,7 +121,7 @@
 		$errors=array();
 
 		if (!qa_check_form_security_code('ask', qa_post_text('code')))
-			$errors['page']=qa_lang_html('misc/form_security_again');
+			$errors['page']=qa_html(_('Please click again to confirm'));
 		
 		else {
 			$filtermodules=qa_load_modules_with('filter', 'filter_question');
@@ -132,9 +132,9 @@
 			}
 			
 			if (qa_using_categories() && count($categories) && (!qa_opt('allow_no_category')) && !isset($in['categoryid']))
-				$errors['categoryid']=qa_lang_html('question/category_required'); // check this here because we need to know count($categories)
+				$errors['categoryid']=qa_html(_('Please choose a category')); // check this here because we need to know count($categories)
 			elseif (qa_user_permit_error('permit_post_q', null, $userlevel))
-				$errors['categoryid']=qa_lang_html('question/category_ask_not_allowed');
+				$errors['categoryid']=qa_html(_('You do not have permission to ask questions in this category'));
 			
 			if ($captchareason) {
 				require_once 'qa-app-captcha.php';
@@ -158,14 +158,14 @@
 
 	$qa_content=qa_content_prepare(false, array_keys(qa_category_path($categories, @$in['categoryid'])));
 	
-	$qa_content['title']=qa_lang_html(isset($followanswer) ? 'question/ask_follow_title' : 'question/ask_title');
+	$qa_content['title']=qa_html(isset($followanswer) ? _('Ask a related question') : _('Ask a question'));
 	$qa_content['error']=@$errors['page'];
 
 	$editorname=isset($in['editor']) ? $in['editor'] : qa_opt('editor_for_qs');
 	$editor=qa_load_editor(@$in['content'], @$in['format'], $editorname);
 
 	$field=qa_editor_load_field($editor, $qa_content, @$in['content'], @$in['format'], 'content', 12, false);
-	$field['label']=qa_lang_html('question/q_content_label');
+	$field['label']=qa_html(_('More information for the question:'));
 	$field['error']=qa_html(@$errors['content']);
 	
 	$custom=qa_opt('show_custom_ask') ? trim(qa_opt('custom_ask')) : '';
@@ -182,7 +182,7 @@
 			),
 			
 			'title' => array(
-				'label' => qa_lang_html('question/q_title_label'),
+				'label' => qa_html(_('The question in one sentence:')),
 				'tags' => 'name="title" id="title" autocomplete="off"',
 				'value' => qa_html(@$in['title']),
 				'error' => qa_html(@$errors['title']),
@@ -200,7 +200,7 @@
 			'ask' => array(
 				'tags' => 'onclick="qa_show_waiting_after(this, false); '.
 					(method_exists($editor, 'update_script') ? $editor->update_script('content') : '').'"',
-				'label' => qa_lang_html('question/ask_button'),
+				'label' => qa_html(_('Ask the Question')),
 			),
 		),
 		
@@ -227,7 +227,7 @@
 		
 		$field=array(
 			'type' => 'static',
-			'label' => qa_lang_html('question/ask_follow_from_a'),
+			'label' => qa_html(_('Your question will be related to this answer:')),
 			'value' => $viewer->get_html($followanswer['content'], $followanswer['format'], array('blockwordspreg' => qa_get_block_words_preg())),
 		);
 		
@@ -236,7 +236,7 @@
 		
 	if (qa_using_categories() && count($categories)) {
 		$field=array(
-			'label' => qa_lang_html('question/q_category_label'),
+			'label' => qa_html(_('Category:')),
 			'error' => qa_html(@$errors['categoryid']),
 		);
 		

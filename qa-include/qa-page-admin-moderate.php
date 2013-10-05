@@ -49,7 +49,7 @@
 
 	if (qa_user_maximum_permit_error('permit_moderate')) {
 		$qa_content=qa_content_prepare();
-		$qa_content['error']=qa_lang_html('users/no_permission');
+		$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 		return $qa_content;
 	}
 	
@@ -78,7 +78,7 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/recent_approve_title');
+	$qa_content['title']=qa_html(_('Recent content waiting for approval'));
 	$qa_content['error']=isset($pageerror) ? $pageerror : qa_admin_page_error();
 	
 	$qa_content['q_list']=array(
@@ -117,12 +117,12 @@
 				'buttons' => array(
 					'approve' => array(
 						'tags' => 'name="admin_'.$postid.'_approve" onclick="return qa_admin_click(this);"',
-						'label' => qa_lang_html('question/approve_button'),
+						'label' => qa_html(_('approve')),
 					),
 	
 					'reject' => array(
 						'tags' => 'name="admin_'.$postid.'_reject" onclick="return qa_admin_click(this);"',
-						'label' => qa_lang_html('question/reject_button'),
+						'label' => qa_html(_('reject')),
 					),
 				),
 			);
@@ -131,7 +131,7 @@
 		}
 
 	} else
-		$qa_content['title']=qa_lang_html('admin/no_approve_found');
+		$qa_content['title']=qa_html(_('No content is waiting for approval'));
 		
 
 	$qa_content['navigation']['sub']=qa_admin_sub_navigation();

@@ -83,10 +83,7 @@
 			
 			$countanswers=$question['acount']+1;
 
-			if ($countanswers==1)
-				echo qa_lang_html('question/1_answer_title')."\n";
-			else
-				echo qa_lang_html_sub('question/x_answers_title', $countanswers)."\n";
+            echo qa_html(sprintf(ngettext('%d Answer', '%d Answers', $countanswers), $countanswers))."\n";
 
 
 		//	Send back the HTML

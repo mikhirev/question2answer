@@ -48,7 +48,7 @@
 
 	if (!isset($loginuserid)) {
 		$qa_content=qa_content_prepare();
-		$qa_content['error']=qa_insert_login_links(qa_lang_html('misc/message_must_login'), qa_request());
+		$qa_content['error']=qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to send private messages.')), qa_request());
 		return $qa_content;
 	}
 
@@ -74,14 +74,14 @@
 	
 	switch (qa_user_permit_error(null, QA_LIMIT_MESSAGES)) {
 		case 'limit':
-			$errorhtml=qa_lang_html('misc/message_limit');
+			$errorhtml=qa_html(_('You cannot send more private messages this hour'));
 			break;
 			
 		case false:
 			break;
 			
 		default:
-			$errorhtml=qa_lang_html('users/no_permission');
+			$errorhtml=qa_html(_('You do not have permission to perform this operation'));
 			break;
 	}
 
@@ -100,11 +100,11 @@
 		$inmessage=qa_post_text('message');
 		
 		if (!qa_check_form_security_code('message-'.$handle, qa_post_text('code')))
-			$pageerror=qa_lang_html('misc/form_security_again');
+			$pageerror=qa_html(_('Please click again to confirm'));
 			
 		else {
 			if (empty($inmessage))
-				$errors['message']=qa_lang('misc/message_empty');
+				$errors['message']=_('Please enter your message to send to this user');
 			
 			if (empty($errors)) {
 				require_once QA_INCLUDE_DIR.'qa-db-messages.php';
@@ -118,10 +118,10 @@
 				$fromhandle=qa_get_logged_in_handle();
 				$canreply=!(qa_get_logged_in_flags() & QA_USER_FLAGS_NO_MESSAGES);
 				
-				$more=strtr(qa_lang($canreply ? 'emails/private_message_reply' : 'emails/private_message_info'), array(
-					'^f_handle' => $fromhandle,
-					'^url' => qa_path_absolute($canreply ? ('message/'.$fromhandle) : ('user/'.$fromhandle)),
-				));
+				$more=sprintf(($canreply ? _("Click below to reply to %s by private message:\n\n%s\n\n") : _("More information about %s:\n\n%s\n\n")),
+					$fromhandle,
+					qa_path_absolute($canreply ? ('message/'.$fromhandle) : ('user/'.$fromhandle))
+				);
 	
 				$subs=array(
 					'^message' => $inmessage,
@@ -132,10 +132,10 @@
 				);
 				
 				if (qa_send_notification($toaccount['userid'], $toaccount['email'], $toaccount['handle'],
-						qa_lang('emails/private_message_subject'), qa_lang('emails/private_message_body'), $subs))
+						_('Message from ^f_handle on ^site_title'), _("You have been sent a private message by ^f_handle on ^site_title:\n\n^open^message^close\n\n^moreThank you,\n\n^site_title\n\n\nTo block private messages, visit your account page:\n^a_url"), $subs))
 					$messagesent=true;
 				else
-					$pageerror=qa_lang_html('main/general_error');
+					$pageerror=qa_html(_('A server error occurred - please try again.'));
 	
 				qa_report_event('u_message', $loginuserid, qa_get_logged_in_handle(), qa_cookie_get(), array(
 					'userid' => $toaccount['userid'],
@@ -155,7 +155,7 @@
 	
 	$qa_content=qa_content_prepare();
 	
-	$qa_content['title']=qa_lang_html('misc/private_message_title');
+	$qa_content['title']=qa_html(_('Send a private message'));
 
 	$qa_content['error']=@$pageerror;
 
@@ -167,11 +167,11 @@
 		'fields' => array(
 			'message' => array(
 				'type' => $messagesent ? 'static' : '',
-				'label' => qa_lang_html_sub('misc/message_for_x', qa_get_one_user_html($handle, false)),
+				'label' => sprintf(qa_html(_('Your message for %s:')), qa_get_one_user_html($handle, false)),
 				'tags' => 'name="message" id="message"',
 				'value' => qa_html(@$inmessage, $messagesent),
 				'rows' => 8,
-				'note' => qa_lang_html_sub('misc/message_explanation', qa_html(qa_opt('site_title'))),
+				'note' => qa_html(sprintf(_('This will be sent as a notification from %s. Your email address will not be revealed unless you include it in the message.'), qa_opt('site_title'))),
 				'error' => qa_html(@$errors['message']),
 			),
 		),
@@ -179,7 +179,7 @@
 		'buttons' => array(
 			'send' => array(
 				'tags' => 'onclick="qa_show_waiting_after(this, false);"',
-				'label' => qa_lang_html('main/send_button'),
+				'label' => qa_html(_('Send')),
 			),
 		),
 		
@@ -192,7 +192,7 @@
 	$qa_content['focusid']='message';
 
 	if ($messagesent) {
-		$qa_content['form_message']['ok']=qa_lang_html('misc/message_sent');
+		$qa_content['form_message']['ok']=qa_html(_('Your private message below was sent'));
 		unset($qa_content['form_message']['buttons']);
 
 		if (qa_opt('show_message_history'))
@@ -215,7 +215,7 @@
 		
 		if (count($showmessages)) {
 			$qa_content['message_list']=array(
-				'title' => qa_lang_html_sub('misc/message_recent_history', qa_html($toaccount['handle'])),
+				'title' => qa_html(sprintf(_('Recent correspondence with %s'), $toaccount['handle'])),
 			);
 			
 			$options=qa_message_html_defaults();

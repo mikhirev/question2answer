@@ -54,23 +54,23 @@
 		if (qa_clicked('a_doadd') || ($pagestate=='answer'))
 			switch (qa_user_post_permit_error('permit_post_a', $question, QA_LIMIT_ANSWERS)) {
 				case 'login':
-					$pageerror=qa_insert_login_links(qa_lang_html('question/answer_must_login'), qa_request());
+					$pageerror=qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to answer this question.')), qa_request());
 					break;
 					
 				case 'confirm':
-					$pageerror=qa_insert_login_links(qa_lang_html('question/answer_must_confirm'), qa_request());
+					$pageerror=qa_insert_login_links(qa_html(_('Please ^5confirm your email address^6 to answer this question.')), qa_request());
 					break;
 					
 				case 'approve':
-					$pageerror=qa_lang_html('question/answer_must_be_approved');
+					$pageerror=qa_html(_('Your account must be approved before you answer a question.'));
 					break;
 				
 				case 'limit':
-					$pageerror=qa_lang_html('question/answer_limit');
+					$pageerror=qa_html(_('Too many answers received - please try again in an hour'));
 					break;
 				
 				default:
-					$pageerror=qa_lang_html('users/no_permission');
+					$pageerror=qa_html(_('You do not have permission to perform this operation'));
 					break;
 					
 				case false:
@@ -285,15 +285,15 @@
 		
 		switch ($permiterror) {
 			case 'login':
-				$error=qa_insert_login_links(qa_lang_html('question/edit_must_login'), qa_request());
+				$error=qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to edit this.')), qa_request());
 				break;
 				
 			case 'confirm':
-				$error=qa_insert_login_links(qa_lang_html('question/edit_must_confirm'), qa_request());
+				$error=qa_insert_login_links(qa_html(_('Please ^5confirm your email address^6 to edit this.')), qa_request());
 				break;
 				
 			default:
-				$error=qa_lang_html('users/no_permission');
+				$error=qa_html(_('You do not have permission to perform this operation'));
 				break;
 				
 			case false:
@@ -317,19 +317,19 @@
 			'fields' => array(
 				'title' => array(
 					'type' => $question['editable'] ? 'text' : 'static',
-					'label' => qa_lang_html('question/q_title_label'),
+					'label' => qa_html(_('The question in one sentence:')),
 					'tags' => 'name="q_title"',
 					'value' => qa_html(($question['editable'] && isset($in['title'])) ? $in['title'] : $question['title']),
 					'error' => qa_html(@$errors['title']),
 				),
 				
 				'category' => array(
-					'label' => qa_lang_html('question/q_category_label'),
+					'label' => qa_html(_('Category:')),
 					'error' => qa_html(@$errors['categoryid']),
 				),
 				
 				'content' => array(
-					'label' => qa_lang_html('question/q_content_label'),
+					'label' => qa_html(_('More information for the question:')),
 					'error' => qa_html(@$errors['content']),
 				),
 				
@@ -349,12 +349,12 @@
 			'buttons' => array(
 				'save' => array(
 					'tags' => 'onclick="qa_show_waiting_after(this, false);"',
-					'label' => qa_lang_html('main/save_button'),
+					'label' => qa_html(_('Save Changes')),
 				),
 				
 				'cancel' => array(
 					'tags' => 'name="docancel"',
-					'label' => qa_lang_html('main/cancel_button'),
+					'label' => qa_html(_('Cancel')),
 				),
 			),
 			
@@ -410,7 +410,7 @@
 		if (!qa_user_post_permit_error('permit_edit_silent', $question))
 			$form['fields']['silent']=array(
 				'type' => 'checkbox',
-				'label' => qa_lang_html('question/save_silent_label'),
+				'label' => qa_html(_('Save silently to hide that this was edited')),
 				'tags' => 'name="q_silent"',
 				'value' => qa_html(@$in['silent']),
 			);
@@ -462,7 +462,7 @@
 		$errors=array();
 		
 		if (!qa_check_form_security_code('edit-'.$question['postid'], qa_post_text('code')))
-			$errors['page']=qa_lang_html('misc/form_security_again');
+			$errors['page']=qa_html(_('Please click again to confirm'));
 			
 		else {
 			$in['queued']=qa_opt('moderate_edited_again') && qa_user_moderation_reason($userlevel);
@@ -478,7 +478,7 @@
 			
 			if (array_key_exists('categoryid', $in) && strcmp($in['categoryid'], $question['categoryid']))
 				if (qa_user_permit_error('permit_post_q', null, $userlevel))
-					$errors['categoryid']=qa_lang_html('question/category_ask_not_allowed');
+					$errors['categoryid']=qa_html(_('You do not have permission to ask questions in this category'));
 			
 			if (empty($errors)) {
 				$userid=qa_get_logged_in_userid();
@@ -533,22 +533,22 @@
 			
 			'style' => 'tall',
 			
-			'title' => qa_lang_html('question/close_form_title'),
+			'title' => qa_html(_('Close this question')),
 			
 			'fields' => array(
 				'duplicate' => array(
 					'type' => 'checkbox',
 					'tags' => 'name="q_close_duplicate" id="q_close_duplicate" onchange="document.getElementById(\'q_close_details\').focus();"',
-					'label' => qa_lang_html('question/close_duplicate'),
+					'label' => qa_html(_('This is a duplicate of another question')),
 					'value' => @$in['duplicate'],
 				),
 				
 				'details' => array(
 					'tags' => 'name="q_close_details" id="q_close_details"',
 					'label' =>
-						'<span id="close_label_duplicate">'.qa_lang_html('question/close_original_title').' </span>'.
-						'<span id="close_label_other">'.qa_lang_html('question/close_reason_title').'</span>',
-					'note' => '<span id="close_note_duplicate" style="display:none;">'.qa_lang_html('question/close_original_note').'</span>',
+						'<span id="close_label_duplicate">'.qa_html(_('URL of the original question:')).' </span>'.
+						'<span id="close_label_other">'.qa_html(_('Reason for closing this question:')).'</span>',
+					'note' => '<span id="close_note_duplicate" style="display:none;">'.qa_html(_('You can also enter the question number from the URL, e.g. 123.')).'</span>',
 					'value' => @$in['details'],
 					'error' => qa_html(@$errors['details']),
 				),
@@ -557,12 +557,12 @@
 			'buttons' => array(
 				'close' => array(
 					'tags' => 'onclick="qa_show_waiting_after(this, false);"',
-					'label' => qa_lang_html('question/close_form_button'),
+					'label' => qa_html(_('Close question')),
 				),
 				
 				'cancel' => array(
 					'tags' => 'name="docancel"',
-					'label' => qa_lang_html('main/cancel_button'),
+					'label' => qa_html(_('Cancel')),
 				),
 			),
 			
@@ -599,7 +599,7 @@
 		$cookieid=qa_cookie_get();
 		
 		if (!qa_check_form_security_code('close-'.$question['postid'], qa_post_text('code')))
-			$errors['details']=qa_lang_html('misc/form_security_again');
+			$errors['details']=qa_html(_('Please click again to confirm'));
 
 		elseif ($in['duplicate']) {
 			// be liberal in what we accept, but there are two potential unlikely pitfalls here:
@@ -621,7 +621,7 @@
 				return true;
 			
 			} else
-				$errors['details']=qa_lang('question/close_duplicate_error');
+				$errors['details']=_('The duplicate question could not be found - please try entering the number from a different question URL, e.g. 123.');
 		
 		} else {
 			if (strlen($in['details'])>0) {
@@ -629,7 +629,7 @@
 				return true;
 			
 			} else
-				$errors['details']=qa_lang('main/field_required');
+				$errors['details']=_('Please enter something in this field');
 		}
 		
 		return false; 
@@ -662,7 +662,7 @@
 			
 			'id' => $id,
 			
-			'title' => qa_lang_html('question/edit_a_title'),
+			'title' => qa_html(_('Edit answer')),
 			
 			'style' => 'tall',
 			
@@ -679,12 +679,12 @@
 				'save' => array(
 					'tags' => 'onclick="qa_show_waiting_after(this, false); '.
 						(method_exists($editor, 'update_script') ? $editor->update_script($prefix.'content') : '').'"',
-					'label' => qa_lang_html('main/save_button'),
+					'label' => qa_html(_('Save Changes')),
 				),
 				
 				'cancel' => array(
 					'tags' => 'name="docancel"',
-					'label' => qa_lang_html('main/cancel_button'),
+					'label' => qa_html(_('Cancel')),
 				),
 			),
 			
@@ -704,12 +704,12 @@
 		
 		if ($question['commentable'])
 			$commentonoptions[$question['postid']]=
-				qa_lang_html('question/comment_on_q').qa_html(qa_shorten_string_line($question['title'], 80));
+				qa_html(_('On question: ')).qa_html(qa_shorten_string_line($question['title'], 80));
 		
 		foreach ($answers as $otheranswer)
 			if (($otheranswer['postid']!=$answerid) && ($otheranswer['created']<$answer['created']) && $otheranswer['commentable'] && !$otheranswer['hidden']) {
 				$commentonoptions[$otheranswer['postid']]=
-					qa_lang_html('question/comment_on_a').qa_html(qa_shorten_string_line(qa_viewer_text($otheranswer['content'], $otheranswer['format']), 80));
+					qa_html(_('On answer: ')).qa_html(qa_shorten_string_line(qa_viewer_text($otheranswer['content'], $otheranswer['format']), 80));
 				
 				if ($otheranswer['created']>$lastbeforetime) {
 					$lastbeforeid=$otheranswer['postid'];
@@ -720,8 +720,8 @@
 		if (count($commentonoptions)) {
 			$form['fields']['tocomment']=array(
 				'tags' => 'name="'.$prefix.'dotoc" id="'.$prefix.'dotoc"',
-				'label' => '<span id="'.$prefix.'toshown">'.qa_lang_html('question/a_convert_to_c_on').'</span>'.
-								'<span id="'.$prefix.'tohidden" style="display:none;">'.qa_lang_html('question/a_convert_to_c').'</span>',
+				'label' => '<span id="'.$prefix.'toshown">'.qa_html(_('Convert this answer into a comment on:')).'</span>'.
+								'<span id="'.$prefix.'tohidden" style="display:none;">'.qa_html(_('Convert this answer into a comment')).'</span>',
 				'type' => 'checkbox',
 				'tight' => true,
 			);
@@ -730,7 +730,7 @@
 				'tags' => 'name="'.$prefix.'commenton"',
 				'id' => $prefix.'commenton',
 				'type' => 'select',
-				'note' => qa_lang_html($hascomments ? 'question/a_convert_warn_cs' : 'question/a_convert_warn'),
+				'note' => qa_html($hascomments ? _('Warning: This conversion cannot be reversed and will also move this answer\'s comments.') : _('Warning: This conversion cannot be reversed.')),
 				'options' => $commentonoptions,
 				'value' => @$commentonoptions[$lastbeforeid],
 			);
@@ -756,7 +756,7 @@
 		if (!qa_user_post_permit_error('permit_edit_silent', $answer))
 			$form['fields']['silent']=array(
 				'type' => 'checkbox',
-				'label' => qa_lang_html('question/save_silent_label'),
+				'label' => qa_html(_('Save silently to hide that this was edited')),
 				'tags' => 'name="'.$prefix.'silent"',
 				'value' => qa_html(@$in['silent']),
 			);
@@ -794,7 +794,7 @@
 		$errors=array();
 		
 		if (!qa_check_form_security_code('edit-'.$answerid, qa_post_text($prefix.'code')))
-			$errors['content']=qa_lang_html('misc/form_security_again');
+			$errors['content']=qa_html(_('Please click again to confirm'));
 			
 		else {
 			$in['queued']=qa_opt('moderate_edited_again') && qa_user_moderation_reason(qa_user_level_for_post($answer));
@@ -828,7 +828,7 @@
 						return 'C'; // to signify that redirect should be to the comment
 	
 					} else
-						$errors['content']=qa_lang_html('question/comment_limit'); // not really best place for error, but it will do
+						$errors['content']=qa_html(_('Too many comments received - please try again in an hour')); // not really best place for error, but it will do
 				
 				} else {
 					qa_answer_set_content($answer, $in['content'], $in['format'], $in['text'], $setnotify,
@@ -856,23 +856,23 @@
 		
 		switch (qa_user_post_permit_error('permit_post_c', $parent, QA_LIMIT_COMMENTS)) {
 			case 'login':
-				$error=qa_insert_login_links(qa_lang_html('question/comment_must_login'), qa_request());
+				$error=qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to add a comment.')), qa_request());
 				break;
 				
 			case 'confirm':
-				$error=qa_insert_login_links(qa_lang_html('question/comment_must_confirm'), qa_request());
+				$error=qa_insert_login_links(qa_html(_('Please ^5confirm your email address^6 to add a comment.')), qa_request());
 				break;
 				
 			case 'approve':
-				$error=qa_lang_html('question/comment_must_be_approved');
+				$error=qa_html(_('Your account must be approved before you add a comment.'));
 				break;
 				
 			case 'limit':
-				$error=qa_lang_html('question/comment_limit');
+				$error=qa_html(_('Too many comments received - please try again in an hour'));
 				break;
 				
 			default:
-				$error=qa_lang_html('users/no_permission');
+				$error=qa_html(_('You do not have permission to perform this operation'));
 				break;
 				
 			case false:
@@ -915,7 +915,7 @@
 			
 			'id' => $id,
 			
-			'title' => qa_lang_html('question/edit_c_title'),
+			'title' => qa_html(_('Edit comment')),
 			
 			'style' => 'tall',
 			
@@ -932,12 +932,12 @@
 				'save' => array(
 					'tags' => 'onclick="qa_show_waiting_after(this, false); '.
 						(method_exists($editor, 'update_script') ? $editor->update_script($prefix.'content') : '').'"',
-					'label' => qa_lang_html('main/save_button'),
+					'label' => qa_html(_('Save Changes')),
 				),
 				
 				'cancel' => array(
 					'tags' => 'name="docancel"',
-					'label' => qa_lang_html('main/cancel_button'),
+					'label' => qa_html(_('Cancel')),
 				),
 			),
 			
@@ -960,7 +960,7 @@
 		if (!qa_user_post_permit_error('permit_edit_silent', $comment))
 			$form['fields']['silent']=array(
 				'type' => 'checkbox',
-				'label' => qa_lang_html('question/save_silent_label'),
+				'label' => qa_html(_('Save silently to hide that this was edited')),
 				'tags' => 'name="'.$prefix.'silent"',
 				'value' => qa_html(@$in['silent']),
 			);
@@ -995,7 +995,7 @@
 		$errors=array();
 		
 		if (!qa_check_form_security_code('edit-'.$commentid, qa_post_text($prefix.'code')))
-			$errors['content']=qa_lang_html('misc/form_security_again');
+			$errors['content']=qa_html(_('Please click again to confirm'));
 			
 		else {
 			$in['queued']=qa_opt('moderate_edited_again') && qa_user_moderation_reason(qa_user_level_for_post($comment));

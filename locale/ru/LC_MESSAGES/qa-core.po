@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: question 2answer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-08 13:48+0400\n"
+"POT-Creation-Date: 2013-10-01 21:43+0400\n"
 "PO-Revision-Date: 2013-09-08 10:40+0400\n"
 "Last-Translator: Dmitry Mikhirev <mikhirev@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -16,6 +16,366 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: qa-include/qa-ajax-answer.php:86 qa-include/qa-ajax-click-answer.php:77
+#: qa-include/qa-page-question.php:386
+#, php-format
+msgid "%d Answer"
+msgid_plural "%d Answers"
+msgstr[0] "^ ответ"
+msgstr[1] "^ ответа"
+msgstr[2] "^ ответов"
+
+#: qa-include/qa-ajax-asktitle.php:99
+msgid "Before proceeding, please check your question was not asked already:"
+msgstr ""
+
+#: qa-include/qa-ajax-click-admin.php:36 qa-include/qa-ajax-favorite.php:40
+#: qa-include/qa-ajax-notice.php:35 qa-include/qa-ajax-recalc.php:35
+#: qa-include/qa-ajax-vote.php:43
+msgid "Please reload the page then try again"
+msgstr ""
+
+#: qa-include/qa-ajax-click-admin.php:40 qa-include/qa-app-upload.php:193
+#: qa-include/qa-feed.php:48 qa-include/qa-page-admin-default.php:963
+#: qa-include/qa-page-feedback.php:106 qa-include/qa-page-message.php:138
+msgid "A server error occurred - please try again."
+msgstr ""
+
+#: qa-include/qa-ajax-favorite.php:47
+msgid "Remove from my favorites"
+msgstr "Удалить из моего избранного"
+
+#: qa-include/qa-ajax-favorite.php:47
+msgid "Add to my favorites"
+msgstr "Добавить в моё избранное"
+
+#: qa-include/qa-ajax-mailing.php:46 qa-include/qa-page-admin-default.php:1080
+msgid "The mailing is complete"
+msgstr ""
+
+#: qa-include/qa-ajax-mailing.php:49 qa-include/qa-ajax-recalc.php:49
+#: qa-include/qa-app-admin.php:53
+msgid "Only administrators may access this page."
+msgstr ""
+
+#: qa-include/qa-ajax-version.php:47
+#, php-format
+msgid "%s requires Q2A %s"
+msgstr ""
+
+#: qa-include/qa-ajax-version.php:53
+#, php-format
+msgid "%s requires PHP %s"
+msgstr ""
+
+#: qa-include/qa-ajax-version.php:59
+#, php-format
+msgid "get %s"
+msgstr ""
+
+#: qa-include/qa-ajax-version.php:66
+msgid "latest"
+msgstr ""
+
+#: qa-include/qa-ajax-version.php:69
+msgid "latest unknown"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:44 qa-include/qa-app-admin.php:52
+#: qa-include/qa-page-admin-categories.php:245
+#: qa-include/qa-page-admin-default.php:1011
+#: qa-include/qa-page-admin-default.php:1080
+#: qa-include/qa-page-admin-pages.php:287
+#: qa-include/qa-page-admin-plugins.php:69
+#: qa-include/qa-page-admin-points.php:84
+#: qa-include/qa-page-admin-recalc.php:95
+#: qa-include/qa-page-admin-recalc.php:105
+#: qa-include/qa-page-admin-recalc.php:132
+#: qa-include/qa-page-admin-stats.php:59
+#: qa-include/qa-page-admin-userfields.php:135
+#: qa-include/qa-page-admin-usertitles.php:121
+#: qa-include/qa-page-admin-widgets.php:100
+#: qa-include/qa-page-admin-widgets.php:172
+msgid "Administration center"
+msgstr "Администрирование"
+
+#: qa-include/qa-app-admin.php:45
+msgid "Please ^1log in^2 as the administrator to access this page."
+msgstr ""
+
+#: qa-include/qa-app-admin.php:164
+msgid "Full width - Top of page"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:165
+msgid "Full width - Below navigation"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:166
+msgid "Full width - Below content"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:167
+msgid "Full width - Below footer"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:168
+msgid "Main area - Top"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:169
+msgid "Main area - Below title"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:170
+msgid "Main area - Below lists"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:171
+msgid "Main area - Bottom"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:172
+msgid "Side panel - Top"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:173
+msgid "Side panel - Below sidebar box"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:174
+msgid "Side panel - Below categories"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:175
+msgid "Side panel - Last"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:205
+msgid "Widest"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:206
+msgid "Wider"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:207 qa-include/qa-page-account.php:300
+#: qa-include/qa-page-admin-default.php:1441
+msgid "Default"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:208
+msgid "Narrower"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:209
+msgid "Narrowest"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:223
+msgid "Anybody"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:224
+msgid "Registered users"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:225
+msgid "Registered users with email confirmed"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:226
+msgid "Registered users with enough points"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:227
+msgid "Registered & email confirmed & enough points"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:228
+msgid "Approved users only"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:229
+msgid "Approved users with enough points"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:230
+msgid "Experts, Editors, Moderators, Admins"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:231
+msgid "Editors, Moderators, Admins"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:232 qa-include/qa-page-admin-default.php:1811
+#: qa-include/qa-page-admin-default.php:1818
+#: qa-include/qa-page-admin-default.php:1824
+msgid "Moderators and Admins"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:233 qa-include/qa-page-admin-default.php:1830
+#: qa-include/qa-page-admin-default.php:1836
+#: qa-include/qa-page-admin-default.php:1842
+msgid "Administrators"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:234 qa-include/qa-page-admin-default.php:1848
+msgid "Super Administrators"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:273 qa-include/qa-page-admin-default.php:280
+msgid "General"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:278 qa-include/qa-page-admin-default.php:285
+msgid "Emails"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:283 qa-include/qa-page-admin-default.php:302
+#: qa-include/qa-page-admin-pages.php:75
+#: qa-include/qa-page-admin-userfields.php:135
+#: qa-include/qa-page-admin-usertitles.php:121
+#: qa-include/qa-page-favorites.php:92 qa-include/qa-page.php:573
+msgid "Users"
+msgstr "Пользователи"
+
+#: qa-include/qa-app-admin.php:288 qa-include/qa-page-admin-default.php:351
+#: qa-include/qa-page-admin-widgets.php:172
+msgid "Layout"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:293 qa-include/qa-page-admin-default.php:438
+msgid "Posting"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:298 qa-include/qa-page-admin-default.php:370
+msgid "Viewing"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:303 qa-include/qa-page-admin-default.php:405
+msgid "Lists"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:309 qa-include/qa-page-admin-categories.php:245
+#: qa-include/qa-page-admin-default.php:1239
+#: qa-include/qa-page-admin-pages.php:74 qa-include/qa-page-favorites.php:129
+#: qa-include/qa-page.php:567
+msgid "Categories"
+msgstr "Категории"
+
+#: qa-include/qa-app-admin.php:314 qa-include/qa-page-admin-default.php:481
+msgid "Permissions"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:319 qa-include/qa-page-admin-pages.php:287
+msgid "Pages"
+msgstr "Страницы"
+
+#: qa-include/qa-app-admin.php:324 qa-include/qa-page-admin-default.php:506
+msgid "RSS feeds"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:329 qa-include/qa-page-admin-points.php:84
+msgid "Points"
+msgstr "Баллы"
+
+#: qa-include/qa-app-admin.php:334 qa-include/qa-page-admin-default.php:528
+msgid "Spam"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:339 qa-include/qa-page-admin-recalc.php:95
+#: qa-include/qa-page-admin-stats.php:59
+msgid "Stats"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:345 qa-include/qa-page-admin-default.php:622
+#: qa-include/qa-page-admin-default.php:1080
+msgid "Mailing"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:350 qa-include/qa-page-admin-plugins.php:69
+msgid "Plugins"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:359
+msgid "Moderate"
+msgstr ""
+
+#: qa-include/qa-app-admin.php:368
+msgid "Flagged"
+msgstr "Помеченное"
+
+#: qa-include/qa-app-admin.php:375
+msgid "Hidden"
+msgstr "Скрытое"
+
+#: qa-include/qa-app-admin.php:383 qa-include/qa-page-admin-approve.php:68
+msgid "Approve users"
+msgstr "Подтверждение пользователей"
+
+#: qa-include/qa-app-admin.php:402
+#, php-format
+msgid "Your Question2Answer database needs to be %supgraded%s for this version."
+msgstr ""
+
+#: qa-include/qa-app-admin.php:408
+#, php-format
+msgid "The directory %s defined as QA_BLOBS_DIRECTORY is not writable by the web server."
+msgstr ""
+
+#: qa-include/qa-app-admin.php:563 qa-include/qa-page-account.php:82
+#: qa-include/qa-page-account.php:171 qa-include/qa-page-admin-recalc.php:106
+#: qa-include/qa-page-admin-recalc.php:116 qa-include/qa-page-ask.php:124
+#: qa-include/qa-page-confirm.php:51 qa-include/qa-page-feedback.php:75
+#: qa-include/qa-page-forgot.php:55 qa-include/qa-page-ip.php:75
+#: qa-include/qa-page-login.php:59 qa-include/qa-page-message.php:103
+#: qa-include/qa-page.php:131 qa-include/qa-page.php:155
+#: qa-include/qa-page.php:170 qa-include/qa-page-question-post.php:465
+#: qa-include/qa-page-question-post.php:602
+#: qa-include/qa-page-question-post.php:797
+#: qa-include/qa-page-question-post.php:998
+#: qa-include/qa-page-question-submit.php:312
+#: qa-include/qa-page-question-submit.php:337
+#: qa-include/qa-page-question-submit.php:399
+#: qa-include/qa-page-register.php:88 qa-include/qa-page-reset.php:54
+#: qa-include/qa-page-user-profile.php:123
+#: qa-include/qa-page-user-profile.php:156
+#: qa-include/qa-page-user-profile.php:243
+#: qa-include/qa-page-user-profile.php:303
+#: qa-include/qa-page-user-profile.php:321 qa-include/qa-page-user-wall.php:77
+#: qa-include/qa-page-user-wall.php:92
+msgid "Please click again to confirm"
+msgstr ""
+
+#: qa-include/qa-app-captcha.php:53
+msgid "To avoid this verification in future, please ^1log in^2 or ^3register^4."
+msgstr ""
+
+#: qa-include/qa-app-captcha.php:57
+msgid "To avoid this verification in future, please ^5confirm your email address^6."
+msgstr ""
+
+#: qa-include/qa-app-captcha.php:61
+msgid "This verification will stop appearing once your account is approved."
+msgstr ""
+
+#: qa-include/qa-app-captcha.php:88
+msgid "Anti-spam verification:"
+msgstr ""
+
+#: qa-include/qa-app-captcha.php:90
+msgid "Please complete the anti-spam verification"
+msgstr ""
+
+#. TRANSLATORS: username will be substituted
+#: qa-include/qa-app-emails.php:106
+#, php-format
+msgid ""
+"%s,\n"
+"\n"
+msgstr ""
 
 #: qa-include/qa-app-format.php:47
 #, php-format
@@ -73,7 +433,7 @@ msgstr[0] "%d секунду"
 msgstr[1] "%d секунды"
 msgstr[2] "%d секунд"
 
-#: qa-include/qa-app-format.php:242
+#: qa-include/qa-app-format.php:242 qa-include/qa-page-ip.php:138
 #, php-format
 msgid "IP address %s"
 msgstr "IP-адрес %s"
@@ -184,6 +544,7 @@ msgstr[2] "^ жалоб"
 #. e.g. <answered> <15 hours ago> <in Problems> <by me (500 points)>
 #. Set ordering of meta elements which can be language-specific
 #: qa-include/qa-app-format.php:504 qa-include/qa-app-format.php:632
+#: qa-include/qa-page-admin-approve.php:104 qa-include/qa-page-search.php:126
 msgid "^what^when^where^who"
 msgstr "^what^who^when^where"
 
@@ -218,6 +579,7 @@ msgstr "категория изменена"
 
 #: qa-include/qa-app-format.php:568 qa-include/qa-app-format.php:738
 #: qa-include/qa-app-format.php:768 qa-include/qa-app-format.php:803
+#: qa-include/qa-page-admin-hidden.php:125 qa-include/qa-page-ip.php:218
 msgid "hidden"
 msgstr "скрыто"
 
@@ -253,7 +615,12 @@ msgstr "^"
 msgid "me"
 msgstr "я"
 
-#: qa-include/qa-app-format.php:675
+#. could also be after answer converted to comment
+#: qa-include/qa-app-format.php:675 qa-include/qa-event-notify.php:45
+#: qa-include/qa-event-notify.php:75 qa-include/qa-event-notify.php:105
+#: qa-include/qa-event-notify.php:163 qa-include/qa-event-notify.php:180
+#: qa-include/qa-event-notify.php:198 qa-include/qa-event-notify.php:217
+#: qa-include/qa-event-notify.php:234 qa-include/qa-event-notify.php:262
 msgid "anonymous"
 msgstr "аноним"
 
@@ -415,19 +782,20 @@ msgstr "Вы можете начать, ^1задав вопрос^2."
 msgid "All categories"
 msgstr "Все категории"
 
-#: qa-include/qa-app-format.php:1212
+#: qa-include/qa-app-format.php:1212 qa-include/qa-page-admin-widgets.php:83
+#: qa-include/qa-page-users.php:52
 msgid "Top scoring users"
 msgstr "Рейтинг лучших пользователей"
 
-#: qa-include/qa-app-format.php:1216
+#: qa-include/qa-app-format.php:1216 qa-include/qa-page-users-special.php:66
 msgid "Special users"
 msgstr "Специальные пользователи"
 
-#: qa-include/qa-app-format.php:1221
+#: qa-include/qa-app-format.php:1221 qa-include/qa-page-users-blocked.php:66
 msgid "Blocked users"
 msgstr "Заблокированные пользователи"
 
-#: qa-include/qa-app-format.php:1238
+#: qa-include/qa-app-format.php:1238 qa-include/qa-page-user-profile.php:335
 #, php-format
 msgid "User %s"
 msgstr "Пользователь %s"
@@ -436,7 +804,8 @@ msgstr "Пользователь %s"
 msgid "Wall"
 msgstr "Стена"
 
-#: qa-include/qa-app-format.php:1248
+#: qa-include/qa-app-format.php:1248 qa-include/qa-feed.php:227
+#: qa-include/qa-page-activity.php:62 qa-include/qa-page-admin-widgets.php:76
 msgid "Recent activity"
 msgstr "Последняя активность"
 
@@ -452,7 +821,8 @@ msgstr "Все ответы"
 msgid "My details"
 msgstr "Мои данные"
 
-#: qa-include/qa-app-format.php:1285
+#: qa-include/qa-app-format.php:1285 qa-include/qa-page-admin-widgets.php:96
+#: qa-include/qa-page-favorites.php:60 qa-include/qa-page-updates.php:101
 msgid "My favorites"
 msgstr "Моё избранное"
 
@@ -526,3 +896,4329 @@ msgstr "Напишите мне (%s), если после меня будет д
 #: qa-include/qa-app-format.php:1599
 msgid "Privacy: Your email address will only be used for sending these notifications."
 msgstr "Конфиденциальность: Ваш электронный адрес будет использоваться только для отправки уведомлений."
+
+#: qa-include/qa-app-mailing.php:133
+msgid "Unsubscribe:"
+msgstr ""
+
+#: qa-include/qa-app-mailing.php:145
+#, php-format
+msgid "Mailing completed for %s of %s users..."
+msgstr ""
+
+#: qa-include/qa-app-messages.php:45
+msgid "This user has disallowed new posts on their wall"
+msgstr ""
+
+#: qa-include/qa-app-messages.php:50
+msgid "You cannot write more wall posts this hour"
+msgstr ""
+
+#: qa-include/qa-app-messages.php:54
+msgid "Please ^1log in^2 or ^3register^4 to post on this wall."
+msgstr ""
+
+#: qa-include/qa-app-messages.php:58
+msgid "Please ^5confirm your email address^6 to post on this wall."
+msgstr ""
+
+#: qa-include/qa-app-messages.php:62
+msgid "Your account must be approved to post on this wall."
+msgstr "Для размещения соообщений на стене подтвердите свою учётную запись."
+
+#: qa-include/qa-app-messages.php:71 qa-include/qa-app-upload.php:94
+#: qa-include/qa-app-votes.php:73 qa-include/qa-app-votes.php:178
+#: qa-include/qa-page-account.php:122 qa-include/qa-page-admin-approve.php:54
+#: qa-include/qa-page-admin-flagged.php:50
+#: qa-include/qa-page-admin-hidden.php:53
+#: qa-include/qa-page-admin-moderate.php:52 qa-include/qa-page-ask.php:90
+#: qa-include/qa-page-default.php:87 qa-include/qa-page-feedback.php:56
+#: qa-include/qa-page-ip.php:64 qa-include/qa-page-message.php:84
+#: qa-include/qa-page-question.php:126 qa-include/qa-page-question-post.php:73
+#: qa-include/qa-page-question-post.php:296
+#: qa-include/qa-page-question-post.php:875
+#: qa-include/qa-page-question-view.php:756
+#: qa-include/qa-page-question-view.php:891 qa-include/qa-page-register.php:66
+#: qa-include/qa-page-users-blocked.php:52
+#: qa-include/qa-page-users-special.php:52
+msgid "You do not have permission to perform this operation"
+msgstr ""
+
+#: qa-include/qa-app-messages.php:161 qa-include/qa-page-admin-hidden.php:144
+#: qa-include/qa-page-question-view.php:324
+#: qa-include/qa-page-question-view.php:500
+#: qa-include/qa-page-question-view.php:621
+msgid "delete"
+msgstr ""
+
+#: qa-include/qa-app-messages.php:162
+msgid "Delete this wall post"
+msgstr ""
+
+#: qa-include/qa-app-messages.php:177
+msgid "View more wall posts..."
+msgstr ""
+
+#: qa-include/qa-app-options.php:389
+msgid "Privacy: Your email address will not be shared or sold to third parties."
+msgstr "Конфиденциальность: Ваш электронный адрес не будет передан или продан третьим лицам."
+
+#: qa-include/qa-app-options.php:409
+#, php-format
+msgid "\"Welcome to %s, where you can ask questions and receive answers from other members of the community."
+msgstr ""
+
+#: qa-include/qa-app-options.php:477
+#, php-format
+msgid "A message from %s"
+msgstr ""
+
+#: qa-include/qa-app-options.php:522 qa-include/qa-page-admin-pages.php:69
+#: qa-include/qa-page.php:537
+msgid "Q&A"
+msgstr ""
+
+#: qa-include/qa-app-options.php:747
+msgid "Viewing question pages"
+msgstr ""
+
+#: qa-include/qa-app-options.php:748
+msgid "Asking questions"
+msgstr "Добавление вопросов"
+
+#: qa-include/qa-app-options.php:749
+msgid "Answering questions"
+msgstr "Добавление ответов"
+
+#: qa-include/qa-app-options.php:753
+msgid "Adding comments"
+msgstr ""
+
+#: qa-include/qa-app-options.php:756
+msgid "Voting on questions"
+msgstr "Голосование за ответы"
+
+#: qa-include/qa-app-options.php:759
+msgid "Voting on answers"
+msgstr "Голосование за вопросы"
+
+#: qa-include/qa-app-options.php:762
+msgid "Voting posts down"
+msgstr ""
+
+#: qa-include/qa-app-options.php:767
+msgid "Editing any question"
+msgstr ""
+
+#: qa-include/qa-app-options.php:768
+msgid "Editing any answer"
+msgstr ""
+
+#: qa-include/qa-app-options.php:771
+msgid "Editing any comment"
+msgstr ""
+
+#: qa-include/qa-app-options.php:773
+msgid "Editing posts silently"
+msgstr ""
+
+#: qa-include/qa-app-options.php:776
+msgid "Closing any question"
+msgstr "Закрытие любых вопросов"
+
+#: qa-include/qa-app-options.php:778
+msgid "Selecting answer for any question"
+msgstr ""
+
+#: qa-include/qa-app-options.php:779
+msgid "Viewing IPs of anonymous posts"
+msgstr ""
+
+#: qa-include/qa-app-options.php:782
+msgid "Viewing who voted or flagged posts"
+msgstr ""
+
+#: qa-include/qa-app-options.php:785
+msgid "Flagging posts"
+msgstr ""
+
+#: qa-include/qa-app-options.php:787
+msgid "Approving or rejecting posts"
+msgstr ""
+
+#: qa-include/qa-app-options.php:789
+msgid "Hiding or showing any post"
+msgstr ""
+
+#: qa-include/qa-app-options.php:790
+msgid "Deleting hidden posts"
+msgstr ""
+
+#: qa-include/qa-app-options.php:793
+msgid "Posting on user walls"
+msgstr ""
+
+#: qa-include/qa-app-q-list.php:99 qa-include/qa-page-tag.php:67
+#: qa-include/qa-page-user-profile.php:343
+#, php-format
+msgid "Remove %s from my favorites"
+msgstr ""
+
+#: qa-include/qa-app-q-list.php:99
+#, php-format
+msgid "Add category %s to my favorites"
+msgstr ""
+
+#: qa-include/qa-app-q-list.php:134
+msgid "Recent"
+msgstr ""
+
+#: qa-include/qa-app-q-list.php:139 qa-include/qa-page-admin-pages.php:71
+#: qa-include/qa-page.php:549
+msgid "Hot!"
+msgstr ""
+
+#: qa-include/qa-app-q-list.php:144
+msgid "Most votes"
+msgstr "> голосов"
+
+#: qa-include/qa-app-q-list.php:149
+msgid "Most answers"
+msgstr "> ответов"
+
+#: qa-include/qa-app-q-list.php:154
+msgid "Most views"
+msgstr "> показов"
+
+#: qa-include/qa-app-q-list.php:184
+msgid "No answer"
+msgstr "Без ответа"
+
+#: qa-include/qa-app-q-list.php:189
+msgid "No selected answer"
+msgstr "Без лучшего ответа"
+
+#: qa-include/qa-app-q-list.php:194
+msgid "No upvoted answer"
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:622
+msgid "Getting total number of questions, answers and comments..."
+msgstr "Получение общего количества вопросов, ответов и комментариев..."
+
+#: qa-include/qa-app-recalc.php:626
+#, php-format
+msgid "Reindexed %s of %s pages..."
+msgstr "Переиндексировано %s из %s страниц..."
+
+#: qa-include/qa-app-recalc.php:633
+#, php-format
+msgid "Reindexed %s of %s posts..."
+msgstr "Переиндексировано %s из %s сообщений..."
+
+#: qa-include/qa-app-recalc.php:640
+#, php-format
+msgid "Recounted %s of %s words..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:647
+#, php-format
+msgid "Recounted votes and flags for %s of %s posts..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:654
+#, php-format
+msgid "Recounted answers and hotness for %s of %s posts..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:661
+msgid "All posts were successfully reindexed."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:665
+msgid "All posts were successfully recounted."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:669
+msgid "Estimating total number of users..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:673
+#, php-format
+msgid "Recalculated for %s of %s users..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:680
+msgid "All user points were successfully recalculated."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:684
+#, php-format
+msgid "Refilled for %s of %s questions..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:691
+msgid "All events streams were successfully refilled"
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:695
+#, php-format
+msgid "Recalculated for %s of %s posts..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:702
+#, php-format
+msgid "Recounting questions for %s of %s categories..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:709
+#, php-format
+msgid "Recalculating URL paths for %s of %s categories..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:716
+msgid "All categories were successfully recalculated."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:720
+#, php-format
+msgid "Deleted %s of %s hidden comments..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:727
+#, php-format
+msgid "Deleted %s of %s hidden answers without dependents..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:734
+#, php-format
+msgid "Deleted %s of %s hidden questions without dependents..."
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:741
+msgid "All hidden posts without dependents have been deleted"
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:746
+#, php-format
+msgid "Migration %s of %s uploaded images and documents"
+msgstr ""
+
+#: qa-include/qa-app-recalc.php:754
+msgid "Migration of uploaded images and documents completed."
+msgstr ""
+
+#: qa-include/qa-app-upload.php:86 qa-include/qa-page-account.php:118
+msgid "Too many uploads - please try again in an hour"
+msgstr ""
+
+#. if file was too big for PHP, $filesize will be zero
+#: qa-include/qa-app-upload.php:107
+#, php-format
+msgid "Maximum upload size is %s"
+msgstr ""
+
+#: qa-include/qa-app-upload.php:107
+msgid "MiB"
+msgstr ""
+
+#: qa-include/qa-app-upload.php:144 qa-include/qa-page-account.php:133
+#: qa-include/qa-page-admin-default.php:942
+#, php-format
+msgid "The image could not be read. Please upload one of: %s"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:59
+msgid "Username is taken - please try another"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:76 qa-include/qa-page-login.php:123
+msgid "Email already belongs to an account"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:93 qa-include/qa-app-users.php:534
+msgid "Registered user"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:142
+#, php-format
+msgid "Password must be at least %d characters"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:180
+#, php-format
+msgid ""
+"Please click below to confirm your email address.\n"
+"\n"
+"%s\n"
+"\n"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:193
+msgid "Welcome to ^site_title!"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:193
+msgid ""
+"Thank you for registering for ^site_title.\n"
+"\n"
+"^custom^confirmYour login details are as follows:\n"
+"\n"
+"Email: ^email\n"
+"Password: ^password\n"
+"\n"
+"Please keep this information safe for future reference.\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title\n"
+"^url"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:194
+msgid "Please set on your account page"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:252
+msgid "^site_title - Email Address Confirmation"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:252
+msgid ""
+"gemailsse click below to confirm your email address for ^site_title.\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:352
+msgid "^site_title - Reset Forgotten Password"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:352
+msgid ""
+"Please click below to reset your password for ^site_title.\n"
+"\n"
+"^url\n"
+"\n"
+"Alternatively, enter the code below into the field provided.\n"
+"\n"
+"Code: ^code\n"
+"\n"
+"If you did not ask to reset your password, please ignore this message.\n"
+"\n"
+"Thank you,\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:377
+msgid "^site_title - Your New Password"
+msgstr ""
+
+#: qa-include/qa-app-users-edit.php:377
+msgid ""
+"Your new password for ^site_title is below.\n"
+"\n"
+"Password: ^password\n"
+"\n"
+"It is recommended to change this password immediately after logging in.\n"
+"\n"
+"Thank you,\n"
+"^site_title\n"
+"^url"
+msgstr ""
+
+#: qa-include/qa-app-users.php:522
+msgid "Super Administrator"
+msgstr ""
+
+#: qa-include/qa-app-users.php:524
+msgid "Administrator"
+msgstr ""
+
+#: qa-include/qa-app-users.php:526
+msgid "Moderator"
+msgstr ""
+
+#: qa-include/qa-app-users.php:528
+msgid "Editor"
+msgstr ""
+
+#: qa-include/qa-app-users.php:530
+msgid "Expert"
+msgstr ""
+
+#: qa-include/qa-app-users.php:532
+msgid "Approved user"
+msgstr "Подтверждённый пользователь"
+
+#: qa-include/qa-app-users.php:1011
+msgid "Full name"
+msgstr ""
+
+#: qa-include/qa-app-users.php:1012
+msgid "About"
+msgstr ""
+
+#: qa-include/qa-app-users.php:1013
+msgid "Location"
+msgstr ""
+
+#: qa-include/qa-app-users.php:1014
+msgid "Website"
+msgstr ""
+
+#: qa-include/qa-app-votes.php:61
+msgid "Please ^1log in^2 or ^3register^4 to vote."
+msgstr ""
+
+#: qa-include/qa-app-votes.php:65
+msgid "Please ^5confirm your email address^6 to vote down."
+msgstr ""
+
+#: qa-include/qa-app-votes.php:65
+msgid "Please ^5confirm your email address^6 to vote."
+msgstr ""
+
+#: qa-include/qa-app-votes.php:69
+msgid "Too many votes received - please try again in an hour"
+msgstr ""
+
+#: qa-include/qa-app-votes.php:81
+msgid "Voting on this is not allowed"
+msgstr ""
+
+#: qa-include/qa-app-votes.php:166
+msgid "Please ^1log in^2 or ^3register^4 to flag posts."
+msgstr ""
+
+#: qa-include/qa-app-votes.php:170
+msgid "Please ^5confirm your email address^6 to flag posts."
+msgstr ""
+
+#: qa-include/qa-app-votes.php:174
+msgid "Too many posts flagged - please try again in an hour"
+msgstr ""
+
+#: qa-include/qa-app-votes.php:186
+msgid "Flagging this is not allowed"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:51
+msgid "Your ^site_title answer has a related question"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:51
+msgid ""
+"Your answer on ^site_title has a new related question by ^q_handle:\n"
+"\n"
+"^open^q_title^close\n"
+"\n"
+"Your answer was:\n"
+"\n"
+"^open^a_content^close\n"
+"\n"
+"Click below to answer the new question:\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:60
+msgid "^site_title has a new question"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:60
+msgid ""
+"A new question has been asked by ^q_handle:\n"
+"\n"
+"^open^q_title\n"
+"\n"
+"^q_content^close\n"
+"\n"
+"Click below to see the question:\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:74
+msgid "Your ^site_title question was answered"
+msgstr "На сайте ^site_title ответили на ваш вопрос"
+
+#: qa-include/qa-event-notify.php:74
+msgid ""
+"Your question on ^site_title has been answered by ^a_handle:\n"
+"\n"
+"^open^a_content^close\n"
+"\n"
+"Your question was:\n"
+"\n"
+"^open^q_title^close\n"
+"\n"
+"If you like this answer, you may select it as the best:\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:92
+msgid "Your ^site_title question has a new comment"
+msgstr "К вашему вопросу на сайте ^site_title добавлен комментарий"
+
+#: qa-include/qa-event-notify.php:93
+msgid ""
+"Your question on ^site_title has a new comment by ^c_handle:\n"
+"\n"
+"^open^c_content^close\n"
+"\n"
+"Your question was:\n"
+"\n"
+"^open^c_context^close\n"
+"\n"
+"You may respond by adding your own comment:\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:98
+msgid "Your ^site_title answer has a new comment"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:99
+msgid ""
+"Your answer on ^site_title has a new comment by ^c_handle:\n"
+"\n"
+"^open^c_content^close\n"
+"\n"
+"Your answer was:\n"
+"\n"
+"^open^c_context^close\n"
+"\n"
+"You may respond by adding your own comment:\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:145
+msgid "Your ^site_title comment has been added to"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:145
+msgid ""
+"A new comment by ^c_handle has been added after your comment on ^site_title:\n"
+"\n"
+"^open^c_content^close\n"
+"\n"
+"The discussion is following:\n"
+"\n"
+"^open^c_context^close\n"
+"\n"
+"You may respond by adding another comment:\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:159 qa-include/qa-event-notify.php:176
+#: qa-include/qa-event-notify.php:193
+msgid "^site_title moderation"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:160 qa-include/qa-event-notify.php:177
+#: qa-include/qa-event-notify.php:194
+msgid ""
+"An edited post by ^p_handle requires your reapproval:\n"
+"\n"
+"^open^p_context^close\n"
+"\n"
+"Click below to approve or hide the edited post:\n"
+"\n"
+"^url\n"
+"\n"
+"\n"
+"Click below to review all queued posts:\n"
+"\n"
+"^a_url\n"
+"\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:160 qa-include/qa-event-notify.php:177
+#: qa-include/qa-event-notify.php:194
+msgid ""
+"A post by ^p_handle requires your approval:\n"
+"\n"
+"^open^p_context^close\n"
+"\n"
+"Click below to approve or reject the post:\n"
+"\n"
+"^url\n"
+"\n"
+"\n"
+"Click below to review all queued posts:\n"
+"\n"
+"^a_url\n"
+"\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:215
+msgid "^site_title has a flagged post"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:215
+msgid ""
+"A post by ^p_handle has received ^flags:\n"
+"\n"
+"^open^p_context^close\n"
+"\n"
+"Click below to see the post:\n"
+"\n"
+"^url\n"
+"\n"
+"\n"
+"Click below to review all flagged posts:\n"
+"\n"
+"^a_url\n"
+"\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:218
+#, php-format
+msgid "%d flag"
+msgid_plural "%d flags"
+msgstr[0] "%d жалоба"
+msgstr[1] "%d жалобы"
+msgstr[2] "%d жалоб"
+
+#: qa-include/qa-event-notify.php:233
+msgid "Your ^site_title answer has been selected!"
+msgstr "Ваш ответ на сайте ^site_title был выбран лучшим!"
+
+#: qa-include/qa-event-notify.php:233
+msgid ""
+"Congratulations! Your answer on ^site_title has been selected as the best by ^s_handle:\n"
+"\n"
+"^open^a_content^close\n"
+"\n"
+"The question was:\n"
+"\n"
+"^open^q_title^close\n"
+"\n"
+"Click below to see your answer:\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:244
+msgid "^site_title has a new registered user"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:245
+msgid ""
+"A new user has registered as ^u_handle.\n"
+"\n"
+"Click below to approve the user:\n"
+"\n"
+"^url\n"
+"\n"
+"Click below to review all users waiting for approval:\n"
+"\n"
+"^a_url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:245
+msgid ""
+"A new user has registered as ^u_handle.\n"
+"\n"
+"Click below to view the user profile:\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:254
+msgid "Your ^site_title user has been approved"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:254
+msgid ""
+"You can see your new user profile here:\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:261
+msgid "Post on your ^site_title wall"
+msgstr ""
+
+#: qa-include/qa-event-notify.php:261
+msgid ""
+"^f_handle has posted on your user wall at ^site_title:\n"
+"\n"
+"^open^post^close\n"
+"\n"
+"You may respond to the post here:\n"
+"\n"
+"^url\n"
+"\n"
+"Thank you,\n"
+"\n"
+"^site_title"
+msgstr ""
+
+#: qa-include/qa-feed.php:59
+msgid "Feed not found"
+msgstr ""
+
+#: qa-include/qa-feed.php:190 qa-include/qa-page-comments.php:58
+#: qa-include/qa-page-questions.php:109
+msgid "Recent questions"
+msgstr "Последние вопросы"
+
+#: qa-include/qa-feed.php:190 qa-include/qa-feed.php:208
+#, php-format
+msgid "Recent questions in %s"
+msgstr ""
+
+#: qa-include/qa-feed.php:196 qa-include/qa-page-admin-widgets.php:78
+#: qa-include/qa-page-hot.php:59 qa-include/qa-page-questions.php:91
+msgid "Hot questions"
+msgstr "Горячие вопросы"
+
+#: qa-include/qa-feed.php:196 qa-include/qa-page-hot.php:55
+#: qa-include/qa-page-questions.php:91
+#, php-format
+msgid "Hot questions in %s"
+msgstr "Горячие вопросы в %s"
+
+#: qa-include/qa-feed.php:202 qa-include/qa-page-admin-widgets.php:79
+#: qa-include/qa-page-unanswered.php:113
+msgid "Recent questions without answers"
+msgstr ""
+
+#: qa-include/qa-feed.php:202 qa-include/qa-page-unanswered.php:109
+#, php-format
+msgid "Questions without answers in %s"
+msgstr ""
+
+#: qa-include/qa-feed.php:208 qa-include/qa-page-answers.php:59
+msgid "Recently answered questions"
+msgstr "Недавно отвеченные вопросы"
+
+#: qa-include/qa-feed.php:214
+msgid "Recently commented questions"
+msgstr "Недавно прокомментированные вопросы"
+
+#: qa-include/qa-feed.php:214 qa-include/qa-page-comments.php:54
+#, php-format
+msgid "Recently commented questions in %s"
+msgstr ""
+
+#: qa-include/qa-feed.php:220 qa-include/qa-page-admin-widgets.php:75
+#: qa-include/qa-page-default.php:143
+msgid "Recent questions and answers"
+msgstr "Свежие вопросы и ответы"
+
+#: qa-include/qa-feed.php:220 qa-include/qa-page-default.php:139
+#: qa-include/qa-page-questions.php:109
+#, php-format
+msgid "Recent questions and answers in %s"
+msgstr ""
+
+#: qa-include/qa-feed.php:227 qa-include/qa-page-activity.php:58
+#, php-format
+msgid "Recent activity in %s"
+msgstr "Недавняя активность в %s"
+
+#: qa-include/qa-feed.php:242 qa-include/qa-page-tag.php:60
+#: qa-include/qa-page-tag.php:93
+#, php-format
+msgid "Recent questions tagged %s"
+msgstr "Недавние вопросы с тегом %s"
+
+#: qa-include/qa-feed.php:253 qa-include/qa-page-search.php:88
+#, php-format
+msgid "Search results for %s"
+msgstr ""
+
+#: qa-include/qa-feed.php:333 qa-include/qa-feed.php:357
+#: qa-include/qa-feed.php:373
+msgid "Hidden: "
+msgstr "Скрыто: "
+
+#: qa-include/qa-feed.php:333
+msgid "Reshown: "
+msgstr "Показано повторно: "
+
+#: qa-include/qa-feed.php:337
+msgid "Closed: "
+msgstr "Закрыто: "
+
+#: qa-include/qa-feed.php:337
+msgid "Reopened: "
+msgstr "Открыто повторно: "
+
+#: qa-include/qa-feed.php:341
+msgid "Retagged: "
+msgstr "Изменены теги: "
+
+#: qa-include/qa-feed.php:345
+msgid "Recategorized: "
+msgstr "Изменена категория: "
+
+#: qa-include/qa-feed.php:349
+msgid "Answered: "
+msgstr "Отвечено: "
+
+#: qa-include/qa-feed.php:353
+msgid "Answer selected: "
+msgstr "Ответ выбран: "
+
+#: qa-include/qa-feed.php:357
+msgid "Answer reshown: "
+msgstr "Ответ снова отображён: "
+
+#: qa-include/qa-feed.php:361
+msgid "Answer edited: "
+msgstr "Ответ отредактирован: "
+
+#: qa-include/qa-feed.php:365
+msgid "Commented: "
+msgstr "Прокомментировано: "
+
+#: qa-include/qa-feed.php:369
+msgid "Comment moved: "
+msgstr "Комментарий перемещён: "
+
+#: qa-include/qa-feed.php:373
+msgid "Comment reshown: "
+msgstr "Комментарий снова отображён: "
+
+#: qa-include/qa-feed.php:377
+msgid "Comment edited: "
+msgstr "Комментарий отредактирован: "
+
+#: qa-include/qa-feed.php:382
+msgid "Edited: "
+msgstr "Отредактировано: "
+
+#: qa-include/qa-filter-basic.php:43
+msgid "Email address required - not public"
+msgstr ""
+
+#: qa-include/qa-filter-basic.php:46 qa-include/qa-page-confirm.php:143
+msgid "Email is invalid - please check carefully"
+msgstr ""
+
+#: qa-include/qa-filter-basic.php:49 qa-include/qa-filter-basic.php:62
+#: qa-include/qa-filter-basic.php:125 qa-include/qa-page-admin-pages.php:160
+#: qa-include/qa-page-admin-userfields.php:88
+#, php-format
+msgid "Please provide more information - at least %d characters"
+msgstr ""
+
+#: qa-include/qa-filter-basic.php:56
+msgid "Username must not be empty"
+msgstr ""
+
+#: qa-include/qa-filter-basic.php:59
+#, php-format
+msgid "Username may not contain: %s"
+msgstr ""
+
+#: qa-include/qa-filter-basic.php:80
+#, php-format
+msgid "Please provide at least %d tag/s"
+msgstr ""
+
+#: qa-include/qa-filter-basic.php:82
+#, php-format
+msgid "A maximum of %d tags are allowed"
+msgstr ""
+
+#: qa-include/qa-filter-basic.php:125
+msgid "gmainse enter something in this field"
+msgstr ""
+
+#: qa-include/qa-filter-basic.php:127
+#: qa-include/qa-page-admin-categories.php:151
+#: qa-include/qa-page-admin-categories.php:191
+#: qa-include/qa-page-admin-pages.php:151
+#: qa-include/qa-page-admin-pages.php:167
+#: qa-include/qa-page-admin-pages.php:196
+#, php-format
+msgid "Maximum length is %d characters"
+msgstr ""
+
+#. also allows single query to be returned
+#: qa-include/qa-install.php:254 qa-include/qa-page-admin-plugins.php:88
+#, php-format
+msgid "The %s %s module requires some %sdatabase initialization%s."
+msgstr ""
+
+#: qa-include/qa-page-account.php:131 qa-include/qa-page-admin-default.php:921
+#, php-format
+msgid "This image is too big. Please scale to %d%% then try again."
+msgstr ""
+
+#: qa-include/qa-page-account.php:177 qa-include/qa-page-login.php:90
+msgid "Password not correct"
+msgstr ""
+
+#: qa-include/qa-page-account.php:183
+msgid "New passwords do not match"
+msgstr ""
+
+#: qa-include/qa-page-account.php:202 qa-include/qa-page-admin-widgets.php:95
+msgid "My account details"
+msgstr "Мой профиль"
+
+#: qa-include/qa-page-account.php:213 qa-include/qa-page-user-profile.php:371
+msgid "Member for:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:219 qa-include/qa-page-user-profile.php:378
+msgid "Type:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:224 qa-include/qa-page-register.php:149
+msgid "Username:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:232 qa-include/qa-page-admin-approve.php:98
+#: qa-include/qa-page-confirm.php:121 qa-include/qa-page-login.php:127
+#: qa-include/qa-page-register.php:164 qa-include/qa-page-reset.php:107
+#: qa-include/qa-page-user-profile.php:546
+msgid "Email:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:236
+msgid "Please ^5confirm^6"
+msgstr ""
+
+#: qa-include/qa-page-account.php:240
+msgid "Private messages:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:244
+msgid "Allow users to email you (without seeing your address)"
+msgstr ""
+
+#: qa-include/qa-page-account.php:248
+msgid "Wall posts:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:252
+msgid "Allow users to post on your wall (you will also be emailed)"
+msgstr ""
+
+#: qa-include/qa-page-account.php:256
+msgid "Mass mailings:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:260
+msgid "Subscribe to emails sent out to all users"
+msgstr ""
+
+#: qa-include/qa-page-account.php:269
+msgid "Save Profile"
+msgstr ""
+
+#: qa-include/qa-page-account.php:280
+msgid "Profile saved"
+msgstr ""
+
+#: qa-include/qa-page-account.php:302
+#: qa-include/qa-page-admin-categories.php:507
+#: qa-include/qa-page-admin-default.php:1237
+#: qa-include/qa-page-admin-default.php:1258
+msgid "None"
+msgstr ""
+
+#: qa-include/qa-page-account.php:308
+#, php-format
+msgid "Show my %sGravatar%s"
+msgstr ""
+
+#: qa-include/qa-page-account.php:331
+msgid "Avatar:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:377 qa-include/qa-page-account.php:405
+msgid "Change Password"
+msgstr ""
+
+#: qa-include/qa-page-account.php:381
+msgid "Old password:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:389
+msgid "New password:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:396
+msgid "Retype new password:"
+msgstr ""
+
+#: qa-include/qa-page-account.php:417
+msgid "None. To log in directly, set a password below."
+msgstr ""
+
+#: qa-include/qa-page-account.php:421
+msgid "Password changed"
+msgstr ""
+
+#: qa-include/qa-page-activity.php:59 qa-include/qa-page-default.php:140
+#: qa-include/qa-page-hot.php:56 qa-include/qa-page-questions.php:79
+#, php-format
+msgid "No questions in %s"
+msgstr "Нет вопросов в %s"
+
+#: qa-include/qa-page-activity.php:63 qa-include/qa-page-default.php:144
+#: qa-include/qa-page-hot.php:60 qa-include/qa-page-questions.php:82
+#: qa-include/qa-page-tag.php:71
+msgid "No questions found"
+msgstr "Вопросов не найдено"
+
+#. use p prefix for qa_admin_click() in qa-admin.js
+#: qa-include/qa-page-admin-approve.php:90
+msgid "Registered:"
+msgstr ""
+
+#: qa-include/qa-page-admin-approve.php:91
+#: qa-include/qa-page-user-profile.php:565
+#: qa-include/qa-page-user-profile.php:578
+#, php-format
+msgid "%s ago from %s"
+msgstr ""
+
+#: qa-include/qa-page-admin-approve.php:113
+#: qa-include/qa-page-admin-moderate.php:120
+#: qa-include/qa-page-question-view.php:299
+#: qa-include/qa-page-question-view.php:475
+#: qa-include/qa-page-question-view.php:596
+msgid "approve"
+msgstr ""
+
+#: qa-include/qa-page-admin-approve.php:118
+msgid "block"
+msgstr ""
+
+#: qa-include/qa-page-admin-approve.php:127
+msgid "No users waiting for approval"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:149
+#: qa-include/qa-page-admin-categories.php:189
+#: qa-include/qa-page-admin-pages.php:149
+#: qa-include/qa-page-admin-pages.php:158
+#: qa-include/qa-page-admin-pages.php:194
+#: qa-include/qa-page-admin-usertitles.php:77
+#: qa-include/qa-page-admin-usertitles.php:80
+#: qa-include/qa-page-question-post.php:632
+msgid "Please enter something in this field"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:159
+#: qa-include/qa-page-admin-categories.php:197
+#: qa-include/qa-page-admin-pages.php:204
+msgid "This is already being used by a category"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:173
+#: qa-include/qa-page-admin-categories.php:177
+#, php-format
+msgid "category-%s"
+msgstr "категория-%s"
+
+#: qa-include/qa-page-admin-categories.php:193
+#: qa-include/qa-page-admin-pages.php:198
+#, php-format
+msgid "The slug may not contain these characters: %s"
+msgstr ""
+
+#. only top level is a problem
+#: qa-include/qa-page-admin-categories.php:195
+#: qa-include/qa-page-admin-pages.php:200
+msgid "This slug is reserved for use by another page"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:199
+#: qa-include/qa-page-admin-pages.php:202
+msgid "This is already being used by a page"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:246
+#: qa-include/qa-page-admin-default.php:1012
+#: qa-include/qa-page-admin-pages.php:288
+#: qa-include/qa-page-admin-points.php:85
+#: qa-include/qa-page-admin-userfields.php:136
+#: qa-include/qa-page-admin-usertitles.php:122
+#: qa-include/qa-page-admin-widgets.php:173
+msgid "Form security code expired - please try again"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:257
+#, php-format
+msgid "Move questions in %s with no sub-category to:"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:258
+msgid "Move questions with no category to:"
+msgstr ""
+
+#. just used for qa_recalc_click()
+#. just used for qa_recalc_click
+#: qa-include/qa-page-admin-categories.php:266
+#: qa-include/qa-page-admin-categories.php:332
+#: qa-include/qa-page-admin-categories.php:543
+#: qa-include/qa-page-admin-pages.php:417
+#: qa-include/qa-page-admin-pages.php:474
+#: qa-include/qa-page-admin-userfields.php:230
+#: qa-include/qa-page-admin-usertitles.php:156
+#: qa-include/qa-page-admin-widgets.php:275
+#: qa-include/qa-page-question-post.php:352
+#: qa-include/qa-page-question-post.php:682
+#: qa-include/qa-page-question-post.php:935
+msgid "Save Changes"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:271
+#: qa-include/qa-page-admin-categories.php:337
+#: qa-include/qa-page-admin-pages.php:422
+#: qa-include/qa-page-admin-points.php:112
+#: qa-include/qa-page-admin-userfields.php:235
+#: qa-include/qa-page-admin-usertitles.php:161
+#: qa-include/qa-page-admin-widgets.php:280
+#: qa-include/qa-page-question-post.php:357
+#: qa-include/qa-page-question-post.php:565
+#: qa-include/qa-page-question-post.php:687
+#: qa-include/qa-page-question-post.php:940
+#: qa-include/qa-page-question-view.php:810
+#: qa-include/qa-page-question-view.php:935
+#: qa-include/qa-page-user-profile.php:659
+msgid "Cancel"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:294
+msgid "Category saved"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:294
+msgid "Category added"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:300
+msgid "Category name:"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:300
+msgid "Name of first category:"
+msgstr "Название первой категории:"
+
+#: qa-include/qa-page-admin-categories.php:314
+msgid "Category slug - URL fragment:"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:322
+msgid "Optional category description:"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:332
+#: qa-include/qa-page-admin-categories.php:548
+msgid "Add Category"
+msgstr "Добавить категорию"
+
+#: qa-include/qa-page-admin-categories.php:358
+#: qa-include/qa-page-admin-categories.php:442
+msgid "Parent category:"
+msgstr "Родительская категория:"
+
+#: qa-include/qa-page-admin-categories.php:367
+#: qa-include/qa-page-admin-categories.php:444
+msgid "No parent (top level)"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:369
+#, php-format
+msgid "Some options may be hidden to prevent a category going deeper than %d levels."
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:373
+msgid "This category cannot be deleted because it has a sub-category."
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:381
+msgid "Delete this category and reassign its questions to:"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:382
+msgid "Delete this category"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:397
+#: qa-include/qa-page-admin-stats.php:117
+msgid "Total questions:"
+msgstr "Всего вопросов:"
+
+#: qa-include/qa-page-admin-categories.php:400
+#: qa-include/qa-page-categories.php:74 qa-include/qa-page-favorites.php:140
+#: qa-include/qa-page-user-profile.php:805
+#: qa-include/qa-widget-activity-count.php:45
+#, php-format
+msgid "%s question"
+msgid_plural "%s questions"
+msgstr[0] "%s вопрос"
+msgstr[1] "%s вопроса"
+msgstr[2] "%s вопросов"
+
+#: qa-include/qa-page-admin-categories.php:409
+#, php-format
+msgid "%s question in this category have no sub-category - %sset sub-category%s"
+msgid_plural "%s questions in this category have no sub-category - %sset sub-category%s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: qa-include/qa-page-admin-categories.php:454
+msgid "move to different parent"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:465
+#: qa-include/qa-page-admin-categories.php:481
+#: qa-include/qa-page-admin-userfields.php:144
+#: qa-include/qa-page-admin-userfields.php:159
+#: qa-include/qa-page-admin-widgets.php:205
+#: qa-include/qa-page-admin-widgets.php:220
+#, php-format
+msgid "After \"%s\""
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:467
+#: qa-include/qa-page-admin-categories.php:481
+#: qa-include/qa-page-admin-userfields.php:146
+#: qa-include/qa-page-admin-userfields.php:159
+msgid "First"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:488
+#: qa-include/qa-page-admin-pages.php:358
+#: qa-include/qa-page-admin-userfields.php:213
+#: qa-include/qa-page-admin-widgets.php:244
+msgid "Position:"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:510
+msgid "add sub-category"
+msgstr "добавить подкатегорию"
+
+#: qa-include/qa-page-admin-categories.php:514
+msgid "Sub-categories:"
+msgstr "Подкатегории:"
+
+#: qa-include/qa-page-admin-categories.php:519
+#, php-format
+msgid "This category cannot have sub-categories because it is already %d levels down."
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:529
+#: qa-include/qa-page-admin-default.php:909
+msgid "Options saved"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:535
+msgid "To get started with categories, click the\t'Add Category' button."
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:565
+#, php-format
+msgid "%d question"
+msgid_plural "%d questions"
+msgstr[0] "%d вопрос"
+msgstr[1] "%d вопроса"
+msgstr[2] "%d вопросов"
+
+#: qa-include/qa-page-admin-categories.php:568
+msgid "Top level categories:"
+msgstr "Категории верхнего уровня:"
+
+#: qa-include/qa-page-admin-categories.php:574
+msgid "Allow questions with no category"
+msgstr "Разрешить вопросы без категории"
+
+#: qa-include/qa-page-admin-categories.php:585
+#, php-format
+msgid "%s question currently have no category - %sset category%s"
+msgid_plural "%s questions currently have no category - %sset category%s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: qa-include/qa-page-admin-categories.php:593
+msgid "Allow questions with a category but no sub-category"
+msgstr ""
+
+#: qa-include/qa-page-admin-categories.php:604
+#: qa-include/qa-page-admin-stats.php:237
+msgid "Recalculate categories"
+msgstr "Пересчитать категории"
+
+#: qa-include/qa-page-admin-categories.php:608
+#: qa-include/qa-page-admin-default.php:1048
+#: qa-include/qa-page-admin-points.php:121
+#: qa-include/qa-page-admin-stats.php:275
+msgid "A database clean-up operation is running. If you close this page now, the operation will be interrupted."
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:650
+msgid "Relative importance for question hotness:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:651
+msgid "Allow users with posts to change their username:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:652
+msgid "Allow questions to be manually closed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:653
+msgid "Only log in by email address (not username):"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:654
+msgid "Allow multiple answers per user:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:655
+msgid "Enable private messaging between users:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:656
+msgid "Allow users to answer their own question:"
+msgstr "Разрешить пользователям отвечать на свой вопрос:"
+
+#: qa-include/qa-page-admin-default.php:657
+msgid "Enable wall posts on user profiles:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:658
+msgid "Allow search engines to view question pages"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:659
+msgid "All new users must be approved:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:660
+msgid "Allow ^1Gravatar^2 avatars:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:661
+msgid "Allow users to upload avatars:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:662
+msgid "Default avatar:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:663
+msgid "Avatar size on message lists:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:664
+msgid "Avatar size on user profile page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:665
+msgid "Avatar size on question lists:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:666
+msgid "Avatar size on answers:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:667
+msgid "Avatar size on comments:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:668
+msgid "Avatar size on questions:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:669
+msgid "Maximum size for storing avatars:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:670
+msgid "Avatar size on top users page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:671
+msgid "Censored words - separate by spaces or commas:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:672
+msgid "Blocked IP addresses - separate by spaces or commas:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:673
+msgid "Use captcha module:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:674
+msgid "Use captcha for anonymous posts:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:675
+msgid "Use captcha on feedback form:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:676
+msgid "Use captcha for user registration:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:677
+msgid "Use captcha on reset password form:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:678
+msgid "Use captcha if user not yet approved:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:679
+msgid "Use captcha if email not confirmed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:680
+msgid "Columns on Tags page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:681
+msgid "Columns on Users page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:682
+msgid "Allow comments on answers:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:683
+msgid "Allow comments on questions:"
+msgstr "Разрешить комментарии к вопросам:"
+
+#: qa-include/qa-page-admin-default.php:684
+msgid "Request confirmation of user emails:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:685
+msgid "All new users must confirm their email:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:686
+msgid "Home page content - HTML allowed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:687
+msgid "Home page heading:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:688
+msgid "Check for similar questions when asking:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:689
+msgid "Close questions with a selected answer:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:690
+msgid "Show matching tags while typing:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:691
+msgid "Count the number of question views:"
+msgstr "Считать количество показов вопроса:"
+
+#: qa-include/qa-page-admin-default.php:692
+msgid "Show example tags based on question:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:693
+msgid "Default editor for answers:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:694
+msgid "Default editor for comments:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:695
+msgid "Default editor for questions:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:696
+msgid "Privacy note for email addresses - HTML allowed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:697
+msgid "Custom field for extra information on ask form:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:698
+msgid "Show the extra information on question pages"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:699
+msgid "Email address for admin messages - not shown to users:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:700
+msgid "Provide a page for users to send feedback"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:701
+msgid "Feed for recent activity:"
+msgstr "RSS недавней активности:"
+
+#: qa-include/qa-page-admin-default.php:702
+msgid "Feed for hot questions:"
+msgstr "RSS горячих вопросов:"
+
+#: qa-include/qa-page-admin-default.php:703
+msgid "Feed for recent questions and answers:"
+msgstr "RSS для недавних вопросов и ответов:"
+
+#: qa-include/qa-page-admin-default.php:704
+msgid "Feed for recent questions:"
+msgstr "RSS для недавних вопросов:"
+
+#: qa-include/qa-page-admin-default.php:705
+msgid "Feeds for search results:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:706
+msgid "Feed for each tag's questions:"
+msgstr "RSS для вопросов с каждым из тегов:"
+
+#: qa-include/qa-page-admin-default.php:707
+msgid "Feed for unanswered questions:"
+msgstr "RSS для вопросов без ответа:"
+
+#: qa-include/qa-page-admin-default.php:708
+msgid "Include full text in feeds:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:709
+msgid "Maximum length of feeds:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:710
+msgid "Individual feeds per category:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:711
+msgid "Automatically hide posts which reach:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:712
+msgid "Email me again after every additional:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:713
+msgid "Email me if a post receives:"
+msgstr "Уведомлять меня после первого добавленного ответа или комментария:"
+
+#: qa-include/qa-page-admin-default.php:714
+msgid "Allow posts to be flagged:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:715
+msgid "Allow questions to be related to answers:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:716
+msgid "Sender address for messages from site:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:717
+msgid "Question has a new answer:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:718
+msgid "Question has many answers:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:719
+msgid "Question is new:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:720
+msgid "Question has many views:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:721
+msgid "Question has many up votes:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:722
+msgid "Open linked URLs in a new window:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:723
+msgid "Logo height:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:724
+msgid "Show a logo image in the page header"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:725
+msgid "URL of logo - absolute or relative to Q2A root:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:726
+msgid "Logo width:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:727
+msgid "Body text:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:728
+msgid "Enable mass mailings to all users"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:729
+msgid "From email address:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:730
+msgid "From name:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:731
+msgid "Maximum mailing rate:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:732
+msgid "Subject line:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:733
+msgid "Similar questions matching:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:734
+msgid "Example tags matching:"
+msgstr "Пример соответствия тегов:"
+
+#: qa-include/qa-page-admin-default.php:735
+msgid "Related questions matching:"
+msgstr "Сравнение связанных вопросов:"
+
+#: qa-include/qa-page-admin-default.php:736
+msgid "Maximum length of question title:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:737
+msgid "Maximum number of tags:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:738
+msgid "Rate limit for adding answers:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:739
+msgid "Rate limit for posting comments:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:740
+msgid "Rate limit for flagging posts:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:741
+msgid "Rate limit for logging in:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:742
+msgid "Rate limit for private and wall messages:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:743
+msgid "Rate limit for asking questions:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:744
+msgid "Rate limit for user registrations:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:745
+msgid "Rate limit for uploading files:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:746
+msgid "Rate limit for voting:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:747
+msgid "Maximum answers per user per hour:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:748
+msgid "Maximum comments per user per hour:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:749
+msgid "Maximum flags per user per hour:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:750
+msgid "Maximum private messages per user per hour:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:751
+msgid "Maximum questions per user per hour:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:752
+msgid "Maximum uploads per user per hour:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:753
+msgid "Maximum votes per user per hour:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:754
+msgid "Minimum length of answer:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:755
+msgid "Minimum length of comment:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:756
+msgid "Minimum length of question body:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:757
+msgid "Minimum length of question title:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:758
+msgid "Minimum number of tags:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:759
+msgid "Use moderation for anonymous posts:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:760
+msgid "Use moderation for users with few points:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:761
+msgid "Re-moderate posts after editing:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:762
+msgid "Email me when a post needs moderation:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:763
+#: qa-include/qa-page-admin-default.php:1459
+msgid "Use moderation for users with less than:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:764
+msgid "Use moderation if user not yet approved:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:765
+msgid "Use moderation if email not confirmed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:766
+msgid "Time to show on moderated posts:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:767
+msgid "Enable moderation (approval) of users:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:768
+msgid "URL structure:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:769
+msgid "Email this address when a question is posted"
+msgstr "Информировать меня по почте о новых заданных вопросах"
+
+#: qa-include/qa-page-admin-default.php:770
+msgid "Check email notification box by default:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:771
+msgid "Length of All Activity page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:772
+msgid "Maximum similar questions to show:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:773
+msgid "Maximum tag hints to show:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:774
+msgid "Length of Q&A page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:775
+msgid "Length of Hot! page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:776
+msgid "Maximum answers per page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:777
+msgid "Length of Questions page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:778
+msgid "Maximum related questions:"
+msgstr "Максимум похожих вопросов:"
+
+#: qa-include/qa-page-admin-default.php:779
+msgid "Search results per page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:780
+msgid "Questions on each tag page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:781
+msgid "Length of Tags page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:782
+msgid "Length of Unanswered page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:783
+msgid "Length of Users page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:784
+msgid "Wall posts per page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:785
+msgid "Links to previous/next pages:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:786
+msgid "Remove accents from question URLs:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:787
+msgid "Question title length in URLs:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:788
+msgid "Email me when a new user registers:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:789
+msgid "Use search module:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:790
+msgid "Show answer form immediately:"
+msgstr "Отображение формы ответа:"
+
+#: qa-include/qa-page-admin-default.php:791
+msgid "Show reply button on comments:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:792
+msgid "Custom message on answer form - HTML allowed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:793
+msgid "Custom message on ask form - HTML allowed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:794
+msgid "Custom message on comment form - HTML allowed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:795
+msgid "Custom HTML at bottom of every page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:796
+msgid "Custom HTML at top of every page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:797
+msgid "Custom content in home page instead of Q&A"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:798
+msgid "Custom HTML in <head> section of every page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:799
+msgid "Custom message on register form - HTML allowed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:800
+msgid "Custom HTML in sidebar box on every page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:801
+msgid "Custom HTML in side panel on every page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:802
+msgid "Custom message in email sent to new registered users:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:803
+msgid "If partially hidden, show most recent:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:804
+msgid "Partially hide comments if more than:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:805
+msgid "Show full date after:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:806
+msgid "Include <meta> description for home page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:807
+msgid "Store and display private message history:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:808
+msgid "Notice at top for first time visitors - HTML allowed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:809
+msgid "Notice at top for new registered users - HTML allowed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:810
+msgid "Move selected answer to the top:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:811
+msgid "Detect and link URLs in posts:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:812
+msgid "Show points next to usernames:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:813
+msgid "Show titles next to usernames:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:814
+msgid "Show view count on question pages:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:815
+msgid "Show view count in question lists:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:816
+msgid "Show age of user posts:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:817
+msgid "Site language:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:818
+msgid "Take site down for temporary maintenance"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:819
+msgid "Theme for mobiles:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:820
+msgid "Site theme:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:821
+msgid "Q&A site name:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:822
+msgid "Preferred site URL:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:823
+msgid "Send email via SMTP instead of local mail"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:824
+msgid "SMTP server address:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:825
+msgid "Send SMTP username and password"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:826
+msgid "SMTP password:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:827
+msgid "SMTP server port:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:828
+msgid "SMTP secure connection:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:829
+msgid "SMTP username:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:830
+msgid "Sort answers by:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:831
+msgid "Temporarily suspend new user registrations:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:832
+msgid "Use comma as the only tag separator:"
+msgstr "Использовать запятую как разделитель тегов:"
+
+#: qa-include/qa-page-admin-default.php:833
+msgid "Question classification:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:834
+msgid "Show separate up and down votes:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:835
+msgid "Allow voting on answers:"
+msgstr "Разрешить голосовать за ответы:"
+
+#: qa-include/qa-page-admin-default.php:836
+msgid "Allow voting on question page only:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:837
+msgid "Allow voting on questions:"
+msgstr "Разрешить голосовать за вопросы:"
+
+#: qa-include/qa-page-admin-default.php:856
+msgid "Options reset"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:961
+#, php-format
+msgid "The test message was sent to %s"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1028
+msgid "Save Options"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1033
+msgid "Reset to Defaults"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1129
+#, php-format
+msgid " (max %d)"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1140
+#, php-format
+msgid " - %scheck language files%s"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1146
+msgid "The installed version of PHP was compiled without multibyte string support. Searching will be less effective for non-Roman characters."
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1165
+#, php-format
+msgid " (requires %shtaccess%s file)"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1174
+#, php-format
+msgid "Options with the %s label are working for your site's configuration. For best search engine optimization (SEO), use the first %s option available."
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1215
+#: qa-include/qa-page-admin-plugins.php:145
+#, php-format
+msgid "by %s"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1238
+#: qa-include/qa-page-admin-pages.php:73 qa-include/qa-page-favorites.php:111
+#: qa-include/qa-page.php:561
+msgid "Tags"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1240
+msgid "Tags and Categories"
+msgstr "Теги и категории"
+
+#: qa-include/qa-page-admin-default.php:1246
+msgid "Some questions have tags which will not be displayed."
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1251
+msgid "Some questions have categories which will not be displayed."
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1302
+msgid "The installed version of PHP was compiled without GD image support, so users cannot upload their avatars directly."
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1314
+#: qa-include/qa-page-admin-default.php:1326
+msgid "pixels"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1343
+msgid "characters"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1348
+msgid " tags"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1352
+msgid " days"
+msgstr " дней"
+
+#: qa-include/qa-page-admin-default.php:1357
+msgid "Time"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1358
+msgid "Votes"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1363
+msgid " answers"
+msgstr " ответов"
+
+#: qa-include/qa-page-admin-default.php:1368
+msgid "Always"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1369
+msgid "If no answers"
+msgstr "Если нет ответов"
+
+#: qa-include/qa-page-admin-default.php:1370
+msgid "Never"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1376
+msgid " comments"
+msgstr " комментариев"
+
+#: qa-include/qa-page-admin-default.php:1388
+msgid "Use a * to match any letters. Examples: doh (will only match exact word doh) , doh* (will match doh or dohno) , do*h (will match doh, dooh, dough)."
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1400
+msgid "Basic Editor"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1406
+#: qa-include/qa-page-admin-default.php:1444
+#: qa-include/qa-page-admin-default.php:1644
+#: qa-include/qa-page-admin-pages.php:532
+#: qa-include/qa-page-admin-plugins.php:169
+msgid "options"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1430
+msgid "Show the extra information on question pages with label:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1464
+#: qa-include/qa-page-admin-default.php:1571
+#: qa-include/qa-page-admin-points.php:161
+msgid "points"
+msgstr "баллов"
+
+#: qa-include/qa-page-admin-default.php:1470
+msgid " flags"
+msgstr " жалоб"
+
+#: qa-include/qa-page-admin-default.php:1476
+msgid "Use a hyphen for ranges or * to match any number. Examples: 192.168.0.4 , 192.168.0.0-192.168.0.31 , 192.168.0.*"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1508
+#: qa-include/qa-page-user-profile.php:522
+msgid "Recategorizing any question"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1508
+#: qa-include/qa-page-user-profile.php:522
+msgid "Retagging any question"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1570
+msgid "Users must have"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1631
+msgid "add registration fields"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1653
+msgid "Time written"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1654
+msgid "Time approved"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1667
+msgid "per IP/hour"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1678
+msgid "per user/hour"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1682
+msgid "emails per minute"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1687
+msgid "Example feed"
+msgstr "Пример feed"
+
+#: qa-include/qa-page-admin-default.php:1687
+msgid "Feed"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1705
+#, php-format
+msgid " - %sedit field%s"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1713
+msgid "Add new field"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1718
+msgid "Extra fields on user pages or registration form:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1733
+#, php-format
+msgid "%d point"
+msgid_plural "%d points"
+msgstr[0] "%d балл"
+msgstr[1] "%d балла"
+msgstr[2] "%d баллов"
+
+#: qa-include/qa-page-admin-default.php:1735
+#, php-format
+msgid " - %sedit title%s"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1743
+msgid "Add new title"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1746
+msgid "User titles based on points:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1762
+#, php-format
+msgid " - %sadd widget%s"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1768
+#, php-format
+msgid " - %soptions%s"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1778
+msgid "Available widgets:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1800
+msgid "Currently active widgets:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1810
+msgid "Blocking or unblocking user or IPs:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1817
+msgid "Approving registered users:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1823
+msgid "Creating experts:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1829
+msgid "Viewing user email addresses:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1835
+msgid "Deleting users:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1841
+msgid "Creating editors and moderators:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1847
+msgid "Creating administrators:"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1871
+msgid "Pause Mailing"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1877
+msgid "Resume Mailing"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1882
+msgid "Cancel Mailing"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1891
+msgid "Send Test to Me"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1896
+msgid "Start Mailing"
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1901
+msgid "Users will be able to unsubscribe on their account page."
+msgstr ""
+
+#: qa-include/qa-page-admin-default.php:1903
+msgid "An unsubscribe link will be added at the bottom of every message."
+msgstr ""
+
+#: qa-include/qa-page-admin-flagged.php:77
+msgid "Flagged content"
+msgstr ""
+
+#: qa-include/qa-page-admin-flagged.php:118
+#: qa-include/qa-page-question-view.php:279
+#: qa-include/qa-page-question-view.php:468
+#: qa-include/qa-page-question-view.php:589
+msgid "clear flags"
+msgstr ""
+
+#: qa-include/qa-page-admin-flagged.php:123
+#: qa-include/qa-page-question-view.php:311
+#: qa-include/qa-page-question-view.php:487
+#: qa-include/qa-page-question-view.php:608
+msgid "hide"
+msgstr ""
+
+#: qa-include/qa-page-admin-flagged.php:132
+msgid "No flagged content found"
+msgstr ""
+
+#: qa-include/qa-page-admin-hidden.php:91
+msgid "Recent hidden content"
+msgstr ""
+
+#: qa-include/qa-page-admin-hidden.php:138
+#: qa-include/qa-page-question-view.php:318
+#: qa-include/qa-page-question-view.php:494
+#: qa-include/qa-page-question-view.php:615
+msgid "reshow"
+msgstr "показать снова"
+
+#: qa-include/qa-page-admin-hidden.php:157
+msgid "No hidden content found"
+msgstr ""
+
+#: qa-include/qa-page-admin-moderate.php:81
+msgid "Recent content waiting for approval"
+msgstr ""
+
+#: qa-include/qa-page-admin-moderate.php:125
+#: qa-include/qa-page-question-view.php:304
+#: qa-include/qa-page-question-view.php:480
+#: qa-include/qa-page-question-view.php:601
+msgid "reject"
+msgstr ""
+
+#: qa-include/qa-page-admin-moderate.php:134
+msgid "No content is waiting for approval"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:67 qa-include/qa-page.php:523
+msgid "Home"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:68 qa-include/qa-page.php:529
+msgid "All Activity"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:69
+msgid "Q&A (links to home page)"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:70 qa-include/qa-page-favorites.php:66
+#: qa-include/qa-page.php:543
+msgid "Questions"
+msgstr "Вопросы"
+
+#: qa-include/qa-page-admin-pages.php:72 qa-include/qa-page.php:555
+msgid "Unanswered"
+msgstr "Без ответа"
+
+#: qa-include/qa-page-admin-pages.php:76 qa-include/qa-page.php:581
+msgid "Ask a Question"
+msgstr "Спросить"
+
+#: qa-include/qa-page-admin-pages.php:180
+#: qa-include/qa-page-admin-pages.php:184
+#, php-format
+msgid "page-%s"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:294
+msgid "No link"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:297
+msgid "Before tabs at top"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:298
+msgid "After tabs at top"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:299
+msgid "Far end of tabs at top"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:300
+msgid "After links in footer"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:311
+#: qa-include/qa-page-admin-pages.php:325
+#, php-format
+msgid "After \"%s\" tab"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:343
+msgid "Text of link:"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:343
+msgid "Name of page (also used for tab or link):"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:350
+msgid "Delete this link"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:350
+msgid "Delete this page"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:367
+#: qa-include/qa-page-admin-userfields.php:204
+msgid "Visible for:"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:376
+msgid "Page slug (URL fragment):"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:384
+msgid "URL of link - absolute or relative to Q2A root:"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:392
+msgid "Open link in a new window"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:400
+msgid "Heading to display at top of page:"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:408
+msgid "Content to display in page - HTML allowed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:417
+#: qa-include/qa-page-admin-pages.php:484
+msgid "Add Link"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:417
+#: qa-include/qa-page-admin-pages.php:479
+msgid "Add Page"
+msgstr "Добавить страницу"
+
+#: qa-include/qa-page-admin-pages.php:494
+msgid "Show navigation links:"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:524
+#, php-format
+msgid " (plugin module: %s)"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:526
+#, php-format
+msgid " - %sadd link%s"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:540
+msgid "Pages available via plugins:"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:552
+#, php-format
+msgid " - %sedit link%s"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:552
+#, php-format
+msgid " - %sedit page%s"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:561
+msgid "Custom pages or links:"
+msgstr ""
+
+#: qa-include/qa-page-admin-pages.php:561
+msgid "Click the 'Add Page' button to add custom content to your Q2A site, or 'Add Link' to link to any other web page."
+msgstr ""
+
+#: qa-include/qa-page-admin-plugins.php:129
+msgid "Unnamed Plugin"
+msgstr ""
+
+#: qa-include/qa-page-admin-plugins.php:176
+#, php-format
+msgid "Disabled - requires Question2Answer %s or later"
+msgstr ""
+
+#: qa-include/qa-page-admin-plugins.php:180
+#, php-format
+msgid "Disabled - requires PHP %s or later"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:95
+msgid "Save and Recalculate"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:108
+msgid "Defaults shown below but NOT YET APPLIED:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:130
+msgid "Show Defaults"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:135
+msgid "Having your answer selected as the best:"
+msgstr "Ответ выбран как лучший:"
+
+#: qa-include/qa-page-admin-points.php:136
+msgid "Limit from up votes on each answer:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:137
+msgid "Limit from down votes on each answer:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:138
+msgid "Add for all users:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:139
+msgid "Multiply all points:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:140
+msgid "Per down vote on your answer:"
+msgstr "Голос против ответа пользователя:"
+
+#: qa-include/qa-page-admin-points.php:141
+msgid "Per up vote on your answer:"
+msgstr "Голос за ответ пользователя:"
+
+#: qa-include/qa-page-admin-points.php:142
+msgid "Per down vote on your question:"
+msgstr "Голос против вопроса пользователя:"
+
+#: qa-include/qa-page-admin-points.php:143
+msgid "Per up vote on your question:"
+msgstr "Голос за вопрос пользователя:"
+
+#: qa-include/qa-page-admin-points.php:144
+msgid "Posting an answer:"
+msgstr "Ответ на вопрос:"
+
+#: qa-include/qa-page-admin-points.php:145
+msgid "Posting a question:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:146
+msgid "Limit from up votes on each question:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:147
+msgid "Limit from down votes on each question:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:148
+msgid "Selecting an answer for your question:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:149
+msgid "Voting down an answer:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:150
+msgid "Voting down a question:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:151
+msgid "Voting up an answer:"
+msgstr ""
+
+#: qa-include/qa-page-admin-points.php:152
+msgid "Voting up a question:"
+msgstr "Голосование за вопрос:"
+
+#: qa-include/qa-page-admin-recalc.php:133 qa-include/qa-page-not-found.php:40
+msgid "Page not found"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:68
+msgid "Question2Answer version:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:73
+msgid "Build date:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:78
+msgid "Latest version:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:89
+msgid "Q2A database version:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:94
+msgid "Database size:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:103
+msgid "PHP version:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:108
+msgid "MySQL version:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:122
+#: qa-include/qa-page-admin-stats.php:141
+#: qa-include/qa-page-admin-stats.php:160
+msgid "From users:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:127
+#: qa-include/qa-page-admin-stats.php:146
+#: qa-include/qa-page-admin-stats.php:165
+msgid "From anonymous:"
+msgstr "От анонимов:"
+
+#: qa-include/qa-page-admin-stats.php:136
+msgid "Total answers:"
+msgstr "Всего ответов"
+
+#: qa-include/qa-page-admin-stats.php:155
+msgid "Total comments:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:174
+msgid "Registered users:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:179
+msgid "Active users:"
+msgstr "Активных пользователей:"
+
+#: qa-include/qa-page-admin-stats.php:184
+msgid "Users who posted:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:189
+msgid "Users who voted:"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:207
+msgid "Database clean-up operations"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:213
+msgid "Recount posts"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:214
+msgid "Stop recounting"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:215
+msgid " - the number of answers, votes, flags and hotness for each post"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:219
+msgid "Reindex content"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:220
+msgid "Stop reindexing"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:221
+msgid " - for searching and related question suggestions"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:225
+msgid "Recalculate user points"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:226
+#: qa-include/qa-page-admin-stats.php:232
+#: qa-include/qa-page-admin-stats.php:238
+msgid "Stop recalculating"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:227
+msgid " - for user ranking and points displays"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:231
+msgid "Refill event streams"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:233
+msgid " - for each user's list of updates"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:239
+msgid " - for post categories and category counts"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:243
+msgid "Delete hidden posts"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:244
+msgid "Stop deleting"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:245
+msgid " - all hidden questions, answer and comments without dependents"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:260
+msgid "Blobs to disk"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:261
+#: qa-include/qa-page-admin-stats.php:268
+msgid "Stop migrating"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:262
+msgid "- migrate all uploaded images and documents from the database to disk files"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:267
+msgid "Blobs to database"
+msgstr ""
+
+#: qa-include/qa-page-admin-stats.php:269
+msgid "- migrate all uploaded images and documents from disk files to the database"
+msgstr ""
+
+#: qa-include/qa-page-admin-userfields.php:164
+msgid "Single line of text"
+msgstr ""
+
+#: qa-include/qa-page-admin-userfields.php:165
+msgid "Multiple lines of text"
+msgstr ""
+
+#: qa-include/qa-page-admin-userfields.php:166
+msgid "Linked URL"
+msgstr ""
+
+#: qa-include/qa-page-admin-userfields.php:180
+msgid "Field name:"
+msgstr ""
+
+#: qa-include/qa-page-admin-userfields.php:187
+msgid "Delete this field"
+msgstr ""
+
+#: qa-include/qa-page-admin-userfields.php:195
+msgid "Content type:"
+msgstr ""
+
+#: qa-include/qa-page-admin-userfields.php:222
+msgid "Show field on user registration form"
+msgstr ""
+
+#: qa-include/qa-page-admin-userfields.php:230
+msgid "Add Field"
+msgstr ""
+
+#: qa-include/qa-page-admin-usertitles.php:85
+msgid "This value is already being used by another title"
+msgstr ""
+
+#: qa-include/qa-page-admin-usertitles.php:132
+msgid "User title - HTML allowed:"
+msgstr ""
+
+#: qa-include/qa-page-admin-usertitles.php:139
+msgid "Delete this title"
+msgstr ""
+
+#: qa-include/qa-page-admin-usertitles.php:147
+msgid "Points required to receive title:"
+msgstr ""
+
+#: qa-include/qa-page-admin-usertitles.php:156
+msgid "Add Title"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:73
+msgid "Question pages"
+msgstr "Страницы вопросов"
+
+#: qa-include/qa-page-admin-widgets.php:77
+msgid "Question lists"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:81 qa-include/qa-page-tags.php:52
+msgid "Most popular tags"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:82
+#: qa-include/qa-page-categories.php:91
+msgid "Browse categories"
+msgstr "Обзор категорий"
+
+#: qa-include/qa-page-admin-widgets.php:84 qa-include/qa-page-ask.php:161
+#: qa-include/qa-widget-ask-box.php:83
+msgid "Ask a question"
+msgstr "Задать вопрос"
+
+#: qa-include/qa-page-admin-widgets.php:86
+msgid "Tag pages"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:87
+msgid "User pages"
+msgstr "Страницы пользователей"
+
+#: qa-include/qa-page-admin-widgets.php:88 qa-include/qa-page-message.php:158
+msgid "Send a private message"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:90 qa-include/qa-page.php:600
+msgid "Search results"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:91 qa-include/qa-page-feedback.php:124
+#: qa-include/qa-page.php:491
+msgid "Send feedback"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:93 qa-include/qa-page-login.php:107
+msgid "Log in"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:94 qa-include/qa-page-register.php:131
+msgid "Register as a new user"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:97 qa-include/qa-page-updates.php:59
+msgid "Recent updates for me"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:99
+msgid "IP address pages"
+msgstr "Страницы IP-адресов"
+
+#: qa-include/qa-page-admin-widgets.php:236
+msgid "Name of widget:"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:252
+msgid "Delete this widget from this position"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:259
+msgid "Show widget in this position on all available pages"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:267
+msgid "Show widget in this position on the following pages:"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:275
+msgid "Add Widget"
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:313
+msgid "This widget is not available. This could be because the plugin providing the widget is no longer installed."
+msgstr ""
+
+#: qa-include/qa-page-admin-widgets.php:322
+msgid "This widget has already been added to every available position."
+msgstr ""
+
+#: qa-include/qa-page-answers.php:55
+#, php-format
+msgid "Recently answered questions in %s"
+msgstr "Недавно отвеченные вопросы в %s"
+
+#: qa-include/qa-page-answers.php:56
+#, php-format
+msgid "No answers in %s"
+msgstr "Нет ответов в %s"
+
+#: qa-include/qa-page-answers.php:60
+msgid "No answers found"
+msgstr "Ответов не найдено"
+
+#: qa-include/qa-page-ask.php:74
+msgid "Please ^1log in^2 or ^3register^4 to ask a question."
+msgstr ""
+
+#: qa-include/qa-page-ask.php:78
+msgid "Please ^5confirm your email address^6 to ask a question."
+msgstr ""
+
+#: qa-include/qa-page-ask.php:82
+msgid "question/ask_limit"
+msgstr ""
+
+#: qa-include/qa-page-ask.php:86
+msgid "Your account must be approved before you ask a question."
+msgstr "Чтобы задать вопрос необходимо утверждение учётной записи."
+
+#: qa-include/qa-page-ask.php:135
+msgid "Please choose a category"
+msgstr ""
+
+#: qa-include/qa-page-ask.php:137 qa-include/qa-page-question-post.php:481
+msgid "You do not have permission to ask questions in this category"
+msgstr "У вас нет прав задавать вопросы в этой категории"
+
+#: qa-include/qa-page-ask.php:161
+msgid "Ask a related question"
+msgstr "Задать связанный вопрос"
+
+#: qa-include/qa-page-ask.php:168 qa-include/qa-page-question-post.php:332
+msgid "More information for the question:"
+msgstr ""
+
+#: qa-include/qa-page-ask.php:185 qa-include/qa-page-question-post.php:320
+msgid "The question in one sentence:"
+msgstr ""
+
+#: qa-include/qa-page-ask.php:203
+msgid "Ask the Question"
+msgstr "Спросить"
+
+#: qa-include/qa-page-ask.php:230
+msgid "Your question will be related to this answer:"
+msgstr ""
+
+#: qa-include/qa-page-ask.php:239 qa-include/qa-page-question-post.php:327
+msgid "Category:"
+msgstr "Категория"
+
+#: qa-include/qa-page-categories.php:111
+msgid "No categories found"
+msgstr "Категорий не найдено"
+
+#: qa-include/qa-page-comments.php:55
+#, php-format
+msgid "No comments in %s"
+msgstr "Нет комментариев в %s"
+
+#: qa-include/qa-page-comments.php:59
+msgid "No comments found"
+msgstr "Комментариев не найдено"
+
+#: qa-include/qa-page-confirm.php:90 qa-include/qa-page.php:285
+msgid "Email Address Confirmation"
+msgstr ""
+
+#: qa-include/qa-page-confirm.php:94
+msgid "A confirmation link has been emailed to you. Please click the link to confirm your email address."
+msgstr ""
+
+#: qa-include/qa-page-confirm.php:97
+msgid "Thank you - your email address has been confirmed"
+msgstr ""
+
+#: qa-include/qa-page-confirm.php:101
+#, php-format
+msgid "You may now %slog in%s to access your account."
+msgstr ""
+
+#: qa-include/qa-page-confirm.php:110
+msgid "Code not correct - please click below to send a new link"
+msgstr ""
+
+#: qa-include/qa-page-confirm.php:122
+#, php-format
+msgid " - %schange email%s"
+msgstr ""
+
+#: qa-include/qa-page-confirm.php:133
+msgid "Send Confirmation Link"
+msgstr ""
+
+#: qa-include/qa-page-confirm.php:148
+msgid "Code not correct - please ^1log in^2 to send a new link"
+msgstr ""
+
+#: qa-include/qa-page-default.php:80
+msgid "Edit custom page"
+msgstr ""
+
+#: qa-include/qa-page-favorites.php:66
+msgid "No favorite questions"
+msgstr "Нет избранных вопросов"
+
+#: qa-include/qa-page-favorites.php:92
+msgid "No favorite users"
+msgstr "Нет избранных пользователей"
+
+#: qa-include/qa-page-favorites.php:111
+msgid "No favorite tags"
+msgstr "Нет избранных тегов"
+
+#: qa-include/qa-page-favorites.php:129
+msgid "No favorite categories"
+msgstr "Нет избранных категорий"
+
+#. Sub navigation for account pages and suggestion
+#: qa-include/qa-page-favorites.php:149
+#, php-format
+msgid "To add a question or other item to your favorites, click the %s at the top of its page."
+msgstr ""
+
+#: qa-include/qa-page-feedback.php:79
+msgid "Please use this field to send some comments or suggestions"
+msgstr ""
+
+#: qa-include/qa-page-feedback.php:100
+#, php-format
+msgid "%s feedback"
+msgstr ""
+
+#: qa-include/qa-page-feedback.php:101
+msgid ""
+"Comments:\n"
+"^message\n"
+"\n"
+"Name:\n"
+"^name\n"
+"\n"
+"Email:\n"
+"^email\n"
+"\n"
+"Previous page:\n"
+"^previous\n"
+"\n"
+"User:\n"
+"^url\n"
+"\n"
+"IP address:\n"
+"^ip\n"
+"\n"
+"Browser:\n"
+"^browse"
+msgstr ""
+
+#: qa-include/qa-page-feedback.php:136
+#, php-format
+msgid "Your comments or suggestions for %s:"
+msgstr "Ваши комментарии или предложения для %s:"
+
+#: qa-include/qa-page-feedback.php:145
+msgid "Your name: (optional)"
+msgstr "Ваше имя (по желанию):"
+
+#: qa-include/qa-page-feedback.php:152
+msgid "Your email: (optional)"
+msgstr "Ваш e-mail (по желанию):"
+
+#: qa-include/qa-page-feedback.php:161 qa-include/qa-page-message.php:182
+msgid "Send"
+msgstr ""
+
+#: qa-include/qa-page-feedback.php:179
+msgid "Your message below was sent - thank you."
+msgstr ""
+
+#. if we get more than one match (should be impossible) also give an error
+#: qa-include/qa-page-forgot.php:68 qa-include/qa-page-login.php:93
+#: qa-include/qa-page-reset.php:77
+msgid "User not found"
+msgstr ""
+
+#: qa-include/qa-page-forgot.php:88 qa-include/qa-page-reset.php:90
+msgid "Reset Forgotten Password"
+msgstr ""
+
+#: qa-include/qa-page-forgot.php:98 qa-include/qa-page-login.php:127
+#: qa-include/qa-page-reset.php:107
+msgid "Email or Username:"
+msgstr ""
+
+#: qa-include/qa-page-forgot.php:102
+msgid "A message will be sent to your email address with instructions."
+msgstr ""
+
+#: qa-include/qa-page-forgot.php:108
+msgid "Send Reset Password Email"
+msgstr ""
+
+#: qa-include/qa-page-ip.php:149
+msgid "Host name:"
+msgstr ""
+
+#: qa-include/qa-page-ip.php:173
+msgid "Matches blocked IP addresses:"
+msgstr ""
+
+#: qa-include/qa-page-ip.php:179
+msgid "Unblock IP address"
+msgstr "Разблокировать IP-адрес"
+
+#: qa-include/qa-page-ip.php:185
+msgid "Hide all posts from this IP"
+msgstr ""
+
+#: qa-include/qa-page-ip.php:191
+msgid "Block IP address"
+msgstr "Заблокировать IP-адрес"
+
+#: qa-include/qa-page-ip.php:199
+#, php-format
+msgid "Recent activity from %s"
+msgstr "Недавняя активность %s"
+
+#: qa-include/qa-page-ip.php:231
+#, php-format
+msgid "No activity from %s"
+msgstr ""
+
+#: qa-include/qa-page-login.php:97
+msgid "Too many login attempts - please try again in an hour"
+msgstr ""
+
+#: qa-include/qa-page-login.php:116
+msgid "I forgot my password"
+msgstr ""
+
+#: qa-include/qa-page-login.php:123 qa-include/qa-page-login.php:139
+msgid "Your new password was emailed to you"
+msgstr ""
+
+#: qa-include/qa-page-login.php:135 qa-include/qa-page-register.php:157
+msgid "Password:"
+msgstr ""
+
+#: qa-include/qa-page-login.php:144
+msgid "Remember me on this computer"
+msgstr ""
+
+#: qa-include/qa-page-login.php:152
+msgid "Log In"
+msgstr ""
+
+#: qa-include/qa-page-message.php:51
+msgid "Please ^1log in^2 or ^3register^4 to send private messages."
+msgstr ""
+
+#: qa-include/qa-page-message.php:77
+msgid "You cannot send more private messages this hour"
+msgstr ""
+
+#: qa-include/qa-page-message.php:107
+msgid "Please enter your message to send to this user"
+msgstr ""
+
+#: qa-include/qa-page-message.php:121
+#, php-format
+msgid ""
+"Click below to reply to %s by private message:\n"
+"\n"
+"%s\n"
+"\n"
+msgstr ""
+
+#: qa-include/qa-page-message.php:121
+#, php-format
+msgid ""
+"More information about %s:\n"
+"\n"
+"%s\n"
+"\n"
+msgstr ""
+
+#: qa-include/qa-page-message.php:135
+msgid "Message from ^f_handle on ^site_title"
+msgstr ""
+
+#: qa-include/qa-page-message.php:135
+msgid ""
+"You have been sent a private message by ^f_handle on ^site_title:\n"
+"\n"
+"^open^message^close\n"
+"\n"
+"^moreThank you,\n"
+"\n"
+"^site_title\n"
+"\n"
+"\n"
+"To block private messages, visit your account page:\n"
+"^a_url"
+msgstr ""
+
+#: qa-include/qa-page-message.php:170
+#, php-format
+msgid "Your message for %s:"
+msgstr ""
+
+#: qa-include/qa-page-message.php:174
+#, php-format
+msgid "This will be sent as a notification from %s. Your email address will not be revealed unless you include it in the message."
+msgstr ""
+
+#: qa-include/qa-page-message.php:195
+msgid "Your private message below was sent"
+msgstr ""
+
+#: qa-include/qa-page-message.php:218
+#, php-format
+msgid "Recent correspondence with %s"
+msgstr ""
+
+#: qa-include/qa-page.php:266
+#, php-format
+msgid "Your site is in %smaintenance%s and is currently inaccessible to regular users."
+msgstr ""
+
+#: qa-include/qa-page.php:273
+msgid "This site is currently down for maintenance - please come back soon."
+msgstr ""
+
+#: qa-include/qa-page.php:286
+#, php-format
+msgid "To complete your registration, please click the confirmation link that has been emailed to you, or %srequest another%s."
+msgstr ""
+
+#: qa-include/qa-page.php:293
+msgid "User approval pending"
+msgstr ""
+
+#: qa-include/qa-page.php:294
+#, php-format
+msgid "Please wait for your account to be approved or %sadd more information%s."
+msgstr ""
+
+#: qa-include/qa-page.php:593
+msgid "Admin"
+msgstr ""
+
+#: qa-include/qa-page.php:602
+msgid "Search"
+msgstr ""
+
+#: qa-include/qa-page.php:665
+msgid "Hello ^"
+msgstr ""
+
+#: qa-include/qa-page.php:673
+msgid "My Account"
+msgstr ""
+
+#: qa-include/qa-page.php:678
+msgid "My Updates"
+msgstr ""
+
+#: qa-include/qa-page.php:684
+msgid "Logout"
+msgstr ""
+
+#: qa-include/qa-page.php:725
+msgid "Login"
+msgstr ""
+
+#: qa-include/qa-page.php:731 qa-include/qa-page-register.php:175
+msgid "Register"
+msgstr ""
+
+#: qa-include/qa-page-question.php:93
+msgid "This question is waiting for approval"
+msgstr ""
+
+#: qa-include/qa-page-question.php:95
+msgid "This question has been flagged and hidden"
+msgstr ""
+
+#: qa-include/qa-page-question.php:97
+msgid "This question has been hidden by its author"
+msgstr ""
+
+#: qa-include/qa-page-question.php:99
+msgid "This question has been hidden"
+msgstr "Этот вопрос был скрыт"
+
+#: qa-include/qa-page-question.php:114
+msgid "Please ^1log in^2 or ^3register^4 to view question pages."
+msgstr ""
+
+#: qa-include/qa-page-question.php:118
+msgid "Please ^5confirm your email address^6 to view question pages."
+msgstr ""
+
+#: qa-include/qa-page-question.php:122
+msgid "Your account must be approved to view question pages."
+msgstr "Для просмотра страниц с вопросами необходимо утверждение учётной записи."
+
+#: qa-include/qa-page-question.php:188
+msgid "Remove this question from my favorites"
+msgstr "Удалить этот вопрос из моего избранного"
+
+#: qa-include/qa-page-question.php:188
+msgid "Add this question to my favorites"
+msgstr "Добавить этот вопрос в моё избранное"
+
+#: qa-include/qa-page-question.php:196
+msgid "Your question will be checked and approved shortly."
+msgstr ""
+
+#: qa-include/qa-page-question.php:196
+msgid "This question is waiting for your approval"
+msgstr ""
+
+#. Prepare content for the question...
+#. ...in edit mode
+#: qa-include/qa-page-question.php:207
+msgid "Edit Question"
+msgstr "Редактирование вопроса"
+
+#: qa-include/qa-page-question.php:208
+msgid "Recategorize question"
+msgstr "Смена категории вопроса"
+
+#: qa-include/qa-page-question.php:208
+msgid "Retag question"
+msgstr "Смена тегов вопроса"
+
+#: qa-include/qa-page-question-post.php:57
+#: qa-include/qa-page-question-view.php:732
+msgid "Please ^1log in^2 or ^3register^4 to answer this question."
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:61
+#: qa-include/qa-page-question-view.php:738
+msgid "Please ^5confirm your email address^6 to answer this question."
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:65
+#: qa-include/qa-page-question-view.php:744
+msgid "Your account must be approved before you answer a question."
+msgstr "Учётная запись должна быть утверждена, чтобы вы могли отвечать на вопросы."
+
+#: qa-include/qa-page-question-post.php:69
+#: qa-include/qa-page-question-submit.php:185
+#: qa-include/qa-page-question-view.php:750
+msgid "Too many answers received - please try again in an hour"
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:288
+msgid "Please ^1log in^2 or ^3register^4 to edit this."
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:292
+msgid "Please ^5confirm your email address^6 to edit this."
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:413
+#: qa-include/qa-page-question-post.php:759
+#: qa-include/qa-page-question-post.php:963
+msgid "Save silently to hide that this was edited"
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:536
+msgid "Close this question"
+msgstr "Закрытие вопроса"
+
+#: qa-include/qa-page-question-post.php:542
+msgid "This is a duplicate of another question"
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:549
+msgid "URL of the original question:"
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:550
+msgid "Reason for closing this question:"
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:551
+msgid "You can also enter the question number from the URL, e.g. 123."
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:560
+msgid "Close question"
+msgstr "Закрыть вопрос"
+
+#: qa-include/qa-page-question-post.php:624
+msgid "The duplicate question could not be found - please try entering the number from a different question URL, e.g. 123."
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:665
+msgid "Edit answer"
+msgstr "Править ответ"
+
+#: qa-include/qa-page-question-post.php:707
+msgid "On question: "
+msgstr "На вопрос: "
+
+#: qa-include/qa-page-question-post.php:712
+msgid "On answer: "
+msgstr "На ответ: "
+
+#: qa-include/qa-page-question-post.php:723
+msgid "Convert this answer into a comment on:"
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:724
+msgid "Convert this answer into a comment"
+msgstr "Преобразовать этот вопрос в комментарий"
+
+#: qa-include/qa-page-question-post.php:733
+msgid "Warning: This conversion cannot be reversed and will also move this answer's comments."
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:733
+msgid "Warning: This conversion cannot be reversed."
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:831
+#: qa-include/qa-page-question-post.php:871
+#: qa-include/qa-page-question-submit.php:270
+#: qa-include/qa-page-question-view.php:885
+msgid "Too many comments received - please try again in an hour"
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:859
+#: qa-include/qa-page-question-view.php:867
+msgid "Please ^1log in^2 or ^3register^4 to add a comment."
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:863
+#: qa-include/qa-page-question-view.php:873
+msgid "Please ^5confirm your email address^6 to add a comment."
+msgstr ""
+
+#: qa-include/qa-page-question-post.php:867
+#: qa-include/qa-page-question-view.php:879
+msgid "Your account must be approved before you add a comment."
+msgstr "Для добавления комментария необходимо утверждение учётной записи."
+
+#: qa-include/qa-page-question-post.php:918
+msgid "Edit comment"
+msgstr "Править комментарий"
+
+#: qa-include/qa-page-questions.php:96
+#, php-format
+msgid "Highest voted questions in %s"
+msgstr ""
+
+#: qa-include/qa-page-questions.php:100
+#, php-format
+msgid "Most answered questions in %s"
+msgstr "Вопросы с наибольшим числом ответов в %s"
+
+#: qa-include/qa-page-questions.php:100
+msgid "Most answered questions"
+msgstr "Вопросы с наибольшим числом ответов"
+
+#: qa-include/qa-page-questions.php:104
+#, php-format
+msgid "Most viewed questions in %s"
+msgstr ""
+
+#: qa-include/qa-page-questions.php:104
+msgid "Most viewed questions"
+msgstr "Наиболее просматриваемые ответы"
+
+#: qa-include/qa-page-question-submit.php:90
+msgid "Too many questions received - please try again in an hour"
+msgstr ""
+
+#: qa-include/qa-page-question-submit.php:356
+#: qa-include/qa-page-question-submit.php:418
+msgid "Your submission appears to be a duplicate."
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:246
+#: qa-include/qa-page-question-view.php:447
+#: qa-include/qa-page-question-view.php:568
+msgid "edit"
+msgstr "править"
+
+#: qa-include/qa-page-question-view.php:247
+msgid "Edit this question"
+msgstr "Отредактировать вопрос"
+
+#: qa-include/qa-page-question-view.php:255
+msgid "recategorize"
+msgstr "сменить категорию"
+
+#: qa-include/qa-page-question-view.php:255
+msgid "retag"
+msgstr "изменить теги"
+
+#: qa-include/qa-page-question-view.php:257
+msgid "Change this question's category or tags"
+msgstr "Изменить теги или категорию вопроса"
+
+#: qa-include/qa-page-question-view.php:257
+msgid "Change this question's category"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:265
+#: qa-include/qa-page-question-view.php:454
+#: qa-include/qa-page-question-view.php:575
+msgid "flag and hide"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:265
+#: qa-include/qa-page-question-view.php:454
+#: qa-include/qa-page-question-view.php:575
+msgid "flag"
+msgstr "жалоба"
+
+#: qa-include/qa-page-question-view.php:266
+msgid "Flag this question as spam or inappropriate"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:272
+#: qa-include/qa-page-question-view.php:461
+#: qa-include/qa-page-question-view.php:582
+msgid "unflag"
+msgstr "убрать жалобу"
+
+#: qa-include/qa-page-question-view.php:273
+#: qa-include/qa-page-question-view.php:462
+#: qa-include/qa-page-question-view.php:583
+msgid "Remove the flag that you added"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:280
+#: qa-include/qa-page-question-view.php:469
+#: qa-include/qa-page-question-view.php:590
+msgid "Remove flags by all users"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:286
+msgid "close"
+msgstr "закрыть"
+
+#: qa-include/qa-page-question-view.php:287
+msgid "Close this question to any new answers"
+msgstr "Закрыть вопрос от новых ответов"
+
+#: qa-include/qa-page-question-view.php:293
+msgid "reopen"
+msgstr "открыть"
+
+#: qa-include/qa-page-question-view.php:312
+msgid "Hide this question"
+msgstr "Скрыть вопрос"
+
+#: qa-include/qa-page-question-view.php:325
+msgid "Delete this question permanently"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:331
+#: qa-include/qa-page-question-view.php:507
+#: qa-include/qa-page-question-view.php:628
+msgid "I wrote this"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:337
+msgid "answer"
+msgstr "ответить"
+
+#: qa-include/qa-page-question-view.php:338
+msgid "Answer this question"
+msgstr "Дать ответ на вопрос"
+
+#: qa-include/qa-page-question-view.php:344
+#: qa-include/qa-page-question-view.php:520
+msgid "comment"
+msgstr "комментировать"
+
+#: qa-include/qa-page-question-view.php:345
+msgid "Add a comment on this question"
+msgstr "Добавить комментарий к вопросу"
+
+#: qa-include/qa-page-question-view.php:359
+msgid "about the question:"
+msgstr "о вопросе:"
+
+#: qa-include/qa-page-question-view.php:359
+msgid "related to an answer for:"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:372
+msgid "closed as a duplicate of:"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:381
+msgid "closed with the note:"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:422
+msgid "Your answer will be checked and approved shortly."
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:422
+msgid "This answer is waiting for your approval"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:437
+msgid "Click to remove selection"
+msgstr "Нажмите, чтобы отменить выбор"
+
+#: qa-include/qa-page-question-view.php:439
+msgid "Click to select as best answer"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:448
+msgid "Edit this answer"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:455
+msgid "Flag this answer as spam or inappropriate"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:488
+msgid "Hide this answer"
+msgstr "Скрыть ответ"
+
+#: qa-include/qa-page-question-view.php:501
+msgid "Delete this answer permanently"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:513
+msgid "ask related question"
+msgstr "задать связанный вопрос"
+
+#: qa-include/qa-page-question-view.php:514
+msgid "Ask a new question relating to this answer"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:521
+msgid "Add a comment on this answer"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:554
+msgid "Your comment will be checked and approved shortly."
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:554
+msgid "This comment is waiting for your approval"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:569
+msgid "Edit this comment"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:576
+msgid "Flag this comment as spam or inappropriate"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:609
+msgid "Hide this comment"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:622
+msgid "Delete this comment permanently"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:635
+msgid "reply"
+msgstr ""
+
+#: qa-include/qa-page-question-view.php:636
+msgid "Reply to this comment"
+msgstr ""
+
+#. showing none
+#: qa-include/qa-page-question-view.php:683
+#, php-format
+msgid "Show %d comment"
+msgid_plural "Show %d comments"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: qa-include/qa-page-question-view.php:685
+#, php-format
+msgid "Show %d previous comment"
+msgid_plural "Show %d previous comments"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: qa-include/qa-page-question-view.php:774
+msgid "Your answer"
+msgstr "Ваш ответ"
+
+#: qa-include/qa-page-question-view.php:793
+msgid "Add answer"
+msgstr "Добавить ответ"
+
+#: qa-include/qa-page-question-view.php:911
+msgid "Your comment on this question:"
+msgstr "Ваш комментарий к этому вопросу:"
+
+#: qa-include/qa-page-question-view.php:911
+msgid "Your comment on this answer:"
+msgstr "Ваш комментарий к ответу:"
+
+#: qa-include/qa-page-question-view.php:930
+msgid "Add comment"
+msgstr "Добавить комментарий"
+
+#: qa-include/qa-page-register.php:60
+msgid "Registration of new users has been temporarily suspended. Please try again soon."
+msgstr ""
+
+#: qa-include/qa-page-register.php:123
+msgid "Too many registrations - please try again in an hour"
+msgstr ""
+
+#: qa-include/qa-page-reset.php:74
+msgid "Code not correct"
+msgstr ""
+
+#: qa-include/qa-page-reset.php:103 qa-include/qa-page-reset.php:118
+msgid "You have been emailed your reset code"
+msgstr ""
+
+#: qa-include/qa-page-reset.php:114
+msgid "Code:"
+msgstr ""
+
+#: qa-include/qa-page-reset.php:119
+msgid "send another"
+msgstr ""
+
+#: qa-include/qa-page-reset.php:125
+msgid "Send New Password"
+msgstr ""
+
+#: qa-include/qa-page-search.php:90
+#, php-format
+msgid "No results found for %s"
+msgstr ""
+
+#: qa-include/qa-page-search.php:144
+#, php-format
+msgid "Search results for %s)"
+msgstr ""
+
+#: qa-include/qa-page-search.php:151
+msgid "Please enter some text into the search box and try again."
+msgstr ""
+
+#: qa-include/qa-page-tag.php:67
+#, php-format
+msgid "Add tag %s to my favorites"
+msgstr ""
+
+#: qa-include/qa-page-tags.php:75
+msgid "No tags found"
+msgstr ""
+
+#: qa-include/qa-page-unanswered.php:82
+#, php-format
+msgid "Questions without a selected answer in %s"
+msgstr ""
+
+#: qa-include/qa-page-unanswered.php:83 qa-include/qa-page-unanswered.php:95
+#: qa-include/qa-page-unanswered.php:110
+#, php-format
+msgid "No unanswered questions in %s"
+msgstr "Нет вопросов без ответа в %s"
+
+#: qa-include/qa-page-unanswered.php:86
+msgid "Recent questions without a selected answer"
+msgstr ""
+
+#: qa-include/qa-page-unanswered.php:87
+msgid "No questions found without a selected answer"
+msgstr ""
+
+#: qa-include/qa-page-unanswered.php:94
+#, php-format
+msgid "Questions without an upvoted answer in %s"
+msgstr ""
+
+#: qa-include/qa-page-unanswered.php:98
+msgid "Recent questions without an upvoted answer"
+msgstr ""
+
+#: qa-include/qa-page-unanswered.php:99
+msgid "No questions found without an upvoted answer"
+msgstr ""
+
+#: qa-include/qa-page-unanswered.php:114
+msgid "No unanswered questions found"
+msgstr "Вопросов без ответа не найдено"
+
+#: qa-include/qa-page-unsubscribe.php:68
+msgid "Unsubscribe"
+msgstr ""
+
+#: qa-include/qa-page-unsubscribe.php:71
+#, php-format
+msgid "You have been unsubscribed from mass mailings sent out by %s. You may resubscribe at any time via your %saccount%s page."
+msgstr ""
+
+#: qa-include/qa-page-unsubscribe.php:77
+msgid "Code not correct - please ^1log in^2 to unsubscribe"
+msgstr ""
+
+#: qa-include/qa-page-updates.php:60
+msgid "No recent updates"
+msgstr ""
+
+#: qa-include/qa-page-updates.php:63
+msgid "Recent updates for my favorites"
+msgstr ""
+
+#: qa-include/qa-page-updates.php:64
+msgid "No updates for my favorites"
+msgstr ""
+
+#: qa-include/qa-page-updates.php:68
+msgid "Recent updates for my content"
+msgstr ""
+
+#: qa-include/qa-page-updates.php:69
+msgid "No recent updates for my content"
+msgstr ""
+
+#. questions per page
+#. start offset
+#. total count (null to hide page links)
+#. title if some questions
+#. title if no questions
+#. categories for navigation
+#. selected category id
+#. show question counts in category navigation
+#. prefix for links in category navigation
+#. prefix for RSS feed paths (null to hide)
+#: qa-include/qa-page-updates.php:87
+#, php-format
+msgid "For more updates, add items to %syour favorites%s."
+msgstr ""
+
+#: qa-include/qa-page-updates.php:95
+msgid "All my updates"
+msgstr ""
+
+#: qa-include/qa-page-updates.php:107
+msgid "My content"
+msgstr ""
+
+#: qa-include/qa-page-user-activity.php:68
+#, php-format
+msgid "Recent activity by %s"
+msgstr "Недавняя активность %s"
+
+#: qa-include/qa-page-user-activity.php:70
+#, php-format
+msgid "No posts by %s"
+msgstr "Нет сообщений от %s"
+
+#: qa-include/qa-page-user-answers.php:69
+#, php-format
+msgid "Answers by %s"
+msgstr ""
+
+#: qa-include/qa-page-user-answers.php:71
+#, php-format
+msgid "No answers by %s"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:300 qa-include/qa-page-user-wall.php:89
+msgid "Please enter something to post on this wall"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:343
+#, php-format
+msgid "Add user %s to my favorites"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:381
+msgid "(blocked)"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:394
+#, php-format
+msgid " - %ssend private message%s"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:414
+msgid "No upgrade"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:432
+#, php-format
+msgid " - %sadd category-specific privileges%s"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:437
+msgid "in general"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:449
+msgid "Upgraded to:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:454
+msgid "for the category below:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:504
+#, php-format
+msgid "%s for %s"
+msgstr "%s для %s"
+
+#: qa-include/qa-page-user-profile.php:530
+msgid "Extra privileges:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:550
+msgid "Confirmed"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:550
+msgid "Not yet confirmed"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:551
+#: qa-include/qa-page-user-profile.php:614
+#: qa-include/qa-page-user-profile.php:734
+msgid "(only shown to admins)"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:563
+msgid "Last login:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:569
+#: qa-include/qa-page-user-profile.php:582
+#: qa-include/qa-page-user-profile.php:616
+msgid "(only shown to moderators and admins)"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:576
+msgid "Last write action:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:618
+msgid "(only shown to editors and above)"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:620
+msgid "(only shown to experts and above)"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:646
+msgid "Remove avatar:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:654
+msgid "Save User"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:674
+msgid "Approve User"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:679
+msgid "Edit User"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:686
+msgid "Unblock User"
+msgstr "Разблокировать пользователи"
+
+#: qa-include/qa-page-user-profile.php:692
+msgid "Hide all posts by this user"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:698
+msgid "Delete User"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:704
+msgid "Block User"
+msgstr "Заблокировать пользователя"
+
+#: qa-include/qa-page-user-profile.php:724
+#, php-format
+msgid "Activity by %s"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:730
+msgid "Bonus points:"
+msgstr "Бонусые баллы"
+
+#: qa-include/qa-page-user-profile.php:740
+msgid "Score:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:741
+#, php-format
+msgid "%s point"
+msgid_plural "%s points"
+msgstr[0] "%s балл"
+msgstr[1] "%s балла"
+msgstr[2] "%s баллов"
+
+#: qa-include/qa-page-user-profile.php:748
+msgid "Title:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:755
+msgid "Questions:"
+msgstr "Вопросы:"
+
+#: qa-include/qa-page-user-profile.php:762
+msgid "Answers:"
+msgstr "Ответы:"
+
+#: qa-include/qa-page-user-profile.php:775
+msgid "Update bonus"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:792
+msgid "Comments:"
+msgstr "Комментарии"
+
+#: qa-include/qa-page-user-profile.php:816
+#: qa-include/qa-widget-activity-count.php:46
+#, php-format
+msgid "%s answer"
+msgid_plural "%s answers"
+msgstr[0] "%s ответ"
+msgstr[1] "%s ответа"
+msgstr[2] "%s ответов"
+
+#: qa-include/qa-page-user-profile.php:822
+msgid "Voted on:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:829
+#: qa-include/qa-page-user-profile.php:843
+#, php-format
+msgid "%s up vote"
+msgid_plural "%s up votes"
+msgstr[0] "%s голос"
+msgstr[1] "%s голоса"
+msgstr[2] "%s голосов"
+
+#: qa-include/qa-page-user-profile.php:833
+#: qa-include/qa-page-user-profile.php:847
+#, php-format
+msgid "%s down vote"
+msgid_plural "%s down votes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: qa-include/qa-page-user-profile.php:837
+msgid "Gave out:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:852
+msgid "Received:"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:860
+#, php-format
+msgid " (ranked #%s)"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:863
+#, php-format
+msgid " (%s with best answer chosen)"
+msgid_plural " (%s with best answer chosen)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: qa-include/qa-page-user-profile.php:867
+#, php-format
+msgid " (%s chosen as best)"
+msgid_plural " (%s chosen as best)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: qa-include/qa-page-user-profile.php:883
+#: qa-include/qa-page-user-wall.php:105
+#, php-format
+msgid "Wall for %s"
+msgstr ""
+
+#: qa-include/qa-page-user-profile.php:914
+#: qa-include/qa-page-user-wall.php:141
+msgid "Add wall post"
+msgstr ""
+
+#: qa-include/qa-page-user-questions.php:69
+#, php-format
+msgid "Questions by %s"
+msgstr ""
+
+#: qa-include/qa-page-user-questions.php:71
+#, php-format
+msgid "No questions by %s"
+msgstr "Нет вопросов от %s"
+
+#: qa-include/qa-page-users-blocked.php:66
+msgid "No blocked users found"
+msgstr "Заблокированных пользователей не найдено"
+
+#: qa-include/qa-page-users.php:73
+msgid "No active users found"
+msgstr ""
+
+#: qa-include/qa-widget-activity-count.php:49
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "%s комментарий"
+msgstr[1] "%s комментария"
+msgstr[2] "%s комментариев"
+
+#: qa-include/qa-widget-activity-count.php:51
+#, php-format
+msgid "%s user"
+msgid_plural "%s users"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: qa-include/qa-widget-related-qs.php:64
+msgid "Related questions"
+msgstr "Связанные вопросы"
+
+#: qa-include/qa-widget-related-qs.php:64
+msgid "No related questions found"
+msgstr "Связанных вопросов не найдено"

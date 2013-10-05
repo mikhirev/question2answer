@@ -57,13 +57,13 @@
 	
 	if (qa_opt('suspend_register_users')) {
 		$qa_content=qa_content_prepare();
-		$qa_content['error']=qa_lang_html('users/register_suspended');
+		$qa_content['error']=qa_html(_('Registration of new users has been temporarily suspended. Please try again soon.'));
 		return $qa_content;
 	}
 	
 	if (qa_user_permit_error()) {
 		$qa_content=qa_content_prepare();
-		$qa_content['error']=qa_lang_html('users/no_permission');
+		$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 		return $qa_content;
 	}
 
@@ -85,7 +85,7 @@
 				$inprofile[$userfield['fieldid']]=qa_post_text('field_'.$userfield['fieldid']);		
 			
 			if (!qa_check_form_security_code('register', qa_post_text('code')))
-				$pageerror=qa_lang_html('misc/form_security_again');
+				$pageerror=qa_html(_('Please click again to confirm'));
 				
 			else {
 				$errors=array_merge(
@@ -120,7 +120,7 @@
 			}
 			
 		} else
-			$pageerror=qa_lang('users/register_limit');
+			$pageerror=_('Too many registrations - please try again in an hour');
 	}
 
 
@@ -128,7 +128,7 @@
 
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('users/register_title');
+	$qa_content['title']=qa_html(_('Register as a new user'));
 	
 	$qa_content['error']=@$pageerror;
 
@@ -146,7 +146,7 @@
 			),
 			
 			'handle' => array(
-				'label' => qa_lang_html('users/handle_label'),
+				'label' => qa_html(_('Username:')),
 				'tags' => 'name="handle" id="handle"',
 				'value' => qa_html(@$inhandle),
 				'error' => qa_html(@$errors['handle']),
@@ -154,14 +154,14 @@
 			
 			'password' => array(
 				'type' => 'password',
-				'label' => qa_lang_html('users/password_label'),
+				'label' => qa_html(_('Password:')),
 				'tags' => 'name="password" id="password"',
 				'value' => qa_html(@$inpassword),
 				'error' => qa_html(@$errors['password']),
 			),
 
 			'email' => array(
-				'label' => qa_lang_html('users/email_label'),
+				'label' => qa_html(_('Email:')),
 				'tags' => 'name="email" id="email"',
 				'value' => qa_html(@$inemail),
 				'note' => qa_opt('email_privacy'),
@@ -172,7 +172,7 @@
 		'buttons' => array(
 			'register' => array(
 				'tags' => 'onclick="qa_show_waiting_after(this, false);"',
-				'label' => qa_lang_html('users/register_button'),
+				'label' => qa_html(_('Register')),
 			),
 		),
 		

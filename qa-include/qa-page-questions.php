@@ -76,10 +76,10 @@
 			return include QA_INCLUDE_DIR.'qa-page-not-found.php';
 	
 		$categorytitlehtml=qa_html($categories[$categoryid]['title']);
-		$nonetitle=qa_lang_html_sub('main/no_questions_in_x', $categorytitlehtml);
+		$nonetitle=qa_html(sprintf(_('No questions in %s'), $categorytitlehtml));
 
 	} else
-		$nonetitle=qa_lang_html('main/no_questions_found');
+		$nonetitle=qa_html(_('No questions found'));
 	
 
 	$categorypathprefix=QA_ALLOW_UNINDEXED_QUERIES ? 'questions/' : null; // this default is applied if sorted not by recent
@@ -88,25 +88,25 @@
 	
 	switch ($sort) {
 		case 'hot':
-			$sometitle=$countslugs ? qa_lang_html_sub('main/hot_qs_in_x', $categorytitlehtml) : qa_lang_html('main/hot_qs_title');
+			$sometitle=$countslugs ? qa_html(sprintf(_('Hot questions in %s'), $categorytitlehtml)) : qa_html(_('Hot questions'));
 			$feedpathprefix=qa_opt('feed_for_hot') ? 'hot' : null;
 			break;
 			
 		case 'votes':
-			$sometitle=$countslugs ? qa_lang_html_sub('main/voted_qs_in_x', $categorytitlehtml) : qa_lang_html('main/voted_qs_title');
+			$sometitle=$countslugs ? qa_html(sprintf(_('Highest voted questions in %s'), $categorytitlehtml)) : qa_html('Highest voted questions');
 			break;
 			
 		case 'answers':
-			$sometitle=$countslugs ? qa_lang_html_sub('main/answered_qs_in_x', $categorytitlehtml) : qa_lang_html('main/answered_qs_title');
+			$sometitle=$countslugs ? qa_html(sprintf(_('Most answered questions in %s'), $categorytitlehtml)) : qa_html(_('Most answered questions'));
 			break;
 		
 		case 'views':
-			$sometitle=$countslugs ? qa_lang_html_sub('main/viewed_qs_in_x', $categorytitlehtml) : qa_lang_html('main/viewed_qs_title');
+			$sometitle=$countslugs ? qa_html(sprintf(_('Most viewed questions in %s'), $categorytitlehtml)) : qa_html(_('Most viewed questions'));
 			break;
 		
 		default:
 			$linkparams=array();
-			$sometitle=$countslugs ? qa_lang_html_sub('main/recent_qs_in_x', $categorytitlehtml) : qa_lang_html('main/recent_qs_title');
+			$sometitle=$countslugs ? qa_html(sprintf(_('Recent questions and answers in %s'), $categorytitlehtml)) : qa_html(_('Recent questions'));
 			$categorypathprefix='questions/';
 			$feedpathprefix=qa_opt('feed_for_questions') ? 'questions' : null;
 			break;

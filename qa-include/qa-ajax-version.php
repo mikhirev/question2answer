@@ -44,29 +44,29 @@
 	if (strlen(@$metadata['version'])) {
 		if (strcmp($metadata['version'], $version)) {
 			if (qa_qa_version_below(@$metadata['min_q2a']))
-				$response=strtr(qa_lang_html('admin/version_requires_q2a'), array(
-					'^1' => qa_html('v'.$metadata['version']),
-					'^2' => qa_html($metadata['min_q2a']),
+				$response=qa_html(sprintf(_('%s requires Q2A %s'),
+					'v'.$metadata['version'],
+					$metadata['min_q2a']
 				));
 
 			elseif (qa_php_version_below(@$metadata['min_php']))
-				$response=strtr(qa_lang_html('admin/version_requires_php'), array(
-					'^1' => qa_html('v'.$metadata['version']),
-					'^2' => qa_html($metadata['min_php']),
+				$response=qa_html(sprintf(_('%s requires PHP %s'),
+					'v'.$metadata['version'],
+					$metadata['min_php']
 				));
 
 			else {
-				$response=qa_lang_html_sub('admin/version_get_x', qa_html('v'.$metadata['version']));
+				$response=qa_html(sprintf(_('get %s'), 'v'.$metadata['version']));
 				
 				if (strlen(@$metadata['uri']))
 					$response='<a href="'.qa_html($metadata['uri']).'" style="color:#d00;">'.$response.'</a>';
 			}
 				
 		} else
-			$response=qa_lang_html('admin/version_latest');
+			$response=qa_html(_('latest'));
 	
 	} else
-		$response=qa_lang_html('admin/version_latest_unknown');
+		$response=qa_html(_('latest unknown'));
 	
 
 	echo "QA_AJAX_RESPONSE\n1\n".$response;

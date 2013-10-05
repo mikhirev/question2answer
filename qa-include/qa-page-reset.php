@@ -51,7 +51,7 @@
 		$errors=array();
 
 		if (!qa_check_form_security_code('reset', qa_post_text('formcode')))
-			$errors['page']=qa_lang_html('misc/form_security_again');
+			$errors['page']=qa_html(_('Please click again to confirm'));
 		
 		else {
 			if (qa_opt('allow_login_email_only') || (strpos($inemailhandle, '@')!==false)) // handles can't contain @ symbols
@@ -71,10 +71,10 @@
 					qa_redirect('login', array('e' => $inemailhandle, 'ps' => '1')); // redirect to login page
 		
 				} else
-					$errors['code']=qa_lang('users/reset_code_wrong');
+					$errors['code']=_('Code not correct');
 				
 			} else
-				$errors['emailhandle']=qa_lang('users/user_not_found');
+				$errors['emailhandle']=_('User not found');
 		}
 
 	} else {
@@ -87,7 +87,7 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('users/reset_title');
+	$qa_content['title']=qa_html(_('Reset Forgotten Password'));
 	$qa_content['error']=@$errors['page'];
 
 	if (empty($inemailhandle) || isset($errors['emailhandle']))
@@ -100,29 +100,29 @@
 		
 		'style' => 'tall',
 		
-		'ok' => empty($incode) ? qa_lang_html('users/reset_code_emailed') : null,
+		'ok' => empty($incode) ? qa_html(_('You have been emailed your reset code')) : null,
 		
 		'fields' => array(
 			'email_handle' => array(
-				'label' => qa_opt('allow_login_email_only') ? qa_lang_html('users/email_label') : qa_lang_html('users/email_handle_label'),
+				'label' => qa_html(qa_opt('allow_login_email_only') ? _('Email:') : _('Email or Username:')),
 				'tags' => 'name="emailhandle" id="emailhandle"',
 				'value' => qa_html(@$inemailhandle),
 				'error' => qa_html(@$errors['emailhandle']),
 			),
 
 			'code' => array(
-				'label' => qa_lang_html('users/reset_code_label'),
+				'label' => qa_html(_('Code:')),
 				'tags' => 'name="code" id="code"',
 				'value' => qa_html(@$incode),
 				'error' => qa_html(@$errors['code']),
-				'note' => qa_lang_html('users/reset_code_emailed').' - '.
-					'<a href="'.qa_html($forgotpath).'">'.qa_lang_html('users/reset_code_another').'</a>',
+				'note' => qa_html(_('You have been emailed your reset code')).' - '.
+					'<a href="'.qa_html($forgotpath).'">'.qa_html(_('send another')).'</a>',
 			),
 		),
 		
 		'buttons' => array(
 			'reset' => array(
-				'label' => qa_lang_html('users/send_password_button'),
+				'label' => qa_html(_('Send New Password')),
 			),
 		),
 		

@@ -74,15 +74,15 @@
 			//	Verify the title and points are legitimate
 			
 				if (!strlen($intitle))
-					$errors['title']=qa_lang('main/field_required');
+					$errors['title']=_('Please enter something in this field');
 					
 				if (!is_numeric($inpoints))
-					$errors['points']=qa_lang('main/field_required');
+					$errors['points']=_('Please enter something in this field');
 				else {
 					$inpoints=(int)$inpoints;
 					
 					if (isset($pointstitle[$inpoints]) && ((!strlen(@$oldpoints)) || ($inpoints!=$oldpoints)) )
-						$errors['points']=qa_lang('admin/title_already_used');
+						$errors['points']=_('This value is already being used by another title');
 				}
 		
 			//	Perform appropriate action
@@ -118,8 +118,8 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/admin_title').' - '.qa_lang_html('admin/users_title');	
-	$qa_content['error']=$securityexpired ? qa_lang_html('admin/form_security_expired') : qa_admin_page_error();
+	$qa_content['title']=qa_html(_('Administration center')).' - '.qa_html(_('Users'));	
+	$qa_content['error']=$securityexpired ? qa_html(_('Form security code expired - please try again')) : qa_admin_page_error();
 
 	$qa_content['form']=array(
 		'tags' => 'method="post" action="'.qa_path_html(qa_request()).'"',
@@ -129,14 +129,14 @@
 		'fields' => array(
 			'title' => array(
 				'tags' => 'name="title" id="title"',
-				'label' => qa_lang_html('admin/user_title'),
+				'label' => qa_html(_('User title - HTML allowed:')),
 				'value' => qa_html(isset($intitle) ? $intitle : @$pointstitle[$oldpoints]),
 				'error' => qa_html(@$errors['title']),
 			),
 			
 			'delete' => array(
 				'tags' => 'name="dodelete" id="dodelete"',
-				'label' => qa_lang_html('admin/delete_title'),
+				'label' => qa_html(_('Delete this title')),
 				'value' => 0,
 				'type' => 'checkbox',
 			),
@@ -144,7 +144,7 @@
 			'points' => array(
 				'id' => 'points_display',
 				'tags' => 'name="points"',
-				'label' => qa_lang_html('admin/points_required'),
+				'label' => qa_html(_('Points required to receive title:')),
 				'type' => 'number',
 				'value' => qa_html(isset($inpoints) ? $inpoints : @$oldpoints),
 				'error' => qa_html(@$errors['points']),
@@ -153,12 +153,12 @@
 
 		'buttons' => array(
 			'save' => array(
-				'label' => qa_lang_html(isset($pointstitle[$oldpoints]) ? 'main/save_button' : ('admin/add_title_button')),
+				'label' => qa_html(isset($pointstitle[$oldpoints]) ? _('Save Changes') : _('Add Title')),
 			),
 			
 			'cancel' => array(
 				'tags' => 'name="docancel"',
-				'label' => qa_lang_html('main/cancel_button'),
+				'label' => qa_html(_('Cancel')),
 			),
 		),
 		

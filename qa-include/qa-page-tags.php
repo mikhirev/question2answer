@@ -49,7 +49,7 @@
 
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('main/popular_tags');
+	$qa_content['title']=qa_html(_('Most popular tags'));
 	
 	$qa_content['ranking']=array(
 		'items' => array(),
@@ -72,7 +72,7 @@
 		}
 
 	} else
-		$qa_content['title']=qa_lang_html('main/no_tags_found');
+		$qa_content['title']=qa_html(_('No tags found'));
 	
 	$qa_content['page_links']=qa_html_page_links(qa_request(), $start, $pagesize, $tagcount, qa_opt('pages_prev_next'));
 	

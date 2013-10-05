@@ -83,7 +83,7 @@
 		switch (qa_user_permit_error(null, QA_LIMIT_UPLOADS))
 		{
 			case 'limit':
-				$result['error']=qa_lang('main/upload_limit');
+				$result['error']=_('Too many uploads - please try again in an hour');
 				return $result;
 			
 			case false:
@@ -91,7 +91,7 @@
 				break;
 
 			default:
-				$result['error']=qa_lang('users/no_permission');
+				$result['error']=_('You do not have permission to perform this operation');
 				return $result;
 		}
 		
@@ -104,7 +104,7 @@
 			$maxfilesize=qa_get_max_upload_size();
 		
 		if ( ($filesize<=0) || ($filesize>$maxfilesize) ) { // if file was too big for PHP, $filesize will be zero
-			$result['error']=qa_lang_sub('main/max_upload_size_x', number_format($maxfilesize/1048576, 1).'MB');
+			$result['error']=sprintf(_('Maximum upload size is %s'), number_format($maxfilesize/1048576, 1)._('MiB'));
 			return $result;
 		}
 		
@@ -141,7 +141,7 @@
 			
 		if ($onlyimage)
 			if ( (!$isimage) || !is_array($imagesize) ) {
-				$result['error']=qa_lang_sub('main/image_not_read', 'GIF, JPG, PNG');
+				$result['error']=sprintf(_('The image could not be read. Please upload one of: %s', 'GIF, JPG, PNG'));
 				return $result;
 			}
 			
@@ -190,7 +190,7 @@
 		$result['blobid']=qa_create_blob($content, $format, $sourcefilename, $userid, $cookieid, qa_remote_ip_address());
 		
 		if (!isset($result['blobid'])) {
-			$result['error']=qa_lang('main/general_error');
+			$result['error']=_('A server error occurred - please try again.');
 			return $result;
 		}
 		

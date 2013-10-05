@@ -74,10 +74,7 @@
 		
 			$countanswers=$question['acount'];
 				
-			if ($countanswers==1)
-				echo qa_lang_html('question/1_answer_title');
-			else
-				echo qa_lang_html_sub('question/x_answers_title', $countanswers);
+			echo qa_html(sprintf(ngettext('%d Answer', '%d Answers', $countanswers), $countanswers))."\n";
 				
 
 		//	If the answer was not deleted....

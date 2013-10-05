@@ -49,7 +49,7 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('main/highest_users');
+	$qa_content['title']=qa_html(_('Top scoring users'));
 
 	$qa_content['ranking']=array(
 		'items' => array(),
@@ -70,7 +70,7 @@
 			);
 	
 	} else
-		$qa_content['title']=qa_lang_html('main/no_active_users');
+		$qa_content['title']=qa_html(_('No active users found'));
 	
 	$qa_content['page_links']=qa_html_page_links(qa_request(), $start, $pagesize, $usercount, qa_opt('pages_prev_next'));
 

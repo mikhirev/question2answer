@@ -41,16 +41,16 @@
 			
 			$qa_content=qa_content_prepare();
 
-			$qa_content['title']=qa_lang_html('admin/admin_title');
-			$qa_content['error']=qa_insert_login_links(qa_lang_html('admin/not_logged_in'), qa_request());
+			$qa_content['title']=qa_html(_('Administration center'));
+			$qa_content['error']=qa_insert_login_links(qa_html(_('Please ^1log in^2 as the administrator to access this page.')), qa_request());
 			
 			return false;
 
 		} elseif (qa_get_logged_in_level()<QA_USER_LEVEL_ADMIN) {
 			$qa_content=qa_content_prepare();
 			
-			$qa_content['title']=qa_lang_html('admin/admin_title');
-			$qa_content['error']=qa_lang_html('admin/no_privileges');
+			$qa_content['title']=qa_html(_('Administration center'));
+			$qa_content['error']=qa_html(_('Only administrators may access this page.'));
 			
 			return false;
 		}
@@ -161,18 +161,18 @@
 */
 	{
 		return array(
-			'FT' => qa_lang_html('options/place_full_top'),
-			'FH' => qa_lang_html('options/place_full_below_nav'),
-			'FL' => qa_lang_html('options/place_full_below_content'),
-			'FB' => qa_lang_html('options/place_full_below_footer'),
-			'MT' => qa_lang_html('options/place_main_top'),
-			'MH' => qa_lang_html('options/place_main_below_title'),
-			'ML' => qa_lang_html('options/place_main_below_lists'),
-			'MB' => qa_lang_html('options/place_main_bottom'),
-			'ST' => qa_lang_html('options/place_side_top'),
-			'SH' => qa_lang_html('options/place_side_below_sidebar'),
-			'SL' => qa_lang_html('options/place_side_below_categories'),
-			'SB' => qa_lang_html('options/place_side_last'),
+			'FT' => qa_html(_('Full width - Top of page')),
+			'FH' => qa_html(_('Full width - Below navigation')),
+			'FL' => qa_html(_('Full width - Below content')),
+			'FB' => qa_html(_('Full width - Below footer')),
+			'MT' => qa_html(_('Main area - Top')),
+			'MH' => qa_html(_('Main area - Below title')),
+			'ML' => qa_html(_('Main area - Below lists')),
+			'MB' => qa_html(_('Main area - Bottom')),
+			'ST' => qa_html(_('Side panel - Top')),
+			'SH' => qa_html(_('Side panel - Below sidebar box')),
+			'SL' => qa_html(_('Side panel - Below categories')),
+			'SB' => qa_html(_('Side panel - Last')),
 		);
 	}
 
@@ -202,11 +202,11 @@
 */
 	{
 		return array(
-			5 => qa_lang_html('options/match_5'),
-			4 => qa_lang_html('options/match_4'),
-			3 => qa_lang_html('options/match_3'),
-			2 => qa_lang_html('options/match_2'),
-			1 => qa_lang_html('options/match_1'),
+			5 => qa_html(_('Widest')),
+			4 => qa_html(_('Wider')),
+			3 => qa_html(_('Default')),
+			2 => qa_html(_('Narrower')),
+			1 => qa_html(_('Narrowest')),
 		);
 	}
 
@@ -220,18 +220,18 @@
 		require_once QA_INCLUDE_DIR.'qa-app-options.php';
 		
 		$options=array(
-			QA_PERMIT_ALL => qa_lang_html('options/permit_all'),
-			QA_PERMIT_USERS => qa_lang_html('options/permit_users'),
-			QA_PERMIT_CONFIRMED => qa_lang_html('options/permit_confirmed'),
-			QA_PERMIT_POINTS => qa_lang_html('options/permit_points'),
-			QA_PERMIT_POINTS_CONFIRMED => qa_lang_html('options/permit_points_confirmed'),
-			QA_PERMIT_APPROVED => qa_lang_html('options/permit_approved'),
-			QA_PERMIT_APPROVED_POINTS => qa_lang_html('options/permit_approved_points'),
-			QA_PERMIT_EXPERTS => qa_lang_html('options/permit_experts'),
-			QA_PERMIT_EDITORS => qa_lang_html('options/permit_editors'),
-			QA_PERMIT_MODERATORS => qa_lang_html('options/permit_moderators'),
-			QA_PERMIT_ADMINS => qa_lang_html('options/permit_admins'),
-			QA_PERMIT_SUPERS => qa_lang_html('options/permit_supers'),
+			QA_PERMIT_ALL => qa_html(_('Anybody')),
+			QA_PERMIT_USERS => qa_html(_('Registered users')),
+			QA_PERMIT_CONFIRMED => qa_html(_('Registered users with email confirmed')),
+			QA_PERMIT_POINTS => qa_html(_('Registered users with enough points')),
+			QA_PERMIT_POINTS_CONFIRMED => qa_html(_('Registered & email confirmed & enough points')),
+			QA_PERMIT_APPROVED => qa_html(_('Approved users only')),
+			QA_PERMIT_APPROVED_POINTS => qa_html(_('Approved users with enough points')),
+			QA_PERMIT_EXPERTS => qa_html(_('Experts, Editors, Moderators, Admins')),
+			QA_PERMIT_EDITORS => qa_html(_('Editors, Moderators, Admins')),
+			QA_PERMIT_MODERATORS => qa_html(_('Moderators and Admins')),
+			QA_PERMIT_ADMINS => qa_html(_('Administrators')),
+			QA_PERMIT_SUPERS => qa_html(_('Super Administrators')),
 		);
 		
 		foreach ($options as $key => $label)
@@ -270,84 +270,84 @@
 		
 		if ($level>=QA_USER_LEVEL_ADMIN) {
 			$navigation['admin/general']=array(
-				'label' => qa_lang_html('admin/general_title'),
+				'label' => qa_html(_('General')),
 				'url' => qa_path_html('admin/general'),
 			);
 			
 			$navigation['admin/emails']=array(
-				'label' => qa_lang_html('admin/emails_title'),
+				'label' => qa_html(_('Emails')),
 				'url' => qa_path_html('admin/emails'),
 			);
 			
 			$navigation['admin/user']=array(
-				'label' => qa_lang_html('admin/users_title'),
+				'label' => qa_html(_('Users')),
 				'url' => qa_path_html('admin/users'),
 			);
 			
 			$navigation['admin/layout']=array(
-				'label' => qa_lang_html('admin/layout_title'),
+				'label' => qa_html(_('Layout')),
 				'url' => qa_path_html('admin/layout'),
 			);
 			
 			$navigation['admin/posting']=array(
-				'label' => qa_lang_html('admin/posting_title'),
+				'label' => qa_html(_('Posting')),
 				'url' => qa_path_html('admin/posting'),
 			);
 			
 			$navigation['admin/viewing']=array(
-				'label' => qa_lang_html('admin/viewing_title'),
+				'label' => qa_html(_('Viewing')),
 				'url' => qa_path_html('admin/viewing'),
 			);
 			
 			$navigation['admin/lists']=array(
-				'label' => qa_lang_html('admin/lists_title'),
+				'label' => qa_html(_('Lists')),
 				'url' => qa_path_html('admin/lists'),
 			);
 			
 			if (qa_using_categories())
 				$navigation['admin/categories']=array(
-					'label' => qa_lang_html('admin/categories_title'),
+					'label' => qa_html(_('Categories')),
 					'url' => qa_path_html('admin/categories'),
 				);
 			
 			$navigation['admin/permissions']=array(
-				'label' => qa_lang_html('admin/permissions_title'),
+				'label' => qa_html(_('Permissions')),
 				'url' => qa_path_html('admin/permissions'),
 			);
 			
 			$navigation['admin/pages']=array(
-				'label' => qa_lang_html('admin/pages_title'),
+				'label' => qa_html(_('Pages')),
 				'url' => qa_path_html('admin/pages'),
 			);
 			
 			$navigation['admin/feeds']=array(
-				'label' => qa_lang_html('admin/feeds_title'),
+				'label' => qa_html(_('RSS feeds')),
 				'url' => qa_path_html('admin/feeds'),
 			);
 			
 			$navigation['admin/points']=array(
-				'label' => qa_lang_html('admin/points_title'),
+				'label' => qa_html(_('Points')),
 				'url' => qa_path_html('admin/points'),
 			);
 			
 			$navigation['admin/spam']=array(
-				'label' => qa_lang_html('admin/spam_title'),
+				'label' => qa_html(_('Spam')),
 				'url' => qa_path_html('admin/spam'),
 			);
 
 			$navigation['admin/stats']=array(
-				'label' => qa_lang_html('admin/stats_title'),
+				'label' => qa_html(_('Stats')),
 				'url' => qa_path_html('admin/stats'),
 			);
 
 			if (!QA_FINAL_EXTERNAL_USERS)
 				$navigation['admin/mailing']=array(
-					'label' => qa_lang_html('admin/mailing_title'),
+					'label' => qa_html(_('Mailing')),
 					'url' => qa_path_html('admin/mailing'),
 				);
 			
 			$navigation['admin/plugins']=array(
-				'label' => qa_lang_html('admin/plugins_title'),
+				'label' => qa_html(_('Plugins')),
 				'url' => qa_path_html('admin/plugins'),
 			);
 		}
@@ -356,7 +356,7 @@
 			$count=qa_user_permit_error('permit_moderate') ? null : qa_opt('cache_queuedcount'); // if only in some categories don't show cached count
 			
 			$navigation['admin/moderate']=array(
-				'label' => qa_lang_html('admin/moderate_title').($count ? (' ('.$count.')') : ''),
+				'label' => qa_html(_('Moderate')).($count ? (' ('.$count.')') : ''),
 				'url' => qa_path_html('admin/moderate'),
 			);
 		}
@@ -365,14 +365,14 @@
 			$count=qa_user_permit_error('permit_hide_show') ? null : qa_opt('cache_flaggedcount'); // if only in some categories don't show cached count
 			
 			$navigation['admin/flagged']=array(
-				'label' => qa_lang_html('admin/flagged_title').($count ? (' ('.$count.')') : ''),
+				'label' => qa_html(_('Flagged')).($count ? (' ('.$count.')') : ''),
 				'url' => qa_path_html('admin/flagged'),
 			);
 		}
 		
 		if ( (!qa_user_maximum_permit_error('permit_hide_show')) || (!qa_user_maximum_permit_error('permit_delete_hidden')) )
 			$navigation['admin/hidden']=array(
-				'label' => qa_lang_html('admin/hidden_title'),
+				'label' => qa_html(_('Hidden')),
 				'url' => qa_path_html('admin/hidden'),
 			);
 		
@@ -380,7 +380,7 @@
 			$count=qa_opt('cache_uapprovecount');
 			
 			$navigation['admin/moderate-users']=array(
-				'label' => qa_lang_html('admin/approve_users_title').($count ? (' ('.$count.')') : ''),
+				'label' => qa_html(_('Approve users')).($count ? (' ('.$count.')') : ''),
 				'url' => qa_path_html('admin/approve'),
 			);
 		}
@@ -398,17 +398,14 @@
 			include_once QA_INCLUDE_DIR.'qa-db-install.php';
 		
 		if (defined('QA_DB_VERSION_CURRENT') && (qa_opt('db_version')<QA_DB_VERSION_CURRENT) && (qa_get_logged_in_level()>=QA_USER_LEVEL_ADMIN))
-			return strtr(
-				qa_lang_html('admin/upgrade_db'),
-				
-				array(
-					'^1' => '<a href="'.qa_path_html('install').'">',
-					'^2' => '</a>',
-				)
+			return sprintf(
+				qa_html(_('Your Question2Answer database needs to be %supgraded%s for this version.')),
+				'<a href="'.qa_path_html('install').'">',
+				'</a>'
 			);
 
 		elseif (defined('QA_BLOBS_DIRECTORY') && !is_writable(QA_BLOBS_DIRECTORY))
-			return qa_lang_html_sub('admin/blobs_directory_error', qa_html(QA_BLOBS_DIRECTORY));
+			return qa_html(sprintf(_('The directory %s defined as QA_BLOBS_DIRECTORY is not writable by the web server.'), QA_BLOBS_DIRECTORY));
 			
 		else
 			return null;
@@ -563,7 +560,7 @@
 					
 					if (strlen($entityid) && strlen($action)) {
 						if (!qa_check_form_security_code('admin/click', qa_post_text('code')))
-							return qa_lang_html('misc/form_security_again');
+							return qa_html(_('Please click again to confirm'));
 						elseif (qa_admin_single_click($entityid, $action))
 							qa_redirect(qa_request());
 					}

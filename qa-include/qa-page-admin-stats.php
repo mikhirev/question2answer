@@ -56,7 +56,7 @@
 
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/admin_title').' - '.qa_lang_html('admin/stats_title');
+	$qa_content['title']=qa_html(_('Administration center').' - '._('Stats'));
 	
 	$qa_content['error']=qa_admin_page_error();
 
@@ -65,17 +65,17 @@
 		
 		'fields' => array(
 			'q2a_version' => array(
-				'label' => qa_lang_html('admin/q2a_version'),
+				'label' => qa_html(_('Question2Answer version:')),
 				'value' => qa_html(QA_VERSION),
 			),
 			
 			'q2a_date' => array(
-				'label' => qa_lang_html('admin/q2a_build_date'),
+				'label' => qa_html(_('Build date:')),
 				'value' => qa_html(QA_BUILD_DATE),
 			),
 			
 			'q2a_latest' => array(
-				'label' => qa_lang_html('admin/q2a_latest_version'),
+				'label' => qa_html(_('Latest version:')),
 				'type' => 'custom',
 				'html' => '<iframe src="http://www.question2answer.org/question2answer-latest.php?version='.urlencode(QA_VERSION).'&language='.urlencode(qa_opt('site_language')).
 					'" width="100" height="16" style="vertical-align:middle; border:0; background:transparent;" allowTransparency="true" scrolling="no" frameborder="0"></iframe>',
@@ -86,12 +86,12 @@
 			),
 			
 			'db_version' => array(
-				'label' => qa_lang_html('admin/q2a_db_version'),
+				'label' => qa_html(_('Q2A database version:')),
 				'value' => qa_html(qa_opt('db_version')),
 			),
 			
 			'db_size' => array(
-				'label' => qa_lang_html('admin/q2a_db_size'),
+				'label' => qa_html(_('Database size:')),
 				'value' => qa_html(number_format(qa_db_table_size()/1048576, 1).' MB'),
 			),
 			
@@ -100,12 +100,12 @@
 			),
 			
 			'php_version' => array(
-				'label' => qa_lang_html('admin/php_version'),
+				'label' => qa_html(_('PHP version:')),
 				'value' => qa_html(phpversion()),
 			),
 			
 			'mysql_version' => array(
-				'label' => qa_lang_html('admin/mysql_version'),
+				'label' => qa_html(_('MySQL version:')),
 				'value' => qa_html(qa_db_mysql_version()),
 			),
 			
@@ -114,17 +114,17 @@
 			),
 	
 			'qcount' => array(
-				'label' => qa_lang_html('admin/total_qs'),
+				'label' => qa_html(_('Total questions:')),
 				'value' => qa_html(number_format($qcount)),
 			),
 			
 			'qcount_users' => array(
-				'label' => qa_lang_html('admin/from_users'),
+				'label' => qa_html(_('From users:')),
 				'value' => qa_html(number_format($qcount-$qcount_anon)),
 			),
 	
 			'qcount_anon' => array(
-				'label' => qa_lang_html('admin/from_anon'),
+				'label' => qa_html(_('From anonymous:')),
 				'value' => qa_html(number_format($qcount_anon)),
 			),
 			
@@ -133,17 +133,17 @@
 			),
 	
 			'acount' => array(
-				'label' => qa_lang_html('admin/total_as'),
+				'label' => qa_html(_('Total answers:')),
 				'value' => qa_html(number_format($acount)),
 			),
 	
 			'acount_users' => array(
-				'label' => qa_lang_html('admin/from_users'),
+				'label' => qa_html(_('From users:')),
 				'value' => qa_html(number_format($acount-$acount_anon)),
 			),
 	
 			'acount_anon' => array(
-				'label' => qa_lang_html('admin/from_anon'),
+				'label' => qa_html(_('From anonymous:')),
 				'value' => qa_html(number_format($acount_anon)),
 			),
 			
@@ -152,17 +152,17 @@
 			),
 			
 			'ccount' => array(
-				'label' => qa_lang_html('admin/total_cs'),
+				'label' => qa_html(_('Total comments:')),
 				'value' => qa_html(number_format($ccount)),
 			),
 	
 			'ccount_users' => array(
-				'label' => qa_lang_html('admin/from_users'),
+				'label' => qa_html(_('From users:')),
 				'value' => qa_html(number_format($ccount-$ccount_anon)),
 			),
 	
 			'ccount_anon' => array(
-				'label' => qa_lang_html('admin/from_anon'),
+				'label' => qa_html(_('From anonymous:')),
 				'value' => qa_html(number_format($ccount_anon)),
 			),
 			
@@ -171,22 +171,22 @@
 			),
 			
 			'users' => array(
-				'label' => qa_lang_html('admin/users_registered'),
+				'label' => qa_html(_('Registered users:')),
 				'value' => QA_FINAL_EXTERNAL_USERS ? '' : qa_html(number_format(qa_db_count_users())),
 			),
 	
 			'users_active' => array(
-				'label' => qa_lang_html('admin/users_active'),
+				'label' => qa_html(_('Active users:')),
 				'value' => qa_html(number_format((int)qa_opt('cache_userpointscount'))),
 			),
 			
 			'users_posted' => array(
-				'label' => qa_lang_html('admin/users_posted'),
+				'label' => qa_html(_('Users who posted:')),
 				'value' => qa_html(number_format(qa_db_count_active_users('posts'))),
 			),
 	
 			'users_voted' => array(
-				'label' => qa_lang_html('admin/users_voted'),
+				'label' => qa_html(_('Users who voted:')),
 				'value' => qa_html(number_format(qa_db_count_active_users('uservotes'))),
 			),
 		),
@@ -204,45 +204,45 @@
 	$qa_content['form_2']=array(
 		'tags' => 'method="post" action="'.qa_path_html('admin/recalc').'"',
 		
-		'title' => qa_lang_html('admin/database_cleanup'),
+		'title' => qa_html(_('Database clean-up operations')),
 		
 		'style' => 'basic',
 		
 		'buttons' => array(
 			'recount_posts' => array(
-				'label' => qa_lang_html('admin/recount_posts'),
-				'tags' => 'name="dorecountposts" onclick="return qa_recalc_click(this.name, this, '.qa_js(qa_lang('admin/recount_posts_stop')).', \'recount_posts_note\');"',
-				'note' => '<span id="recount_posts_note">'.qa_lang_html('admin/recount_posts_note').'</span>',
+				'label' => qa_html(_('Recount posts')),
+				'tags' => 'name="dorecountposts" onclick="return qa_recalc_click(this.name, this, '.qa_js(_('Stop recounting')).', \'recount_posts_note\');"',
+				'note' => '<span id="recount_posts_note">'.qa_html(_(' - the number of answers, votes, flags and hotness for each post')).'</span>',
 			),
 	
 			'reindex_content' => array(
-				'label' => qa_lang_html('admin/reindex_content'),
-				'tags' => 'name="doreindexcontent" onclick="return qa_recalc_click(this.name, this, '.qa_js(qa_lang('admin/reindex_content_stop')).', \'reindex_content_note\');"',
-				'note' => '<span id="reindex_content_note">'.qa_lang_html('admin/reindex_content_note').'</span>',
+				'label' => qa_html(_('Reindex content')),
+				'tags' => 'name="doreindexcontent" onclick="return qa_recalc_click(this.name, this, '.qa_js(_('Stop reindexing')).', \'reindex_content_note\');"',
+				'note' => '<span id="reindex_content_note">'.qa_html(_(' - for searching and related question suggestions')).'</span>',
 			),
 			
 			'recalc_points' => array(
-				'label' => qa_lang_html('admin/recalc_points'),
-				'tags' => 'name="dorecalcpoints" onclick="return qa_recalc_click(this.name, this, '.qa_js(qa_lang('admin/recalc_stop')).', \'recalc_points_note\');"',
-				'note' => '<span id="recalc_points_note">'.qa_lang_html('admin/recalc_points_note').'</span>',
+				'label' => qa_html(_('Recalculate user points')),
+				'tags' => 'name="dorecalcpoints" onclick="return qa_recalc_click(this.name, this, '.qa_js(_('Stop recalculating')).', \'recalc_points_note\');"',
+				'note' => '<span id="recalc_points_note">'.qa_html(_(' - for user ranking and points displays')).'</span>',
 			),
 			
 			'refill_events' => array(
-				'label' => qa_lang_html('admin/refill_events'),
-				'tags' => 'name="dorefillevents" onclick="return qa_recalc_click(this.name, this, '.qa_js(qa_lang('admin/recalc_stop')).', \'refill_events_note\');"',
-				'note' => '<span id="refill_events_note">'.qa_lang_html('admin/refill_events_note').'</span>',
+				'label' => qa_html(_('Refill event streams')),
+				'tags' => 'name="dorefillevents" onclick="return qa_recalc_click(this.name, this, '.qa_js(_('Stop recalculating')).', \'refill_events_note\');"',
+				'note' => '<span id="refill_events_note">'.qa_html(_(' - for each user\'s list of updates')).'</span>',
 			),
 			
 			'recalc_categories' => array(
-				'label' => qa_lang_html('admin/recalc_categories'),
-				'tags' => 'name="dorecalccategories" onclick="return qa_recalc_click(this.name, this, '.qa_js(qa_lang('admin/recalc_stop')).', \'recalc_categories_note\');"',
-				'note' => '<span id="recalc_categories_note">'.qa_lang_html('admin/recalc_categories_note').'</span>',
+				'label' => qa_html(_('Recalculate categories')),
+				'tags' => 'name="dorecalccategories" onclick="return qa_recalc_click(this.name, this, '.qa_js(_('Stop recalculating')).', \'recalc_categories_note\');"',
+				'note' => '<span id="recalc_categories_note">'.qa_html(_(' - for post categories and category counts')).'</span>',
 			),
 			
 			'delete_hidden' => array(
-				'label' => qa_lang_html('admin/delete_hidden'),
-				'tags' => 'name="dodeletehidden" onclick="return qa_recalc_click(this.name, this, '.qa_js(qa_lang('admin/delete_stop')).', \'delete_hidden_note\');"',
-				'note' => '<span id="delete_hidden_note">'.qa_lang_html('admin/delete_hidden_note').'</span>',
+				'label' => qa_html(_('Delete hidden posts')),
+				'tags' => 'name="dodeletehidden" onclick="return qa_recalc_click(this.name, this, '.qa_js(_('Stop deleting')).', \'delete_hidden_note\');"',
+				'note' => '<span id="delete_hidden_note">'.qa_html(_(' - all hidden questions, answer and comments without dependents')).'</span>',
 			),
 		),
 		
@@ -257,22 +257,22 @@
 	if (defined('QA_BLOBS_DIRECTORY')) {
 		if (qa_db_has_blobs_in_db())
 			$qa_content['form_2']['buttons']['blobs_to_disk']=array(
-				'label' => qa_lang_html('admin/blobs_to_disk'),
-				'tags' => 'name="doblobstodisk" onclick="return qa_recalc_click(this.name, this, '.qa_js(qa_lang('admin/blobs_stop')).', \'blobs_to_disk_note\');"',
-				'note' => '<span id="blobs_to_disk_note">'.qa_lang_html('admin/blobs_to_disk_note').'</span>',
+				'label' => qa_html(_('Blobs to disk')),
+				'tags' => 'name="doblobstodisk" onclick="return qa_recalc_click(this.name, this, '.qa_js(_('Stop migrating')).', \'blobs_to_disk_note\');"',
+				'note' => '<span id="blobs_to_disk_note">'.qa_html(_('- migrate all uploaded images and documents from the database to disk files')).'</span>',
 			);
 		
 		if (qa_db_has_blobs_on_disk())
 			$qa_content['form_2']['buttons']['blobs_to_db']=array(
-				'label' => qa_lang_html('admin/blobs_to_db'),
-				'tags' => 'name="doblobstodb" onclick="return qa_recalc_click(this.name, this, '.qa_js(qa_lang('admin/blobs_stop')).', \'blobs_to_db_note\');"',
-				'note' => '<span id="blobs_to_db_note">'.qa_lang_html('admin/blobs_to_db_note').'</span>',
+				'label' => qa_html(_('Blobs to database')),
+				'tags' => 'name="doblobstodb" onclick="return qa_recalc_click(this.name, this, '.qa_js(_('Stop migrating')).', \'blobs_to_db_note\');"',
+				'note' => '<span id="blobs_to_db_note">'.qa_html(_('- migrate all uploaded images and documents from disk files to the database')).'</span>',
 			);
 	}
 
 	
 	$qa_content['script_rel'][]='qa-content/qa-admin.js?'.QA_VERSION;
-	$qa_content['script_var']['qa_warning_recalc']=qa_lang('admin/stop_recalc_warning');
+	$qa_content['script_var']['qa_warning_recalc']=_('A database clean-up operation is running. If you close this page now, the operation will be interrupted.');
 
 	$qa_content['navigation']['sub']=qa_admin_sub_navigation();
 

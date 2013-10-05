@@ -57,13 +57,13 @@
 
 	$qa_content=qa_content_prepare(true);
 
-	$qa_content['title']=qa_lang_html('misc/my_favorites_title');
+	$qa_content['title']=qa_html(_('My favorites'));
 	
 
 //	Favorite questions
 
 	$qa_content['q_list']=array(
-		'title' => count($questions) ? qa_lang_html('main/nav_qs') : qa_lang_html('misc/no_favorite_qs'),
+		'title' => count($questions) ? qa_html(_('Questions')) : qa_html(_('No favorite questions')),
 		
 		'qs' => array(),
 	);
@@ -89,7 +89,7 @@
 
 	if (!QA_FINAL_EXTERNAL_USERS) {
 		$qa_content['ranking_users']=array(
-			'title' => count($users) ? qa_lang_html('main/nav_users') : qa_lang_html('misc/no_favorite_users'),
+			'title' => count($users) ? qa_html(_('Users')) : qa_html(_('No favorite users')),
 			'items' => array(),
 			'rows' => ceil(count($users)/qa_opt('columns_users')),
 			'type' => 'users'
@@ -108,7 +108,7 @@
 
 	if (qa_using_tags()) {
 		$qa_content['ranking_tags']=array(
-			'title' => count($tags) ? qa_lang_html('main/nav_tags') : qa_lang_html('misc/no_favorite_tags'),
+			'title' => count($tags) ? qa_html(_('Tags')) : qa_html(_('No favorite tags')),
 			'items' => array(),
 			'rows' => ceil(count($tags)/qa_opt('columns_tags')),
 			'type' => 'tags'
@@ -126,7 +126,7 @@
 
 	if (qa_using_categories()) {
 		$qa_content['nav_list_categories']=array(
-			'title' => count($categories) ? qa_lang_html('main/nav_categories') : qa_lang_html('misc/no_favorite_categories'),
+			'title' => count($categories) ? qa_html(_('Categories')) : qa_html(_('No favorite categories')),
 			'nav' => array(),
 			'type' => 'browse-cat',
 		);
@@ -137,10 +137,8 @@
 				'state' => 'open',
 				'favorited' => true,
 				'note' => ' - <a href="'.qa_path_html('questions/'.implode('/', array_reverse(explode('/', $category['backpath'])))).'">'.
-					( ($category['qcount']==1)
-						? qa_lang_html_sub('main/1_question', '1', '1')
-						: qa_lang_html_sub('main/x_questions', number_format($category['qcount']))
-					).'</a>'.
+					sprintf(ngettext('%s question', '%s questions', $category['qcount']), number_format($category['qcount']))
+					.'</a>'.
 					(strlen($category['content']) ? qa_html(' - '.$category['content']) : ''),
 			);
 	}
@@ -148,7 +146,7 @@
 
 //	Sub navigation for account pages and suggestion
 	
-	$qa_content['suggest_next']=qa_lang_html_sub('misc/suggest_favorites_add', '<span class="qa-favorite-image">&nbsp;</span>');
+	$qa_content['suggest_next']=sprintf(qa_html(_('To add a question or other item to your favorites, click the %s at the top of its page.')), '<span class="qa-favorite-image">&nbsp;</span>');
 	
 	if (!QA_FINAL_EXTERNAL_USERS)
 		$qa_content['navigation']['sub']=qa_account_sub_navigation();

@@ -386,7 +386,7 @@
 					break;
 					
 				case 'email_privacy':
-					$value=qa_lang_html('options/default_privacy');
+					$value=qa_html(_('Privacy: Your email address will not be shared or sold to third parties.'));
 					break;
 				
 				case 'show_custom_sidebar':
@@ -406,7 +406,7 @@
 					break;
 					
 				case 'custom_sidebar':
-					$value=qa_lang_html_sub('options/default_sidebar', qa_html(qa_opt('site_title')));
+					$value=qa_html(sprintf(_('"Welcome to %s, where you can ask questions and receive answers from other members of the community.'), qa_opt('site_title')));
 					break;
 					
 				case 'editor_for_qs':
@@ -474,7 +474,7 @@
 					break;
 				
 				case 'mailing_subject':
-					$value=qa_lang_sub('options/default_subject', qa_opt('site_title'));
+					$value=sprintf(_('A message from %s'), qa_opt('site_title'));
 					break;
 				
 				case 'mailing_body':
@@ -519,7 +519,7 @@
 			if (strlen($part)>strlen($longestpart))
 				$longestpart=$part;
 			
-		return ((strlen($longestpart)>3) ? (ucfirst($longestpart).' ') : '').qa_lang('options/default_suffix');
+		return ((strlen($longestpart)>3) ? (ucfirst($longestpart).' ') : '')._('Q&A');
 	}
 
 	
@@ -744,47 +744,53 @@
 	{
 		if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 		
-		$permits=array('permit_view_q_page', 'permit_post_q', 'permit_post_a');
+		$permits=array('permit_view_q_page' => _('Viewing question pages'),
+			'permit_post_q' => _('Asking questions'),
+			'permit_post_a' => _('Answering questions'),
+			);
 		
 		if (qa_opt('comment_on_qs') || qa_opt('comment_on_as'))
-			$permits[]='permit_post_c';
+			$permits['permit_post_c']=_('Adding comments');
 		
 		if (qa_opt('voting_on_qs'))
-			$permits[]='permit_vote_q';
+			$permits['permit_vote_q']=_('Voting on questions');
 			
 		if (qa_opt('voting_on_as'))
-			$permits[]='permit_vote_a';
+			$permits['permit_vote_a']=_('Voting on answers');
 			
 		if (qa_opt('voting_on_qs') || qa_opt('voting_on_as'))
-			$permits[]='permit_vote_down';
+			$permits['permit_vote_down']=_('Voting posts down');
 			
 		if (qa_using_tags() || qa_using_categories())
-			$permits[]='permit_retag_cat';
+			$permits['permit_retag_cat']='permit_retag_cat';
 		
-		array_push($permits, 'permit_edit_q', 'permit_edit_a');
+		$permits['permit_edit_q']=_('Editing any question');
+		$permits['permit_edit_a']=_('Editing any answer');
 		
 		if (qa_opt('comment_on_qs') || qa_opt('comment_on_as'))
-			$permits[]='permit_edit_c';
+			$permits['permit_edit_c']=_('Editing any comment');
 			
-		$permits[]='permit_edit_silent';
+		$permits['permit_edit_silent']=_('Editing posts silently');
 		
 		if (qa_opt('allow_close_questions'))
-			$permits[]='permit_close_q';
+			$permits['permit_close_q']=_('Closing any question');
 		
-		array_push($permits, 'permit_select_a', 'permit_anon_view_ips');
+		$permits['permit_select_a']=_('Selecting answer for any question');
+		$permits['permit_anon_view_ips']=_('Viewing IPs of anonymous posts');
 		
 		if (qa_opt('voting_on_qs') || qa_opt('voting_on_as') || qa_opt('flagging_of_posts'))
-			$permits[]='permit_view_voters_flaggers';
+			$permits['permit_view_voters_flaggers']=_('Viewing who voted or flagged posts');
 		
 		if (qa_opt('flagging_of_posts'))
-			$permits[]='permit_flag';
+			$permits['permit_flag']=_('Flagging posts');
 		
-		$permits[]='permit_moderate';
+		$permits['permit_moderate']=_('Approving or rejecting posts');
 
-		array_push($permits, 'permit_hide_show', 'permit_delete_hidden');
+		$permits['permit_hide_show']=_('Hiding or showing any post');
+		$permits['permit_delete_hidden']=_('Deleting hidden posts');
 		
 		if (qa_opt('allow_user_walls'))
-			$permits[]='permit_post_wall';
+			$permits['permit_post_wall']=_('Posting on user walls');
 		
 		return $permits;
 	}

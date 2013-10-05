@@ -79,7 +79,7 @@
 			$inprofile[$userfield['fieldid']]=qa_post_text('field_'.$userfield['fieldid']);		
 		
 		if (!qa_check_form_security_code('account', qa_post_text('code')))
-			$errors['page']=qa_lang_html('misc/form_security_again');
+			$errors['page']=qa_html(_('Please click again to confirm'));
 		
 		else {
 			$errors=qa_handle_email_filter($inhandle, $inemail, $useraccount);
@@ -115,11 +115,11 @@
 				switch (qa_user_permit_error(null, QA_LIMIT_UPLOADS))
 				{
 					case 'limit':
-						$errors['avatar']=qa_lang('main/upload_limit');
+						$errors['avatar']=_('Too many uploads - please try again in an hour');
 						break;
 					
 					default:
-						$errors['avatar']=qa_lang('users/no_permission');
+						$errors['avatar']=_('You do not have permission to perform this operation');
 						break;
 						
 					case false:
@@ -128,9 +128,9 @@
 						$toobig=qa_image_file_too_big($_FILES['file']['tmp_name'], qa_opt('avatar_store_size'));
 						
 						if ($toobig)
-							$errors['avatar']=qa_lang_sub('main/image_too_big_x_pc', (int)($toobig*100));
+							$errors['avatar']=sprintf(_('This image is too big. Please scale to %d%% then try again.'), (int)($toobig*100));
 						elseif (!qa_set_user_avatar($userid, file_get_contents($_FILES['file']['tmp_name']), $useraccount['avatarblobid']))
-							$errors['avatar']=qa_lang_sub('main/image_not_read', implode(', ', qa_gd_image_formats()));
+							$errors['avatar']=sprintf(_('The image could not be read. Please upload one of: %s'), implode(', ', qa_gd_image_formats()));
 						break;
 				}
 			}
@@ -168,19 +168,19 @@
 		$innewpassword2=qa_post_text('newpassword2');
 		
 		if (!qa_check_form_security_code('password', qa_post_text('code')))
-			$errors['page']=qa_lang_html('misc/form_security_again');
+			$errors['page']=qa_html(_('Please click again to confirm'));
 		
 		else {
 			$errors=array();
 			
 			if ($haspassword && (strtolower(qa_db_calc_passcheck($inoldpassword, $useraccount['passsalt'])) != strtolower($useraccount['passcheck'])))
-				$errors['oldpassword']=qa_lang('users/password_wrong');
+				$errors['oldpassword']=_('Password not correct');
 			
 			$useraccount['password']=$inoldpassword;
 			$errors=$errors+qa_password_validate($innewpassword1, $useraccount); // array union
 	
 			if ($innewpassword1 != $innewpassword2)
-				$errors['newpassword2']=qa_lang('users/password_mismatch');
+				$errors['newpassword2']=_('New passwords do not match');
 				
 			if (empty($errors)) {
 				qa_db_user_set_password($userid, $innewpassword1);
@@ -199,7 +199,7 @@
 
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('profile/my_account_title');	
+	$qa_content['title']=qa_html(_('My account details'));	
 	$qa_content['error']=@$errors['page'];
 	
 	$qa_content['form_profile']=array(
@@ -210,18 +210,18 @@
 		'fields' => array(
 			'duration' => array(
 				'type' => 'static',
-				'label' => qa_lang_html('users/member_for'),
+				'label' => qa_html(_('Member for:')),
 				'value' => qa_time_to_string(qa_opt('db_time')-$useraccount['created']),
 			),
 			
 			'type' => array(
 				'type' => 'static',
-				'label' => qa_lang_html('users/member_type'),
+				'label' => qa_html(_('Type:')),
 				'value' => qa_html(qa_user_level_string($useraccount['level'])),
 			),
 			
 			'handle' => array(
-				'label' => qa_lang_html('users/handle_label'),
+				'label' => qa_html(_('Username:')),
 				'tags' => 'name="handle"',
 				'value' => qa_html(isset($inhandle) ? $inhandle : $useraccount['handle']),
 				'error' => qa_html(@$errors['handle']),
@@ -229,35 +229,35 @@
 			),
 			
 			'email' => array(
-				'label' => qa_lang_html('users/email_label'),
+				'label' => qa_html(_('Email:')),
 				'tags' => 'name="email"',
 				'value' => qa_html(isset($inemail) ? $inemail : $useraccount['email']),
 				'error' => isset($errors['email']) ? qa_html($errors['email']) :
-					(($doconfirms && !$isconfirmed) ? qa_insert_login_links(qa_lang_html('users/email_please_confirm')) : null),
+					(($doconfirms && !$isconfirmed) ? qa_insert_login_links(qa_html(_('Please ^5confirm^6'))) : null),
 			),
 			
 			'messages' => array(
-				'label' => qa_lang_html('users/private_messages'),
+				'label' => qa_html(_('Private messages:')),
 				'tags' => 'name="messages"',
 				'type' => 'checkbox',
 				'value' => !($useraccount['flags'] & QA_USER_FLAGS_NO_MESSAGES),
-				'note' => qa_lang_html('users/private_messages_explanation'),
+				'note' => qa_html(_('Allow users to email you (without seeing your address)')),
 			),
 			
 			'wall' => array(
-				'label' => qa_lang_html('users/wall_posts'),
+				'label' => qa_html(_('Wall posts:')),
 				'tags' => 'name="wall"',
 				'type' => 'checkbox',
 				'value' => !($useraccount['flags'] & QA_USER_FLAGS_NO_WALL_POSTS),
-				'note' => qa_lang_html('users/wall_posts_explanation'),
+				'note' => qa_html(_('Allow users to post on your wall (you will also be emailed)')),
 			),
 			
 			'mailings' => array(
-				'label' => qa_lang_html('users/mass_mailings'),
+				'label' => qa_html(_('Mass mailings:')),
 				'tags' => 'name="mailings"',
 				'type' => 'checkbox',
 				'value' => !($useraccount['flags'] & QA_USER_FLAGS_NO_MAILINGS),
-				'note' => qa_lang_html('users/mass_mailings_explanation'),
+				'note' => qa_html(_('Subscribe to emails sent out to all users')),
 			),
 			
 			'avatar' => null, // for positioning
@@ -266,7 +266,7 @@
 		'buttons' => array(
 			'save' => array(
 				'tags' => 'onclick="qa_show_waiting_after(this, false);"',
-				'label' => qa_lang_html('users/save_profile'),
+				'label' => qa_html(_('Save Profile')),
 			),
 		),
 		
@@ -277,7 +277,7 @@
 	);
 	
 	if (qa_get_state()=='profile-saved')
-		$qa_content['form_profile']['ok']=qa_lang_html('users/profile_saved');
+		$qa_content['form_profile']['ok']=qa_html(_('Profile saved'));
 	
 	if (!qa_opt('allow_private_messages'))
 		unset($qa_content['form_profile']['fields']['messages']);
@@ -297,18 +297,18 @@
 		if (qa_opt('avatar_default_show') && strlen(qa_opt('avatar_default_blobid'))) {
 			$avataroptions['']='<span style="margin:2px 0; display:inline-block;">'.
 				qa_get_avatar_blob_html(qa_opt('avatar_default_blobid'), qa_opt('avatar_default_width'), qa_opt('avatar_default_height'), 32).
-				'</span> '.qa_lang_html('users/avatar_default');
+				'</span> '.qa_html(_('Default'));
 		} else
-			$avataroptions['']=qa_lang_html('users/avatar_none');
+			$avataroptions['']=qa_html(_('None'));
 
 		$avatarvalue=$avataroptions[''];
 	
 		if (qa_opt('avatar_allow_gravatar')) {
 			$avataroptions['gravatar']='<span style="margin:2px 0; display:inline-block;">'.
-				qa_get_gravatar_html($useraccount['email'], 32).' '.strtr(qa_lang_html('users/avatar_gravatar'), array(
-					'^1' => '<a href="http://www.gravatar.com/" target="_blank">',
-					'^2' => '</a>',
-				)).'</span>';
+				qa_get_gravatar_html($useraccount['email'], 32).' '.sprintf(qa_html(_('Show my %sGravatar%s')),
+					'<a href="http://www.gravatar.com/" target="_blank">',
+					'</a>'
+				).'</span>';
 
 			if ($useraccount['flags'] & QA_USER_FLAGS_SHOW_GRAVATAR)
 				$avatarvalue=$avataroptions['gravatar'];
@@ -328,7 +328,7 @@
 		
 		$qa_content['form_profile']['fields']['avatar']=array(
 			'type' => 'select-radio',
-			'label' => qa_lang_html('users/avatar_label'),
+			'label' => qa_html(_('Avatar:')),
 			'tags' => 'name="avatar"',
 			'options' => $avataroptions,
 			'value' => $avatarvalue,
@@ -374,11 +374,11 @@
 		
 		'style' => 'wide',
 		
-		'title' => qa_lang_html('users/change_password'),
+		'title' => qa_html(_('Change Password')),
 		
 		'fields' => array(
 			'old' => array(
-				'label' => qa_lang_html('users/old_password'),
+				'label' => qa_html(_('Old password:')),
 				'tags' => 'name="oldpassword"',
 				'value' => qa_html(@$inoldpassword),
 				'type' => 'password',
@@ -386,14 +386,14 @@
 			),
 		
 			'new_1' => array(
-				'label' => qa_lang_html('users/new_password_1'),
+				'label' => qa_html(_('New password:')),
 				'tags' => 'name="newpassword1"',
 				'type' => 'password',
 				'error' => qa_html(@$errors['password']),
 			),
 
 			'new_2' => array(
-				'label' => qa_lang_html('users/new_password_2'),
+				'label' => qa_html(_('Retype new password:')),
 				'tags' => 'name="newpassword2"',
 				'type' => 'password',
 				'error' => qa_html(@$errors['newpassword2']),
@@ -402,7 +402,7 @@
 		
 		'buttons' => array(
 			'change' => array(
-				'label' => qa_lang_html('users/change_password'),
+				'label' => qa_html(_('Change Password')),
 			),
 		),
 		
@@ -414,11 +414,11 @@
 	
 	if (!$haspassword) {
 		$qa_content['form_password']['fields']['old']['type']='static';
-		$qa_content['form_password']['fields']['old']['value']=qa_lang_html('users/password_none');
+		$qa_content['form_password']['fields']['old']['value']=qa_html(_('None. To log in directly, set a password below.'));
 	}
 	
 	if (qa_get_state()=='password-changed')
-		$qa_content['form_profile']['ok']=qa_lang_html('users/password_changed');
+		$qa_content['form_profile']['ok']=qa_html(_('Password changed'));
 		
 
 	$qa_content['navigation']['sub']=qa_account_sub_navigation();

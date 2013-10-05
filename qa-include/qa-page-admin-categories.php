@@ -146,9 +146,9 @@
 		//	Verify the name is legitimate for that parent ID
 		
 			if (empty($inname))
-				$errors['name']=qa_lang('main/field_required');
+				$errors['name']=_('Please enter something in this field');
 			elseif (qa_strlen($inname)>QA_DB_MAX_CAT_PAGE_TITLE_LENGTH)
-				$errors['name']=qa_lang_sub('main/max_length_x', QA_DB_MAX_CAT_PAGE_TITLE_LENGTH);
+				$errors['name']=sprintf(_('Maximum length is %d characters'), QA_DB_MAX_CAT_PAGE_TITLE_LENGTH);
 			else {
 				foreach ($incategories as $category)
 					if (
@@ -156,7 +156,7 @@
 						strcmp($category['categoryid'], @$editcategory['categoryid']) &&
 						qa_strtolower($category['title']) == qa_strtolower($inname)
 					)
-						$errors['name']=qa_lang('admin/category_already_used');
+						$errors['name']=_('This is already being used by a category');
 			}
 			
 		//	Verify the slug is legitimate for that parent ID
@@ -170,11 +170,11 @@
 						break;
 						
 					case 1:
-						$inslug=qa_lang_sub('admin/category_default_slug', $inslug);
+						$inslug=sprintf(_('category-%s'), $inslug);
 						break;
 						
 					default:
-						$inslug=qa_lang_sub('admin/category_default_slug', $attempt-1);
+						$inslug=sprintf(_('category-%s'), $attempt-1);
 						break;
 				}
 				
@@ -186,17 +186,17 @@
 					$matchpage=null;
 				
 				if (empty($inslug))
-					$errors['slug']=qa_lang('main/field_required');
+					$errors['slug']=_('Please enter something in this field');
 				elseif (qa_strlen($inslug)>QA_DB_MAX_CAT_PAGE_TAGS_LENGTH)
-					$errors['slug']=qa_lang_sub('main/max_length_x', QA_DB_MAX_CAT_PAGE_TAGS_LENGTH);
+					$errors['slug']=sprintf(_('Maximum length is %d characters'), QA_DB_MAX_CAT_PAGE_TAGS_LENGTH);
 				elseif (preg_match('/[\\+\\/]/', $inslug))
-					$errors['slug']=qa_lang_sub('admin/slug_bad_chars', '+ /');
+					$errors['slug']=sprintf(_('The slug may not contain these characters: %s'), '+ /');
 				elseif ( (!isset($inparentid)) && qa_admin_is_slug_reserved($inslug)) // only top level is a problem
-					$errors['slug']=qa_lang('admin/slug_reserved');
+					$errors['slug']=_('This slug is reserved for use by another page');
 				elseif (isset($matchcategoryid) && strcmp($matchcategoryid, @$editcategory['categoryid']))
-					$errors['slug']=qa_lang('admin/category_already_used');
+					$errors['slug']=_('This is already being used by a category');
 				elseif (isset($matchpage))
-					$errors['slug']=qa_lang('admin/page_already_used');
+					$errors['slug']=_('This is already being used by a page');
 				else
 					unset($errors['slug']);
 				
@@ -242,8 +242,8 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/admin_title').' - '.qa_lang_html('admin/categories_title');
-	$qa_content['error']=$securityexpired ? qa_lang_html('admin/form_security_expired') : qa_admin_page_error();
+	$qa_content['title']=qa_html(_('Administration center')).' - '.qa_html(_('Categories'));
+	$qa_content['error']=$securityexpired ? qa_html(_('Form security code expired - please try again')) : qa_admin_page_error();
 	
 	if ($setmissing) {
 		$qa_content['form']=array(
@@ -254,8 +254,8 @@
 			'fields' => array(
 				'reassign' => array(
 					'label' => isset($editcategory)
-						? qa_lang_html_sub('admin/category_no_sub_to', qa_html($editcategory['title']))
-						: qa_lang_html('admin/category_none_to'),
+						? qa_html(sprintf(_('Move questions in %s with no sub-category to:'), $editcategory['title']))
+						: qa_html(_('Move questions with no category to:')),
 					'loose' => true,
 				),
 			),
@@ -263,12 +263,12 @@
 			'buttons' => array(
 				'save' => array(
 					'tags' => 'id="dosaveoptions"', // just used for qa_recalc_click()
-					'label' => qa_lang_html('main/save_button'),
+					'label' => qa_html(_('Save Changes')),
 				),
 				
 				'cancel' => array(
 					'tags' => 'name="docancel"',
-					'label' => qa_lang_html('main/cancel_button'),
+					'label' => qa_html(_('Cancel')),
 				),
 			),
 			
@@ -291,13 +291,13 @@
 			
 			'style' => 'tall',
 
-			'ok' => qa_get('saved') ? qa_lang_html('admin/category_saved') : (qa_get('added') ? qa_lang_html('admin/category_added') : null),
+			'ok' => qa_get('saved') ? qa_html(_('Category saved')) : (qa_get('added') ? qa_html(_('Category added')) : null),
 			
 			'fields' => array(
 				'name' => array(
 					'id' => 'name_display',
 					'tags' => 'name="name" id="name"',
-					'label' => qa_lang_html(count($categories) ? 'admin/category_name' : 'admin/category_name_first'),
+					'label' => qa_html(count($categories) ? _('Category name:') : _('Name of first category:')),
 					'value' => qa_html(isset($inname) ? $inname : @$editcategory['title']),
 					'error' => qa_html(@$errors['name']),
 				),
@@ -311,7 +311,7 @@
 				'slug' => array(
 					'id' => 'slug_display',
 					'tags' => 'name="slug"',
-					'label' => qa_lang_html('admin/category_slug'),
+					'label' => qa_html(_('Category slug - URL fragment:')),
 					'value' => qa_html(isset($inslug) ? $inslug : @$editcategory['tags']),
 					'error' => qa_html(@$errors['slug']),
 				),
@@ -319,7 +319,7 @@
 				'content' => array(
 					'id' => 'content_display',
 					'tags' => 'name="content"',
-					'label' => qa_lang_html('admin/category_description'),
+					'label' => qa_html(_('Optional category description:')),
 					'value' => qa_html(isset($incontent) ? $incontent : @$editcategory['content']),
 					'error' => qa_html(@$errors['content']),
 					'rows' => 2,
@@ -329,12 +329,12 @@
 			'buttons' => array(
 				'save' => array(
 					'tags' => 'id="dosaveoptions"', // just used for qa_recalc_click
-					'label' => qa_lang_html(isset($editcategory['categoryid']) ? 'main/save_button' : 'admin/add_category_button'),
+					'label' => qa_html(isset($editcategory['categoryid']) ? _('Save Changes') : _('Add Category')),
 				),
 				
 				'cancel' => array(
 					'tags' => 'name="docancel"',
-					'label' => qa_lang_html('main/cancel_button'),
+					'label' => qa_html(_('Cancel')),
 				),
 			),
 			
@@ -355,7 +355,7 @@
 			unset($qa_content['form']['fields']['content']);
 			
 			$qa_content['form']['fields']['parent']=array(
-				'label' => qa_lang_html('admin/category_parent'),
+				'label' => qa_html(_('Parent category:')),
 			);
 				
 			$childdepth=qa_db_category_child_depth($editcategory['categoryid']);
@@ -364,13 +364,13 @@
 				isset($incategories) ? $incategories : $categories, isset($inparentid) ? $inparentid : @$editcategory['parentid'],
 				true, true, QA_CATEGORY_DEPTH-1-$childdepth, @$editcategory['categoryid']);
 				
-			$qa_content['form']['fields']['parent']['options']['']=qa_lang_html('admin/category_top_level');
+			$qa_content['form']['fields']['parent']['options']['']=qa_html(_('No parent (top level)'));
 			
-			@$qa_content['form']['fields']['parent']['note'].=qa_lang_html_sub('admin/category_max_depth_x', QA_CATEGORY_DEPTH);
+			@$qa_content['form']['fields']['parent']['note'].=qa_html(sprintf(_('Some options may be hidden to prevent a category going deeper than %d levels.'), QA_CATEGORY_DEPTH));
 
 		} elseif (isset($editcategory['categoryid'])) { // existing category
 			if ($hassubcategory) {
-				$qa_content['form']['fields']['name']['note']=qa_lang_html('admin/category_no_delete_subs');
+				$qa_content['form']['fields']['name']['note']=qa_html(_('This category cannot be deleted because it has a sub-category.'));
 				unset($qa_content['form']['fields']['delete']);
 				unset($qa_content['form']['fields']['reassign']);
 
@@ -378,8 +378,8 @@
 				$qa_content['form']['fields']['delete']=array(
 					'tags' => 'name="dodelete" id="dodelete"',
 					'label' =>
-						'<span id="reassign_shown">'.qa_lang_html('admin/delete_category_reassign').'</span>'.
-						'<span id="reassign_hidden" style="display:none;">'.qa_lang_html('admin/delete_category').'</span>',
+						'<span id="reassign_shown">'.qa_html(_('Delete this category and reassign its questions to:')).'</span>'.
+						'<span id="reassign_hidden" style="display:none;">'.qa_html(_('Delete this category')).'</span>',
 					'value' => 0,
 					'type' => 'checkbox',
 				);
@@ -394,13 +394,11 @@
 			}
 			
 			$qa_content['form']['fields']['questions']=array(
-				'label' => qa_lang_html('admin/total_qs'),
+				'label' => qa_html(_('Total questions:')),
 				'type' => 'static',
 				'value' => '<a href="'.qa_path_html('questions/'.qa_category_path_request($categories, $editcategory['categoryid'])).'">'.
-								( ($editcategory['qcount']==1)
-									? qa_lang_html_sub('main/1_question', '1', '1')
-									: qa_lang_html_sub('main/x_questions', number_format($editcategory['qcount']))
-								).'</a>',
+								sprintf(ngettext('%s question', '%s questions', $editcategory['qcount']), number_format($editcategory['qcount']))
+								.'</a>',
 			);
 
 			if ($hassubcategory && !qa_opt('allow_no_sub_category')) {
@@ -408,11 +406,11 @@
 				
 				if ($nosubcount)
 					$qa_content['form']['fields']['questions']['error']=
-						strtr(qa_lang_html('admin/category_no_sub_error'), array(
-							'^q' => number_format($nosubcount),
-							'^1' => '<a href="'.qa_path_html(qa_request(), array('edit' => $editcategory['categoryid'], 'missing' => 1)).'">',
-							'^2' => '</a>',
-						));
+						sprintf(qa_html(ngettext('%s question in this category have no sub-category - %sset sub-category%s', '%s questions in this category have no sub-category - %sset sub-category%s', $nosubcount)),
+							number_format($nosubcount),
+							'<a href="'.qa_path_html(qa_request(), array('edit' => $editcategory['categoryid'], 'missing' => 1)).'">',
+							'</a>'
+						);
 			}
 			
 			qa_set_display_rules($qa_content, array(
@@ -441,9 +439,9 @@
 			if (count($categories)) {
 				$qa_content['form']['fields']['parent']=array(
 					'id' => 'parent_display',
-					'label' => qa_lang_html('admin/category_parent'),
+					'label' => qa_html(_('Parent category:')),
 					'type' => 'static',
-					'value' => (strlen($pathhtml) ? $pathhtml : qa_lang_html('admin/category_top_level')),
+					'value' => (strlen($pathhtml) ? $pathhtml : qa_html(_('No parent (top level)'))),
 				);
 				
 				$qa_content['form']['fields']['parent']['value']=
@@ -453,7 +451,7 @@
 				if (isset($editcategory['categoryid']))
 					$qa_content['form']['fields']['parent']['value'].=' - '.
 						'<a href="'.qa_path_html(qa_request(), array('edit' => $editcategory['categoryid'], 'setparent' => 1)).
-						'" style="white-space: nowrap;">'.qa_lang_html('admin/category_move_parent').'</a>';
+						'" style="white-space: nowrap;">'.qa_html(_('move to different parent')).'</a>';
 			}
 
 			$positionoptions=array();
@@ -464,9 +462,9 @@
 			foreach ($categories as $key => $category)
 				if (!strcmp($category['parentid'], @$editcategory['parentid'])) {
 					if (isset($previous))
-						$positionhtml=qa_lang_html_sub('admin/after_x', qa_html($passedself ? $category['title'] : $previous['title']));
+						$positionhtml=qa_html(sprintf(_('After "%s"'), ($passedself ? $category['title'] : $previous['title'])));
 					else
-						$positionhtml=qa_lang_html('admin/first');
+						$positionhtml=qa_html(_('First'));
 		
 					$positionoptions[$category['position']]=$positionhtml;
 		
@@ -480,14 +478,14 @@
 				$positionvalue=$positionoptions[$editcategory['position']];
 	
 			else {
-				$positionvalue=isset($previous) ? qa_lang_html_sub('admin/after_x', qa_html($previous['title'])) : qa_lang_html('admin/first');
+				$positionvalue=isset($previous) ? qa_html(sprintf(_('After "%s"'), $previous['title'])) : qa_html(_('First'));
 				$positionoptions[1+@max(array_keys($positionoptions))]=$positionvalue;
 			}
 	
 			$qa_content['form']['fields']['position']=array(
 				'id' => 'position_display',
 				'tags' => 'name="position"',
-				'label' => qa_lang_html('admin/position'),
+				'label' => qa_html(_('Position:')),
 				'type' => 'select',
 				'options' => $positionoptions,
 				'value' => $positionvalue,
@@ -506,19 +504,19 @@
 								' ('.$category['qcount'].')';
 					
 					if (!strlen($childrenhtml))
-						$childrenhtml=qa_lang_html('admin/category_no_subs');
+						$childrenhtml=qa_html(_('None'));
 					
 					$childrenhtml.=' - <a href="'.qa_path_html(qa_request(), array('addsub' => $editcategory['categoryid'])).
-						'" style="white-space: nowrap;"><b>'.qa_lang_html('admin/category_add_sub').'</b></a>';
+						'" style="white-space: nowrap;"><b>'.qa_html(_('add sub-category')).'</b></a>';
 					
 					$qa_content['form']['fields']['children']=array(
 						'id' => 'children_display',
-						'label' => qa_lang_html('admin/category_subs'),
+						'label' => qa_html(_('Sub-categories:')),
 						'type' => 'static',
 						'value' => $childrenhtml,
 					);
 				} else {
-					$qa_content['form']['fields']['name']['note']=qa_lang_html_sub('admin/category_no_add_subs_x', QA_CATEGORY_DEPTH);
+					$qa_content['form']['fields']['name']['note']=qa_html(sprintf(_('This category cannot have sub-categories because it is already %d levels down.'), QA_CATEGORY_DEPTH));
 				}
 				
 			}
@@ -528,13 +526,13 @@
 		$qa_content['form']=array(
 			'tags' => 'method="post" action="'.qa_path_html(qa_request()).'"',
 			
-			'ok' => $savedoptions ? qa_lang_html('admin/options_saved') : null,
+			'ok' => $savedoptions ? qa_html(_('Options saved')) : null,
 			
 			'style' => 'tall',
 			
 			'fields' => array(
 				'intro' => array(
-					'label' => qa_lang_html('admin/categories_introduction'),
+					'label' => qa_html(_('To get started with categories, click the	\'Add Category\' button.')),
 					'type' => 'static',
 				),
 			),
@@ -542,12 +540,12 @@
 			'buttons' => array(
 				'save' => array(
 					'tags' => 'name="dosaveoptions" id="dosaveoptions"',
-					'label' => qa_lang_html('main/save_button'),
+					'label' => qa_html(_('Save Changes')),
 				),
 				
 				'add' => array(
 					'tags' => 'name="doaddcategory"',
-					'label' => qa_lang_html('admin/add_category_button'),
+					'label' => qa_html(_('Add Category')),
 				),			
 			),
 			
@@ -564,16 +562,16 @@
 			foreach ($categories as $category)
 				if (!isset($category['parentid']))
 					$navcategoryhtml.='<a href="'.qa_path_html('admin/categories', array('edit' => $category['categoryid'])).'">'.
-						qa_html($category['title']).'</a> - '.qa_lang_html_sub('main/x_questions', $category['qcount']).'<br/>';
+						qa_html($category['title']).'</a> - '.qa_html(sprintf(ngettext('%d question', '%d questions', $category['qcount']), $category['qcount'])).'<br/>';
 
 			$qa_content['form']['fields']['nav']=array(
-				'label' => qa_lang_html('admin/top_level_categories'),
+				'label' => qa_html(_('Top level categories:')),
 				'type' => 'static',
 				'value' => $navcategoryhtml,
 			);
 				
 			$qa_content['form']['fields']['allow_no_category']=array(
-				'label' => qa_lang_html('options/allow_no_category'),
+				'label' => qa_html(_('Allow questions with no category')),
 				'tags' => 'name="option_allow_no_category"',
 				'type' => 'checkbox',
 				'value' => qa_opt('allow_no_category'),
@@ -584,15 +582,15 @@
 				
 				if ($nocatcount)
 					$qa_content['form']['fields']['allow_no_category']['error']=
-						strtr(qa_lang_html('admin/category_none_error'), array(
-							'^q' => number_format($nocatcount),
-							'^1' => '<a href="'.qa_path_html(qa_request(), array('missing' => 1)).'">',
-							'^2' => '</a>',
-						));
+						sprintf(qa_html(ngettext('%s question currently have no category - %sset category%s', '%s questions currently have no category - %sset category%s', $nocatcount)),
+							number_format($nocatcount),
+							'<a href="'.qa_path_html(qa_request(), array('missing' => 1)).'">',
+							'</a>'
+						);
 			}
 			
 			$qa_content['form']['fields']['allow_no_sub_category']=array(
-				'label' => qa_lang_html('options/allow_no_sub_category'),
+				'label' => qa_html(_('Allow questions with a category but no sub-category')),
 				'tags' => 'name="option_allow_no_sub_category"',
 				'type' => 'checkbox',
 				'value' => qa_opt('allow_no_sub_category'),
@@ -603,11 +601,11 @@
 	}
 
 	if (qa_get('recalc')) {
-		$qa_content['form']['ok']='<span id="recalc_ok">'.qa_lang_html('admin/recalc_categories').'</span>';
+		$qa_content['form']['ok']='<span id="recalc_ok">'.qa_html(_('Recalculate categories')).'</span>';
 		$qa_content['form']['hidden']['code_recalc']=qa_get_form_security_code('admin/recalc');
 		
 		$qa_content['script_rel'][]='qa-content/qa-admin.js?'.QA_VERSION;
-		$qa_content['script_var']['qa_warning_recalc']=qa_lang('admin/stop_recalc_warning');
+		$qa_content['script_var']['qa_warning_recalc']=_('A database clean-up operation is running. If you close this page now, the operation will be interrupted.');
 		
 		$qa_content['script_onloads'][]=array(
 			"qa_recalc_click('dorecalccategories', document.getElementById('dosaveoptions'), null, 'recalc_ok');"

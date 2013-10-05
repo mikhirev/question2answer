@@ -45,7 +45,7 @@
 
 	{
 		header('HTTP/1.1 500 Internal Server Error');
-		echo qa_lang_html('main/general_error');
+		echo qa_html(_('A server error occurred - please try again.'));
 		qa_exit('error');
 	}
 
@@ -56,7 +56,7 @@
 */
 	{
 		header('HTTP/1.0 404 Not Found');
-		echo qa_lang_html('misc/feed_not_found');
+		echo qa_html(_('Feed not found'));
 		qa_exit();
 	}
 
@@ -82,7 +82,7 @@
 			qa_feed_not_found();
 
 		if (isset($allkey))
-			$title=(isset($categoryid) && isset($catkey)) ? qa_lang_sub($catkey, $categories[$categoryid]['title']) : qa_lang($allkey);
+			$title=(isset($categoryid) && isset($catkey)) ? sprintf($catkey, $categories[$categoryid]['title']) : $allkey;
 			
 		return array_merge(
 			is_array($questions1) ? $questions1 : array(),
@@ -187,44 +187,44 @@
 
 	switch ($feedtype) {
 		case 'questions':
-			$questions=qa_feed_load_ifcategory($categoryslugs, 'main/recent_qs_title', 'main/recent_qs_in_x', $title,
+			$questions=qa_feed_load_ifcategory($categoryslugs, _('Recent questions'), _('Recent questions in %s'), $title,
 				qa_db_qs_selectspec(null, 'created', 0, $categoryslugs, null, false, $full, $count)
 			);
 			break;
 			
 		case 'hot':
-			$questions=qa_feed_load_ifcategory($categoryslugs, 'main/hot_qs_title', 'main/hot_qs_in_x', $title,
+			$questions=qa_feed_load_ifcategory($categoryslugs, _('Hot questions'), _('Hot questions in %s'), $title,
 				qa_db_qs_selectspec(null, 'hotness', 0, $categoryslugs, null, false, $full, $count)
 			);
 			break;
 		
 		case 'unanswered':
-			$questions=qa_feed_load_ifcategory($categoryslugs, 'main/unanswered_qs_title', 'main/unanswered_qs_in_x', $title,
+			$questions=qa_feed_load_ifcategory($categoryslugs, _('Recent questions without answers'), _('Questions without answers in %s'), $title,
 				qa_db_unanswered_qs_selectspec(null, null, 0, $categoryslugs, false, $full, $count)
 			);
 			break;
 			
 		case 'answers':
-			$questions=qa_feed_load_ifcategory($categoryslugs, 'main/recent_as_title', 'main/recent_as_in_x', $title,
+			$questions=qa_feed_load_ifcategory($categoryslugs, _('Recently answered questions'), _('Recent questions in %s'), $title,
 				qa_db_recent_a_qs_selectspec(null, 0, $categoryslugs, null, false, $full, $count)
 			);
 			break;
 
 		case 'comments':
-			$questions=qa_feed_load_ifcategory($categoryslugs, 'main/recent_cs_title', 'main/recent_cs_in_x', $title,
+			$questions=qa_feed_load_ifcategory($categoryslugs, _('Recently commented questions'), _('Recently commented questions in %s'), $title,
 				qa_db_recent_c_qs_selectspec(null, 0, $categoryslugs, null, false, $full, $count)
 			);
 			break;
 			
 		case 'qa':
-			$questions=qa_feed_load_ifcategory($categoryslugs, 'main/recent_qs_as_title', 'main/recent_qs_as_in_x', $title,
+			$questions=qa_feed_load_ifcategory($categoryslugs, _('Recent questions and answers'), _('Recent questions and answers in %s'), $title,
 				qa_db_qs_selectspec(null, 'created', 0, $categoryslugs, null, false, $full, $count),
 				qa_db_recent_a_qs_selectspec(null, 0, $categoryslugs, null, false, $full, $count)
 			);
 			break;
 		
 		case 'activity':
-			$questions=qa_feed_load_ifcategory($categoryslugs, 'main/recent_activity_title', 'main/recent_activity_in_x', $title,
+			$questions=qa_feed_load_ifcategory($categoryslugs, _('Recent activity'), _('Recent activity in %s'), $title,
 				qa_db_qs_selectspec(null, 'created', 0, $categoryslugs, null, false, $full, $count),
 				qa_db_recent_a_qs_selectspec(null, 0, $categoryslugs, null, false, $full, $count),
 				qa_db_recent_c_qs_selectspec(null, 0, $categoryslugs, null, false, $full, $count),
@@ -239,7 +239,7 @@
 				qa_db_tag_recent_qs_selectspec(null, $tag, 0, $full, $count)
 			);
 			
-			$title=qa_lang_sub('main/questions_tagged_x', $tag);
+			$title=sprintf(_('Recent questions tagged %s'), $tag);
 			$linkrequest='tag/'.$tag;
 			break;
 			
@@ -250,7 +250,7 @@
 
 			$results=qa_get_search_results($query, 0, $count, null, true, $full);
 			
-			$title=qa_lang_sub('main/results_for_x', $query);
+			$title=sprintf(_('Search results for %s'), $query);
 			$linkrequest='search';
 			$linkparams=array('q' => $query);
 
@@ -330,61 +330,61 @@
 					break;
 				
 				case 'Q-'.QA_UPDATE_VISIBLE:
-					$langstring=$question['hidden'] ? 'misc/feed_hidden_prefix' : 'misc/feed_reshown_prefix';
+					$langstring=$question['hidden'] ? _('Hidden: ') : _('Reshown: ');
 					break;
 					
 				case 'Q-'.QA_UPDATE_CLOSED:
-					$langstring=isset($question['closedbyid']) ? 'misc/feed_closed_prefix' : 'misc/feed_reopened_prefix';
+					$langstring=isset($question['closedbyid']) ? _('Closed: ') : _('Reopened: ');
 					break;
 					
 				case 'Q-'.QA_UPDATE_TAGS:
-					$langstring='misc/feed_retagged_prefix';
+					$langstring=_('Retagged: ');
 					break;
 					
 				case 'Q-'.QA_UPDATE_CATEGORY:
-					$langstring='misc/feed_recategorized_prefix';
+					$langstring=_('Recategorized: ');
 					break;
 					
 				case 'A-':
-					$langstring='misc/feed_a_prefix';
+					$langstring=_('Answered: ');
 					break;
 					
 				case 'A-'.QA_UPDATE_SELECTED:
-					$langstring='misc/feed_a_selected_prefix';
+					$langstring=_('Answer selected: ');
 					break;
 				
 				case 'A-'.QA_UPDATE_VISIBLE:
-					$langstring=$question['ohidden'] ? 'misc/feed_hidden_prefix' : 'misc/feed_a_reshown_prefix';
+					$langstring=$question['ohidden'] ? _('Hidden: ') : _('Answer reshown: ');
 					break;
 					
 				case 'A-'.QA_UPDATE_CONTENT:
-					$langstring='misc/feed_a_edited_prefix';
+					$langstring=_('Answer edited: ');
 					break;
 					
 				case 'C-':
-					$langstring='misc/feed_c_prefix';
+					$langstring=_('Commented: ');
 					break;
 					
 				case 'C-'.QA_UPDATE_TYPE:
-					$langstring='misc/feed_c_moved_prefix';
+					$langstring=_('Comment moved: ');
 					break;
 					
 				case 'C-'.QA_UPDATE_VISIBLE:
-					$langstring=$question['ohidden'] ? 'misc/feed_hidden_prefix' : 'misc/feed_c_reshown_prefix';
+					$langstring=$question['ohidden'] ? _('Hidden: ') : _('Comment reshown: ');
 					break;
 					
 				case 'C-'.QA_UPDATE_CONTENT:
-					$langstring='misc/feed_c_edited_prefix';
+					$langstring=_('Comment edited: ');
 					break;
 					
 				case 'Q-'.QA_UPDATE_CONTENT:
 				default:
-					$langstring='misc/feed_edited_prefix';
+					$langstring=_('Edited: ');
 					break;
 			
 			}
 			
-			$titleprefix=isset($langstring) ? qa_lang($langstring) : '';
+			$titleprefix=isset($langstring) ? $langstring : '';
 							
 			$urlxml=qa_xml(qa_q_path($question['postid'], $question['title'], true, @$question['obasetype'], @$question['opostid']));
 		}

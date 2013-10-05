@@ -120,7 +120,7 @@
 		foreach ($usermessages as $message)
 			if ($message['deleteable'] && qa_clicked('m'.$message['messageid'].'_dodelete')) {
 				if (!qa_check_form_security_code('wall-'.$useraccount['handle'], qa_post_text('code')))
-					$errors['page']=qa_lang_html('misc/form_security_again');
+					$errors['page']=qa_html(_('Please click again to confirm'));
 					
 				else {
 					qa_wall_delete_post($loginuserid, qa_get_logged_in_handle(), qa_cookie_get(), $message);
@@ -153,7 +153,7 @@
 					$inprofile[$userfield['fieldid']]=qa_post_text('field_'.$userfield['fieldid']);
 							
 				if (!qa_check_form_security_code('user-edit-'.$handle, qa_post_text('code'))) {
-					$errors['page']=qa_lang_html('misc/form_security_again');
+					$errors['page']=qa_html(_('Please click again to confirm'));
 					$userediting=true;
 				
 				} else {
@@ -240,7 +240,7 @@
 		
 		if (qa_clicked('doapprove') || qa_clicked('doblock') || qa_clicked('dounblock') || qa_clicked('dohideall') || qa_clicked('dodelete')) {
 			if (!qa_check_form_security_code('user-'.$handle, qa_post_text('code')))
-				$errors['page']=qa_lang_html('misc/form_security_again');
+				$errors['page']=qa_html(_('Please click again to confirm'));
 				
 			else {
 				if ($approvebutton && qa_clicked('doapprove')) {
@@ -297,10 +297,10 @@
 			$inmessage=qa_post_text('message');
 			
 			if (!strlen($inmessage))
-				$errors['message']=qa_lang('profile/post_wall_empty');
+				$errors['message']=_('Please enter something to post on this wall');
 				
 			elseif (!qa_check_form_security_code('wall-'.$useraccount['handle'], qa_post_text('code')))
-				$errors['message']=qa_lang_html('misc/form_security_again');
+				$errors['message']=qa_html(_('Please click again to confirm'));
 			
 			elseif (!$wallposterrorhtml) {
 				qa_wall_add_post($loginuserid, qa_get_logged_in_handle(), qa_cookie_get(), $userid, $useraccount['handle'], $inmessage, '');
@@ -318,7 +318,7 @@
 		$inbonus=(int)qa_post_text('bonus');
 		
 		if (!qa_check_form_security_code('user-activity-'.$handle, qa_post_text('code')))
-			$errors['page']=qa_lang_html('misc/form_security_again');
+			$errors['page']=qa_html(_('Please click again to confirm'));
 			
 		else {
 			qa_db_points_set_bonus($userid, $inbonus);
@@ -332,7 +332,7 @@
 	
 	$qa_content=qa_content_prepare();
 	
-	$qa_content['title']=qa_lang_html_sub('profile/user_x', $userhtml);
+	$qa_content['title']=sprintf(qa_html(_('User %s')), $userhtml);
 	$qa_content['error']=@$errors['page'];
 
 	if (isset($loginuserid) && !QA_FINAL_EXTERNAL_USERS) {
@@ -340,7 +340,7 @@
 		$favorite=@$favoritemap['user'][$useraccount['userid']];
 		
 		$qa_content['favorite']=qa_favorite_form(QA_ENTITY_USER, $useraccount['userid'], $favorite,
-			qa_lang_sub($favorite ? 'main/remove_x_favorites' : 'users/add_user_x_favorites', $handle));
+			sprintf($favorite ? _('Remove %s from my favorites') : _('Add user %s to my favorites'), $handle));
 	}
 
 	$qa_content['script_rel'][]='qa-content/qa-user.js?'.QA_VERSION;
@@ -368,17 +368,17 @@
 				
 				'duration' => array(
 					'type' => 'static',
-					'label' => qa_lang_html('users/member_for'),
+					'label' => qa_html(_('Member for:')),
 					'value' => qa_html(qa_time_to_string(qa_opt('db_time')-$useraccount['created'])),
 					'id' => 'duration',
 				),
 				
 				'level' => array(
 					'type' => 'static',
-					'label' => qa_lang_html('users/member_type'),
+					'label' => qa_html(_('Type:')),
 					'tags' => 'name="level"',
 					'value' => qa_html(qa_user_level_string($useraccount['level'])),
-					'note' => (($useraccount['flags'] & QA_USER_FLAGS_USER_BLOCKED) && isset($maxlevelassign)) ? qa_lang_html('users/user_blocked') : '',
+					'note' => (($useraccount['flags'] & QA_USER_FLAGS_USER_BLOCKED) && isset($maxlevelassign)) ? qa_html(_('(blocked)')) : '',
 					'id' => 'level',
 				),
 			),
@@ -391,10 +391,10 @@
 	//	Private message link
 	
 		if ( qa_opt('allow_private_messages') && isset($loginuserid) && ($loginuserid!=$userid) && !($useraccount['flags'] & QA_USER_FLAGS_NO_MESSAGES) && !$userediting )
-			$qa_content['form_profile']['fields']['level']['value'].=strtr(qa_lang_html('profile/send_private_message'), array(
-				'^1' => '<a href="'.qa_path_html('message/'.$handle).'">',
-				'^2' => '</a>',
-			));
+			$qa_content['form_profile']['fields']['level']['value'].=sprintf(qa_html(_(' - %ssend private message%s')),
+				'<a href="'.qa_path_html('message/'.$handle).'">',
+				'</a>'
+			);
 				
 	
 	//	Levels editing or viewing (add category-specific levels)
@@ -411,7 +411,7 @@
 				array_push($showlevels, QA_USER_LEVEL_EXPERT, QA_USER_LEVEL_EDITOR, QA_USER_LEVEL_MODERATOR, QA_USER_LEVEL_ADMIN, QA_USER_LEVEL_SUPER);
 				
 				$leveloptions=array();
-				$catleveloptions=array('' => qa_lang_html('users/category_level_none'));
+				$catleveloptions=array('' => qa_html(_('No upgrade')));
 
 				foreach ($showlevels as $showlevel)
 					if ($showlevel<=$maxlevelassign) {
@@ -429,12 +429,12 @@
 					$catleveladd=qa_get('catleveladd') ? true : false;
 					
 					if ((!$catleveladd) && !count($userlevels))
-						$qa_content['form_profile']['fields']['level']['suffix']=strtr(qa_lang_html('users/category_level_add'), array(
-							'^1' => '<a href="'.qa_path_html(qa_request(), array('state' => 'edit', 'catleveladd' => 1)).'">',
-							'^2' => '</a>',
-						));
+						$qa_content['form_profile']['fields']['level']['suffix']=sprintf(qa_html(_(' - %sadd category-specific privileges%s')),
+							'<a href="'.qa_path_html(qa_request(), array('state' => 'edit', 'catleveladd' => 1)).'">',
+							'</a>'
+						);
 					else
-						$qa_content['form_profile']['fields']['level']['suffix']=qa_lang_html('users/level_in_general');
+						$qa_content['form_profile']['fields']['level']['suffix']=qa_html(_('in general'));
 						
 					if ($catleveladd || count($userlevels))
 						$userlevels[]=array('entitytype' => QA_ENTITY_CATEGORY);
@@ -446,12 +446,12 @@
 							$id='ls_'.+$index;
 							
 							$qa_content['form_profile']['fields']['uc_'.$index.'_level']=array(
-								'label' => qa_lang_html('users/category_level_label'),
+								'label' => qa_html(_('Upgraded to:')),
 								'type' => 'select',
 								'tags' => 'name="uc_'.$index.'_level" id="'.qa_html($id).'" onchange="this.qa_prev=this.options[this.selectedIndex].value;"',
 								'options' => $catleveloptions,
 								'value' => isset($userlevel['level']) ? qa_html(qa_user_level_string($userlevel['level'])) : '',
-								'suffix' => qa_lang_html('users/category_level_in'),
+								'suffix' => qa_html(_('for the category below:')),
 							);
 							
 							$qa_content['form_profile']['fields']['uc_'.$index.'_cat']=array();
@@ -501,10 +501,10 @@
 			foreach ($userlevels as $userlevel)
 				if ( ($userlevel['entitytype']==QA_ENTITY_CATEGORY) && ($userlevel['level']>$useraccount['level']) )
 					$qa_content['form_profile']['fields']['level']['value'].='<br/>'.
-						strtr(qa_lang_html('users/level_for_category'), array(
-							'^1' => qa_html(qa_user_level_string($userlevel['level'])),
-							'^2' => '<a href="'.qa_path_html(implode('/', array_reverse(explode('/', $userlevel['backpath'])))).'">'.qa_html($userlevel['title']).'</a>',
-						));
+						sprintf(qa_html(_('%s for %s')), // TRANSLATORS: level for category
+							qa_html(qa_user_level_string($userlevel['level'])),
+							'<a href="'.qa_path_html(implode('/', array_reverse(explode('/', $userlevel['backpath'])))).'">'.qa_html($userlevel['title']).'</a>'
+						);
 		}
 
 	
@@ -513,21 +513,21 @@
 		$showpermits=array();
 		$permitoptions=qa_get_permit_options();
 		
-		foreach ($permitoptions as $permitoption)
+		foreach ($permitoptions as $permitoption => $permitstring)
 			if ( // if not available to approved and email confirmed users with no points, but yes available to the user, it's something special
 				qa_permit_error($permitoption, $userid, QA_USER_LEVEL_APPROVED, QA_USER_FLAGS_EMAIL_CONFIRMED, 0) &&
 				!qa_permit_error($permitoption, $userid, $useraccount['level'], $useraccount['flags'], $userpoints['points'])
 			) {
 				if ($permitoption=='permit_retag_cat')
-					$showpermits[]=qa_lang(qa_using_categories() ? 'profile/permit_recat' : 'profile/permit_retag');
+					$showpermits[]=qa_using_categories() ? _('Recategorizing any question') : _('Retagging any question');
 				else
-					$showpermits[]=qa_lang('profile/'.$permitoption); // then show it as an extra priviliege
+					$showpermits[]=$permitstring; // then show it as an extra priviliege
 			}
 				
 		if (count($showpermits))
 			$qa_content['form_profile']['fields']['permits']=array(
 				'type' => 'static',
-				'label' => qa_lang_html('profile/extra_privileges'),
+				'label' => qa_html(_('Extra privileges:')),
 				'value' => qa_html(implode("\n", $showpermits), true),
 				'rows' => count($showpermits),
 				'id' => 'permits',
@@ -543,12 +543,12 @@
 	
 			$qa_content['form_profile']['fields']['email']=array(
 				'type' => $userediting ? 'text' : 'static',
-				'label' => qa_lang_html('users/email_label'),
+				'label' => qa_html(_('Email:')),
 				'tags' => 'name="email"',
 				'value' => $userediting ? $htmlemail : ('<a href="mailto:'.$htmlemail.'">'.$htmlemail.'</a>'),
 				'error' => qa_html(@$errors['email']),
-				'note' => ($doconfirms ? (qa_lang_html($isconfirmed ? 'users/email_confirmed' : 'users/email_not_confirmed').' ') : '').
-					($userediting ? '' : qa_lang_html('users/only_shown_admins')),
+				'note' => ($doconfirms ? (qa_html($isconfirmed ? _('Confirmed') : _('Not yet confirmed')).' ') : '').
+					($userediting ? '' : qa_html(_('(only shown to admins)'))),
 				'id' => 'email',
 			);
 
@@ -560,26 +560,26 @@
 		if (($loginlevel>=QA_USER_LEVEL_MODERATOR) && !qa_user_permit_error()) {
 			$qa_content['form_profile']['fields']['lastlogin']=array(
 				'type' => 'static',
-				'label' => qa_lang_html('users/last_login_label'),
+				'label' => qa_html(_('Last login:')),
 				'value' =>
-					strtr(qa_lang_html('users/x_ago_from_y'), array(
-						'^1' => qa_time_to_string(qa_opt('db_time')-$useraccount['loggedin']),
-						'^2' => qa_ip_anchor_html($useraccount['loginip']),
-					)),
-				'note' => $userediting ? null : qa_lang_html('users/only_shown_moderators'),
+					sprintf(qa_html(_('%s ago from %s')),
+						qa_time_to_string(qa_opt('db_time')-$useraccount['loggedin']),
+						qa_ip_anchor_html($useraccount['loginip'])
+					),
+				'note' => $userediting ? null : qa_html(_('(only shown to moderators and admins)')),
 				'id' => 'lastlogin',
 			);
 
 			if (isset($useraccount['written']))
 				$qa_content['form_profile']['fields']['lastwrite']=array(
 					'type' => 'static',
-					'label' => qa_lang_html('users/last_write_label'),
+					'label' => qa_html(_('Last write action:')),
 					'value' =>
-						strtr(qa_lang_html('users/x_ago_from_y'), array(
-							'^1' => qa_time_to_string(qa_opt('db_time')-$useraccount['written']),
-							'^2' => qa_ip_anchor_html($useraccount['writeip']),
-						)),
-					'note' => $userediting ? null : qa_lang_html('users/only_shown_moderators'),
+						sprintf(qa_html(_('%s ago from %s')),
+							qa_time_to_string(qa_opt('db_time')-$useraccount['written']),
+							qa_ip_anchor_html($useraccount['writeip'])
+						),
+					'note' => $userediting ? null : qa_html(_('(only shown to moderators and admins)')),
 					'id' => 'lastwrite',
 				);
 			else
@@ -611,13 +611,13 @@
 			$notehtml=null;
 			if (isset($userfield['permit']) && !$userediting) {
 				if ($userfield['permit']<=QA_PERMIT_ADMINS)
-					$notehtml=qa_lang_html('users/only_shown_admins');
+					$notehtml=qa_html(_('(only shown to admins)'));
 				elseif ($userfield['permit']<=QA_PERMIT_MODERATORS)
-					$notehtml=qa_lang_html('users/only_shown_moderators');
+					$notehtml=qa_html(_('(only shown to moderators and admins)'));
 				elseif ($userfield['permit']<=QA_PERMIT_EDITORS)
-					$notehtml=qa_lang_html('users/only_shown_editors');
+					$notehtml=qa_html(_('(only shown to editors and above)'));
 				elseif ($userfield['permit']<=QA_PERMIT_EXPERTS)
-					$notehtml=qa_lang_html('users/only_shown_experts');
+					$notehtml=qa_html(_('(only shown to experts and above)'));
 			}
 				
 			$qa_content['form_profile']['fields'][$userfield['title']]=array(
@@ -643,7 +643,7 @@
 			) {
 				$qa_content['form_profile']['fields']['removeavatar']=array(
 					'type' => 'checkbox',
-					'label' => qa_lang_html('users/remove_avatar'),
+					'label' => qa_html(_('Remove avatar:')),
 					'tags' => 'name="removeavatar"',
 				);
 			}
@@ -651,12 +651,12 @@
 			$qa_content['form_profile']['buttons']=array(
 				'save' => array(
 					'tags' => 'onclick="qa_show_waiting_after(this, false);"',
-					'label' => qa_lang_html('users/save_user'),
+					'label' => qa_html(_('Save User')),
 				),
 				
 				'cancel' => array(
 					'tags' => 'name="docancel"',
-					'label' => qa_lang_html('main/cancel_button'),
+					'label' => qa_html(_('Cancel')),
 				),
 			);
 			
@@ -671,37 +671,37 @@
 			if ($approvebutton)
 				$qa_content['form_profile']['buttons']['approve']=array(
 					'tags' => 'name="doapprove"',
-					'label' => qa_lang_html('users/approve_user_button'),
+					'label' => qa_html(_('Approve User')),
 				);
 							
 			$qa_content['form_profile']['buttons']['edit']=array(
 				'tags' => 'name="doedit"',
-				'label' => qa_lang_html('users/edit_user_button'),
+				'label' => qa_html(_('Edit User')),
 			);
 			
 			if (isset($maxlevelassign) && ($useraccount['level']<QA_USER_LEVEL_MODERATOR)) {
 				if ($useraccount['flags'] & QA_USER_FLAGS_USER_BLOCKED) {
 					$qa_content['form_profile']['buttons']['unblock']=array(
 						'tags' => 'name="dounblock"',
-						'label' => qa_lang_html('users/unblock_user_button'),
+						'label' => qa_html(_('Unblock User')),
 					);
 					
 					if (!qa_user_permit_error('permit_hide_show'))
 						$qa_content['form_profile']['buttons']['hideall']=array(
 							'tags' => 'name="dohideall" onclick="qa_show_waiting_after(this, false);"',
-							'label' => qa_lang_html('users/hide_all_user_button'),
+							'label' => qa_html(_('Hide all posts by this user')),
 						);
 						
 					if ($loginlevel>=QA_USER_LEVEL_ADMIN)
 						$qa_content['form_profile']['buttons']['delete']=array(
 							'tags' => 'name="dodelete" onclick="qa_show_waiting_after(this, false);"',
-							'label' => qa_lang_html('users/delete_user_button'),
+							'label' => qa_html(_('Delete User')),
 						);
 					
 				} else
 					$qa_content['form_profile']['buttons']['block']=array(
 						'tags' => 'name="doblock"',
-						'label' => qa_lang_html('users/block_user_button'),
+						'label' => qa_html(_('Block User')),
 					);
 					
 				$qa_content['form_profile']['hidden']=array(
@@ -721,46 +721,45 @@
 //	Information about user activity, available also with single sign-on integration
 
 	$qa_content['form_activity']=array(
-		'title' => '<a name="activity">'.qa_lang_html_sub('profile/activity_by_x', $userhtml).'</a>',
+		'title' => '<a name="activity">'.sprintf(qa_html(_('Activity by %s')), $userhtml).'</a>',
 		
 		'style' => 'wide',
 		
 		'fields' => array(
 			'bonus' => array(
-				'label' => qa_lang_html('profile/bonus_points'),
+				'label' => qa_html(_('Bonus points:')),
 				'tags' => 'name="bonus"',
 				'value' => qa_html(isset($inbonus) ? $inbonus : $userpoints['bonus']),
 				'type' => 'number',
-				'note' => qa_lang_html('users/only_shown_admins'),
+				'note' => qa_html(_('(only shown to admins)')),
 				'id' => 'bonus',
 			),
 	
 			'points' => array(
 				'type' => 'static',
-				'label' => qa_lang_html('profile/score'),
-				'value' => (@$userpoints['points']==1)
-					? qa_lang_html_sub('main/1_point', '<span class="qa-uf-user-points">1</span>', '1')
-					: qa_lang_html_sub('main/x_points', '<span class="qa-uf-user-points">'.qa_html(number_format(@$userpoints['points'])).'</span>'),
+				'label' => qa_html(_('Score:')),
+				'value' => sprintf(ngettext('%s point', '%s points', @$userpoints['points']),
+					'<span class="qa-uf-user-points">'.qa_html(number_format(@$userpoints['points'])).'</span>'),
 				'id' => 'points',
 			),
 			
 			'title' => array(
 				'type' => 'static',
-				'label' => qa_lang_html('profile/title'),
+				'label' => qa_html(_('Title:')),
 				'value' => qa_get_points_title_html(@$userpoints['points'], qa_get_points_to_titles()),
 				'id' => 'title',
 			),
 			
 			'questions' => array(
 				'type' => 'static',
-				'label' => qa_lang_html('profile/questions'),
+				'label' => qa_html(_('Questions:')),
 				'value' => '<span class="qa-uf-user-q-posts">'.qa_html(number_format(@$userpoints['qposts'])).'</span>',
 				'id' => 'questions',
 			),
 	
 			'answers' => array(
 				'type' => 'static',
-				'label' => qa_lang_html('profile/answers'),
+				'label' => qa_html(_('Answers:')),
 				'value' => '<span class="qa-uf-user-a-posts">'.qa_html(number_format(@$userpoints['aposts'])).'</span>',
 				'id' => 'answers',
 			),
@@ -773,7 +772,7 @@
 		$qa_content['form_activity']['buttons']=array(
 			'setbonus' => array(
 				'tags' => 'name="dosetbonus"',
-				'label' => qa_lang_html('profile/set_bonus_button'),
+				'label' => qa_html(_('Update bonus')),
 			),
 		);
 		
@@ -790,7 +789,7 @@
 	if (qa_opt('comment_on_qs') || qa_opt('comment_on_as')) { // only show comment count if comments are enabled
 		$qa_content['form_activity']['fields']['comments']=array(
 			'type' => 'static',
-			'label' => qa_lang_html('profile/comments'),
+			'label' => qa_html(_('Comments:')),
 			'value' => '<span class="qa-uf-user-c-posts">'.qa_html(number_format(@$userpoints['cposts'])).'</span>',
 			'id' => 'comments',
 		);
@@ -803,8 +802,8 @@
 			$qvotes=@$userpoints['qupvotes']+@$userpoints['qdownvotes'];
 
 			$innervalue='<span class="qa-uf-user-q-votes">'.number_format($qvotes).'</span>';
-			$votedonvalue.=($qvotes==1) ? qa_lang_html_sub('main/1_question', $innervalue, '1')
-				: qa_lang_html_sub('main/x_questions', $innervalue);
+			$votedonvalue.=sprintf(ngettext('%s question', '%s questions', $qvotes),
+				$innervalue);
 				
 			if (qa_opt('voting_on_as'))
 				$votedonvalue.=', ';
@@ -814,43 +813,43 @@
 			$avotes=@$userpoints['aupvotes']+@$userpoints['adownvotes'];
 			
 			$innervalue='<span class="qa-uf-user-a-votes">'.number_format($avotes).'</span>';
-			$votedonvalue.=($avotes==1) ? qa_lang_html_sub('main/1_answer', $innervalue, '1')
-				: qa_lang_html_sub('main/x_answers', $innervalue);
+			$votedonvalue.=sprintf(ngettext('%s answer', '%s answers', $avotes),
+				$innervalue);
 		}
 		
 		$qa_content['form_activity']['fields']['votedon']=array(
 			'type' => 'static',
-			'label' => qa_lang_html('profile/voted_on'),
+			'label' => qa_html(_('Voted on:')),
 			'value' => $votedonvalue,
 			'id' => 'votedon',
 		);
 		
 		$upvotes=@$userpoints['qupvotes']+@$userpoints['aupvotes'];
 		$innervalue='<span class="qa-uf-user-upvotes">'.number_format($upvotes).'</span>';
-		$votegavevalue=(($upvotes==1) ? qa_lang_html_sub('profile/1_up_vote', $innervalue, '1') : qa_lang_html_sub('profile/x_up_votes', $innervalue)).', ';
+		$votegavevalue=sprintf(ngettext('%s up vote', '%s up votes', $upvotes), $innervalue).', ';
 		
 		$downvotes=@$userpoints['qdownvotes']+@$userpoints['adownvotes'];
 		$innervalue='<span class="qa-uf-user-downvotes">'.number_format($downvotes).'</span>';
-		$votegavevalue.=($downvotes==1) ? qa_lang_html_sub('profile/1_down_vote', $innervalue, '1') : qa_lang_html_sub('profile/x_down_votes', $innervalue);
+		$votegavevalue.=sprintf(ngettext('%s down vote', '%s down votes', $downvotes), $innervalue);
 		
 		$qa_content['form_activity']['fields']['votegave']=array(
 			'type' => 'static',
-			'label' => qa_lang_html('profile/gave_out'),
+			'label' => qa_html(_('Gave out:')),
 			'value' => $votegavevalue,
 			'id' => 'votegave',
 		);
 
 		$innervalue='<span class="qa-uf-user-upvoteds">'.number_format(@$userpoints['upvoteds']).'</span>';
-		$votegotvalue=((@$userpoints['upvoteds']==1) ? qa_lang_html_sub('profile/1_up_vote', $innervalue, '1')
-			: qa_lang_html_sub('profile/x_up_votes', $innervalue)).', ';
+		$votegotvalue=sprintf(ngettext('%s up vote', '%s up votes', @$userpoints['upvoteds']),
+			$innervalue).', ';
 			
 		$innervalue='<span class="qa-uf-user-downvoteds">'.number_format(@$userpoints['downvoteds']).'</span>';
-		$votegotvalue.=(@$userpoints['downvoteds']==1) ? qa_lang_html_sub('profile/1_down_vote', $innervalue, '1')
-			: qa_lang_html_sub('profile/x_down_votes', $innervalue);
+		$votegotvalue.=sprintf(ngettext('%s down vote', '%s down votes', @$userpoints['downvoteds']),
+			$innervalue);
 
 		$qa_content['form_activity']['fields']['votegot']=array(
 			'type' => 'static',
-			'label' => qa_lang_html('profile/received'),
+			'label' => qa_html(_('Received:')),
 			'value' => $votegotvalue,
 			'id' => 'votegot',
 		);
@@ -858,17 +857,15 @@
 	
 	if (@$userpoints['points'])
 		$qa_content['form_activity']['fields']['points']['value'].=
-			qa_lang_html_sub('profile/ranked_x', '<span class="qa-uf-user-rank">'.number_format($userrank).'</span>');
+			sprintf(qa_html(_(' (ranked #%s)')), '<span class="qa-uf-user-rank">'.number_format($userrank).'</span>');
 	
 	if (@$userpoints['aselects'])
-		$qa_content['form_activity']['fields']['questions']['value'].=($userpoints['aselects']==1)
-			? qa_lang_html_sub('profile/1_with_best_chosen', '<span class="qa-uf-user-q-selects">1</span>', '1')
-			: qa_lang_html_sub('profile/x_with_best_chosen', '<span class="qa-uf-user-q-selects">'.number_format($userpoints['aselects']).'</span>');
+		$qa_content['form_activity']['fields']['questions']['value'].=sprintf(ngettext(' (%s with best answer chosen)', ' (%s with best answer chosen)', $userpoints['aselects']),
+			'<span class="qa-uf-user-q-selects">'.number_format($userpoints['aselects']).'</span>');
 	
 	if (@$userpoints['aselecteds'])
-		$qa_content['form_activity']['fields']['answers']['value'].=($userpoints['aselecteds']==1)
-			? qa_lang_html_sub('profile/1_chosen_as_best', '<span class="qa-uf-user-a-selecteds">1</span>', '1')
-			: qa_lang_html_sub('profile/x_chosen_as_best', '<span class="qa-uf-user-a-selecteds">'.number_format($userpoints['aselecteds']).'</span>');
+		$qa_content['form_activity']['fields']['answers']['value'].=sprintf(ngettext(' (%s chosen as best)', ' (%s chosen as best)', $userpoints['aselecteds']),
+			'<span class="qa-uf-user-a-selecteds">'.number_format($userpoints['aselecteds']).'</span>');
 
 
 	
@@ -883,7 +880,7 @@
 
 	if ((!QA_FINAL_EXTERNAL_USERS) && qa_opt('allow_user_walls')) {
 		$qa_content['message_list']=array(
-			'title' => '<a name="wall">'.qa_lang_html_sub('profile/wall_for_x', $userhtml).'</a>',
+			'title' => '<a name="wall">'.sprintf(qa_html(_('Wall for %s')), $userhtml).'</a>',
 			
 			'tags' => 'id="wallmessages"',
 			
@@ -914,7 +911,7 @@
 			$qa_content['message_list']['form']['buttons']=array(
 				'post' => array(
 					'tags' => 'name="dowallpost" onclick="return qa_submit_wall_post(this, true);"',
-					'label' => qa_lang_html('profile/post_wall_button'),
+					'label' => qa_html(_('Add wall post')),
 				),
 			);
 				

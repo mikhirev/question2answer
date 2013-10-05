@@ -85,7 +85,7 @@
 			//	Verify the name is legitimate
 			
 				if (qa_strlen($inname)>QA_DB_MAX_PROFILE_TITLE_LENGTH)
-					$errors['name']=qa_lang_sub('main/max_length_x', QA_DB_MAX_PROFILE_TITLE_LENGTH);
+					$errors['name']=sprintf(_('Please provide more information - at least %d characters'), QA_DB_MAX_PROFILE_TITLE_LENGTH);
 	
 			//	Perform appropriate database action
 		
@@ -132,8 +132,8 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/admin_title').' - '.qa_lang_html('admin/users_title');
-	$qa_content['error']=$securityexpired ? qa_lang_html('admin/form_security_expired') : qa_admin_page_error();
+	$qa_content['title']=qa_html(_('Administration center')).' - '.qa_html(_('Users'));
+	$qa_content['error']=$securityexpired ? qa_html(_('Form security code expired - please try again')) : qa_admin_page_error();
 
 	$positionoptions=array();
 	$previous=null;
@@ -141,9 +141,9 @@
 	
 	foreach ($userfields as $userfield) {
 		if (isset($previous))
-			$positionhtml=qa_lang_html_sub('admin/after_x', qa_html(qa_user_userfield_label($passedself ? $userfield : $previous)));
+			$positionhtml=qa_html(sprintf(_('After "%s"'), qa_user_userfield_label($passedself ? $userfield : $previous)));
 		else
-			$positionhtml=qa_lang_html('admin/first');
+			$positionhtml=qa_html(_('First'));
 				
 		$positionoptions[$userfield['position']]=$positionhtml;
 			
@@ -156,14 +156,14 @@
 	if (isset($editfield['position']))
 		$positionvalue=$positionoptions[$editfield['position']];
 	else {
-		$positionvalue=isset($previous) ? qa_lang_html_sub('admin/after_x', qa_html(qa_user_userfield_label($previous))) : qa_lang_html('admin/first');
+		$positionvalue=isset($previous) ? qa_html(sprintf(_('After "%s"'), qa_user_userfield_label($previous))) : qa_html(_('First'));
 		$positionoptions[1+@max(array_keys($positionoptions))]=$positionvalue;
 	}
 	
 	$typeoptions=array(
-		0 => qa_lang_html('admin/field_single_line'),
-		QA_FIELD_FLAGS_MULTI_LINE => qa_lang_html('admin/field_multi_line'),
-		QA_FIELD_FLAGS_LINK_URL => qa_lang_html('admin/field_link_url'),
+		0 => qa_html(_('Single line of text')),
+		QA_FIELD_FLAGS_MULTI_LINE => qa_html(_('Multiple lines of text')),
+		QA_FIELD_FLAGS_LINK_URL => qa_html(_('Linked URL')),
 	);
 	
 	$permitoptions=qa_admin_permit_options(QA_PERMIT_ALL, QA_PERMIT_ADMINS, false, false);
@@ -177,14 +177,14 @@
 		'fields' => array(
 			'name' => array(
 				'tags' => 'name="name" id="name"',
-				'label' => qa_lang_html('admin/field_name'),
+				'label' => qa_html(_('Field name:')),
 				'value' => qa_html(isset($inname) ? $inname : qa_user_userfield_label($editfield)),
 				'error' => qa_html(@$errors['name']),
 			),
 			
 			'delete' => array(
 				'tags' => 'name="dodelete" id="dodelete"',
-				'label' => qa_lang_html('admin/delete_field'),
+				'label' => qa_html(_('Delete this field')),
 				'value' => 0,
 				'type' => 'checkbox',
 			),
@@ -192,7 +192,7 @@
 			'type' => array(
 				'id' => 'type_display',
 				'tags' => 'name="type"',
-				'label' => qa_lang_html('admin/field_type'),
+				'label' => qa_html(_('Content type:')),
 				'type' => 'select',
 				'options' => $typeoptions,
 				'value' => @$typeoptions[isset($intype) ? $intype : (@$editfield['flags']&(QA_FIELD_FLAGS_MULTI_LINE|QA_FIELD_FLAGS_LINK_URL))],
@@ -201,7 +201,7 @@
 			'permit' => array(
 				'id' => 'permit_display',
 				'tags' => 'name="permit"',
-				'label' => qa_lang_html('admin/permit_to_view'),
+				'label' => qa_html(_('Visible for:')),
 				'type' => 'select',
 				'options' => $permitoptions,
 				'value' => $permitvalue,
@@ -210,7 +210,7 @@
 			'position' => array(
 				'id' => 'position_display',
 				'tags' => 'name="position"',
-				'label' => qa_lang_html('admin/position'),
+				'label' => qa_html(_('Position:')),
 				'type' => 'select',
 				'options' => $positionoptions,
 				'value' => $positionvalue,
@@ -219,7 +219,7 @@
 			'onregister' => array(
 				'id' => 'register_display',
 				'tags' => 'name="onregister"',
-				'label' => qa_lang_html('admin/show_on_register_form'),
+				'label' => qa_html(_('Show field on user registration form')),
 				'type' => 'checkbox',
 				'value' => isset($inonregister) ? $inonregister : (@$editfield['flags']&QA_FIELD_FLAGS_ON_REGISTER),
 			),
@@ -227,12 +227,12 @@
 
 		'buttons' => array(
 			'save' => array(
-				'label' => qa_lang_html(isset($editfield['fieldid']) ? 'main/save_button' : ('admin/add_field_button')),
+				'label' => qa_html(isset($editfield['fieldid']) ? _('Save Changes') : _('Add Field')),
 			),
 			
 			'cancel' => array(
 				'tags' => 'name="docancel"',
-				'label' => qa_lang_html('main/cancel_button'),
+				'label' => qa_html(_('Cancel')),
 			),
 		),
 		

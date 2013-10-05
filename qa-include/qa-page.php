@@ -128,7 +128,7 @@
 					
 					if (isset($postid) && isset($vote)) {
 						if (!qa_check_form_security_code('vote', qa_post_text('code')))
-							$qa_page_error_html=qa_lang_html('misc/form_security_again');
+							$qa_page_error_html=qa_html(_('Please click again to confirm'));
 						
 						else {
 							require_once QA_INCLUDE_DIR.'qa-app-votes.php';
@@ -152,7 +152,7 @@
 					
 					if (isset($entitytype) && isset($entityid) && isset($favorite)) {
 						if (!qa_check_form_security_code('favorite-'.$entitytype.'-'.$entityid, qa_post_text('code')))
-							$qa_page_error_html=qa_lang_html('misc/form_security_again');
+							$qa_page_error_html=qa_html(_('Please click again to confirm'));
 						
 						else {
 							require_once QA_INCLUDE_DIR.'qa-app-favorites.php';
@@ -167,7 +167,7 @@
 					
 					if (isset($noticeid)) {
 						if (!qa_check_form_security_code('notice-'.$noticeid, qa_post_text('code')))
-							$qa_page_error_html=qa_lang_html('misc/form_security_again');
+							$qa_page_error_html=qa_html(_('Please click again to confirm'));
 							
 						else {
 							if ($noticeid=='visitor')
@@ -263,14 +263,14 @@
 		if (qa_opt('site_maintenance') && ($requestlower!='login')) {
 			if (qa_get_logged_in_level()>=QA_USER_LEVEL_ADMIN) {
 				if (!isset($qa_content['error']))
-					$qa_content['error']=strtr(qa_lang_html('admin/maintenance_admin_only'), array(
-						'^1' => '<a href="'.qa_path_html('admin/general').'">',
-						'^2' => '</a>',
-					));
+					$qa_content['error']=sprintf(qa_html(_('Your site is in %smaintenance%s and is currently inaccessible to regular users.')),
+						'<a href="'.qa_path_html('admin/general').'">',
+						'</a>'
+					);
 	
 			} else {
 				$qa_content=qa_content_prepare();
-				$qa_content['error']=qa_lang_html('misc/site_in_maintenance');
+				$qa_content['error']=qa_html(_('This site is currently down for maintenance - please come back soon.'));
 			}
 		}
 	
@@ -282,19 +282,19 @@
 			
 			if ( ($flags & QA_USER_FLAGS_MUST_CONFIRM) && (!($flags & QA_USER_FLAGS_EMAIL_CONFIRMED)) && qa_opt('confirm_user_emails') ) {
 				$qa_content=qa_content_prepare();
-				$qa_content['title']=qa_lang_html('users/confirm_title');
-				$qa_content['error']=strtr(qa_lang_html('users/confirm_required'), array(
-					'^1' => '<a href="'.qa_path_html('confirm').'">',
-					'^2' => '</a>',
-				));
+				$qa_content['title']=qa_html(_('Email Address Confirmation'));
+				$qa_content['error']=sprintf(qa_html(_('To complete your registration, please click the confirmation link that has been emailed to you, or %srequest another%s.')),
+					'<a href="'.qa_path_html('confirm').'">',
+					'</a>'
+				);
 			
 			} elseif ( ($flags & QA_USER_FLAGS_MUST_APPROVE) && (qa_get_logged_in_level()<QA_USER_LEVEL_APPROVED) && qa_opt('moderate_users') ) {
 				$qa_content=qa_content_prepare();
-				$qa_content['title']=qa_lang_html('users/approve_title');
-				$qa_content['error']=strtr(qa_lang_html('users/approve_required'), array(
-					'^1' => '<a href="'.qa_path_html('account').'">',
-					'^2' => '</a>',
-				));
+				$qa_content['title']=qa_html(_('User approval pending'));
+				$qa_content['error']=sprintf(qa_html(_('Please wait for your account to be approved or %sadd more information%s.')),
+					'<a href="'.qa_path_html('account').'">',
+					'</a>'
+				);
 			}
 		}
 	
@@ -488,7 +488,7 @@
 				'footer' => array(
 					'feedback' => array(
 						'url' => qa_path_html('feedback'),
-						'label' => qa_lang_html('main/nav_feedback'),
+						'label' => qa_html(_('Send feedback')),
 					),
 				),
 	
@@ -520,13 +520,13 @@
 		if (qa_opt('nav_home') && qa_opt('show_custom_home'))
 			$qa_content['navigation']['main']['$']=array(
 				'url' => qa_path_html(''),
-				'label' => qa_lang_html('main/nav_home'),
+				'label' => qa_html(_('Home')),
 			);
 
 		if (qa_opt('nav_activity'))
 			$qa_content['navigation']['main']['activity']=array(
 				'url' => qa_path_html('activity'),
-				'label' => qa_lang_html('main/nav_activity'),
+				'label' => qa_html(_('All Activity')),
 			);
 			
 		$hascustomhome=qa_has_custom_home();
@@ -534,43 +534,43 @@
 		if (qa_opt($hascustomhome ? 'nav_qa_not_home' : 'nav_qa_is_home'))
 			$qa_content['navigation']['main'][$hascustomhome ? 'qa' : '$']=array(
 				'url' => qa_path_html($hascustomhome ? 'qa' : ''),
-				'label' => qa_lang_html('main/nav_qa'),
+				'label' => qa_html(_('Q&A')),
 			);
 			
 		if (qa_opt('nav_questions'))
 			$qa_content['navigation']['main']['questions']=array(
 				'url' => qa_path_html('questions'),
-				'label' => qa_lang_html('main/nav_qs'),
+				'label' => qa_html(_('Questions')),
 			);
 
 		if (qa_opt('nav_hot'))
 			$qa_content['navigation']['main']['hot']=array(
 				'url' => qa_path_html('hot'),
-				'label' => qa_lang_html('main/nav_hot'),
+				'label' => qa_html(_('Hot!')),
 			);
 
 		if (qa_opt('nav_unanswered'))
 			$qa_content['navigation']['main']['unanswered']=array(
 				'url' => qa_path_html('unanswered'),
-				'label' => qa_lang_html('main/nav_unanswered'),
+				'label' => qa_html(_('Unanswered')),
 			);
 			
 		if (qa_using_tags() && qa_opt('nav_tags'))
 			$qa_content['navigation']['main']['tag']=array(
 				'url' => qa_path_html('tags'),
-				'label' => qa_lang_html('main/nav_tags'),
+				'label' => qa_html(_('Tags')),
 			);
 			
 		if (qa_using_categories() && qa_opt('nav_categories'))
 			$qa_content['navigation']['main']['categories']=array(
 				'url' => qa_path_html('categories'),
-				'label' => qa_lang_html('main/nav_categories'),
+				'label' => qa_html(_('Categories')),
 			);
 
 		if (qa_opt('nav_users'))
 			$qa_content['navigation']['main']['user']=array(
 				'url' => qa_path_html('users'),
-				'label' => qa_lang_html('main/nav_users'),
+				'label' => qa_html(_('Users')),
 			);
 			
 		// Only the 'level' permission error prevents the menu option being shown - others reported on qa-page-ask.php
@@ -578,7 +578,7 @@
 		if (qa_opt('nav_ask') && (qa_user_maximum_permit_error('permit_post_q')!='level'))
 			$qa_content['navigation']['main']['ask']=array(
 				'url' => qa_path_html('ask', (qa_using_categories() && strlen($lastcategoryid)) ? array('cat' => $lastcategoryid) : null),
-				'label' => qa_lang_html('main/nav_ask'),
+				'label' => qa_html(_('Ask a Question')),
 			);
 		
 		
@@ -590,16 +590,16 @@
 		)
 			$qa_content['navigation']['main']['admin']=array(
 				'url' => qa_path_html('admin'),
-				'label' => qa_lang_html('main/nav_admin'),
+				'label' => qa_html(_('Admin')),
 			);
 
 		
 		$qa_content['search']=array(
 			'form_tags' => 'method="get" action="'.qa_path_html('search').'"',
 			'form_extra' => qa_path_form_html('search'),
-			'title' => qa_lang_html('main/search_title'),
+			'title' => qa_html(_('Search results')),
 			'field_tags' => 'name="q"',
-			'button_label' => qa_lang_html('main/search_button'),
+			'button_label' => qa_html(_('Search')),
 		);
 		
 		if (!qa_opt('feedback_enabled'))
@@ -662,7 +662,7 @@
 		$qa_content['navigation']['user']=array();
 			
 		if (qa_is_logged_in()) {
-			$qa_content['loggedin']=qa_lang_html_sub_split('main/logged_in_x', QA_FINAL_EXTERNAL_USERS
+			$qa_content['loggedin']=qa_html_sub_split(_('Hello ^'), QA_FINAL_EXTERNAL_USERS
 				? qa_get_logged_in_user_html(qa_get_logged_in_user_cache(), qa_path_to_root(), false)
 				: qa_get_one_user_html(qa_get_logged_in_handle(), false)
 			);
@@ -670,18 +670,18 @@
 			if (!QA_FINAL_EXTERNAL_USERS)
 				$qa_content['navigation']['user']['account']=array(
 					'url' => qa_path_html('account'),
-					'label' => qa_lang_html('main/nav_account'),
+					'label' => qa_html(_('My Account')),
 				);
 				
 			$qa_content['navigation']['user']['updates']=array(
 				'url' => qa_path_html('updates'),
-				'label' => qa_lang_html('main/nav_updates'),
+				'label' => qa_html(_('My Updates')),
 			);
 				
 			if (!empty($userlinks['logout']))
 				$qa_content['navigation']['user']['logout']=array(
 					'url' => qa_html(@$userlinks['logout']),
-					'label' => qa_lang_html('main/nav_logout'),
+					'label' => qa_html(_('Logout')),
 				);
 			
 			if (!QA_FINAL_EXTERNAL_USERS) {
@@ -722,13 +722,13 @@
 			if (!empty($userlinks['login']))
 				$qa_content['navigation']['user']['login']=array(
 					'url' => qa_html(@$userlinks['login']),
-					'label' => qa_lang_html('main/nav_login'),
+					'label' => qa_html(_('Login')),
 				);
 				
 			if (!empty($userlinks['register']))
 				$qa_content['navigation']['user']['register']=array(
 					'url' => qa_html(@$userlinks['register']),
-					'label' => qa_lang_html('main/nav_register'),
+					'label' => qa_html(_('Register')),
 				);
 		}
 

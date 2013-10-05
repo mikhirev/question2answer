@@ -56,17 +56,17 @@
 	
 	if ($forfavorites) {
 		if ($forcontent) {
-			$sometitle=qa_lang_html('misc/recent_updates_title');
-			$nonetitle=qa_lang_html('misc/no_recent_updates');
+			$sometitle=qa_html(_('Recent updates for me'));
+			$nonetitle=qa_html(_('No recent updates'));
 
 		} else {
-			$sometitle=qa_lang_html('misc/recent_updates_favorites');
-			$nonetitle=qa_lang_html('misc/no_updates_favorites');
+			$sometitle=qa_html(_('Recent updates for my favorites'));
+			$nonetitle=qa_html(_('No updates for my favorites'));
 		}
 	
 	} else {
-		$sometitle=qa_lang_html('misc/recent_updates_content');
-		$nonetitle=qa_lang_html('misc/no_updates_content');
+		$sometitle=qa_html(_('Recent updates for my content'));
+		$nonetitle=qa_html(_('No recent updates for my content'));
 	}
 
 	
@@ -84,27 +84,27 @@
 		null, // show question counts in category navigation
 		null, // prefix for links in category navigation
 		null, // prefix for RSS feed paths (null to hide)
-		$forfavorites ? strtr(qa_lang_html('misc/suggest_update_favorites'), array(
-			'^1' => '<a href="'.qa_path_html('favorites').'">',
-			'^2' => '</a>',
-		)) : null // suggest what to do next
+		$forfavorites ? sprintf(qa_html(_('For more updates, add items to %syour favorites%s.')),
+			'<a href="'.qa_path_html('favorites').'">',
+			'</a>'
+		) : null // suggest what to do next
 	);
 	
 	$qa_content['navigation']['sub']=array(
 		'all' => array(
-			'label' => qa_lang_html('misc/nav_all_my_updates'),
+			'label' => qa_html(_('All my updates')),
 			'url' => qa_path_html('updates'),
 			'selected' => $forfavorites && $forcontent,
 		),
 		
 		'favorites' => array(
-			'label' => qa_lang_html('misc/nav_my_favorites'),
+			'label' => qa_html(_('My favorites')),
 			'url' => qa_path_html('updates', array('show' => 'favorites')),
 			'selected' => $forfavorites && !$forcontent,
 		),
 		
 		'myposts' => array(
-			'label' => qa_lang_html('misc/nav_my_content'),
+			'label' => qa_html(_('My content')),
 			'url' => qa_path_html('updates', array('show' => 'content')),
 			'selected' => $forcontent && !$forfavorites,
 		),

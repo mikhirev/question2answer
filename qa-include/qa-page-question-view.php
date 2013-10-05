@@ -243,8 +243,8 @@
 			if ($question['editbutton'])
 				$buttons['edit']=array(
 					'tags' => 'name="q_doedit"',
-					'label' => qa_lang_html('question/edit_button'),
-					'popup' => qa_lang_html('question/edit_q_popup'),
+					'label' => qa_html(_('edit')),
+					'popup' => qa_html(_('Edit this question')),
 				);
 			
 			$hascategories=qa_using_categories();
@@ -252,9 +252,9 @@
 			if ($question['retagcatbutton'])
 				$buttons['retagcat']=array(
 					'tags' => 'name="q_doedit"',
-					'label' => qa_lang_html($hascategories ? 'question/recat_button' : 'question/retag_button'),
-					'popup' => qa_lang_html($hascategories
-						? (qa_using_tags() ? 'question/retag_cat_popup' : 'question/recat_popup')
+					'label' => qa_html($hascategories ? _('recategorize') : _('retag')),
+					'popup' => qa_html($hascategories
+						? (qa_using_tags() ? _('Change this question\'s category or tags') : _('Change this question\'s category'))
 						: 'question/retag_popup'
 					),
 				);
@@ -262,87 +262,87 @@
 			if ($question['flagbutton'])
 				$buttons['flag']=array(
 					'tags' => 'name="q_doflag"'.$clicksuffix,
-					'label' => qa_lang_html($question['flagtohide'] ? 'question/flag_hide_button' : 'question/flag_button'),
-					'popup' => qa_lang_html('question/flag_q_popup'),
+					'label' => qa_html($question['flagtohide'] ? _('flag and hide') : _('flag')),
+					'popup' => qa_html(_('Flag this question as spam or inappropriate')),
 				);
 
 			if ($question['unflaggable'])
 				$buttons['unflag']=array(
 					'tags' => 'name="q_dounflag"'.$clicksuffix,
-					'label' => qa_lang_html('question/unflag_button'),
-					'popup' => qa_lang_html('question/unflag_popup'),
+					'label' => qa_html(_('unflag')),
+					'popup' => qa_html(_('Remove the flag that you added')),
 				);
 				
 			if ($question['clearflaggable'])
 				$buttons['clearflags']=array(
 					'tags' => 'name="q_doclearflags"'.$clicksuffix,
-					'label' => qa_lang_html('question/clear_flags_button'),
-					'popup' => qa_lang_html('question/clear_flags_popup'),
+					'label' => qa_html(_('clear flags')),
+					'popup' => qa_html(_('Remove flags by all users')),
 				);
 
 			if ($question['closeable'])
 				$buttons['close']=array(
 					'tags' => 'name="q_doclose"',
-					'label' => qa_lang_html('question/close_button'),
-					'popup' => qa_lang_html('question/close_q_popup'),
+					'label' => qa_html(_('close')),
+					'popup' => qa_html(_('Close this question to any new answers')),
 				);
 			
 			if ($question['reopenable'])
 				$buttons['reopen']=array(
 					'tags' => 'name="q_doreopen"'.$clicksuffix,
-					'label' => qa_lang_html('question/reopen_button'),
+					'label' => qa_html(_('reopen')),
 				);
 			
 			if ($question['moderatable']) {
 				$buttons['approve']=array(
 					'tags' => 'name="q_doapprove"'.$clicksuffix,
-					'label' => qa_lang_html('question/approve_button'),
+					'label' => qa_html(_('approve')),
 				);
 
 				$buttons['reject']=array(
 					'tags' => 'name="q_doreject"'.$clicksuffix,
-					'label' => qa_lang_html('question/reject_button'),
+					'label' => qa_html(_('reject')),
 				);
 			}
 			
 			if ($question['hideable'])
 				$buttons['hide']=array(
 					'tags' => 'name="q_dohide"'.$clicksuffix,
-					'label' => qa_lang_html('question/hide_button'),
-					'popup' => qa_lang_html('question/hide_q_popup'),
+					'label' => qa_html(_('hide')),
+					'popup' => qa_html(_('Hide this question')),
 				);
 				
 			if ($question['reshowable'])
 				$buttons['reshow']=array(
 					'tags' => 'name="q_doreshow"'.$clicksuffix,
-					'label' => qa_lang_html('question/reshow_button'),
+					'label' => qa_html(_('reshow')),
 				);
 				
 			if ($question['deleteable'])
 				$buttons['delete']=array(
 					'tags' => 'name="q_dodelete"'.$clicksuffix,
-					'label' => qa_lang_html('question/delete_button'),
-					'popup' => qa_lang_html('question/delete_q_popup'),
+					'label' => qa_html(_('delete')),
+					'popup' => qa_html(_('Delete this question permanently')),
 				);
 				
 			if ($question['claimable'])
 				$buttons['claim']=array(
 					'tags' => 'name="q_doclaim"'.$clicksuffix,
-					'label' => qa_lang_html('question/claim_button'),
+					'label' => qa_html(_('I wrote this')),
 				);
 			
 			if ($question['answerbutton']) // don't show if shown by default
 				$buttons['answer']=array(
 					'tags' => 'name="q_doanswer" id="q_doanswer" onclick="return qa_toggle_element(\'anew\')"',
-					'label' => qa_lang_html('question/answer_button'),
-					'popup' => qa_lang_html('question/answer_q_popup'),
+					'label' => qa_html(_('answer')),
+					'popup' => qa_html(_('Answer this question')),
 				);
 			
 			if ($question['commentbutton'])
 				$buttons['comment']=array(
 					'tags' => 'name="q_docomment" onclick="return qa_toggle_element(\'c'.$questionid.'\')"',
-					'label' => qa_lang_html('question/comment_button'),
-					'popup' => qa_lang_html('question/comment_q_popup'),
+					'label' => qa_html(_('comment')),
+					'popup' => qa_html(_('Add a comment on this question')),
 				);
 				
 			$q_view['form']=array(
@@ -356,7 +356,7 @@
 			
 		if (isset($parentquestion))
 			$q_view['follows']=array(
-				'label' => qa_lang_html(($question['parentid']==$parentquestion['postid']) ? 'question/follows_q' : 'question/follows_a'),
+				'label' => qa_html(($question['parentid']==$parentquestion['postid']) ? _('about the question:') : _('related to an answer for:')),
 				'title' => qa_html(qa_block_words_replace($parentquestion['title'], qa_get_block_words_preg())),
 				'url' => qa_q_path_html($parentquestion['postid'], $parentquestion['title'], false,
 					($question['parentid']==$parentquestion['postid']) ? 'Q' : 'A', $question['parentid']),
@@ -369,7 +369,7 @@
 			
 			if ($closepost['basetype']=='Q') {
 				$q_view['closed']=array(
-					'label' => qa_lang_html('question/closed_as_duplicate'),
+					'label' => qa_html(_('closed as a duplicate of:')),
 					'content' => qa_html(qa_block_words_replace($closepost['title'], qa_get_block_words_preg())),
 					'url' => qa_q_path_html($closepost['postid'], $closepost['title']),
 				);
@@ -378,7 +378,7 @@
 				$viewer=qa_load_viewer($closepost['content'], $closepost['format']);
 				
 				$q_view['closed']=array(
-					'label' => qa_lang_html('question/closed_with_note'),
+					'label' => qa_html(_('closed with the note:')),
 					'content' => $viewer->get_html($closepost['content'], $closepost['format'], array(
 						'blockwordspreg' => qa_get_block_words_preg(),
 					)),
@@ -419,7 +419,7 @@
 		$a_view=qa_post_html_fields($answer, $userid, $cookieid, $usershtml, null, $htmloptions);
 
 		if ($answer['queued'])
-			$a_view['error']=$answer['isbyuser'] ? qa_lang_html('question/a_your_waiting_approval') : qa_lang_html('question/a_waiting_your_approval');
+			$a_view['error']=$answer['isbyuser'] ? qa_html(_('Your answer will be checked and approved shortly.')) : qa_html(_('This answer is waiting for your approval'));
 		
 		$a_view['main_form_tags']='method="post" action="'.qa_self_html().'"';
 		$a_view['voting_form_hidden']=array('code' => qa_get_form_security_code('vote'));
@@ -434,9 +434,9 @@
 			
 			if ($question['aselectable'] && !$answer['hidden'] && !$answer['queued']) {
 				if ($isselected)
-					$a_view['unselect_tags']='title="'.qa_lang_html('question/unselect_popup').'" name="'.$prefix.'dounselect"'.$clicksuffix;
+					$a_view['unselect_tags']='title="'.qa_html(_('Click to remove selection')).'" name="'.$prefix.'dounselect"'.$clicksuffix;
 				else
-					$a_view['select_tags']='title="'.qa_lang_html('question/select_popup').'" name="'.$prefix.'doselect"'.$clicksuffix;
+					$a_view['select_tags']='title="'.qa_html(_('Click to select as best answer')).'" name="'.$prefix.'doselect"'.$clicksuffix;
 			}
 			
 			$buttons=array();
@@ -444,81 +444,81 @@
 			if ($answer['editbutton'])
 				$buttons['edit']=array(
 					'tags' => 'name="'.$prefix.'doedit"',
-					'label' => qa_lang_html('question/edit_button'),
-					'popup' => qa_lang_html('question/edit_a_popup'),
+					'label' => qa_html(_('edit')),
+					'popup' => qa_html(_('Edit this answer')),
 				);
 				
 			if ($answer['flagbutton'])
 				$buttons['flag']=array(
 					'tags' => 'name="'.$prefix.'doflag"'.$clicksuffix,
-					'label' => qa_lang_html($answer['flagtohide'] ? 'question/flag_hide_button' : 'question/flag_button'),
-					'popup' => qa_lang_html('question/flag_a_popup'),
+					'label' => qa_html($answer['flagtohide'] ? _('flag and hide') : _('flag')),
+					'popup' => qa_html(_('Flag this answer as spam or inappropriate')),
 				);
 
 			if ($answer['unflaggable'])
 				$buttons['unflag']=array(
 					'tags' => 'name="'.$prefix.'dounflag"'.$clicksuffix,
-					'label' => qa_lang_html('question/unflag_button'),
-					'popup' => qa_lang_html('question/unflag_popup'),
+					'label' => qa_html(_('unflag')),
+					'popup' => qa_html(_('Remove the flag that you added')),
 				);
 				
 			if ($answer['clearflaggable'])
 				$buttons['clearflags']=array(
 					'tags' => 'name="'.$prefix.'doclearflags"'.$clicksuffix,
-					'label' => qa_lang_html('question/clear_flags_button'),
-					'popup' => qa_lang_html('question/clear_flags_popup'),
+					'label' => qa_html(_('clear flags')),
+					'popup' => qa_html(_('Remove flags by all users')),
 				);
 
 			if ($answer['moderatable']) {
 				$buttons['approve']=array(
 					'tags' => 'name="'.$prefix.'doapprove"'.$clicksuffix,
-					'label' => qa_lang_html('question/approve_button'),
+					'label' => qa_html(_('approve')),
 				);
 
 				$buttons['reject']=array(
 					'tags' => 'name="'.$prefix.'doreject"'.$clicksuffix,
-					'label' => qa_lang_html('question/reject_button'),
+					'label' => qa_html(_('reject')),
 				);
 			}
 
 			if ($answer['hideable'])
 				$buttons['hide']=array(
 					'tags' => 'name="'.$prefix.'dohide"'.$clicksuffix,
-					'label' => qa_lang_html('question/hide_button'),
-					'popup' => qa_lang_html('question/hide_a_popup'),
+					'label' => qa_html(_('hide')),
+					'popup' => qa_html(_('Hide this answer')),
 				);
 				
 			if ($answer['reshowable'])
 				$buttons['reshow']=array(
 					'tags' => 'name="'.$prefix.'doreshow"'.$clicksuffix,
-					'label' => qa_lang_html('question/reshow_button'),
+					'label' => qa_html(_('reshow')),
 				);
 				
 			if ($answer['deleteable'])
 				$buttons['delete']=array(
 					'tags' => 'name="'.$prefix.'dodelete"'.$clicksuffix,
-					'label' => qa_lang_html('question/delete_button'),
-					'popup' => qa_lang_html('question/delete_a_popup'),
+					'label' => qa_html(_('delete')),
+					'popup' => qa_html(_('Delete this answer permanently')),
 				);
 				
 			if ($answer['claimable'])
 				$buttons['claim']=array(
 					'tags' => 'name="'.$prefix.'doclaim"'.$clicksuffix,
-					'label' => qa_lang_html('question/claim_button'),
+					'label' => qa_html(_('I wrote this')),
 				);
 
 			if ($answer['followable'])
 				$buttons['follow']=array(
 					'tags' => 'name="'.$prefix.'dofollow"',
-					'label' => qa_lang_html('question/follow_button'),
-					'popup' => qa_lang_html('question/follow_a_popup'),
+					'label' => qa_html(_('ask related question')),
+					'popup' => qa_html(_('Ask a new question relating to this answer')),
 				);
 
 			if ($answer['commentbutton'])
 				$buttons['comment']=array(
 					'tags' => 'name="'.$prefix.'docomment" onclick="return qa_toggle_element(\'c'.$answerid.'\')"',
-					'label' => qa_lang_html('question/comment_button'),
-					'popup' => qa_lang_html('question/comment_a_popup'),
+					'label' => qa_html(_('comment')),
+					'popup' => qa_html(_('Add a comment on this answer')),
 				);
 
 			$a_view['form']=array(
@@ -551,7 +551,7 @@
 		$c_view=qa_post_html_fields($comment, $userid, $cookieid, $usershtml, null, $htmloptions);
 	
 		if ($comment['queued'])
-			$c_view['error']=$comment['isbyuser'] ? qa_lang_html('question/c_your_waiting_approval') : qa_lang_html('question/c_waiting_your_approval');
+			$c_view['error']=qa_html($comment['isbyuser'] ? _('Your comment will be checked and approved shortly.') : _('This comment is waiting for your approval'));
 
 
 	//	Buttons for operating on this comment
@@ -565,75 +565,75 @@
 			if ($comment['editbutton'])
 				$buttons['edit']=array(
 					'tags' => 'name="'.$prefix.'doedit"',
-					'label' => qa_lang_html('question/edit_button'),
-					'popup' => qa_lang_html('question/edit_c_popup'),
+					'label' => qa_html(_('edit')),
+					'popup' => qa_html(_('Edit this comment')),
 				);
 				
 			if ($comment['flagbutton'])
 				$buttons['flag']=array(
 					'tags' => 'name="'.$prefix.'doflag"'.$clicksuffix,
-					'label' => qa_lang_html($comment['flagtohide'] ? 'question/flag_hide_button' : 'question/flag_button'),
-					'popup' => qa_lang_html('question/flag_c_popup'),
+					'label' => qa_html($comment['flagtohide'] ? _('flag and hide') : _('flag')),
+					'popup' => qa_html(_('Flag this comment as spam or inappropriate')),
 				);
 			
 			if ($comment['unflaggable'])
 				$buttons['unflag']=array(
 					'tags' => 'name="'.$prefix.'dounflag"'.$clicksuffix,
-					'label' => qa_lang_html('question/unflag_button'),
-					'popup' => qa_lang_html('question/unflag_popup'),
+					'label' => qa_html(_('unflag')),
+					'popup' => qa_html(_('Remove the flag that you added')),
 				);
 				
 			if ($comment['clearflaggable'])
 				$buttons['clearflags']=array(
 					'tags' => 'name="'.$prefix.'doclearflags"'.$clicksuffix,
-					'label' => qa_lang_html('question/clear_flags_button'),
-					'popup' => qa_lang_html('question/clear_flags_popup'),
+					'label' => qa_html(_('clear flags')),
+					'popup' => qa_html(_('Remove flags by all users')),
 				);
 
 			if ($comment['moderatable']) {
 				$buttons['approve']=array(
 					'tags' => 'name="'.$prefix.'doapprove"'.$clicksuffix,
-					'label' => qa_lang_html('question/approve_button'),
+					'label' => qa_html(_('approve')),
 				);
 
 				$buttons['reject']=array(
 					'tags' => 'name="'.$prefix.'doreject"'.$clicksuffix,
-					'label' => qa_lang_html('question/reject_button'),
+					'label' => qa_html(_('reject')),
 				);
 			}
 
 			if ($comment['hideable'])
 				$buttons['hide']=array(
 					'tags' => 'name="'.$prefix.'dohide"'.$clicksuffix,
-					'label' => qa_lang_html('question/hide_button'),
-					'popup' => qa_lang_html('question/hide_c_popup'),
+					'label' => qa_html(_('hide')),
+					'popup' => qa_html(_('Hide this comment')),
 				);
 				
 			if ($comment['reshowable'])
 				$buttons['reshow']=array(
 					'tags' => 'name="'.$prefix.'doreshow"'.$clicksuffix,
-					'label' => qa_lang_html('question/reshow_button'),
+					'label' => qa_html(_('reshow')),
 				);
 				
 			if ($comment['deleteable'])
 				$buttons['delete']=array(
 					'tags' => 'name="'.$prefix.'dodelete"'.$clicksuffix,
-					'label' => qa_lang_html('question/delete_button'),
-					'popup' => qa_lang_html('question/delete_c_popup'),
+					'label' => qa_html(_('delete')),
+					'popup' => qa_html(_('Delete this comment permanently')),
 				);
 				
 			if ($comment['claimable'])
 				$buttons['claim']=array(
 					'tags' => 'name="'.$prefix.'doclaim"'.$clicksuffix,
-					'label' => qa_lang_html('question/claim_button'),
+					'label' => qa_html(_('I wrote this')),
 				);
 				
 			if ($parent['commentbutton'] && qa_opt('show_c_reply_buttons') && ($comment['type']=='C'))
 				$buttons['comment']=array(
 					'tags' => 'name="'.(($parent['basetype']=='Q') ? 'q' : ('a'.qa_html($parent['postid']))).
 						'_docomment" onclick="return qa_toggle_element(\'c'.qa_html($parent['postid']).'\')"',
-					'label' => qa_lang_html('question/reply_button'),
-					'popup' => qa_lang_html('question/reply_c_popup'),
+					'label' => qa_html(_('reply')),
+					'popup' => qa_html(_('Reply to this comment')),
 				);
 
 			$c_view['form']=array(
@@ -680,16 +680,9 @@
 			$skipfirst=0;
 			
 		if ($skipfirst==$countshowcomments) { // showing none
-			if ($skipfirst==1)
-				$expandtitle=qa_lang_html('question/show_1_comment');
-			else
-				$expandtitle=qa_lang_html_sub('question/show_x_comments', $skipfirst);
-		
+			$expandtitle=sprintf(ngettext('Show %d comment', 'Show %d comments', $skipfirst), $skipfirst);
 		} else {
-			if ($skipfirst==1)
-				$expandtitle=qa_lang_html('question/show_1_previous_comment');
-			else
-				$expandtitle=qa_lang_html_sub('question/show_x_previous_comments', $skipfirst);
+			$expandtitle=sprintf(ngettext('Show %d previous comment', 'Show %d previous comments', $skipfirst), $skipfirst);
 		}
 		
 		if ($skipfirst>0)
@@ -736,31 +729,31 @@
 		switch (qa_user_post_permit_error('permit_post_a', $question, QA_LIMIT_ANSWERS)) {
 			case 'login':
 				$form=array(
-					'title' => qa_insert_login_links(qa_lang_html('question/answer_must_login'), qa_request())
+					'title' => qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to answer this question.')), qa_request())
 				);
 				break;
 				
 			case 'confirm':
 				$form=array(
-					'title' => qa_insert_login_links(qa_lang_html('question/answer_must_confirm'), qa_request())
+					'title' => qa_insert_login_links(qa_html(_('Please ^5confirm your email address^6 to answer this question.')), qa_request())
 				);
 				break;
 				
 			case 'approve':
 				$form=array(
-					'title' => qa_lang_html('question/answer_must_be_approved')
+					'title' => qa_html(_('Your account must be approved before you answer a question.'))
 				);
 				break;
 				
 			case 'limit':
 				$form=array(
-					'title' => qa_lang_html('question/answer_limit')
+					'title' => qa_html(_('Too many answers received - please try again in an hour'))
 				);
 				break;
 			
 			default:
 				$form=array(
-					'title' => qa_lang_html('users/no_permission')
+					'title' => qa_html(_('You do not have permission to perform this operation'))
 				);
 				break;
 			
@@ -778,7 +771,7 @@
 				$form=array(
 					'tags' => 'method="post" action="'.qa_self_html().'" name="a_form"',
 					
-					'title' => qa_lang_html('question/your_answer_title'),
+					'title' => qa_html(_('Your answer')),
 					
 					'fields' => array(
 						'custom' => array(
@@ -797,7 +790,7 @@
 					'buttons' => array(
 						'answer' => array(
 							'tags' => 'onclick="'.$updatescript.' return qa_submit_answer('.qa_js($question['postid']).', this);"',
-							'label' => qa_lang_html('question/add_answer_button'),
+							'label' => qa_html(_('Add answer')),
 						),
 					),
 					
@@ -814,7 +807,7 @@
 				if ($formrequested || !$loadnow)
 					$form['buttons']['cancel']=array(
 						'tags' => 'name="docancel"',
-						'label' => qa_lang_html('main/cancel_button'),
+						'label' => qa_html(_('Cancel')),
 					);
 					
 				if (!qa_is_logged_in())
@@ -871,31 +864,31 @@
 		switch (qa_user_post_permit_error('permit_post_c', $parent, QA_LIMIT_COMMENTS)) {
 			case 'login':
 				$form=array(
-					'title' => qa_insert_login_links(qa_lang_html('question/comment_must_login'), qa_request())
+					'title' => qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to add a comment.')), qa_request())
 				);
 				break;
 			
 			case 'confirm':
 				$form=array(
-					'title' => qa_insert_login_links(qa_lang_html('question/comment_must_confirm'), qa_request())
+					'title' => qa_insert_login_links(qa_html(_('Please ^5confirm your email address^6 to add a comment.')), qa_request())
 				);
 				break;
 			
 			case 'approve':
 				$form=array(
-					'title' => qa_lang_html('question/comment_must_be_approved')
+					'title' => qa_html(_('Your account must be approved before you add a comment.'))
 				);
 				break;
 			
 			case 'limit':
 				$form=array(
-					'title' => qa_lang_html('question/comment_limit')
+					'title' => qa_html(_('Too many comments received - please try again in an hour'))
 				);
 				break;
 			
 			default:
 				$form=array(
-					'title' => qa_lang_html('users/no_permission')
+					'title' => qa_html(_('You do not have permission to perform this operation'))
 				);
 				break;
 			
@@ -915,7 +908,7 @@
 				$form=array(
 					'tags' => 'method="post" action="'.qa_self_html().'" name="c_form_'.qa_html($parent['postid']).'"',
 					
-					'title' => qa_lang_html(($question['postid']==$parent['postid']) ? 'question/your_comment_q' : 'question/your_comment_a'),
+					'title' => qa_html(($question['postid']==$parent['postid']) ? _('Your comment on this question:') : _('Your comment on this answer:')),
 					
 					'fields' => array(
 						'custom' => array(
@@ -934,12 +927,12 @@
 					'buttons' => array(
 						'comment' => array(
 							'tags' => 'onclick="'.$updatescript.' return qa_submit_comment('.qa_js($question['postid']).', '.qa_js($parent['postid']).', this);"',
-							'label' => qa_lang_html('question/add_comment_button'),
+							'label' => qa_html(_('Add comment')),
 						),
 						
 						'cancel' => array(
 							'tags' => 'name="docancel"',
-							'label' => qa_lang_html('main/cancel_button'),
+							'label' => qa_html(_('Cancel')),
 						),
 					),
 					

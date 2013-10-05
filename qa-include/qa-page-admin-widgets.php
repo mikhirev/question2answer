@@ -69,43 +69,43 @@
 		
 //	Define an array of relevant templates we can use
 
-	$templatelangkeys=array(
-		'question' => 'admin/question_pages',
+	$templatelang=array(
+		'question' => _('Question pages'),
 
-		'qa' => 'main/recent_qs_as_title',
-		'activity' => 'main/recent_activity_title',
-		'questions' => 'admin/question_lists',
-		'hot' => 'main/hot_qs_title',
-		'unanswered' => 'main/unanswered_qs_title',
+		'qa' => _('Recent questions and answers'),
+		'activity' => _('Recent activity'),
+		'questions' => _('Question lists'),
+		'hot' => _('Hot questions'),
+		'unanswered' => _('Recent questions without answers'),
 
-		'tags' => 'main/popular_tags',
-		'categories' => 'misc/browse_categories',
-		'users' => 'main/highest_users',
-		'ask' => 'question/ask_title',
+		'tags' => _('Most popular tags'),
+		'categories' => _('Browse categories'),
+		'users' => _('Top scoring users'),
+		'ask' => _('Ask a question'),
 
-		'tag' => 'admin/tag_pages',
-		'user' => 'admin/user_pages',
-		'message' => 'misc/private_message_title',
+		'tag' => _('Tag pages'),
+		'user' => _('User pages'),
+		'message' => _('Send a private message'),
 
-		'search' => 'main/search_title',
-		'feedback' => 'misc/feedback_title',
+		'search' => _('Search results'),
+		'feedback' => _('Send feedback'),
 
-		'login' => 'users/login_title',
-		'register' => 'users/register_title',
-		'account' => 'profile/my_account_title',
-		'favorites' => 'misc/my_favorites_title',
-		'updates' => 'misc/recent_updates_title',
+		'login' => _('Log in'),
+		'register' => _('Register as a new user'),
+		'account' => _('My account details'),
+		'favorites' => _('My favorites'),
+		'updates' => _('Recent updates for me'),
 
-		'ip' => 'admin/ip_address_pages',
-		'admin' => 'admin/admin_title',
+		'ip' => _('IP address pages'),
+		'admin' => _('Administration center'),
 	);
 	
 	$templateoptions=array();
 
 	if (isset($module) && method_exists($module, 'allow_template')) {
-		foreach ($templatelangkeys as $template => $langkey)
+		foreach ($templatelangkeys as $template => $langstr)
 			if ($module->allow_template($template))
-				$templateoptions[$template]=qa_lang_html($langkey);
+				$templateoptions[$template]=qa_html($langstr);
 				
 		if ($module->allow_template('custom'))
 			foreach ($pages as $page)
@@ -169,8 +169,8 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/admin_title').' - '.qa_lang_html('admin/layout_title');	
-	$qa_content['error']=$securityexpired ? qa_lang_html('admin/form_security_expired') : qa_admin_page_error();
+	$qa_content['title']=qa_html(_('Administration center')).' - '.qa_html(_('Layout'));	
+	$qa_content['error']=$securityexpired ? qa_html(_('Form security code expired - please try again')) : qa_admin_page_error();
 	
 	$positionoptions=array();
 	
@@ -202,7 +202,7 @@
 					$positionhtml=$optionhtml;
 					
 					if (isset($previous))
-						$positionhtml.=' - '.qa_lang_html_sub('admin/after_x', qa_html($passedself ? $widget['title'] : $previous['title']));
+						$positionhtml.=' - '.qa_html(sprintf(_('After "%s"'), qa_html($passedself ? $widget['title'] : $previous['title'])));
 						
 					if ($widget['widgetid']==@$editwidget['widgetid'])
 						$passedself=true;
@@ -217,7 +217,7 @@
 				$positionhtml=$optionhtml;
 				
 				if (isset($previous))
-					$positionhtml.=' - '.qa_lang_html_sub('admin/after_x', $previous['title']);
+					$positionhtml.=' - '.qa_html(sprintf(_('After "%s"'),  $previous['title']));
 	
 				$positionoptions[$place.(isset($previous) ? (1+$maxposition) : 1)]=$positionhtml;
 			}
@@ -233,7 +233,7 @@
 		
 		'fields' => array(
 			'title' => array(
-				'label' => qa_lang_html('admin/widget_name').' &nbsp; '.qa_html($editwidget['title']),
+				'label' => qa_html(_('Name of widget:')).' &nbsp; '.qa_html($editwidget['title']),
 				'type' => 'static',
 				'tight' => true,
 			),
@@ -241,7 +241,7 @@
 			'position' => array(
 				'id' => 'position_display',
 				'tags' => 'name="position"',
-				'label' => qa_lang_html('admin/position'),
+				'label' => qa_html(_('Position:')),
 				'type' => 'select',
 				'options' => $positionoptions,
 				'value' => $positionvalue,
@@ -249,14 +249,14 @@
 			
 			'delete' => array(
 				'tags' => 'name="dodelete" id="dodelete"',
-				'label' => qa_lang_html('admin/delete_widget_position'),
+				'label' => qa_html(_('Delete this widget from this position')),
 				'value' => 0,
 				'type' => 'checkbox',
 			),
 				
 			'all' => array(
 				'id' => 'all_display',
-				'label' => qa_lang_html('admin/widget_all_pages'),
+				'label' => qa_html(_('Show widget in this position on all available pages')),
 				'type' => 'checkbox',
 				'tags' => 'name="template_all" id="template_all"',
 				'value' => is_numeric(strpos(','.@$editwidget['tags'].',', ',all,')),
@@ -264,7 +264,7 @@
 
 			'templates' => array(
 				'id' => 'templates_display',
-				'label' => qa_lang_html('admin/widget_pages_explanation'),
+				'label' => qa_html(_('Show widget in this position on the following pages:')),
 				'type' => 'custom',
 				'html' => '',
 			),
@@ -272,12 +272,12 @@
 
 		'buttons' => array(
 			'save' => array(
-				'label' => qa_lang_html(isset($editwidget['widgetid']) ? 'main/save_button' : ('admin/add_widget_button')),
+				'label' => qa_html(isset($editwidget['widgetid']) ? _('Save Changes') : _('Add Widget')),
 			),
 			
 			'cancel' => array(
 				'tags' => 'name="docancel"',
-				'label' => qa_lang_html('main/cancel_button'),
+				'label' => qa_html(_('Cancel')),
 			),
 		),
 		
@@ -310,7 +310,7 @@
 	
 	if (!$widgetfound) {
 		unset($qa_content['form']['fields']['title']['tight']);
-		$qa_content['form']['fields']['title']['error']=qa_lang_html('admin/widget_not_available');
+		$qa_content['form']['fields']['title']['error']=qa_html(_('This widget is not available. This could be because the plugin providing the widget is no longer installed.'));
 		unset($qa_content['form']['fields']['position']);
 		unset($qa_content['form']['fields']['all']);
 		unset($qa_content['form']['fields']['templates']);
@@ -319,7 +319,7 @@
 		
 	} elseif (!count($positionoptions)) {
 		unset($qa_content['form']['fields']['title']['tight']);
-		$qa_content['form']['fields']['title']['error']=qa_lang_html('admin/widget_no_positions');
+		$qa_content['form']['fields']['title']['error']=qa_html(_('This widget has already been added to every available position.'));
 		unset($qa_content['form']['fields']['position']);
 		unset($qa_content['form']['fields']['all']);
 		unset($qa_content['form']['fields']['templates']);

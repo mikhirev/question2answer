@@ -32,7 +32,7 @@
 		
 		if (!qa_check_form_security_code('admin/recalc', qa_post_text('code'))) {
 			$state='';
-			$message=qa_lang('misc/form_security_reload');
+			$message=_('Please reload the page then try again');
 		
 		} else {
 			$state=qa_post_text('state');
@@ -46,7 +46,7 @@
 	
 	} else {
 		$state='';
-		$message=qa_lang('admin/no_privileges');
+		$message=_('Only administrators may access this page.');
 	}
 	
 

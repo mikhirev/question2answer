@@ -52,12 +52,12 @@
 			return include QA_INCLUDE_DIR.'qa-page-not-found.php';
 	
 		$categorytitlehtml=qa_html($categories[$categoryid]['title']);
-		$sometitle=qa_lang_html_sub('main/recent_as_in_x', $categorytitlehtml);
-		$nonetitle=qa_lang_html_sub('main/no_answers_in_x', $categorytitlehtml);
+		$sometitle=sprintf(qa_html(_('Recently answered questions in %s')), $categorytitlehtml);
+		$nonetitle=sprintf(qa_html(_('No answers in %s')), $categorytitlehtml);
 
 	} else {
-		$sometitle=qa_lang_html('main/recent_as_title');
-		$nonetitle=qa_lang_html('main/no_answers_found');
+		$sometitle=qa_html(_('Recently answered questions'));
+		$nonetitle=qa_html(_('No answers found'));
 	}
 
 	

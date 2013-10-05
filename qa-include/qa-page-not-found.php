@@ -37,7 +37,7 @@
 	qa_set_template('not-found');
 
 	$qa_content=qa_content_prepare();
-	$qa_content['error']=qa_lang_html('main/page_not_found');
+	$qa_content['error']=qa_html(_('Page not found'));
 	$qa_content['suggest_next']=qa_html_suggest_qs_tags(qa_using_tags());
 	
 	

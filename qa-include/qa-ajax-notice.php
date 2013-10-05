@@ -32,7 +32,7 @@
 	$noticeid=qa_post_text('noticeid');	
 	
 	if (!qa_check_form_security_code('notice-'.$noticeid, qa_post_text('code')))
-		echo "QA_AJAX_RESPONSE\n0\n".qa_lang('misc/form_security_reload');
+		echo "QA_AJAX_RESPONSE\n0\n"._('Please reload the page then try again');
 	
 	else {
 		if ($noticeid=='visitor')

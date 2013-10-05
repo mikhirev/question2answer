@@ -40,7 +40,7 @@
 	$cookieid=qa_cookie_get();
 
 	if (!qa_check_form_security_code('vote', $code))
-		$voteerror=qa_lang_html('misc/form_security_reload');
+		$voteerror=qa_html(_('Please reload the page then try again'));
 	
 	else {
 		$post=qa_db_select_with_pending(qa_db_full_post_selectspec($userid, $postid));

@@ -51,12 +51,12 @@
 			return include QA_INCLUDE_DIR.'qa-page-not-found.php';
 	
 		$categorytitlehtml=qa_html($categories[$categoryid]['title']);
-		$sometitle=qa_lang_html_sub('main/recent_cs_in_x', $categorytitlehtml);
-		$nonetitle=qa_lang_html_sub('main/no_comments_in_x', $categorytitlehtml);
+		$sometitle=sprintf(qa_html(_('Recently commented questions in %s')), $categorytitlehtml);
+		$nonetitle=sprintf(qa_html(_('No comments in %s')), $categorytitlehtml);
 
 	} else {
-		$sometitle=qa_lang_html('main/recent_cs_title');
-		$nonetitle=qa_lang_html('main/no_comments_found');
+		$sometitle=qa_html(_('Recent questions'));
+		$nonetitle=qa_html(_('No comments found'));
 	}
 
 	

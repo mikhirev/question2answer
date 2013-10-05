@@ -57,18 +57,18 @@
 	
 	$qa_content=qa_content_prepare(true);
 	
-	$qa_content['title']=qa_lang_html_sub('main/questions_tagged_x', qa_html($tag));
+	$qa_content['title']=qa_html(sprintf(_('Recent questions tagged %s'), $tag));
 	
 	if (isset($userid) && isset($tagword)) {
 		$favoritemap=qa_get_favorite_non_qs_map();
 		$favorite=@$favoritemap['tag'][qa_strtolower($tagword['word'])];
 		
 		$qa_content['favorite']=qa_favorite_form(QA_ENTITY_TAG, $tagword['wordid'], $favorite,
-			qa_lang_sub($favorite ? 'main/remove_x_favorites' : 'main/add_tag_x_favorites', $tagword['word']));
+			sprintf($favorite ? _('Remove %s from my favorites') : _('Add tag %s to my favorites'), $tagword['word']));
 	}
 
 	if (!count($questions))
-		$qa_content['q_list']['title']=qa_lang_html('main/no_questions_found');
+		$qa_content['q_list']['title']=qa_html(_('No questions found'));
 
 	$qa_content['q_list']['form']=array(
 		'tags' => 'method="post" action="'.qa_self_html().'"',
@@ -90,7 +90,7 @@
 	if (qa_opt('feed_for_tag_qs'))
 		$qa_content['feed']=array(
 			'url' => qa_path_html(qa_feed_request('tag/'.$tag)),
-			'label' => qa_lang_html_sub('main/questions_tagged_x', qa_html($tag)),
+			'label' => qa_html(sprintf(_('Recent questions tagged %s'), $tag)),
 		);
 
 		

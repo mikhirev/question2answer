@@ -81,8 +81,8 @@
 
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/admin_title').' - '.qa_lang_html('admin/points_title');
-	$qa_content['error']=$securityexpired ? qa_lang_html('admin/form_security_expired') : qa_admin_page_error();
+	$qa_content['title']=qa_html(_('Administration center')).' - '.qa_html(_('Points'));
+	$qa_content['error']=$securityexpired ? qa_html(_('Form security code expired - please try again')) : qa_admin_page_error();
 
 	$qa_content['form']=array(
 		'tags' => 'method="post" action="'.qa_self_html().'" name="points_form" onsubmit="document.forms.points_form.has_js.value=1; return true;"',
@@ -92,7 +92,7 @@
 		'buttons' => array(
 			'saverecalc' => array(
 				'tags' => 'id="dosaverecalc"',
-				'label' => qa_lang_html('admin/save_recalc_button'),
+				'label' => qa_html(_('Save and Recalculate')),
 			),
 		),
 		
@@ -105,11 +105,11 @@
 
 	
 	if (qa_clicked('doshowdefaults')) {
-		$qa_content['form']['ok']=qa_lang_html('admin/points_defaults_shown');
+		$qa_content['form']['ok']=qa_html(_('Defaults shown below but NOT YET APPLIED:'));
 	
 		$qa_content['form']['buttons']['cancel']=array(
 			'tags' => 'name="docancel"',
-			'label' => qa_lang_html('main/cancel_button'),
+			'label' => qa_html(_('Cancel')),
 		);
 
 	} else {
@@ -118,7 +118,7 @@
 			$qa_content['form']['hidden']['code_recalc']=qa_get_form_security_code('admin/recalc');
 			
 			$qa_content['script_rel'][]='qa-content/qa-admin.js?'.QA_VERSION;
-			$qa_content['script_var']['qa_warning_recalc']=qa_lang('admin/stop_recalc_warning');
+			$qa_content['script_var']['qa_warning_recalc']=_('A database clean-up operation is running. If you close this page now, the operation will be interrupted.');
 			
 			$qa_content['script_onloads'][]=array(
 				"qa_recalc_click('dorecalcpoints', document.getElementById('dosaverecalc'), null, 'recalc_ok');"
@@ -127,18 +127,38 @@
 		
 		$qa_content['form']['buttons']['showdefaults']=array(
 			'tags' => 'name="doshowdefaults"',
-			'label' => qa_lang_html('admin/show_defaults_button'),
+			'label' => qa_html(_('Show Defaults')),
 		);
 	}
 
+	$optionstrings=array(
+		'points_a_selected' => _('Having your answer selected as the best:'),
+		'points_a_voted_max_gain' => _('Limit from up votes on each answer:'),
+		'points_a_voted_max_loss' => _('Limit from down votes on each answer:'),
+		'points_base' => _('Add for all users:'),
+		'points_multiple' => _('Multiply all points:'),
+		'points_per_a_voted_down' => _('Per down vote on your answer:'),
+		'points_per_a_voted_up' => _('Per up vote on your answer:'),
+		'points_per_q_voted_down' => _('Per down vote on your question:'),
+		'points_per_q_voted_up' => _('Per up vote on your question:'),
+		'points_post_a' => _('Posting an answer:'),
+		'points_post_q' => _('Posting a question:'),
+		'points_q_voted_max_gain' => _('Limit from up votes on each question:'),
+		'points_q_voted_max_loss' => _('Limit from down votes on each question:'),
+		'points_select_a' => _('Selecting an answer for your question:'),
+		'points_vote_down_a' => _('Voting down an answer:'),
+		'points_vote_down_q' => _('Voting down a question:'),
+		'points_vote_up_a' => _('Voting up an answer:'),
+		'points_vote_up_q' => _('Voting up a question:'),
+	);
 	
 	foreach ($optionnames as $optionname) {
 		$optionfield=array(
-			'label' => qa_lang_html('options/'.$optionname),
+			'label' => qa_html($optionstrings[$optionname]),
 			'tags' => 'name="option_'.$optionname.'"',
 			'value' => qa_html($options[$optionname]),
 			'type' => 'number',
-			'note' => qa_lang_html('admin/points'),
+			'note' => qa_html(_('points')),
 		);
 		
 		switch ($optionname) {

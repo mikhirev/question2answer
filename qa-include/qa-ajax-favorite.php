@@ -37,14 +37,14 @@
 	$userid=qa_get_logged_in_userid();
 	
 	if (!qa_check_form_security_code('favorite-'.$entitytype.'-'.$entityid, qa_post_text('code')))
-		echo "QA_AJAX_RESPONSE\n0\n".qa_lang('misc/form_security_reload');
+		echo "QA_AJAX_RESPONSE\n0\n"._('Please reload the page then try again');
 	
 	elseif (isset($userid)) {
 		$cookieid=qa_cookie_get();
 	
 		qa_user_favorite_set($userid, qa_get_logged_in_handle(), $cookieid, $entitytype, $entityid, $setfavorite);
 		
-		$favoriteform=qa_favorite_form($entitytype, $entityid, $setfavorite, qa_lang($setfavorite ? 'main/remove_favorites' : 'main/add_favorites'));
+		$favoriteform=qa_favorite_form($entitytype, $entityid, $setfavorite, ($setfavorite ? _('Remove from my favorites') : _('Add to my favorites')));
 	
 		$themeclass=qa_load_theme_class(qa_get_site_theme(), 'ajax-favorite', null, null);
 	

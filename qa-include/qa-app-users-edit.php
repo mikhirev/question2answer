@@ -56,7 +56,7 @@
 		if (!isset($errors['handle'])) { // first test through filters, then check for duplicates here
 			$handleusers=qa_db_user_find_by_handle($handle);
 			if (count($handleusers) && ( (!isset($olduser['userid'])) || (array_search($olduser['userid'], $handleusers)===false) ) )
-				$errors['handle']=qa_lang('users/handle_exists');
+				$errors['handle']=_('Username is taken - please try another');
 		}
 		
 		$filtermodules=qa_load_modules_with('filter', 'filter_email');
@@ -73,7 +73,7 @@
 		if (!isset($errors['email'])) {
 			$emailusers=qa_db_user_find_by_email($email);
 			if (count($emailusers) && ( (!isset($olduser['userid'])) || (array_search($olduser['userid'], $emailusers)===false) ) )
-				$errors['email']=qa_lang('users/email_exists');
+				$errors['email']=_('Email already belongs to an account');
 		}
 		
 		return $errors;
@@ -90,7 +90,7 @@
 		require_once QA_INCLUDE_DIR.'qa-db-users.php';
 		
 		if (!strlen($handle))
-			$handle=qa_lang('users/registered_user');
+			$handle=_('Registered user');
 
 		$handle=preg_replace('/[\\@\\+\\/]/', ' ', $handle);
 
@@ -139,7 +139,7 @@
 		if (!isset($error)) {
 			$minpasslen=max(QA_MIN_PASSWORD_LEN, 1);
 			if (qa_strlen($password)<$minpasslen)
-				$error=qa_lang_sub('users/password_min', $minpasslen);
+				$error=sprintf(_('Password must be at least %d characters'), $minpasslen);
 		}		
 
 		if (isset($error))
@@ -177,9 +177,9 @@
 		$custom=qa_opt('show_custom_welcome') ? trim(qa_opt('custom_welcome')) : '';
 		
 		if (qa_opt('confirm_user_emails') && ($level<QA_USER_LEVEL_EXPERT) && !$confirmed) {
-			$confirm=strtr(qa_lang('emails/welcome_confirm'), array(
-				'^url' => qa_get_new_confirm_url($userid, $handle)
-			));
+			$confirm=sprintf(_("Please click below to confirm your email address.\n\n%s\n\n"),
+				qa_get_new_confirm_url($userid, $handle)
+			);
 			
 			if (qa_opt('confirm_user_required'))
 				qa_db_user_set_flag($userid, QA_USER_FLAGS_MUST_CONFIRM, true);
@@ -190,8 +190,8 @@
 		if (qa_opt('moderate_users') && qa_opt('approve_user_required') && ($level<QA_USER_LEVEL_EXPERT))
 			qa_db_user_set_flag($userid, QA_USER_FLAGS_MUST_APPROVE, true);
 				
-		qa_send_notification($userid, $email, $handle, qa_lang('emails/welcome_subject'), qa_lang('emails/welcome_body'), array(
-			'^password' => isset($password) ? $password : qa_lang('users/password_to_set'),
+		qa_send_notification($userid, $email, $handle, _('Welcome to ^site_title!'), _("Thank you for registering for ^site_title.\n\n^custom^confirmYour login details are as follows:\n\nEmail: ^email\nPassword: ^password\n\nPlease keep this information safe for future reference.\n\nThank you,\n\n^site_title\n^url"), array(
+			'^password' => isset($password) ? $password : _('Please set on your account page'),
 			'^url' => qa_opt('site_url'),
 			'^custom' => strlen($custom) ? ($custom."\n\n") : '',
 			'^confirm' => $confirm,
@@ -249,7 +249,7 @@
 
 		$userinfo=qa_db_select_with_pending(qa_db_user_account_selectspec($userid, true));
 		
-		if (!qa_send_notification($userid, $userinfo['email'], $userinfo['handle'], qa_lang('emails/confirm_subject'), qa_lang('emails/confirm_body'), array(
+		if (!qa_send_notification($userid, $userinfo['email'], $userinfo['handle'], _('^site_title - Email Address Confirmation'), _("gemailsse click below to confirm your email address for ^site_title.\n\n^url\n\nThank you,\n^site_title"), array(
 			'^url' => qa_get_new_confirm_url($userid, $userinfo['handle']),
 		)))
 			qa_fatal_error('Could not send email confirmation');
@@ -349,7 +349,7 @@
 
 		$userinfo=qa_db_select_with_pending(qa_db_user_account_selectspec($userid, true));
 
-		if (!qa_send_notification($userid, $userinfo['email'], $userinfo['handle'], qa_lang('emails/reset_subject'), qa_lang('emails/reset_body'), array(
+		if (!qa_send_notification($userid, $userinfo['email'], $userinfo['handle'], _('^site_title - Reset Forgotten Password'), _("Please click below to reset your password for ^site_title.\n\n^url\n\nAlternatively, enter the code below into the field provided.\n\nCode: ^code\n\nIf you did not ask to reset your password, please ignore this message.\n\nThank you,\n^site_title"), array(
 			'^code' => $userinfo['emailcode'],
 			'^url' => qa_path_absolute('reset', array('c' => $userinfo['emailcode'], 'e' => $userinfo['email'])),
 		)))
@@ -374,7 +374,7 @@
 		
 		$userinfo=qa_db_select_with_pending(qa_db_user_account_selectspec($userid, true));
 		
-		if (!qa_send_notification($userid, $userinfo['email'], $userinfo['handle'], qa_lang('emails/new_password_subject'), qa_lang('emails/new_password_body'), array(
+		if (!qa_send_notification($userid, $userinfo['email'], $userinfo['handle'], _('^site_title - Your New Password'), _("Your new password for ^site_title is below.\n\nPassword: ^password\n\nIt is recommended to change this password immediately after logging in.\n\nThank you,\n^site_title\n^url"), array(
 			'^password' => $password,
 			'^url' => qa_opt('site_url'),
 		)))

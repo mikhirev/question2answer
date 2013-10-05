@@ -53,7 +53,7 @@
 
 	if (qa_user_permit_error()) {
 		$qa_content=qa_content_prepare();
-		$qa_content['error']=qa_lang_html('users/no_permission');
+		$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 		return $qa_content;
 	}
 
@@ -72,11 +72,11 @@
 		$inreferer=qa_post_text('referer');
 		
 		if (!qa_check_form_security_code('feedback', qa_post_text('code')))
-			$pageerror=qa_lang_html('misc/form_security_again');
+			$pageerror=qa_html(_('Please click again to confirm'));
 		
 		else {
 			if (empty($inmessage))
-				$errors['message']=qa_lang('misc/feedback_empty');
+				$errors['message']=_('Please use this field to send some comments or suggestions');
 			
 			if ($usecaptcha)
 				qa_captcha_validate_post($errors);
@@ -97,13 +97,13 @@
 					'fromname' => $inname,
 					'toemail' => qa_opt('feedback_email'),
 					'toname' => qa_opt('site_title'),
-					'subject' => qa_lang_sub('emails/feedback_subject', qa_opt('site_title')),
-					'body' => strtr(qa_lang('emails/feedback_body'), $subs),
+					'subject' => sprintf(_('%s feedback'), qa_opt('site_title')),
+					'body' => strtr(_("Comments:\n^message\n\nName:\n^name\n\nEmail:\n^email\n\nPrevious page:\n^previous\n\nUser:\n^url\n\nIP address:\n^ip\n\nBrowser:\n^browse"), $subs),
 					'html' => false,
 				)))
 					$feedbacksent=true;
 				else
-					$pageerror=qa_lang_html('main/general_error');
+					$pageerror=qa_html(_('A server error occurred - please try again.'));
 					
 				qa_report_event('feedback', $userid, qa_get_logged_in_handle(), qa_cookie_get(), array(
 					'email' => $inemail,
@@ -121,7 +121,7 @@
 
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('misc/feedback_title');
+	$qa_content['title']=qa_html(_('Send feedback'));
 	
 	$qa_content['error']=@$pageerror;
 
@@ -133,7 +133,7 @@
 		'fields' => array(
 			'message' => array(
 				'type' => $feedbacksent ? 'static' : '',
-				'label' => qa_lang_html_sub('misc/feedback_message', qa_opt('site_title')),
+				'label' => qa_html(sprintf(_('Your comments or suggestions for %s:'), qa_opt('site_title'))),
 				'tags' => 'name="message" id="message"',
 				'value' => qa_html(@$inmessage),
 				'rows' => 8,
@@ -142,14 +142,14 @@
 
 			'name' => array(
 				'type' => $feedbacksent ? 'static' : '',
-				'label' => qa_lang_html('misc/feedback_name'),
+				'label' => qa_html(_('Your name: (optional)')),
 				'tags' => 'name="name"',
 				'value' => qa_html(isset($inname) ? $inname : @$userprofile['name']),
 			),
 
 			'email' => array(
 				'type' => $feedbacksent ? 'static' : '',
-				'label' => qa_lang_html('misc/feedback_email'),
+				'label' => qa_html(_('Your email: (optional)')),
 				'tags' => 'name="email"',
 				'value' => qa_html(isset($inemail) ? $inemail : qa_get_logged_in_email()),
 				'note' => $feedbacksent ? null : qa_opt('email_privacy'),
@@ -158,7 +158,7 @@
 		
 		'buttons' => array(
 			'send' => array(
-				'label' => qa_lang_html('main/send_button'),
+				'label' => qa_html(_('Send')),
 			),
 		),
 		
@@ -176,7 +176,7 @@
 	$qa_content['focusid']='message';
 	
 	if ($feedbacksent) {
-		$qa_content['form']['ok']=qa_lang_html('misc/feedback_sent');
+		$qa_content['form']['ok']=qa_html(_('Your message below was sent - thank you.'));
 		unset($qa_content['form']['buttons']);
 	}
 

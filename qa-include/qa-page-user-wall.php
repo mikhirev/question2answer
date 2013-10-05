@@ -74,7 +74,7 @@
 	foreach ($usermessages as $message)
 		if ($message['deleteable'] && qa_clicked('m'.$message['messageid'].'_dodelete')) {
 			if (!qa_check_form_security_code('wall-'.$useraccount['handle'], qa_post_text('code')))
-				$errors['page']=qa_lang_html('misc/form_security_again');
+				$errors['page']=qa_html(_('Please click again to confirm'));
 				
 			else {
 				qa_wall_delete_post($loginuserid, qa_get_logged_in_handle(), qa_cookie_get(), $message);
@@ -86,10 +86,10 @@
 		$inmessage=qa_post_text('message');
 		
 		if (!strlen($inmessage))
-			$errors['message']=qa_lang('profile/post_wall_empty');
+			$errors['message']=_('Please enter something to post on this wall');
 			
 		elseif (!qa_check_form_security_code('wall-'.$useraccount['handle'], qa_post_text('code')))
-			$errors['message']=qa_lang_html('misc/form_security_again');
+			$errors['message']=qa_html(_('Please click again to confirm'));
 		
 		elseif (!$wallposterrorhtml) {
 			qa_wall_add_post($loginuserid, qa_get_logged_in_handle(), qa_cookie_get(), $useraccount['userid'], $useraccount['handle'], $inmessage, '');
@@ -102,7 +102,7 @@
 	
 	$qa_content=qa_content_prepare();
 	
-	$qa_content['title']=qa_lang_html_sub('profile/wall_for_x', $userhtml);
+	$qa_content['title']=qa_html(sprintf(_('Wall for %s'), $userhtml));
 	$qa_content['error']=@$errors['page'];
 	
 	$qa_content['script_rel'][]='qa-content/qa-user.js?'.QA_VERSION;
@@ -138,7 +138,7 @@
 			$qa_content['message_list']['form']['buttons']=array(
 				'post' => array(
 					'tags' => 'name="dowallpost" onclick="return qa_submit_wall_post(this, false);"',
-					'label' => qa_lang_html('profile/post_wall_button'),
+					'label' => qa_html(_('Add wall post')),
 				),
 			);
 			

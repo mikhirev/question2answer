@@ -80,7 +80,7 @@
 		<table class="qa-form-tall-table" style="width:100%">
 			<tr style="vertical-align:middle;">
 				<td class="qa-form-tall-label" style="padding:8px; white-space:nowrap; <?php echo ($region=='side') ? 'padding-bottom:0;' : 'text-align:right;'?>" width="1">
-					<?php echo strtr(qa_lang_html('question/ask_title'), array(' ' => '&nbsp;'))?>:
+					<?php echo strtr(qa_html(_('Ask a question')), array(' ' => '&nbsp;'))?>:
 				</td>
 <?php
 			if ($region=='side') {

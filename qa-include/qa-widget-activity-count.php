@@ -42,26 +42,23 @@
 		{
 			$themeobject->output('<div class="qa-activity-count">');
 			
-			$this->output_count($themeobject, qa_opt('cache_qcount'), 'main/1_question', 'main/x_questions');
-			$this->output_count($themeobject, qa_opt('cache_acount'), 'main/1_answer', 'main/x_answers');
+			$this->output_count($themeobject, qa_opt('cache_qcount'), ngettext('%s question', '%s questions', qa_opt('cache_qcount')));
+			$this->output_count($themeobject, qa_opt('cache_acount'), ngettext('%s answer', '%s answers', qa_opt('cache_acount')));
 			
 			if (qa_opt('comment_on_qs') || qa_opt('comment_on_as'))
-				$this->output_count($themeobject, qa_opt('cache_ccount'), 'main/1_comment', 'main/x_comments');
+				$this->output_count($themeobject, qa_opt('cache_ccount'), ngettext('%s comment', '%s comments', qa_opt('cache_ccount')));
 			
-			$this->output_count($themeobject, qa_opt('cache_userpointscount'), 'main/1_user', 'main/x_users');
+			$this->output_count($themeobject, qa_opt('cache_userpointscount'), ngettext('%s user', '%s users', qa_opt('cache_userpointscount')));
 			
 			$themeobject->output('</div>');
 		}
 		
 
-		function output_count($themeobject, $value, $langsingular, $langplural)
+		function output_count($themeobject, $value, $lang)
 		{
 			$themeobject->output('<p class="qa-activity-count-item">');
 			
-			if ($value==1)
-				$themeobject->output(qa_lang_html_sub($langsingular, '<span class="qa-activity-count-data">1</span>', '1'));
-			else
-				$themeobject->output(qa_lang_html_sub($langplural, '<span class="qa-activity-count-data">'.number_format((int)$value).'</span>'));
+			$themeobject->output(sprintf(qa_html($lang), '<span class="qa-activity-count-data">'.number_format((int)$value).'</span>'));
 
 			$themeobject->output('</p>');
 		}

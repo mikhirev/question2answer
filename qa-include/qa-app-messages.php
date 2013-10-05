@@ -42,24 +42,24 @@
 		
 		if ((!QA_FINAL_EXTERNAL_USERS) && qa_opt('allow_user_walls')) {
 			if ( ($touserflags & QA_USER_FLAGS_NO_WALL_POSTS) && !(isset($fromuserid) && ($fromuserid==$touserid)) )
-				return qa_lang_html('profile/post_wall_blocked');
+				return qa_html(_('This user has disallowed new posts on their wall'));
 			
 			else
 				switch (qa_user_permit_error('permit_post_wall', QA_LIMIT_WALL_POSTS)) {
 					case 'limit':
-						return qa_lang_html('profile/post_wall_limit');
+						return qa_html(_('You cannot write more wall posts this hour'));
 						break;
 						
 					case 'login':
-						return qa_insert_login_links(qa_lang_html('profile/post_wall_must_login'), qa_request());
+						return qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to post on this wall.')), qa_request());
 						break;
 						
 					case 'confirm':
-						return qa_insert_login_links(qa_lang_html('profile/post_wall_must_confirm'), qa_request());
+						return qa_insert_login_links(qa_html(_('Please ^5confirm your email address^6 to post on this wall.')), qa_request());
 						break;
 						
 					case 'approve':
-						return qa_lang_html('profile/post_wall_must_be_approved');
+						return qa_html(_('Your account must be approved to post on this wall.'));
 						break;
 						
 					case false:
@@ -68,7 +68,7 @@
 				}
 		}
 		
-		return qa_lang_html('users/no_permission');
+		return qa_html(_('You do not have permission to perform this operation'));
 	}
 	
 	
@@ -158,8 +158,8 @@
 				'buttons' => array(
 					'delete' => array(
 						'tags' => 'name="m'.qa_html($message['messageid']).'_dodelete" onclick="return qa_wall_post_click('.qa_js($message['messageid']).', this);"',
-						'label' => qa_lang_html('question/delete_button'),
-						'popup' => qa_lang_html('profile/delete_wall_post_popup'),
+						'label' => qa_html(_('delete')),
+						'popup' => qa_html(_('Delete this wall post')),
 					),
 				),
 			);
@@ -174,7 +174,7 @@
 */
 	{
 		return array(
-			'content' => '<a href="'.qa_path_html('user/'.$handle.'/wall', array('start' => $start)).'">'.qa_lang_html('profile/wall_view_more').'</a>',
+			'content' => '<a href="'.qa_path_html('user/'.$handle.'/wall', array('start' => $start)).'">'.qa_html(_('View more wall posts...')).'</a>',
 		);
 	}
 

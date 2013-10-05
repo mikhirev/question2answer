@@ -92,7 +92,7 @@
 ?>
 		</tt>
 		
-		<a href="<?php echo qa_path_html('admin/stats')?>"><?php echo qa_lang_html('admin/admin_title').' - '.qa_lang_html('admin/stats_title')?></a>
+		<a href="<?php echo qa_path_html('admin/stats')?>"><?php echo qa_html(_('Administration center')).' - '.qa_html(_('Stats'))?></a>
 	</body>
 </html>
 
@@ -102,8 +102,8 @@
 	} elseif (isset($state)) {
 		$qa_content=qa_content_prepare();
 
-		$qa_content['title']=qa_lang_html('admin/admin_title');
-		$qa_content['error']=qa_lang_html('misc/form_security_again');
+		$qa_content['title']=qa_html(_('Administration center'));
+		$qa_content['error']=qa_html(_('Please click again to confirm'));
 		
 		$qa_content['form']=array(
 			'tags' => 'method="post" action="'.qa_self_html().'"',
@@ -113,7 +113,7 @@
 			'buttons' => array(
 				'recalc' => array(
 					'tags' => 'name="'.qa_html($state).'"',
-					'label' => qa_lang_html('misc/form_security_again'),
+					'label' => qa_html(_('Please click again to confirm')),
 				),
 			),
 			
@@ -129,8 +129,8 @@
 		
 		$qa_content=qa_content_prepare();
 
-		$qa_content['title']=qa_lang_html('admin/admin_title');
-		$qa_content['error']=qa_lang_html('main/page_not_found');
+		$qa_content['title']=qa_html(_('Administration center'));
+		$qa_content['error']=qa_html(_('Page not found'));
 		
 		return $qa_content;
 	}

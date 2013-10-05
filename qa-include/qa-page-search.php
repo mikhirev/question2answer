@@ -85,9 +85,9 @@
 		$qa_content['search']['value']=qa_html($inquery);
 	
 		if (count($results))
-			$qa_content['title']=qa_lang_html_sub('main/results_for_x', qa_html($inquery));
+			$qa_content['title']=qa_html(sprintf(_('Search results for %s'), $inquery));
 		else
-			$qa_content['title']=qa_lang_html_sub('main/no_results_for_x', qa_html($inquery));
+			$qa_content['title']=qa_html(sprintf(_('No results found for %s'), $inquery));
 			
 		$qa_content['q_list']['form']=array(
 			'tags' => 'method="post" action="'.qa_self_html().'"',
@@ -123,7 +123,7 @@
 			elseif (isset($result['url']))
 				$fields=array(
 					'what' => qa_html($result['url']),
-					'meta_order' => qa_lang_html('main/meta_order'),
+					'meta_order' => qa_html(_('^what^when^where^who')),
 				);
 
 			else
@@ -141,14 +141,14 @@
 		if (qa_opt('feed_for_search'))
 			$qa_content['feed']=array(
 				'url' => qa_path_html(qa_feed_request('search/'.$inquery)),
-				'label' => qa_lang_html_sub('main/results_for_x', qa_html($inquery)),
+				'label' => qa_html(sprintf(_('Search results for %s)', $inquery))),
 			);
 
 		if (empty($qa_content['page_links']))
 			$qa_content['suggest_next']=qa_html_suggest_qs_tags(qa_using_tags());
 
 	} else
-		$qa_content['error']=qa_lang_html('main/search_explanation');
+		$qa_content['error']=qa_html(_('Please enter some text into the search box and try again.'));
 	
 
 		

@@ -519,21 +519,21 @@
 			if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 		
 			if ($level>=QA_USER_LEVEL_SUPER)
-				$string='users/level_super';
+				$string=_('Super Administrator');
 			elseif ($level>=QA_USER_LEVEL_ADMIN)
-				$string='users/level_admin';
+				$string=_('Administrator');
 			elseif ($level>=QA_USER_LEVEL_MODERATOR)
-				$string='users/level_moderator';
+				$string=_('Moderator');
 			elseif ($level>=QA_USER_LEVEL_EDITOR)
-				$string='users/level_editor';
+				$string=_('Editor');
 			elseif ($level>=QA_USER_LEVEL_EXPERT)
-				$string='users/level_expert';
+				$string=_('Expert');
 			elseif ($level>=QA_USER_LEVEL_APPROVED)
-				$string='users/approved_user';
+				$string=_('Approved user');
 			else
-				$string='users/registered_user';
+				$string=_('Registered user');
 			
-			return qa_lang($string);
+			return $string;
 		}
 
 		
@@ -1008,14 +1008,14 @@ in a category for which they have elevated privileges).
 		
 		else {
 			$defaultlabels=array(
-				'name' => 'users/full_name',
-				'about' => 'users/about',
-				'location' => 'users/location',
-				'website' => 'users/website',
+				'name' => _('Full name'),
+				'about' => _('About'),
+				'location' => _('Location'),
+				'website' => _('Website'),
 			);
 			
 			if (isset($defaultlabels[$userfield['title']]))
-				return qa_lang($defaultlabels[$userfield['title']]);
+				return $defaultlabels[$userfield['title']];
 		}
 			
 		return '';

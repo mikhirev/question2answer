@@ -40,26 +40,26 @@
 		function filter_email(&$email, $olduser)
 		{
 			if (!strlen($email))
-				return qa_lang('users/email_required');
+				return _('Email address required - not public');
 			
 			if (!qa_email_validate($email))
-				return qa_lang('users/email_invalid');
+				return _('Email is invalid - please check carefully');
 			
 			if (qa_strlen($email)>QA_DB_MAX_EMAIL_LENGTH)
-				return qa_lang_sub('main/max_length_x', QA_DB_MAX_EMAIL_LENGTH);
+				return sprintf(_('Please provide more information - at least %d characters'), QA_DB_MAX_EMAIL_LENGTH);
 		}
 
 		
 		function filter_handle(&$handle, $olduser)
 		{
 			if (!strlen($handle))
-				return qa_lang('users/handle_empty');
+				return _('Username must not be empty');
 	
 			if (preg_match('/[\\@\\+\\/]/', $handle))
-				return qa_lang_sub('users/handle_has_bad', '@ + /');
+				return sprintf(_('Username may not contain: %s'), '@ + /');
 			
 			if (qa_strlen($handle)>QA_DB_MAX_HANDLE_LENGTH)
-				return qa_lang_sub('main/max_length_x', QA_DB_MAX_HANDLE_LENGTH);
+				return sprintf(_('Please provide more information - at least %d characters'), QA_DB_MAX_HANDLE_LENGTH);
 		}
 		
 
@@ -77,9 +77,9 @@
 				$mintags=min(qa_opt('min_num_q_tags'), qa_opt('max_num_q_tags'));
 
 				if ($counttags<$mintags)
-					$errors['tags']=qa_lang_sub('question/min_tags_x', $mintags);
+					$errors['tags']=sprintf(_('Please provide at least %d tag/s'), $mintags);
 				elseif ($counttags>qa_opt('max_num_q_tags'))
-					$errors['tags']=qa_lang_sub('question/max_tags_x', qa_opt('max_num_q_tags'));
+					$errors['tags']=sprintf(_('A maximum of %d tags are allowed'), qa_opt('max_num_q_tags'));
 				else
 					$this->validate_length($errors, 'tags', qa_tags_to_tagstring($question['tags']), 0, QA_DB_MAX_TAGS_LENGTH); // for storage
 			}
@@ -122,9 +122,9 @@
 				$length=qa_strlen($input);
 				
 				if ($length < $minlength)
-					$errors[$field]=($minlength==1) ? qa_lang('main/field_required') : qa_lang_sub('main/min_length_x', $minlength);
+					$errors[$field]=($minlength==1) ? _('gmainse enter something in this field') : sprintf(_('Please provide more information - at least %d characters'), $minlength);
 				elseif (isset($maxlength) && ($length > $maxlength))
-					$errors[$field]=qa_lang_sub('main/max_length_x', $maxlength);
+					$errors[$field]=sprintf(_('Maximum length is %d characters'), $maxlength);
 			}
 		}
 

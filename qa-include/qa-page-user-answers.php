@@ -66,9 +66,9 @@
 	$qa_content=qa_content_prepare(true);
 	
 	if (count($questions))
-		$qa_content['title']=qa_lang_html_sub('profile/answers_by_x', $userhtml);
+		$qa_content['title']=sprintf(qa_html(_('Answers by %s')), $userhtml);
 	else
-		$qa_content['title']=qa_lang_html_sub('profile/no_answers_by_x', $userhtml);
+		$qa_content['title']=sprintf(qa_html(_('No answers by %s')), $userhtml);
 
 
 //	Recent questions by this user

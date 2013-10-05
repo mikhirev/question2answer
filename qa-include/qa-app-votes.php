@@ -58,19 +58,19 @@
 				
 			switch ($permiterror) {
 				case 'login':
-					return qa_insert_login_links(qa_lang_html('main/vote_must_login'), $topage);
+					return qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to vote.')), $topage);
 					break;
 					
 				case 'confirm':
-					return qa_insert_login_links(qa_lang_html($errordownonly ? 'main/vote_down_must_confirm' : 'main/vote_must_confirm'), $topage);
+					return qa_insert_login_links(qa_html($errordownonly ? _('Please ^5confirm your email address^6 to vote down.') : _('Please ^5confirm your email address^6 to vote.')), $topage);
 					break;
 					
 				case 'limit':
-					return qa_lang_html('main/vote_limit');
+					return qa_html(_('Too many votes received - please try again in an hour'));
 					break;
 					
 				default:
-					return qa_lang_html('users/no_permission');
+					return qa_html(_('You do not have permission to perform this operation'));
 					break;
 					
 				case false:
@@ -78,7 +78,7 @@
 			}
 		
 		} else
-			return qa_lang_html('main/vote_not_allowed'); // voting option should not have been presented (but could happen due to options change)
+			return qa_html(_('Voting on this is not allowed')); // voting option should not have been presented (but could happen due to options change)
 	}
 
 	
@@ -163,19 +163,19 @@
 		
 			switch (qa_user_post_permit_error('permit_flag', $post, QA_LIMIT_FLAGS)) {
 				case 'login':
-					return qa_insert_login_links(qa_lang_html('question/flag_must_login'), $topage);
+					return qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to flag posts.')), $topage);
 					break;
 					
 				case 'confirm':
-					return qa_insert_login_links(qa_lang_html('question/flag_must_confirm'), $topage);
+					return qa_insert_login_links(qa_html(_('Please ^5confirm your email address^6 to flag posts.')), $topage);
 					break;
 					
 				case 'limit':
-					return qa_lang_html('question/flag_limit');
+					return qa_html(_('Too many posts flagged - please try again in an hour'));
 					break;
 					
 				default:
-					return qa_lang_html('users/no_permission');
+					return qa_html(_('You do not have permission to perform this operation'));
 					break;
 					
 				case false:
@@ -183,7 +183,7 @@
 			}
 		
 		} else
-			return qa_lang_html('question/flag_not_allowed'); // flagging option should not have been presented
+			return qa_html(_('Flagging this is not allowed')); // flagging option should not have been presented
 	}
 	
 

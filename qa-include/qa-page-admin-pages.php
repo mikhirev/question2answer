@@ -64,16 +64,16 @@
 	$hascustomhome=qa_has_custom_home();
 	
 	$navoptions=array(
-		'nav_home' => 'main/nav_home',
-		'nav_activity' => 'main/nav_activity',
-		 $hascustomhome ? 'nav_qa_not_home' : 'nav_qa_is_home' => $hascustomhome ? 'main/nav_qa' : 'admin/nav_qa_is_home',
-		'nav_questions' => 'main/nav_qs',
-		'nav_hot' => 'main/nav_hot',
-		'nav_unanswered' => 'main/nav_unanswered',
-		'nav_tags' => 'main/nav_tags',
-		'nav_categories' => 'main/nav_categories',
-		'nav_users' => 'main/nav_users',
-		'nav_ask' => 'main/nav_ask',
+		'nav_home' => _('Home'),
+		'nav_activity' => _('All Activity'),
+		 $hascustomhome ? 'nav_qa_not_home' : 'nav_qa_is_home' => $hascustomhome ? _('Q&A') : _('Q&A (links to home page)'),
+		'nav_questions' => _('Questions'),
+		'nav_hot' => _('Hot!'),
+		'nav_unanswered' => _('Unanswered'),
+		'nav_tags' => _('Tags'),
+		'nav_categories' => _('Categories'),
+		'nav_users' => _('Users'),
+		'nav_ask' => _('Ask a Question'),
 	);
 	
 	$navpaths=array(
@@ -110,7 +110,7 @@
 	elseif (qa_clicked('dosaveoptions') || qa_clicked('doaddpage') || qa_clicked('doaddlink')) {
 		if (!qa_check_form_security_code('admin/pages', qa_post_text('code')))
 			$securityexpired=true;
-		else foreach ($navoptions as $optionname => $langkey)
+		else foreach ($navoptions as $optionname => $lang)
 			qa_set_option($optionname, (int)qa_post_text('option_'.$optionname));
 
 	} elseif (qa_clicked('dosavepage')) {
@@ -146,25 +146,25 @@
 			//	Verify the name (navigation link) is legitimate
 			
 				if (empty($inname))
-					$errors['name']=qa_lang('main/field_required');
+					$errors['name']=_('Please enter something in this field');
 				elseif (qa_strlen($inname)>QA_DB_MAX_CAT_PAGE_TITLE_LENGTH)
-					$errors['name']=qa_lang_sub('main/max_length_x', QA_DB_MAX_CAT_PAGE_TITLE_LENGTH);
+					$errors['name']=sprintf(_('Maximum length is %d characters'), QA_DB_MAX_CAT_PAGE_TITLE_LENGTH);
 							
 				if ($isexternal) {
 				
 				//	Verify the url is legitimate (vaguely)
 				
 					if (empty($inurl))
-						$errors['url']=qa_lang('main/field_required');
+						$errors['url']=_('Please enter something in this field');
 					elseif (qa_strlen($inurl)>QA_DB_MAX_CAT_PAGE_TAGS_LENGTH)
-						$errors['url']=qa_lang_sub('main/max_length_x', QA_DB_MAX_CAT_PAGE_TAGS_LENGTH);
+						$errors['url']=sprintf(_('Please provide more information - at least %d characters'), QA_DB_MAX_CAT_PAGE_TAGS_LENGTH);
 	
 				} else {
 				
 				//	Verify the heading is legitimate
 				
 					if (qa_strlen($inheading)>QA_DB_MAX_TITLE_LENGTH)
-						$errors['heading']=qa_lang_sub('main/max_length_x', QA_DB_MAX_TITLE_LENGTH);
+						$errors['heading']=sprintf(_('Maximum length is %d characters'), QA_DB_MAX_TITLE_LENGTH);
 				
 				//	Verify the slug is legitimate (and try some defaults if we're creating a new page, and it's not)
 						
@@ -177,11 +177,11 @@
 								break;
 								
 							case 1:
-								$inslug=qa_lang_sub('admin/page_default_slug', $inslug);
+								$inslug=sprintf(_('page-%s'), $inslug);
 								break;
 								
 							default:
-								$inslug=qa_lang_sub('admin/page_default_slug', $attempt-1);
+								$inslug=sprintf(_('page-%s'), $attempt-1);
 								break;
 						}
 						
@@ -191,17 +191,17 @@
 						);
 						
 						if (empty($inslug))
-							$errors['slug']=qa_lang('main/field_required');
+							$errors['slug']=_('Please enter something in this field');
 						elseif (qa_strlen($inslug)>QA_DB_MAX_CAT_PAGE_TAGS_LENGTH)
-							$errors['slug']=qa_lang_sub('main/max_length_x', QA_DB_MAX_CAT_PAGE_TAGS_LENGTH);
+							$errors['slug']=sprintf(_('Maximum length is %d characters'), QA_DB_MAX_CAT_PAGE_TAGS_LENGTH);
 						elseif (preg_match('/[\\+\\/]/', $inslug))
-							$errors['slug']=qa_lang_sub('admin/slug_bad_chars', '+ /');
+							$errors['slug']=sprintf(_('The slug may not contain these characters: %s'), '+ /');
 						elseif (qa_admin_is_slug_reserved($inslug))
-							$errors['slug']=qa_lang('admin/slug_reserved');
+							$errors['slug']=_('This slug is reserved for use by another page');
 						elseif (isset($matchpage) && ($matchpage['pageid']!=@$editpage['pageid']))
-							$errors['slug']=qa_lang('admin/page_already_used');
+							$errors['slug']=_('This is already being used by a page');
 						elseif (isset($matchcategoryid))
-							$errors['slug']=qa_lang('admin/category_already_used');
+							$errors['slug']=_('This is already being used by a category');
 						else
 							unset($errors['slug']);
 						
@@ -284,23 +284,23 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/admin_title').' - '.qa_lang_html('admin/pages_title');	
-	$qa_content['error']=$securityexpired ? qa_lang_html('admin/form_security_expired') : qa_admin_page_error();
+	$qa_content['title']=qa_html(_('Administration center').' - '._('Pages'));	
+	$qa_content['error']=$securityexpired ? qa_html(_('Form security code expired - please try again')) : qa_admin_page_error();
 
 	if (isset($editpage)) {
 		$positionoptions=array();
 		
 		if (!$isexternal)
-			$positionoptions['_'.max(1, @$editpage['position'])]=qa_lang_html('admin/no_link');
+			$positionoptions['_'.max(1, @$editpage['position'])]=qa_html(_('No link'));
 		
-		$navlangkey=array(
-			'B' => 'admin/before_main_menu',
-			'M' => 'admin/after_main_menu',
-			'O' => 'admin/opposite_main_menu',
-			'F' => 'admin/after_footer',
+		$navlang=array(
+			'B' => _('Before tabs at top'),
+			'M' => _('After tabs at top'),
+			'O' => _('Far end of tabs at top'),
+			'F' => _('After links in footer'),
 		);
 		
-		foreach ($navlangkey as $nav => $langkey) {
+		foreach ($navlang as $nav => $lang) {
 			$previous=null;
 			$passedself=false;
 			$maxposition=0;
@@ -308,9 +308,9 @@
 			foreach ($pages as $key => $page)
 				if ($page['nav']==$nav) {
 					if (isset($previous))
-						$positionhtml=qa_lang_html_sub('admin/after_x_tab', qa_html($passedself ? $page['title'] : $previous['title']));
+						$positionhtml=qa_html(sprintf(_('After "%s" tab'), $passedself ? $page['title'] : $previous['title']));
 					else
-						$positionhtml=qa_lang_html($langkey);
+						$positionhtml=qa_html($lang);
 						
 					if ($page['pageid']==@$editpage['pageid'])
 						$passedself=true;
@@ -322,7 +322,7 @@
 				}
 				
 			if ((!isset($editpage['pageid'])) || $nav!=@$editpage['nav']) {
-				$positionvalue=isset($previous) ? qa_lang_html_sub('admin/after_x_tab', qa_html($previous['title'])) : qa_lang_html($langkey);
+				$positionvalue=isset($previous) ? qa_html(sprintf(_('After "%s" tab'), $previous['title'])) : qa_html($lang);
 				$positionoptions[$nav.(isset($previous) ? (1+$maxposition) : 1)]=$positionvalue;
 			}
 		}
@@ -340,14 +340,14 @@
 			'fields' => array(
 				'name' => array(
 					'tags' => 'name="name" id="name"',
-					'label' => qa_lang_html($isexternal ? 'admin/link_name' : 'admin/page_name'),
+					'label' => qa_html($isexternal ? _('Text of link:') : _('Name of page (also used for tab or link):')),
 					'value' => qa_html(isset($inname) ? $inname : @$editpage['title']),
 					'error' => qa_html(@$errors['name']),
 				),
 				
 				'delete' => array(
 					'tags' => 'name="dodelete" id="dodelete"',
-					'label' => qa_lang_html($isexternal ? 'admin/delete_link' : 'admin/delete_page'),
+					'label' => qa_html($isexternal ? _('Delete this link') : _('Delete this page')),
 					'value' => 0,
 					'type' => 'checkbox',
 				),
@@ -355,7 +355,7 @@
 				'position' => array(
 					'id' => 'position_display',
 					'tags' => 'name="position"',
-					'label' => qa_lang_html('admin/position'),
+					'label' => qa_html(_('Position:')),
 					'type' => 'select',
 					'options' => $positionoptions,
 					'value' => $positionvalue,
@@ -364,7 +364,7 @@
 				'permit' => array(
 					'id' => 'permit_display',
 					'tags' => 'name="permit"',
-					'label' => qa_lang_html('admin/permit_to_view'),
+					'label' => qa_html(_('Visible for:')),
 					'type' => 'select',
 					'options' => $permitoptions,
 					'value' => $permitvalue,
@@ -373,7 +373,7 @@
 				'slug' => array(
 					'id' => 'slug_display',
 					'tags' => 'name="slug"',
-					'label' => qa_lang_html('admin/page_slug'),
+					'label' => qa_html(_('Page slug (URL fragment):')),
 					'value' => qa_html(isset($inslug) ? $inslug : @$editpage['tags']),
 					'error' => qa_html(@$errors['slug']),
 				),
@@ -381,7 +381,7 @@
 				'url' => array(
 					'id' => 'url_display',
 					'tags' => 'name="url"',
-					'label' => qa_lang_html('admin/link_url'),
+					'label' => qa_html(_('URL of link - absolute or relative to Q2A root:')),
 					'value' => qa_html(isset($inurl) ? $inurl : @$editpage['tags']),
 					'error' => qa_html(@$errors['url']),
 				),
@@ -389,7 +389,7 @@
 				'newwindow' => array(
 					'id' => 'newwindow_display',
 					'tags' => 'name="newwindow"',
-					'label' => qa_lang_html('admin/link_new_window'),
+					'label' => qa_html(_('Open link in a new window')),
 					'value' => (isset($innewwindow) ? $innewwindow : (@$editpage['flags'] & QA_PAGE_FLAGS_NEW_WINDOW)) ? 1 : 0,
 					'type' => 'checkbox',
 				),
@@ -397,7 +397,7 @@
 				'heading' => array(
 					'id' => 'heading_display',
 					'tags' => 'name="heading"',
-					'label' => qa_lang_html('admin/page_heading'),
+					'label' => qa_html(_('Heading to display at top of page:')),
 					'value' => qa_html(isset($inheading) ? $inheading : @$editpage['heading']),
 					'error' => qa_html(@$errors['heading']),
 				),
@@ -405,7 +405,7 @@
 				'content' => array(
 					'id' => 'content_display',
 					'tags' => 'name="content"',
-					'label' => qa_lang_html('admin/page_content_html'),
+					'label' => qa_html(_('Content to display in page - HTML allowed:')),
 					'value' => qa_html(isset($incontent) ? $incontent : @$editpage['content']),
 					'error' => qa_html(@$errors['content']),
 					'rows' => 16,
@@ -414,12 +414,12 @@
 
 			'buttons' => array(
 				'save' => array(
-					'label' => qa_lang_html(isset($editpage['pageid']) ? 'main/save_button' : ($isexternal ? 'admin/add_link_button' : 'admin/add_page_button')),
+					'label' => qa_html(isset($editpage['pageid']) ? _('Save Changes') : ($isexternal ? _('Add Link') : _('Add Page'))),
 				),
 				
 				'cancel' => array(
 					'tags' => 'name="docancel"',
-					'label' => qa_lang_html('main/cancel_button'),
+					'label' => qa_html(_('Cancel')),
 				),
 			),
 			
@@ -471,17 +471,17 @@
 			'buttons' => array(
 				'save' => array(
 					'tags' => 'name="dosaveoptions"',
-					'label' => qa_lang_html('main/save_button'),
+					'label' => qa_html(_('Save Changes')),
 				),
 
 				'addpage' => array(
 					'tags' => 'name="doaddpage"',
-					'label' => qa_lang_html('admin/add_page_button'),
+					'label' => qa_html(_('Add Page')),
 				),
 
 				'addlink' => array(
 					'tags' => 'name="doaddlink"',
-					'label' => qa_lang_html('admin/add_link_button'),
+					'label' => qa_html(_('Add Link')),
 				),
 			),
 			
@@ -491,14 +491,14 @@
 		);
 		
 		$qa_content['form']['fields']['navlinks']=array(
-			'label' => qa_lang_html('admin/nav_links_explanation'),
+			'label' => qa_html(_('Show navigation links:')),
 			'type' => 'static',
 			'tight' => true,
 		);
 
-		foreach ($navoptions as $optionname => $langkey) {
+		foreach ($navoptions as $optionname => $lang) {
 			$qa_content['form']['fields'][$optionname]=array(
-				'label' => '<a href="'.qa_path_html($navpaths[$optionname]).'">'.qa_lang_html($langkey).'</a>',
+				'label' => '<a href="'.qa_path_html($navpaths[$optionname]).'">'.qa_html($lang).'</a>',
 				'tags' => 'name="option_'.$optionname.'"',
 				'type' => 'checkbox',
 				'value' => qa_opt($optionname),
@@ -521,15 +521,15 @@
 			foreach ($suggestrequests as $suggestrequest) {
 				$listhtml.='<li><b><a href="'.qa_path_html($suggestrequest['request']).'">'.qa_html($suggestrequest['title']).'</a></b>';
 				
-				$listhtml.=qa_lang_html_sub('admin/plugin_module', qa_html($tryname));
+				$listhtml.=qa_html(sprintf(_(' (plugin module: %s)'), $tryname));
 
-				$listhtml.=strtr(qa_lang_html('admin/add_link_link'), array(
-					'^1' => '<a href="'.qa_path_html(qa_request(), array('doaddlink' => 1, 'text' => $suggestrequest['title'], 'url' => $suggestrequest['request'], 'nav' => @$suggestrequest['nav'])).'">',
-					'^2' => '</a>',
-				));
+				$listhtml.=sprintf(qa_html(_(' - %sadd link%s')),
+					'<a href="'.qa_path_html(qa_request(), array('doaddlink' => 1, 'text' => $suggestrequest['title'], 'url' => $suggestrequest['request'], 'nav' => @$suggestrequest['nav'])).'">',
+					'</a>'
+				);
 				
 				if (method_exists($trypage, 'admin_form'))
-					$listhtml.=' - <a href="'.qa_admin_module_options_path('page', $tryname).'">'.qa_lang_html('admin/options').'</a>';
+					$listhtml.=' - <a href="'.qa_admin_module_options_path('page', $tryname).'">'.qa_html(_('options')).'</a>';
 					
 				$listhtml.='</li>';
 			}
@@ -537,7 +537,7 @@
 
 		if (strlen($listhtml))
 			$qa_content['form']['fields']['plugins']=array(
-				'label' => qa_lang_html('admin/plugin_pages_explanation'),
+				'label' => qa_html(_('Pages available via plugins:')),
 				'type' => 'custom',
 				'html' => '<ul style="margin-bottom:0;">'.$listhtml.'</ul>',
 			);
@@ -549,16 +549,16 @@
 		foreach ($pages as $page) {
 			$listhtml.='<li><b><a href="'.qa_custom_page_url($page).'">'.qa_html($page['title']).'</a></b>';
 			
-			$listhtml.=strtr(qa_lang_html(($page['flags'] & QA_PAGE_FLAGS_EXTERNAL) ? 'admin/edit_link' : 'admin/edit_page'), array(
-				'^1' => '<a href="'.qa_path_html('admin/pages', array('edit' => $page['pageid'])).'">',
-				'^2' => '</a>',
-			));
+			$listhtml.=sprintf(qa_html(($page['flags'] & QA_PAGE_FLAGS_EXTERNAL) ? _(' - %sedit link%s') : _(' - %sedit page%s')),
+				'<a href="'.qa_path_html('admin/pages', array('edit' => $page['pageid'])).'">',
+				'</a>'
+			);
 								
 			$listhtml.='</li>';
 		}
 		
 		$qa_content['form']['fields']['pages']=array(
-			'label' => strlen($listhtml) ? qa_lang_html('admin/click_name_edit') : qa_lang_html('admin/pages_explanation'),
+			'label' => strlen($listhtml) ? qa_html(_('Custom pages or links:')) : qa_html(_('Click the \'Add Page\' button to add custom content to your Q2A site, or \'Add Link\' to link to any other web page.')),
 			'type' => 'custom',
 			'html' => strlen($listhtml) ? '<ul style="margin-bottom:0;">'.$listhtml.'</ul>' : null,
 		);

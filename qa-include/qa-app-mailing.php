@@ -130,7 +130,7 @@
 			'toemail' => $email,
 			'toname' => $handle,
 			'subject' => qa_opt('mailing_subject'),
-			'body' => trim(qa_opt('mailing_body'))."\n\n\n".qa_lang('users/unsubscribe').' '.$unsubscribeurl,
+			'body' => trim(qa_opt('mailing_body'))."\n\n\n"._('Unsubscribe:').' '.$unsubscribeurl,
 			'html' => false,
 		));
 	}
@@ -142,10 +142,10 @@
 */
 	{
 		if (strlen(qa_opt('mailing_last_userid')))
-			return strtr(qa_lang('admin/mailing_progress'), array(
-				'^1' => number_format(qa_opt('mailing_done_users')),
-				'^2' => number_format(qa_opt('mailing_total_users')),
-			));
+			return sprintf(_('Mailing completed for %s of %s users...'),
+				number_format(qa_opt('mailing_done_users')),
+				number_format(qa_opt('mailing_total_users'))
+			);
 		else
 			return null;
 	}

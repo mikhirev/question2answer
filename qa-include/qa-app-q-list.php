@@ -96,7 +96,7 @@
 			$categoryisfavorite=@$favoritemap['category'][$navcategories[$categoryid]['backpath']] ? true : false;
 			
 			$qa_content['favorite']=qa_favorite_form(QA_ENTITY_CATEGORY, $categoryid, $categoryisfavorite,
-				qa_lang_sub($categoryisfavorite ? 'main/remove_x_favorites' : 'main/add_category_x_favorites', $navcategories[$categoryid]['title']));
+				sprintf(($categoryisfavorite ? _('Remove %s from my favorites') : _('Add category %s to my favorites')), $navcategories[$categoryid]['title']));
 		}
 			
 		if (isset($count) && isset($pagesize))
@@ -131,27 +131,27 @@
 
 		$navigation=array(
 			'recent' => array(
-				'label' => qa_lang('main/nav_most_recent'),
+				'label' => _('Recent'),
 				'url' => qa_path_html($request),
 			),
 			
 			'hot' => array(
-				'label' => qa_lang('main/nav_hot'),
+				'label' => _('Hot!'),
 				'url' => qa_path_html($request, array('sort' => 'hot')),
 			),
 			
 			'votes' => array(
-				'label' => qa_lang('main/nav_most_votes'),
+				'label' => _('Most votes'),
 				'url' => qa_path_html($request, array('sort' => 'votes')),
 			),
 
 			'answers' => array(
-				'label' => qa_lang('main/nav_most_answers'),
+				'label' => _('Most answers'),
 				'url' => qa_path_html($request, array('sort' => 'answers')),
 			),
 
 			'views' => array(
-				'label' => qa_lang('main/nav_most_views'),
+				'label' => _('Most views'),
 				'url' => qa_path_html($request, array('sort' => 'views')),
 			),
 		);
@@ -181,17 +181,17 @@
 		
 		$navigation=array(
 			'by-answers' => array(
-				'label' => qa_lang('main/nav_no_answer'),
+				'label' => _('No answer'),
 				'url' => qa_path_html($request),
 			),
 			
 			'by-selected' => array(
-				'label' => qa_lang('main/nav_no_selected_answer'),
+				'label' => _('No selected answer'),
 				'url' => qa_path_html($request, array('by' => 'selected')),
 			),
 			
 			'by-upvotes' => array(
-				'label' => qa_lang('main/nav_no_upvoted_answer'),
+				'label' => _('No upvoted answer'),
 				'url' => qa_path_html($request, array('by' => 'upvotes')),
 			),
 		);

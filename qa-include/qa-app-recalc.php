@@ -619,139 +619,139 @@
 			case 'dorecountposts_postcount':
 			case 'dorecalccategories_postcount':
 			case 'dorefillevents_qcount':
-				$message=qa_lang('admin/recalc_posts_count');
+				$message=_('Getting total number of questions, answers and comments...');
 				break;
 				
 			case 'doreindexcontent_pagereindex':
-				$message=strtr(qa_lang('admin/reindex_pages_reindexed'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Reindexed %s of %s pages...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 
 			case 'doreindexcontent_postreindex':
-				$message=strtr(qa_lang('admin/reindex_posts_reindexed'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Reindexed %s of %s posts...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'doreindexposts_wordcount':
-				$message=strtr(qa_lang('admin/reindex_posts_wordcounted'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Recounted %s of %s words...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'dorecountposts_votecount':
-				$message=strtr(qa_lang('admin/recount_posts_votes_recounted'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Recounted votes and flags for %s of %s posts...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'dorecountposts_acount':
-				$message=strtr(qa_lang('admin/recount_posts_as_recounted'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Recounted answers and hotness for %s of %s posts...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'doreindexposts_complete':
-				$message=qa_lang('admin/reindex_posts_complete');
+				$message=_('All posts were successfully reindexed.');
 				break;
 				
 			case 'dorecountposts_complete':
-				$message=qa_lang('admin/recount_posts_complete');
+				$message=_('All posts were successfully recounted.');
 				break;
 				
 			case 'dorecalcpoints_usercount':
-				$message=qa_lang('admin/recalc_points_usercount');
+				$message=_('Estimating total number of users...');
 				break;
 				
 			case 'dorecalcpoints_recalc':
-				$message=strtr(qa_lang('admin/recalc_points_recalced'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Recalculated for %s of %s users...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'dorecalcpoints_complete':
-				$message=qa_lang('admin/recalc_points_complete');
+				$message=_('All user points were successfully recalculated.');
 				break;
 				
 			case 'dorefillevents_refill':
-				$message=strtr(qa_lang('admin/refill_events_refilled'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Refilled for %s of %s questions...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'dorefillevents_complete':
-				$message=qa_lang('admin/refill_events_complete');
+				$message=_('All events streams were successfully refilled');
 				break;
 				
 			case 'dorecalccategories_postupdate':
-				$message=strtr(qa_lang('admin/recalc_categories_updated'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Recalculated for %s of %s posts...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'dorecalccategories_recount':
-				$message=strtr(qa_lang('admin/recalc_categories_recounting'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Recounting questions for %s of %s categories...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'dorecalccategories_backpaths':
-				$message=strtr(qa_lang('admin/recalc_categories_backpaths'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Recalculating URL paths for %s of %s categories...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'dorecalccategories_complete':
-				$message=qa_lang('admin/recalc_categories_complete');
+				$message=_('All categories were successfully recalculated.');
 				break;
 				
 			case 'dodeletehidden_comments':
-				$message=strtr(qa_lang('admin/hidden_comments_deleted'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Deleted %s of %s hidden comments...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'dodeletehidden_answers':
-				$message=strtr(qa_lang('admin/hidden_answers_deleted'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Deleted %s of %s hidden answers without dependents...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'dodeletehidden_questions':
-				$message=strtr(qa_lang('admin/hidden_questions_deleted'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Deleted %s of %s hidden questions without dependents...'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 
 			case 'dodeletehidden_complete':
-				$message=qa_lang('admin/delete_hidden_complete');
+				$message=_('All hidden posts without dependents have been deleted');
 				break;
 				
 			case 'doblobstodisk_move':
 			case 'doblobstodb_move':
-				$message=strtr(qa_lang('admin/blobs_move_moved'), array(
-					'^1' => number_format($done),
-					'^2' => number_format($length)
-				));
+				$message=sprintf(_('Migration %s of %s uploaded images and documents'),
+					number_format($done),
+					number_format($length)
+				);
 				break;
 				
 			case 'doblobstodisk_complete':
 			case 'doblobstodb_complete':
-				$message=qa_lang('admin/blobs_move_complete');
+				$message=_('Migration of uploaded images and documents completed.');
 				break;
 			
 			default:

@@ -50,15 +50,15 @@
 		
 		switch ($captchareason) {
 			case 'login':
-				$notehtml=qa_insert_login_links(qa_lang_html('misc/captcha_login_fix'));
+				$notehtml=qa_insert_login_links(qa_html(_('To avoid this verification in future, please ^1log in^2 or ^3register^4.')));
 				break;
 				
 			case 'confirm':
-				$notehtml=qa_insert_login_links(qa_lang_html('misc/captcha_confirm_fix'));
+				$notehtml=qa_insert_login_links(qa_html(_('To avoid this verification in future, please ^5confirm your email address^6.')));
 				break;
 				
 			case 'approve':
-				$notehtml=qa_lang_html('misc/captcha_approve_fix');
+				$notehtml=qa_html(_('This verification will stop appearing once your account is approved.'));
 				break;		
 		}
 		
@@ -85,9 +85,9 @@
 			
 			$fields['captcha']=array(
 				'type' => 'custom',
-				'label' => qa_lang_html('misc/captcha_label'),
+				'label' => qa_html(_('Anti-spam verification:')),
 				'html' => '<div id="qa_captcha_div_'.$count.'">'.$html.'</div>',
-				'error' => @array_key_exists('captcha', $errors) ? qa_lang_html('misc/captcha_error') : null,
+				'error' => @array_key_exists('captcha', $errors) ? qa_html(_('Please complete the anti-spam verification')) : null,
 				'note' => $note,
 			);
 					

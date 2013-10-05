@@ -65,16 +65,16 @@
 	
 	$qa_content=qa_content_prepare();
 	
-	$qa_content['title']=qa_lang_html('users/unsubscribe_title');
+	$qa_content['title']=qa_html(_('Unsubscribe'));
 
 	if ($unsubscribed)
-		$qa_content['error']=strtr(qa_lang_html('users/unsubscribe_complete'), array(
-			'^0' => qa_html(qa_opt('site_title')),
-			'^1' => '<a href="'.qa_path_html('account').'">',
-			'^2' => '</a>',
-		));
+		$qa_content['error']=sprintf(qa_html(_('You have been unsubscribed from mass mailings sent out by %s. You may resubscribe at any time via your %saccount%s page.')),
+			qa_html(qa_opt('site_title')),
+			'<a href="'.qa_path_html('account').'">',
+			'</a>'
+		);
 	else
-		$qa_content['error']=qa_insert_login_links(qa_lang_html('users/unsubscribe_wrong_log_in'), 'unsubscribe');
+		$qa_content['error']=qa_insert_login_links(qa_html(_('Code not correct - please ^1log in^2 to unsubscribe')), 'unsubscribe');
 
 		
 	return $qa_content;

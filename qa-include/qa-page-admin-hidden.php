@@ -50,7 +50,7 @@
 	
 	if (qa_user_maximum_permit_error('permit_hide_show') && qa_user_maximum_permit_error('permit_delete_hidden')) {
 		$qa_content=qa_content_prepare();
-		$qa_content['error']=qa_lang_html('users/no_permission');
+		$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 		return $qa_content;
 	}
 		
@@ -88,7 +88,7 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/recent_hidden_title');
+	$qa_content['title']=qa_html(_('Recent hidden content'));
 	$qa_content['error']=isset($pageerror) ? $pageerror : qa_admin_page_error();
 	
 	$qa_content['q_list']=array(
@@ -122,7 +122,7 @@
 			if (isset($htmlfields['what_url'])) // link directly to relevant content
 				$htmlfields['url']=$htmlfields['what_url'];
 				
-			$htmlfields['what_2']=qa_lang_html('main/hidden');
+			$htmlfields['what_2']=qa_html(_('hidden'));
 
 			if (@$htmloptions['whenview']) {
 				$updated=@$question[isset($question['opostid']) ? 'oupdated' : 'updated'];
@@ -135,13 +135,13 @@
 			if (!qa_user_post_permit_error('permit_hide_show', $question))
 				$buttons['reshow']=array(
 					'tags' => 'name="admin_'.qa_html($qhiddenpostid[$key]).'_reshow" onclick="return qa_admin_click(this);"',
-					'label' => qa_lang_html('question/reshow_button'),
+					'label' => qa_html(_('reshow')),
 				);
 				
 			if ((!qa_user_post_permit_error('permit_delete_hidden', $question)) && !$dependcounts[$qhiddenpostid[$key]])
 				$buttons['delete']=array(
 					'tags' => 'name="admin_'.qa_html($qhiddenpostid[$key]).'_delete" onclick="return qa_admin_click(this);"',
-					'label' => qa_lang_html('question/delete_button'),
+					'label' => qa_html(_('delete')),
 				);
 				
 			if (count($buttons))
@@ -154,7 +154,7 @@
 		}
 
 	} else
-		$qa_content['title']=qa_lang_html('admin/no_hidden_found');
+		$qa_content['title']=qa_html(_('No hidden content found'));
 		
 
 	$qa_content['navigation']['sub']=qa_admin_sub_navigation();

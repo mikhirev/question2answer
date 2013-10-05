@@ -51,13 +51,13 @@
 		if (!isset($categoryid))
 			return include QA_INCLUDE_DIR.'qa-page-not-found.php';
 	
-		$categorytitlehtml=qa_html($categories[$categoryid]['title']);
-		$sometitle=qa_lang_html_sub('main/hot_qs_in_x', $categorytitlehtml);
-		$nonetitle=qa_lang_html_sub('main/no_questions_in_x', $categorytitlehtml);
+		$categorytitle=$categories[$categoryid]['title'];
+		$sometitle=qa_html(sprintf(_('Hot questions in %s'), $categorytitle));
+		$nonetitle=qa_html(sprintf(_('No questions in %s'), $categorytitle));
 
 	} else {
-		$sometitle=qa_lang_html('main/hot_qs_title');
-		$nonetitle=qa_lang_html('main/no_questions_found');
+		$sometitle=qa_html(_('Hot questions'));
+		$nonetitle=qa_html(_('No questions found'));
 	}
 	
 

@@ -67,6 +67,7 @@
 //	For non-text options, lists of option types, minima and maxima
 	
 	$optiontype=array(
+		'admin/hotness_factors' => 'Relative importance for question hotness:',
 		'avatar_message_list_size' => 'number',
 		'avatar_profile_size' => 'number',
 		'avatar_q_list_size' => 'number',
@@ -276,12 +277,12 @@
 			
 	switch ($adminsection) {
 		case 'general':
-			$subtitle='admin/general_title';
+			$subtitle=_('General');
 			$showoptions=array('site_title', 'site_url', 'neat_urls', 'site_language', 'site_theme', 'site_theme_mobile', 'tags_or_categories', 'site_maintenance');
 			break;
 			
 		case 'emails':
-			$subtitle='admin/emails_title';
+			$subtitle=_('Emails');
 			$showoptions=array(
 				'from_email', 'feedback_email', 'notify_admin_q_post', 'feedback_enabled', 'email_privacy',
 				 'smtp_active', 'smtp_address', 'smtp_port', 'smtp_secure', 'smtp_authenticate', 'smtp_username', 'smtp_password'
@@ -298,7 +299,7 @@
 			break;
 			
 		case 'users':
-			$subtitle='admin/users_title';
+			$subtitle=_('Users');
 
 			$showoptions=array('show_notice_visitor', 'notice_visitor');
 
@@ -347,7 +348,7 @@
 			break;
 			
 		case 'layout':
-			$subtitle='admin/layout_title';
+			$subtitle=_('Layout');
 			$showoptions=array('logo_show', 'logo_url', 'logo_width', 'logo_height', '', 'show_custom_sidebar', 'custom_sidebar', 'show_custom_sidepanel', 'custom_sidepanel', 'show_custom_header', 'custom_header', 'show_custom_footer', 'custom_footer', 'show_custom_in_head', 'custom_in_head', 'show_custom_home', 'custom_home_heading', 'custom_home_content', 'show_home_description', 'home_description', '');
 			
 			$checkboxtodisplay=array(
@@ -366,7 +367,7 @@
 			break;
 			
 		case 'viewing':
-			$subtitle='admin/viewing_title';
+			$subtitle=_('Viewing');
 			$showoptions=array('q_urls_title_length', 'q_urls_remove_accents', 'do_count_q_views', 'show_view_counts', 'show_view_count_q_page', '', 'voting_on_qs', 'voting_on_q_page_only', 'voting_on_as', 'votes_separated', '', 'show_url_links', 'links_in_new_window', 'show_when_created', 'show_full_date_days');
 			
 			if (count(qa_get_points_to_titles()))
@@ -401,7 +402,7 @@
 			break;
 			
 		case 'lists':
-			$subtitle='admin/lists_title';
+			$subtitle=_('Lists');
 			
 			$showoptions=array('page_size_home', 'page_size_activity', 'page_size_qs', 'page_size_hot_qs', 'page_size_una_qs');
 			
@@ -434,7 +435,7 @@
 		case 'posting':
 			$getoptions=qa_get_options(array('tags_or_categories'));
 			
-			$subtitle='admin/posting_title';
+			$subtitle=_('Posting');
 
 			$showoptions=array('do_close_on_select', 'allow_close_questions', 'allow_self_answer', 'allow_multi_answers', 'follow_on_as', 'comment_on_qs', 'comment_on_as', '');
 			
@@ -477,14 +478,14 @@
 			break;
 			
 		case 'permissions':
-			$subtitle='admin/permissions_title';
+			$subtitle=_('Permissions');
 			
 			$permitoptions=qa_get_permit_options();
 			
 			$showoptions=array();
 			$checkboxtodisplay=array();
 			
-			foreach ($permitoptions as $permitoption) {
+			foreach ($permitoptions as $permitoption => $permitstring) {
 				$showoptions[]=$permitoption;
 				
 				if ($permitoption=='permit_view_q_page') {
@@ -502,7 +503,7 @@
 			break;
 		
 		case 'feeds':
-			$subtitle='admin/feeds_title';
+			$subtitle=_('RSS feeds');
 			
 			$showoptions=array('feed_for_questions', 'feed_for_qa', 'feed_for_activity');
 			
@@ -524,7 +525,7 @@
 			break;
 		
 		case 'spam':
-			$subtitle='admin/spam_title';
+			$subtitle=_('Spam');
 			
 			$showoptions=array();
 			
@@ -618,7 +619,7 @@
 		case 'mailing':
 			require_once QA_INCLUDE_DIR.'qa-app-mailing.php';
 			
-			$subtitle='admin/mailing_title';
+			$subtitle=_('Mailing');
 
 			$showoptions=array('mailing_enabled', 'mailing_from_name', 'mailing_from_email', 'mailing_subject', 'mailing_body', 'mailing_per_minute');
 			break;
@@ -643,6 +644,198 @@
 		if (strlen($optionname) && (strpos($optionname, '/')===false)) // empties represent spacers in forms
 			$getoptions[]=$optionname;
 
+// localized strings
+
+	$optstrings=array(
+        'admin/hotness_factors' => _('Relative importance for question hotness:'),
+		'allow_change_usernames' => _('Allow users with posts to change their username:'),
+		'allow_close_questions' => _('Allow questions to be manually closed:'),
+		'allow_login_email_only' => _('Only log in by email address (not username):'),
+		'allow_multi_answers' => _('Allow multiple answers per user:'),
+		'allow_private_messages' => _('Enable private messaging between users:'),
+		'allow_self_answer' => _('Allow users to answer their own question:'),
+		'allow_user_walls' => _('Enable wall posts on user profiles:'),
+		'allow_view_q_bots' => _('Allow search engines to view question pages'),
+		'approve_user_required' => _('All new users must be approved:'),
+		'avatar_allow_gravatar' => _('Allow ^1Gravatar^2 avatars:'),
+		'avatar_allow_upload' => _('Allow users to upload avatars:'),
+		'avatar_default_show' => _('Default avatar:'),
+		'avatar_message_list_size' => _('Avatar size on message lists:'),
+		'avatar_profile_size' => _('Avatar size on user profile page:'),
+		'avatar_q_list_size' => _('Avatar size on question lists:'),
+		'avatar_q_page_a_size' => _('Avatar size on answers:'),
+		'avatar_q_page_c_size' => _('Avatar size on comments:'),
+		'avatar_q_page_q_size' => _('Avatar size on questions:'),
+		'avatar_store_size' => _('Maximum size for storing avatars:'),
+		'avatar_users_size' => _('Avatar size on top users page:'),
+		'block_bad_words' => _('Censored words - separate by spaces or commas:'),
+		'block_ips_write' => _('Blocked IP addresses - separate by spaces or commas:'),
+		'captcha_module' => _('Use captcha module:'),
+		'captcha_on_anon_post' => _('Use captcha for anonymous posts:'),
+		'captcha_on_feedback' => _('Use captcha on feedback form:'),
+		'captcha_on_register' => _('Use captcha for user registration:'),
+		'captcha_on_reset_password' => _('Use captcha on reset password form:'),
+		'captcha_on_unapproved' => _('Use captcha if user not yet approved:'),
+		'captcha_on_unconfirmed' => _('Use captcha if email not confirmed:'),
+		'columns_tags' => _('Columns on Tags page:'),
+		'columns_users' => _('Columns on Users page:'),
+		'comment_on_as' => _('Allow comments on answers:'),
+		'comment_on_qs' => _('Allow comments on questions:'),
+		'confirm_user_emails' => _('Request confirmation of user emails:'),
+		'confirm_user_required' => _('All new users must confirm their email:'),
+		'custom_home_content' => _('Home page content - HTML allowed:'),
+		'custom_home_heading' => _('Home page heading:'),
+		'do_ask_check_qs' => _('Check for similar questions when asking:'),
+		'do_close_on_select' => _('Close questions with a selected answer:'),
+		'do_complete_tags' => _('Show matching tags while typing:'),
+		'do_count_q_views' => _('Count the number of question views:'),
+		'do_example_tags' => _('Show example tags based on question:'),
+		'editor_for_as' => _('Default editor for answers:'),
+		'editor_for_cs' => _('Default editor for comments:'),
+		'editor_for_qs' => _('Default editor for questions:'),
+		'email_privacy' => _('Privacy note for email addresses - HTML allowed:'),
+		'extra_field_active' => _('Custom field for extra information on ask form:'),
+		'extra_field_display' => _('Show the extra information on question pages'),
+		'feedback_email' => _('Email address for admin messages - not shown to users:'),
+		'feedback_enabled' => _('Provide a page for users to send feedback'),
+		'feed_for_activity' => _('Feed for recent activity:'),
+		'feed_for_hot' => _('Feed for hot questions:'),
+		'feed_for_qa' => _('Feed for recent questions and answers:'),
+		'feed_for_questions' => _('Feed for recent questions:'),
+		'feed_for_search' => _('Feeds for search results:'),
+		'feed_for_tag_qs' => _('Feed for each tag\'s questions:'),
+		'feed_for_unanswered' => _('Feed for unanswered questions:'),
+		'feed_full_text' => _('Include full text in feeds:'),
+		'feed_number_items' => _('Maximum length of feeds:'),
+		'feed_per_category' => _('Individual feeds per category:'),
+		'flagging_hide_after' => _('Automatically hide posts which reach:'),
+		'flagging_notify_every' => _('Email me again after every additional:'),
+		'flagging_notify_first' => _('Email me if a post receives:'),
+		'flagging_of_posts' => _('Allow posts to be flagged:'),
+		'follow_on_as' => _('Allow questions to be related to answers:'),
+		'from_email' => _('Sender address for messages from site:'),
+		'hot_weight_a_age' => _('Question has a new answer:'),
+		'hot_weight_answers' => _('Question has many answers:'),
+		'hot_weight_q_age' => _('Question is new:'),
+		'hot_weight_views' => _('Question has many views:'),
+		'hot_weight_votes' => _('Question has many up votes:'),
+		'links_in_new_window' => _('Open linked URLs in a new window:'),
+		'logo_height' => _('Logo height:'),
+		'logo_show' => _('Show a logo image in the page header'),
+		'logo_url' => _('URL of logo - absolute or relative to Q2A root:'),
+		'logo_width' => _('Logo width:'),
+		'mailing_body' => _('Body text:'),
+		'mailing_enabled' => _('Enable mass mailings to all users'),
+		'mailing_from_email' => _('From email address:'),
+		'mailing_from_name' => _('From name:'),
+		'mailing_per_minute' => _('Maximum mailing rate:'),
+		'mailing_subject' => _('Subject line:'),
+		'match_ask_check_qs' => _('Similar questions matching:'),
+		'match_example_tags' => _('Example tags matching:'),
+		'match_related_qs' => _('Related questions matching:'),
+		'max_len_q_title' => _('Maximum length of question title:'),
+		'max_num_q_tags' => _('Maximum number of tags:'),
+		'max_rate_ip_as' => _('Rate limit for adding answers:'),
+		'max_rate_ip_cs' => _('Rate limit for posting comments:'),
+		'max_rate_ip_flags' => _('Rate limit for flagging posts:'),
+		'max_rate_ip_logins' => _('Rate limit for logging in:'),
+		'max_rate_ip_messages' => _('Rate limit for private and wall messages:'),
+		'max_rate_ip_qs' => _('Rate limit for asking questions:'),
+		'max_rate_ip_registers' => _('Rate limit for user registrations:'),
+		'max_rate_ip_uploads' => _('Rate limit for uploading files:'),
+		'max_rate_ip_votes' => _('Rate limit for voting:'),
+		'max_rate_user_as' => _('Maximum answers per user per hour:'),
+		'max_rate_user_cs' => _('Maximum comments per user per hour:'),
+		'max_rate_user_flags' => _('Maximum flags per user per hour:'),
+		'max_rate_user_messages' => _('Maximum private messages per user per hour:'),
+		'max_rate_user_qs' => _('Maximum questions per user per hour:'),
+		'max_rate_user_uploads' => _('Maximum uploads per user per hour:'),
+		'max_rate_user_votes' => _('Maximum votes per user per hour:'),
+		'min_len_a_content' => _('Minimum length of answer:'),
+		'min_len_c_content' => _('Minimum length of comment:'),
+		'min_len_q_content' => _('Minimum length of question body:'),
+		'min_len_q_title' => _('Minimum length of question title:'),
+		'min_num_q_tags' => _('Minimum number of tags:'),
+		'moderate_anon_post' => _('Use moderation for anonymous posts:'),
+		'moderate_by_points' => _('Use moderation for users with few points:'),
+		'moderate_edited_again' => _('Re-moderate posts after editing:'),
+		'moderate_notify_admin' => _('Email me when a post needs moderation:'),
+		'moderate_points_limit' => _('Use moderation for users with less than:'),
+		'moderate_unapproved' => _('Use moderation if user not yet approved:'),
+		'moderate_unconfirmed' => _('Use moderation if email not confirmed:'),
+		'moderate_update_time' => _('Time to show on moderated posts:'),
+		'moderate_users' => _('Enable moderation (approval) of users:'),
+		'neat_urls' => _('URL structure:'),
+		'notify_admin_q_post' => _('Email this address when a question is posted'),
+		'notify_users_default' => _('Check email notification box by default:'),
+		'page_size_activity' => _('Length of All Activity page:'),
+		'page_size_ask_check_qs' => _('Maximum similar questions to show:'),
+		'page_size_ask_tags' => _('Maximum tag hints to show:'),
+		'page_size_home' => _('Length of Q&A page:'),
+		'page_size_hot_qs' => _('Length of Hot! page:'),
+		'page_size_q_as' => _('Maximum answers per page:'),
+		'page_size_qs' => _('Length of Questions page:'),
+		'page_size_related_qs' => _('Maximum related questions:'),
+		'page_size_search' => _('Search results per page:'),
+		'page_size_tag_qs' => _('Questions on each tag page:'),
+		'page_size_tags' => _('Length of Tags page:'),
+		'page_size_una_qs' => _('Length of Unanswered page:'),
+		'page_size_users' => _('Length of Users page:'),
+		'page_size_wall' => _('Wall posts per page:'),
+		'pages_prev_next' => _('Links to previous/next pages:'),
+		'q_urls_remove_accents' => _('Remove accents from question URLs:'),
+		'q_urls_title_length' => _('Question title length in URLs:'),
+		'register_notify_admin' => _('Email me when a new user registers:'),
+		'search_module' => _('Use search module:'),
+		'show_a_form_immediate' => _('Show answer form immediately:'),
+		'show_c_reply_buttons' => _('Show reply button on comments:'),
+		'show_custom_answer' => _('Custom message on answer form - HTML allowed:'),
+		'show_custom_ask' => _('Custom message on ask form - HTML allowed:'),
+		'show_custom_comment' => _('Custom message on comment form - HTML allowed:'),
+		'show_custom_footer' => _('Custom HTML at bottom of every page:'),
+		'show_custom_header' => _('Custom HTML at top of every page:'),
+		'show_custom_home' => _('Custom content in home page instead of Q&A'),
+		'show_custom_in_head' => _('Custom HTML in <head> section of every page:'),
+		'show_custom_register' => _('Custom message on register form - HTML allowed:'),
+		'show_custom_sidebar' => _('Custom HTML in sidebar box on every page:'),
+		'show_custom_sidepanel' => _('Custom HTML in side panel on every page:'),
+		'show_custom_welcome' => _('Custom message in email sent to new registered users:'),
+		'show_fewer_cs_count' => _('If partially hidden, show most recent:'),
+		'show_fewer_cs_from' => _('Partially hide comments if more than:'),
+		'show_full_date_days' => _('Show full date after:'),
+		'show_home_description' => _('Include <meta> description for home page:'),
+		'show_message_history' => _('Store and display private message history:'),
+		'show_notice_visitor' => _('Notice at top for first time visitors - HTML allowed:'),
+		'show_notice_welcome' => _('Notice at top for new registered users - HTML allowed:'),
+		'show_selected_first' => _('Move selected answer to the top:'),
+		'show_url_links' => _('Detect and link URLs in posts:'),
+		'show_user_points' => _('Show points next to usernames:'),
+		'show_user_titles' => _('Show titles next to usernames:'),
+		'show_view_count_q_page' => _('Show view count on question pages:'),
+		'show_view_counts' => _('Show view count in question lists:'),
+		'show_when_created' => _('Show age of user posts:'),
+		'site_language' => _('Site language:'),
+		'site_maintenance' => _('Take site down for temporary maintenance'),
+		'site_theme_mobile' => _('Theme for mobiles:'),
+		'site_theme' => _('Site theme:'),
+		'site_title' => _('Q&A site name:'),
+		'site_url' => _('Preferred site URL:'),
+		'smtp_active' => _('Send email via SMTP instead of local mail'),
+		'smtp_address' => _('SMTP server address:'),
+		'smtp_authenticate' => _('Send SMTP username and password'),
+		'smtp_password' => _('SMTP password:'),
+		'smtp_port' => _('SMTP server port:'),
+		'smtp_secure' => _('SMTP secure connection:'),
+		'smtp_username' => _('SMTP username:'),
+		'sort_answers_by' => _('Sort answers by:'),
+		'suspend_register_users' => _('Temporarily suspend new user registrations:'),
+		'tag_separator_comma' => _('Use comma as the only tag separator:'),
+		'tags_or_categories' => _('Question classification:'),
+		'votes_separated' => _('Show separate up and down votes:'),
+		'voting_on_as' => _('Allow voting on answers:'),
+		'voting_on_q_page_only' => _('Allow voting on question page only:'),
+		'voting_on_qs' => _('Allow voting on questions:'),
+	);
 
 //	Process user actions
 	
@@ -660,7 +853,7 @@
 
 		else {
 			qa_reset_options($getoptions);
-			$formokhtml=qa_lang_html('admin/options_reset');
+			$formokhtml=qa_html(_('Options reset'));
 		}
 
 	} elseif (qa_clicked('dosaveoptions')) {
@@ -713,7 +906,7 @@
 				qa_set_option($optionname, $optionvalue);
 			}
 			
-			$formokhtml=qa_lang_html('admin/options_saved');
+			$formokhtml=qa_html(_('Options saved'));
 	
 		//	Uploading default avatar
 	
@@ -725,7 +918,7 @@
 				$toobig=qa_image_file_too_big($_FILES['avatar_default_file']['tmp_name'], qa_opt('avatar_store_size'));
 				
 				if ($toobig)
-					$errors['avatar_default_show']=qa_lang_sub('main/image_too_big_x_pc', (int)($toobig*100));
+					$errors['avatar_default_show']=sprintf(_('This image is too big. Please scale to %d%% then try again.'), (int)($toobig*100));
 				
 				else {
 					$imagedata=qa_image_constrain_data(file_get_contents($_FILES['avatar_default_file']['tmp_name']), $width, $height, qa_opt('avatar_store_size'));
@@ -746,7 +939,7 @@
 							qa_delete_blob($oldblobid);
 		
 					} else
-						$errors['avatar_default_show']=qa_lang_sub('main/image_not_read', implode(', ', qa_gd_image_formats()));
+						$errors['avatar_default_show']=sprintf(_('The image could not be read. Please upload one of: %s'), implode(', ', qa_gd_image_formats()));
 				}
 			}
 		}
@@ -765,9 +958,9 @@
 					$email=qa_get_logged_in_email();
 					
 					if (qa_mailing_send_one(qa_get_logged_in_userid(), qa_get_logged_in_handle(), $email, qa_get_logged_in_user_field('emailcode')))
-						$formokhtml=qa_lang_html_sub('admin/test_sent_to_x', qa_html($email));
+						$formokhtml=qa_html(sprintf(_('The test message was sent to %s'), $email));
 					else
-						$formokhtml=qa_lang_html('main/general_error');
+						$formokhtml=qa_html(_('A server error occurred - please try again.'));
 				}
 				
 				if (qa_clicked('domailingstart')) {
@@ -815,8 +1008,8 @@
 
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('admin/admin_title').' - '.qa_lang_html($subtitle);
-	$qa_content['error']=$securityexpired ? qa_lang_html('admin/form_security_expired') : qa_admin_page_error();
+	$qa_content['title']=qa_html(_('Administration center')).' - '.qa_html($subtitle);
+	$qa_content['error']=$securityexpired ? qa_html(_('Form security code expired - please try again')) : qa_admin_page_error();
 
 	$qa_content['script_rel'][]='qa-content/qa-admin.js?'.QA_VERSION;
 	
@@ -832,12 +1025,12 @@
 		'buttons' => array(
 			'save' => array(
 				'tags' => 'id="dosaveoptions"',
-				'label' => qa_lang_html('admin/save_options_button'),
+				'label' => qa_html(_('Save Options')),
 			),
 			
 			'reset' => array(
 				'tags' => 'name="doresetoptions"',
-				'label' => qa_lang_html('admin/reset_options_button'),
+				'label' => qa_html(_('Reset to Defaults')),
 			),
 		),
 		
@@ -852,7 +1045,7 @@
 		$qa_content['form']['ok']='<span id="recalc_ok"></span>';
 		$qa_content['form']['hidden']['code_recalc']=qa_get_form_security_code('admin/recalc');
 		
-		$qa_content['script_var']['qa_warning_recalc']=qa_lang('admin/stop_recalc_warning');
+		$qa_content['script_var']['qa_warning_recalc']=_('A database clean-up operation is running. If you close this page now, the operation will be interrupted.');
 		
 		$qa_content['script_onloads'][]=array(
 			"qa_recalc_click('dorecountposts', document.getElementById('dosaveoptions'), null, 'recalc_ok');"
@@ -884,7 +1077,7 @@
 				sleep(1);
 			}
 			
-			echo qa_lang_html('admin/mailing_complete').'</tt><p><a href="'.qa_path_html('admin/mailing').'">'.qa_lang_html('admin/admin_title').' - '.qa_lang_html('admin/mailing_title').'</a>';
+			echo qa_html(_('The mailing is complete')).'</tt><p><a href="'.qa_path_html('admin/mailing').'">'.qa_html(_('Administration center')).' - '.qa_html(_('Mailing')).'</a>';
 			
 			qa_exit();
 		}
@@ -911,7 +1104,7 @@
 		} elseif (strpos($optionname, '/')!==false) {
 			$qa_content['form']['fields'][]=array(
 				'type' => 'static',
-				'label' => qa_lang_html($optionname),
+				'label' => qa_html($optstrings[$optionname]),
 			);
 
 			$indented=true;
@@ -925,7 +1118,7 @@
 			
 			$optionfield=array(
 				'id' => $optionname,
-				'label' => ($indented ? '&ndash; ' : '').qa_lang_html('options/'.$optionname),
+				'label' => ($indented ? '&ndash; ' : '').qa_html($optstrings[$optionname]),
 				'tags' => 'name="option_'.$optionname.'" id="option_'.$optionname.'"',
 				'value' => qa_html($value),
 				'type' => $type,
@@ -933,7 +1126,7 @@
 			);
 			
 			if (isset($optionmaximum[$optionname]))
-				$optionfield['note']=qa_lang_html_sub('admin/maximum_x', $optionmaximum[$optionname]);
+				$optionfield['note']=sprintf(qa_html(_(' (max %d)')), $optionmaximum[$optionname]);
 				
 			$feedrequest=null;
 			$feedisexample=false;
@@ -944,13 +1137,13 @@
 					
 					qa_optionfield_make_select($optionfield, qa_admin_language_options(), $value, '');
 					
-					$optionfield['suffix']=strtr(qa_lang_html('admin/check_language_suffix'), array(
-						'^1' => '<a href="'.qa_html(qa_path_to_root().'qa-include/qa-check-lang.php').'">',
-						'^2' => '</a>',
-					));
+					$optionfield['suffix']=sprintf(qa_html(_(' - %scheck language files%s')),
+						'<a href="'.qa_html(qa_path_to_root().'qa-include/qa-check-lang.php').'">',
+						'</a>'
+					);
 				
 					if (!qa_has_multibyte())
-						$optionfield['error']=qa_lang_html('admin/no_multibyte');
+						$optionfield['error']=qa_html(_('The installed version of PHP was compiled without multibyte string support. Searching will be less effective for non-Roman characters.'));
 					break;
 					
 				case 'neat_urls':
@@ -969,16 +1162,16 @@
 							'<iframe src="'.qa_path_html('url/test/'.QA_URL_TEST_STRING, array('dummy' => '', 'param' => QA_URL_TEST_STRING), null, $rawoption).'" width="20" height="16" style="vertical-align:middle; border:0" scrolling="no" frameborder="0"></iframe>&nbsp;'.
 							'<small>'.
 							qa_html(urldecode(qa_path('123/why-do-birds-sing', null, '/', $rawoption))).
-							(($rawoption==QA_URL_FORMAT_NEAT) ? strtr(qa_lang_html('admin/neat_urls_note'), array(
-								'^1' => '<a href="http://www.question2answer.org/htaccess.php" target="_blank">',
-								'^2' => '</a>',
-							)) : '').
+							(($rawoption==QA_URL_FORMAT_NEAT) ? sprintf(qa_html(_(' (requires %shtaccess%s file)')),
+								'<a href="http://www.question2answer.org/htaccess.php" target="_blank">',
+								'</a>'
+							) : '').
 							'</small>';
 							
 					qa_optionfield_make_select($optionfield, $neatoptions, $value, QA_URL_FORMAT_SAFEST);
 							
 					$optionfield['type']='select-radio';
-					$optionfield['note']=qa_lang_html_sub('admin/url_format_note', '<span style=" '.qa_admin_url_test_html().'/span>');
+					$optionfield['note']=sprintf(qa_html(_('Options with the %s label are working for your site\'s configuration. For best search engine optimization (SEO), use the first %s option available.')), '<span style=" '.qa_admin_url_test_html().'/span>');
 					break;
 					
 				case 'site_theme':
@@ -1019,7 +1212,7 @@
 						if (strlen(@$metadata['author_uri']))
 							$authorhtml='<a href="'.qa_html($metadata['author_uri']).'">'.$authorhtml.'</a>';
 							
-						$authorhtml=qa_lang_html_sub('main/by_x', $authorhtml);
+						$authorhtml=sprintf(qa_html(_('by %s')), $authorhtml);
 						
 					} else
 						$authorhtml='';
@@ -1041,28 +1234,28 @@
 				
 				case 'tags_or_categories':
 					qa_optionfield_make_select($optionfield, array(
-						'' => qa_lang_html('admin/no_classification'),
-						't' => qa_lang_html('admin/tags'),
-						'c' => qa_lang_html('admin/categories'),
-						'tc' => qa_lang_html('admin/tags_and_categories'),
+						'' => qa_html(_('None')),
+						't' => qa_html(_('Tags')),
+						'c' => qa_html(_('Categories')),
+						'tc' => qa_html(_('Tags and Categories')),
 					), $value, 'tc');
 
 					$optionfield['error']='';
 					
 					if (qa_opt('cache_tagcount') && !qa_using_tags())
-						$optionfield['error'].=qa_lang_html('admin/tags_not_shown').' ';
+						$optionfield['error'].=qa_html(_('Some questions have tags which will not be displayed.')).' ';
 					
 					if (!qa_using_categories())
 						foreach ($categories as $category)
 							if ($category['qcount']) {
-								$optionfield['error'].=qa_lang_html('admin/categories_not_shown');
+								$optionfield['error'].=qa_html(_('Some questions have categories which will not be displayed.'));
 								break;
 							}
 					break;
 				
 				case 'smtp_secure':
 					qa_optionfield_make_select($optionfield, array(
-						'' => qa_lang_html('options/smtp_secure_none'),
+						'' => qa_html(_('None')),
 						'ssl' => 'SSL',
 						'tls' => 'TLS',
 					), $value, '');
@@ -1106,7 +1299,7 @@
 					
 					if (!qa_has_gd_image()) {
 						$optionfield['style']='tall';
-						$optionfield['error']=qa_lang_html('admin/no_image_gd');
+						$optionfield['error']=qa_html(_('The installed version of PHP was compiled without GD image support, so users cannot upload their avatars directly.'));
 					}
 					break;
 					
@@ -1118,7 +1311,7 @@
 				case 'avatar_q_page_c_size':
 				case 'avatar_q_list_size':
 				case 'avatar_message_list_size':
-					$optionfield['note']=qa_lang_html('admin/pixels');
+					$optionfield['note']=qa_html(_('pixels'));
 					break;
 
 				case 'avatar_default_show';
@@ -1130,7 +1323,7 @@
 				
 				case 'logo_width':
 				case 'logo_height':
-					$optionfield['suffix']=qa_lang_html('admin/pixels');
+					$optionfield['suffix']=qa_html(_('pixels'));
 					break;
 					
 				case 'pages_prev_next':
@@ -1147,40 +1340,40 @@
 				case 'min_len_q_content':
 				case 'min_len_a_content':
 				case 'min_len_c_content':
-					$optionfield['note']=qa_lang_html('admin/characters');
+					$optionfield['note']=qa_html(_('characters'));
 					break;
 					
 				case 'min_num_q_tags':
 				case 'max_num_q_tags':
-					$optionfield['note']=qa_lang_html_sub('main/x_tags', ''); // this to avoid language checking error: a_lang('main/1_tag')
+					$optionfield['note']=qa_html(_(' tags'));
 					break;
 				
 				case 'show_full_date_days':
-					$optionfield['note']=qa_lang_html_sub('main/x_days', '');
+					$optionfield['note']=qa_html(_(' days'));
 					break;
 					
 				case 'sort_answers_by':
 					qa_optionfield_make_select($optionfield, array(
-						'created' => qa_lang_html('options/sort_time'),
-						'votes' => qa_lang_html('options/sort_votes'),
+						'created' => qa_html(_('Time')),
+						'votes' => qa_html(_('Votes')),
 					), $value, 'created');
 					break;
 					
 				case 'page_size_q_as':
-					$optionfield['note']=qa_lang_html_sub('main/x_answers', '');
+					$optionfield['note']=qa_html(_(' answers'));
 					break;
 				
 				case 'show_a_form_immediate':
 					qa_optionfield_make_select($optionfield, array(
-						'always' => qa_lang_html('options/show_always'),
-						'if_no_as' => qa_lang_html('options/show_if_no_as'),
-						'never' => qa_lang_html('options/show_never'),
+						'always' => qa_html(_('Always')),
+						'if_no_as' => qa_html(_('If no answers')),
+						'never' => qa_html(_('Never')),
 					), $value, 'if_no_as');
 					break;
 					
 				case 'show_fewer_cs_from':
 				case 'show_fewer_cs_count':
-					$optionfield['note']=qa_lang_html_sub('main/x_comments', '');
+					$optionfield['note']=qa_html(_(' comments'));
 					break;
 					
 				case 'match_related_qs':
@@ -1192,7 +1385,7 @@
 				case 'block_bad_words':
 					$optionfield['style']='tall';
 					$optionfield['rows']=4;
-					$optionfield['note']=qa_lang_html('admin/block_words_note');
+					$optionfield['note']=qa_html(_('Use a * to match any letters. Examples: doh (will only match exact word doh) , doh* (will match doh or dohno) , do*h (will match doh, dooh, dough).'));
 					break;
 					
 				case 'editor_for_qs':
@@ -1204,13 +1397,13 @@
 					$optionslinks=false;
 
 					foreach ($editors as $editor) {
-						$selectoptions[qa_html($editor)]=strlen($editor) ? qa_html($editor) : qa_lang_html('admin/basic_editor');
+						$selectoptions[qa_html($editor)]=strlen($editor) ? qa_html($editor) : qa_html(_('Basic Editor'));
 						
 						if ($editor==$value) {
 							$module=qa_load_module('editor', $editor);
 							
 							if (method_exists($module, 'admin_form'))
-								$optionfield['note']='<a href="'.qa_admin_module_options_path('editor', $editor).'">'.qa_lang_html('admin/options').'</a>';
+								$optionfield['note']='<a href="'.qa_admin_module_options_path('editor', $editor).'">'.qa_html(_('options')).'</a>';
 						}
 					}
 						
@@ -1234,7 +1427,7 @@
 					
 				case 'extra_field_display':
 					$optionfield['style']='tall';
-					$optionfield['label']='<span id="extra_field_label_hidden" style="display:none;">'.$optionfield['label'].'</span><span id="extra_field_label_shown">'.qa_lang_html('options/extra_field_display_label').'</span>';
+					$optionfield['label']='<span id="extra_field_label_hidden" style="display:none;">'.$optionfield['label'].'</span><span id="extra_field_label_shown">'.qa_html(_('Show the extra information on question pages with label:')).'</span>';
 					break;
 					
 				case 'extra_field_prompt':
@@ -1245,10 +1438,10 @@
 					
 				case 'search_module':
 					foreach ($searchmodules as $modulename => $module) {
-						$selectoptions[qa_html($modulename)]=strlen($modulename) ? qa_html($modulename) : qa_lang_html('options/option_default');
+						$selectoptions[qa_html($modulename)]=strlen($modulename) ? qa_html($modulename) : qa_html(_('Default'));
 
 						if (($modulename==$value) && method_exists($module, 'admin_form'))
-							$optionfield['note']='<a href="'.qa_admin_module_options_path('search', $modulename).'">'.qa_lang_html('admin/options').'</a>';
+							$optionfield['note']='<a href="'.qa_admin_module_options_path('search', $modulename).'">'.qa_html(_('options')).'</a>';
 					}
 						
 					qa_optionfield_make_select($optionfield, $selectoptions, $value, '');
@@ -1263,24 +1456,24 @@
 					break;
 				
 				case 'moderate_by_points':
-					$optionfield['label']='<span id="moderate_points_label_off" style="display:none;">'.$optionfield['label'].'</span><span id="moderate_points_label_on">'.qa_lang_html('options/moderate_points_limit').'</span>';
+					$optionfield['label']='<span id="moderate_points_label_off" style="display:none;">'.$optionfield['label'].'</span><span id="moderate_points_label_on">'.qa_html(_('Use moderation for users with less than:')).'</span>';
 					break;
 				
 				case 'moderate_points_limit';
 					unset($optionfield['label']);
-					$optionfield['note']=qa_lang_html('admin/points');
+					$optionfield['note']=qa_html(_('points'));
 					break;
 				
 				case 'flagging_hide_after':
 				case 'flagging_notify_every':
 				case 'flagging_notify_first':
-					$optionfield['note']=qa_lang_html_sub('main/x_flags', '');
+					$optionfield['note']=qa_html(_(' flags'));
 					break;
 				
 				case 'block_ips_write':
 					$optionfield['style']='tall';
 					$optionfield['rows']=4;
-					$optionfield['note']=qa_lang_html('admin/block_ips_note');
+					$optionfield['note']=qa_html(_('Use a hyphen for ranges or * to match any number. Examples: 192.168.0.4 , 192.168.0.0-192.168.0.31 , 192.168.0.*'));
 					break;
 					
 				case 'allow_view_q_bots':
@@ -1312,9 +1505,9 @@
 					$dopoints=true;
 					
 					if ($optionname=='permit_retag_cat')
-						$optionfield['label']=qa_lang_html(qa_using_categories() ? 'profile/permit_recat' : 'profile/permit_retag').':';
+						$optionfield['label']=qa_html(qa_using_categories() ? _('Recategorizing any question') : _('Retagging any question')).':';
 					else
-						$optionfield['label']=qa_lang_html('profile/'.$optionname).':';
+						$optionfield['label']=qa_html($optionstrings[$optionname]).':';
 					
 					if ( ($optionname=='permit_view_q_page') || ($optionname=='permit_post_q') || ($optionname=='permit_post_a') || ($optionname=='permit_post_c') || ($optionname=='permit_anon_view_ips') )
 						$widest=QA_PERMIT_ALL;
@@ -1374,8 +1567,8 @@
 				case 'permit_post_wall_points':
 					unset($optionfield['label']);
 					$optionfield['type']='number';
-					$optionfield['prefix']=qa_lang_html('admin/users_must_have').'&nbsp;';
-					$optionfield['note']=qa_lang_html('admin/points');
+					$optionfield['prefix']=qa_html(_('Users must have')).'&nbsp;';
+					$optionfield['note']=qa_html(_('points'));
 					break;
 					
 				case 'feed_for_qa':
@@ -1435,7 +1628,7 @@
 					break;
 					
 				case 'moderate_users':
-					$optionfield['note']='<a href="'.qa_path_html('admin/users', null, null, null, 'profile_fields').'">'.qa_lang_html('admin/registration_fields').'</a>';
+					$optionfield['note']='<a href="'.qa_path_html('admin/users', null, null, null, 'profile_fields').'">'.qa_html(_('add registration fields')).'</a>';
 					break;
 				
 				case 'captcha_module':
@@ -1448,7 +1641,7 @@
 							$module=qa_load_module('captcha', $modulename);
 							
 							if (method_exists($module, 'admin_form'))
-								$optionfield['note']='<a href="'.qa_admin_module_options_path('captcha', $modulename).'">'.qa_lang_html('admin/options').'</a>';
+								$optionfield['note']='<a href="'.qa_admin_module_options_path('captcha', $modulename).'">'.qa_html(_('options')).'</a>';
 						}
 					}
 					
@@ -1457,8 +1650,8 @@
 				
 				case 'moderate_update_time':
 					qa_optionfield_make_select($optionfield, array(
-						'0' => qa_lang_html('options/time_written'),
-						'1' => qa_lang_html('options/time_approved'),
+						'0' => qa_html(_('Time written')),
+						'1' => qa_html(_('Time approved')),
 					), $value, '0');
 					break;					
 				
@@ -1471,7 +1664,7 @@
 				case 'max_rate_ip_registers':
 				case 'max_rate_ip_uploads':
 				case 'max_rate_ip_votes':
-					$optionfield['note']=qa_lang_html('admin/per_ip_hour');
+					$optionfield['note']=qa_html(_('per IP/hour'));
 					break;
 					
 				case 'max_rate_user_as':
@@ -1482,16 +1675,16 @@
 				case 'max_rate_user_uploads':
 				case 'max_rate_user_votes':
 					unset($optionfield['label']);
-					$optionfield['note']=qa_lang_html('admin/per_user_hour');
+					$optionfield['note']=qa_html(_('per user/hour'));
 					break;
 					
 				case 'mailing_per_minute':
-					$optionfield['suffix']=qa_lang_html('admin/emails_per_minute');
+					$optionfield['suffix']=qa_html(_('emails per minute'));
 					break;
 			}
 
 			if (isset($feedrequest) && $value)
-				$optionfield['note']='<a href="'.qa_path_html(qa_feed_request($feedrequest)).'">'.qa_lang_html($feedisexample ? 'admin/feed_link_example' : 'admin/feed_link').'</a>';
+				$optionfield['note']='<a href="'.qa_path_html(qa_feed_request($feedrequest)).'">'.qa_html($feedisexample ? _('Example feed') : _('Feed')).'</a>';
 
 			$qa_content['form']['fields'][$optionname]=$optionfield;
 		}
@@ -1509,20 +1702,20 @@
 				foreach ($userfields as $userfield) {
 					$listhtml.='<li><b>'.qa_html(qa_user_userfield_label($userfield)).'</b>';
 	
-					$listhtml.=strtr(qa_lang_html('admin/edit_field'), array(
-						'^1' => '<a href="'.qa_path_html('admin/userfields', array('edit' => $userfield['fieldid'])).'">',
-						'^2' => '</a>',
-					));
+					$listhtml.=sprintf(qa_html(_(' - %sedit field%s')),
+						'<a href="'.qa_path_html('admin/userfields', array('edit' => $userfield['fieldid'])).'">',
+						'</a>'
+					);
 	
 					$listhtml.='</li>';
 				}
 				
-				$listhtml.='<li><b><a href="'.qa_path_html('admin/userfields').'">'.qa_lang_html('admin/add_new_field').'</a></b></li>';
+				$listhtml.='<li><b><a href="'.qa_path_html('admin/userfields').'">'.qa_html(_('Add new field')).'</a></b></li>';
 	
 				$qa_content['form']['fields'][]=array('type' => 'blank');
 				
 				$qa_content['form']['fields']['userfields']=array(
-					'label' => qa_lang_html('admin/profile_fields'),
+					'label' => qa_html(_('Extra fields on user pages or registration form:')),
 					'id' => 'profile_fields',
 					'style' => 'tall',
 					'type' => 'custom',
@@ -1537,21 +1730,20 @@
 			$listhtml='';
 			
 			foreach ($pointstitle as $points => $title) {
-				$listhtml.='<li><b>'.$title.'</b> - '.(($points==1) ? qa_lang_html_sub('main/1_point', '1', '1')
-				: qa_lang_html_sub('main/x_points', qa_html(number_format($points))));
+				$listhtml.='<li><b>'.$title.'</b> - '.qa_html(sprintf(ngettext('%d point', '%d points', abs($points)), number_format($points)));
 
-				$listhtml.=strtr(qa_lang_html('admin/edit_title'), array(
-					'^1' => '<a href="'.qa_path_html('admin/usertitles', array('edit' => $points)).'">',
-					'^2' => '</a>',
-				));
+				$listhtml.=sprintf(qa_html(_(' - %sedit title%s')),
+					'<a href="'.qa_path_html('admin/usertitles', array('edit' => $points)).'">',
+					'</a>'
+				);
 
 				$listhtml.='</li>';
 			}
 
-			$listhtml.='<li><b><a href="'.qa_path_html('admin/usertitles').'">'.qa_lang_html('admin/add_new_title').'</a></b></li>';
+			$listhtml.='<li><b><a href="'.qa_path_html('admin/usertitles').'">'.qa_html(_('Add new title')).'</a></b></li>';
 
 			$qa_content['form']['fields']['usertitles']=array(
-				'label' => qa_lang_html('admin/user_titles'),
+				'label' => qa_html(_('User titles based on points:')),
 				'style' => 'tall',
 				'type' => 'custom',
 				'html' => strlen($listhtml) ? '<ul style="margin-bottom:0;">'.$listhtml.'</ul>' : null,
@@ -1567,23 +1759,23 @@
 				if (method_exists($trywidget, 'allow_region')) {
 					$listhtml.='<li><b>'.qa_html($tryname).'</b>';
 					
-					$listhtml.=strtr(qa_lang_html('admin/add_widget_link'), array(
-						'^1' => '<a href="'.qa_path_html('admin/layoutwidgets', array('title' => $tryname)).'">',
-						'^2' => '</a>',
-					));
+					$listhtml.=sprintf(qa_html(_(' - %sadd widget%s')),
+						'<a href="'.qa_path_html('admin/layoutwidgets', array('title' => $tryname)).'">',
+						'</a>'
+					);
 					
 					if (method_exists($trywidget, 'admin_form'))
-						$listhtml.=strtr(qa_lang_html('admin/widget_global_options'), array(
-							'^1' => '<a href="'.qa_admin_module_options_path('widget', $tryname).'">',
-							'^2' => '</a>',
-						));
+						$listhtml.=sprintf(qa_html(_(' - %soptions%s')),
+							'<a href="'.qa_admin_module_options_path('widget', $tryname).'">',
+							'</a>'
+						);
 						
 					$listhtml.='</li>';
 				}
 			
 			if (strlen($listhtml))
 				$qa_content['form']['fields']['plugins']=array(
-					'label' => qa_lang_html('admin/widgets_explanation'),
+					'label' => qa_html(_('Available widgets:')),
 					'style' => 'tall',
 					'type' => 'custom',
 					'html' => '<ul style="margin-bottom:0;">'.$listhtml.'</ul>',
@@ -1605,7 +1797,7 @@
 			
 			if (strlen($listhtml))
 				$qa_content['form']['fields']['widgets']=array(
-					'label' => qa_lang_html('admin/active_widgets_explanation'),
+					'label' => qa_html(_('Currently active widgets:')),
 					'type' => 'custom',
 					'html' => '<ul style="margin-bottom:0;">'.$listhtml.'</ul>',
 				);
@@ -1615,45 +1807,45 @@
 		case 'permissions':
 			$qa_content['form']['fields']['permit_block']=array(
 				'type' => 'static',
-				'label' => qa_lang_html('options/permit_block'),
-				'value' => qa_lang_html('options/permit_moderators'),
+				'label' => qa_html(_('Blocking or unblocking user or IPs:')),
+				'value' => qa_html(_('Moderators and Admins')),
 			);
 			
 			if (!QA_FINAL_EXTERNAL_USERS) {
 				$qa_content['form']['fields']['permit_approve_users']=array(
 					'type' => 'static',
-					'label' => qa_lang_html('options/permit_approve_users'),
-					'value' => qa_lang_html('options/permit_moderators'),
+					'label' => qa_html(_('Approving registered users:')),
+					'value' => qa_html(_('Moderators and Admins')),
 				);
 	
 				$qa_content['form']['fields']['permit_create_experts']=array(
 					'type' => 'static',
-					'label' => qa_lang_html('options/permit_create_experts'),
-					'value' => qa_lang_html('options/permit_moderators'),
+					'label' => qa_html(_('Creating experts:')),
+					'value' => qa_html(_('Moderators and Admins')),
 				);
 	
 				$qa_content['form']['fields']['permit_see_emails']=array(
 					'type' => 'static',
-					'label' => qa_lang_html('options/permit_see_emails'),
-					'value' => qa_lang_html('options/permit_admins'),
+					'label' => qa_html(_('Viewing user email addresses:')),
+					'value' => qa_html(_('Administrators')),
 				);
 		
 				$qa_content['form']['fields']['permit_delete_users']=array(
 					'type' => 'static',
-					'label' => qa_lang_html('options/permit_delete_users'),
-					'value' => qa_lang_html('options/permit_admins'),
+					'label' => qa_html(_('Deleting users:')),
+					'value' => qa_html(_('Administrators')),
 				);
 		
 				$qa_content['form']['fields']['permit_create_eds_mods']=array(
 					'type' => 'static',
-					'label' => qa_lang_html('options/permit_create_eds_mods'),
-					'value' => qa_lang_html('options/permit_admins'),
+					'label' => qa_html(_('Creating editors and moderators:')),
+					'value' => qa_html(_('Administrators')),
 				);
 		
 				$qa_content['form']['fields']['permit_create_admins']=array(
 					'type' => 'static',
-					'label' => qa_lang_html('options/permit_create_admins'),
-					'value' => qa_lang_html('options/permit_supers'),
+					'label' => qa_html(_('Creating administrators:')),
+					'value' => qa_html(_('Super Administrators')),
 				);
 	
 			}
@@ -1676,18 +1868,18 @@
 
 					$qa_content['form']['buttons']['stop']=array(
 						'tags' => 'name="domailingpause" id="domailingpause"',
-						'label' => qa_lang_html('admin/pause_mailing_button'),
+						'label' => qa_html(_('Pause Mailing')),
 					);
 
 				} else {
 					$qa_content['form']['buttons']['resume']=array(
 						'tags' => 'name="domailingresume"',
-						'label' => qa_lang_html('admin/resume_mailing_button'),
+						'label' => qa_html(_('Resume Mailing')),
 					);
 
 					$qa_content['form']['buttons']['cancel']=array(
 						'tags' => 'name="domailingcancel"',
-						'label' => qa_lang_html('admin/cancel_mailing_button'),
+						'label' => qa_html(_('Cancel Mailing')),
 					);
 				}
 			
@@ -1696,19 +1888,19 @@
 	
 				$qa_content['form']['buttons']['test']=array(
 					'tags' => 'name="domailingtest" id="domailingtest"',
-					'label' => qa_lang_html('admin/send_test_button'),
+					'label' => qa_html(_('Send Test to Me')),
 				);
 
 				$qa_content['form']['buttons']['start']=array(
 					'tags' => 'name="domailingstart" id="domailingstart"',
-					'label' => qa_lang_html('admin/start_mailing_button'),
+					'label' => qa_html(_('Start Mailing')),
 				);
 			}
 			
 			if (!$startmailing) {
-				$qa_content['form']['fields']['mailing_enabled']['note']=qa_lang_html('admin/mailing_explanation');
+				$qa_content['form']['fields']['mailing_enabled']['note']=qa_html(_('Users will be able to unsubscribe on their account page.'));
 				$qa_content['form']['fields']['mailing_body']['rows']=12;
-				$qa_content['form']['fields']['mailing_body']['note']=qa_lang_html('admin/mailing_unsubscribe');
+				$qa_content['form']['fields']['mailing_body']['note']=qa_html(_('An unsubscribe link will be added at the bottom of every message.'));
 			}
 			break;
 	}

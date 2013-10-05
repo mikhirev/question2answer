@@ -90,13 +90,13 @@
 		$qa_content=qa_content_prepare();
 		
 		if ($question['queued'])
-			$qa_content['error']=qa_lang_html('question/q_waiting_approval');
+			$qa_content['error']=qa_html(_('This question is waiting for approval'));
 		elseif ($question['flagcount'] && !isset($question['lastuserid']))
-			$qa_content['error']=qa_lang_html('question/q_hidden_flagged');
+			$qa_content['error']=qa_html(_('This question has been flagged and hidden'));
 		elseif ($question['authorlast'])
-			$qa_content['error']=qa_lang_html('question/q_hidden_author');
+			$qa_content['error']=qa_html(_('This question has been hidden by its author'));
 		else
-			$qa_content['error']=qa_lang_html('question/q_hidden_other');
+			$qa_content['error']=qa_html(_('This question has been hidden'));
 
 		$qa_content['suggest_next']=qa_html_suggest_qs_tags(qa_using_tags());
 
@@ -111,19 +111,19 @@
 		
 		switch ($permiterror) {
 			case 'login':
-				$qa_content['error']=qa_insert_login_links(qa_lang_html('main/view_q_must_login'), $topage);
+				$qa_content['error']=qa_insert_login_links(qa_html(_('Please ^1log in^2 or ^3register^4 to view question pages.')), $topage);
 				break;
 				
 			case 'confirm':
-				$qa_content['error']=qa_insert_login_links(qa_lang_html('main/view_q_must_confirm'), $topage);
+				$qa_content['error']=qa_insert_login_links(qa_html(_('Please ^5confirm your email address^6 to view question pages.')), $topage);
 				break;
 				
 			case 'approve':
-				$qa_content['error']=qa_lang_html('main/view_q_must_be_approved');
+				$qa_content['error']=qa_html(_('Your account must be approved to view question pages.'));
 				break;
 				
 			default:
-				$qa_content['error']=qa_lang_html('users/no_permission');
+				$qa_content['error']=qa_html(_('You do not have permission to perform this operation'));
 				break;
 		}
 		
@@ -185,7 +185,7 @@
 	
 	if (isset($userid) && !$formrequested)
 		$qa_content['favorite']=qa_favorite_form(QA_ENTITY_QUESTION, $questionid, $favorite, 
-			qa_lang($favorite ? 'question/remove_q_favorites' : 'question/add_q_favorites'));
+			$favorite ? _('Remove this question from my favorites') : _('Add this question to my favorites'));
 
 	$qa_content['script_rel'][]='qa-content/qa-question.js?'.QA_VERSION;
 
@@ -193,7 +193,7 @@
 		$qa_content['error']=$pageerror; // might also show voting error set in qa-index.php
 	
 	elseif ($question['queued'])
-		$qa_content['error']=$question['isbyuser'] ? qa_lang_html('question/q_your_waiting_approval') : qa_lang_html('question/q_waiting_your_approval');
+		$qa_content['error']=qa_html($question['isbyuser'] ? _('Your question will be checked and approved shortly.') : _('This question is waiting for your approval'));
 	
 	if ($question['hidden'])
 		$qa_content['hidden']=true;
@@ -204,8 +204,8 @@
 //	Prepare content for the question...
 	
 	if ($formtype=='q_edit') { // ...in edit mode
-		$qa_content['title']=qa_lang_html($question['editable'] ? 'question/edit_q_title' :
-			(qa_using_categories() ? 'question/recat_q_title' : 'question/retag_q_title'));
+		$qa_content['title']=qa_html($question['editable'] ? _('Edit Question') :
+			(qa_using_categories() ? _('Recategorize question') : _('Retag question')));
 		$qa_content['form_q_edit']=qa_page_q_edit_q_form($qa_content, $question, @$qin, @$qerrors, $completetags, $categories);
 		$qa_content['q_view']['raw']=$question;
 
@@ -382,10 +382,8 @@
 	if ($question['basetype']=='Q') {
 		$qa_content['a_list']['title_tags']='id="a_list_title"';
 
-		if ($countfortitle==1)
-			$qa_content['a_list']['title']=qa_lang_html('question/1_answer_title');
-		elseif ($countfortitle>0)
-			$qa_content['a_list']['title']=qa_lang_html_sub('question/x_answers_title', $countfortitle);
+		if ($countfortitle>0)
+			$qa_content['a_list']['title']=qa_html(sprintf(ngettext('%d Answer', '%d Answers', $countfortitle), $countfortitle));
 		else
 			$qa_content['a_list']['title_tags'].=' style="display:none;" ';
 	}

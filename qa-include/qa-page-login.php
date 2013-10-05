@@ -56,7 +56,7 @@
 			require_once QA_INCLUDE_DIR.'qa-db-selects.php';
 		
 			if (!qa_check_form_security_code('login', qa_post_text('code')))
-				$pageerror=qa_lang_html('misc/form_security_again');
+				$pageerror=qa_html(_('Please click again to confirm'));
 				
 			else {
 				qa_limits_increment(null, QA_LIMIT_LOGINS);
@@ -87,14 +87,14 @@
 							qa_redirect('');
 		
 					} else
-						$errors['password']=qa_lang('users/password_wrong');
+						$errors['password']=_('Password not correct');
 		
 				} else
-					$errors['emailhandle']=qa_lang('users/user_not_found');
+					$errors['emailhandle']=_('User not found');
 			}
 				
 		} else
-			$pageerror=qa_lang('users/login_limit');
+			$pageerror=_('Too many login attempts - please try again in an hour');
 		
 	} else
 		$inemailhandle=qa_get('e');
@@ -104,7 +104,7 @@
 	
 	$qa_content=qa_content_prepare();
 
-	$qa_content['title']=qa_lang_html('users/login_title');
+	$qa_content['title']=qa_html(_('Log in'));
 	
 	$qa_content['error']=@$pageerror;
 
@@ -113,18 +113,18 @@
 	else
 		$forgotpath=qa_path('forgot', array('e' => $inemailhandle));
 	
-	$forgothtml='<a href="'.qa_html($forgotpath).'">'.qa_lang_html('users/forgot_link').'</a>';
+	$forgothtml='<a href="'.qa_html($forgotpath).'">'.qa_html(_('I forgot my password')).'</a>';
 	
 	$qa_content['form']=array(
 		'tags' => 'method="post" action="'.qa_self_html().'"',
 		
 		'style' => 'tall',
 		
-		'ok' => $passwordsent ? qa_lang_html('users/password_sent') : ($emailexists ? qa_lang_html('users/email_exists') : null),
+		'ok' => $passwordsent ? qa_html(_('Your new password was emailed to you')) : ($emailexists ? qa_html(_('Email already belongs to an account')) : null),
 		
 		'fields' => array(
 			'email_handle' => array(
-				'label' => qa_opt('allow_login_email_only') ? qa_lang_html('users/email_label') : qa_lang_html('users/email_handle_label'),
+				'label' => qa_opt('allow_login_email_only') ? qa_html(_('Email:') : qa_html(_('Email or Username:')),
 				'tags' => 'name="emailhandle" id="emailhandle"',
 				'value' => qa_html(@$inemailhandle),
 				'error' => qa_html(@$errors['emailhandle']),
@@ -132,16 +132,16 @@
 			
 			'password' => array(
 				'type' => 'password',
-				'label' => qa_lang_html('users/password_label'),
+				'label' => qa_html(_('Password:')),
 				'tags' => 'name="password" id="password"',
 				'value' => qa_html(@$inpassword),
 				'error' => empty($errors['password']) ? '' : (qa_html(@$errors['password']).' - '.$forgothtml),
-				'note' => $passwordsent ? qa_lang_html('users/password_sent') : $forgothtml,
+				'note' => $passwordsent ? qa_html(_('Your new password was emailed to you')) : $forgothtml,
 			),
 			
 			'remember' => array(
 				'type' => 'checkbox',
-				'label' => qa_lang_html('users/remember_label'),
+				'label' => qa_html(_('Remember me on this computer')),
 				'tags' => 'name="remember"',
 				'value' => @$inremember ? true : false,
 			),
@@ -149,7 +149,7 @@
 		
 		'buttons' => array(
 			'login' => array(
-				'label' => qa_lang_html('users/login_button'),
+				'label' => qa_html(_('Log In')),
 			),
 		),
 		

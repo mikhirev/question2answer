@@ -48,7 +48,7 @@
 		require_once QA_INCLUDE_DIR.'qa-app-users-edit.php';
 		
 		if (!qa_check_form_security_code('confirm', qa_post_text('code')))
-			$pageerror=qa_lang_html('misc/form_security_again');
+			$pageerror=qa_html(_('Please click again to confirm'));
 		
 		else {
 			qa_send_new_confirm($loginuserid);
@@ -87,30 +87,27 @@
 	
 	$qa_content=qa_content_prepare();
 	
-	$qa_content['title']=qa_lang_html('users/confirm_title');
+	$qa_content['title']=qa_html(_('Email Address Confirmation'));
 	$qa_content['error']=@$pageerror;
 
 	if ($useremailed)
-		$qa_content['error']=qa_lang_html('users/confirm_emailed'); // not an error, but display it prominently anyway
+		$qa_content['error']=qa_html(_('A confirmation link has been emailed to you. Please click the link to confirm your email address.')); // not an error, but display it prominently anyway
 	
 	elseif ($userconfirmed) {
-		$qa_content['error']=qa_lang_html('users/confirm_complete');
+		$qa_content['error']=qa_html(_('Thank you - your email address has been confirmed'));
 		
 		if (!isset($loginuserid))
-			$qa_content['suggest_next']=strtr(
-				qa_lang_html('users/log_in_to_access'),
-				
-				array(
-					'^1' => '<a href="'.qa_path_html('login', array('e' => $inhandle)).'">',
-					'^2' => '</a>',
-				)
+			$qa_content['suggest_next']=sprintf(
+				qa_html(_('You may now %slog in%s to access your account.')),
+					'<a href="'.qa_path_html('login', array('e' => $inhandle)).'">',
+					'</a>'
 			);
 
 	} elseif (isset($loginuserid)) { // if logged in, allow sending a fresh link
 		require_once QA_INCLUDE_DIR.'qa-util-string.php';
 		
 		if (strlen($incode))
-			$qa_content['error']=qa_lang_html('users/confirm_wrong_resend');
+			$qa_content['error']=qa_html(_('Code not correct - please click below to send a new link'));
 			
 		$email=qa_get_logged_in_email();
 		
@@ -121,11 +118,11 @@
 			
 			'fields' => array(
 				'email' => array(
-					'label' => qa_lang_html('users/email_label'),
-					'value' => qa_html($email).strtr(qa_lang_html('users/change_email_link'), array(
-						'^1' => '<a href="'.qa_path_html('account').'">',
-						'^2' => '</a>',
-					)),
+					'label' => qa_html(_('Email:')),
+					'value' => qa_html($email).sprintf(qa_html(_(' - %schange email%s')),
+						'<a href="'.qa_path_html('account').'">',
+						'</a>'
+					),
 					'type' => 'static',
 				),
 			),
@@ -133,7 +130,7 @@
 			'buttons' => array(
 				'send' => array(
 					'tags' => 'name="dosendconfirm"',
-					'label' => qa_lang_html('users/send_confirm_button'),
+					'label' => qa_html(_('Send Confirmation Link')),
 				),
 			),
 
@@ -143,12 +140,12 @@
 		);
 		
 		if (!qa_email_validate($email)) {
-			$qa_content['error']=qa_lang_html('users/email_invalid');
+			$qa_content['error']=qa_html(_('Email is invalid - please check carefully'));
 			unset($qa_content['form']['buttons']['send']);
 		}
 
 	} else
-		$qa_content['error']=qa_insert_login_links(qa_lang_html('users/confirm_wrong_log_in'), 'confirm');
+		$qa_content['error']=qa_insert_login_links(qa_html(_('Code not correct - please ^1log in^2 to send a new link')), 'confirm');
 
 		
 	return $qa_content;

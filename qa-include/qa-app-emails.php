@@ -102,7 +102,8 @@
 				'toemail' => $email,
 				'toname' => $handle,
 				'subject' => strtr($subject, $subs),
-				'body' => (empty($handle) ? '' : qa_lang_sub('emails/to_handle_prefix', $handle)).strtr($body, $subs),
+				/* TRANSLATORS: username will be substituted */
+				'body' => (empty($handle) ? '' : sprintf(_("%s,\n\n"), $handle)).strtr($body, $subs),
 				'html' => false,
 			));
 		
