@@ -1171,7 +1171,7 @@
 					qa_optionfield_make_select($optionfield, $neatoptions, $value, QA_URL_FORMAT_SAFEST);
 							
 					$optionfield['type']='select-radio';
-					$optionfield['note']=sprintf(qa_html(_('Options with the %s label are working for your site\'s configuration. For best search engine optimization (SEO), use the first %s option available.')), '<span style=" '.qa_admin_url_test_html().'/span>');
+					$optionfield['note']=sprintf(qa_html(_('Options with the %s label are working for your site\'s configuration. For best search engine optimization (SEO), use the first %s option available.')), '<span style=" '.qa_admin_url_test_html().'/span>', '<span style=" '.qa_admin_url_test_html().'/span>');
 					break;
 					
 				case 'site_theme':
