@@ -22,9 +22,9 @@ msgstr ""
 #, php-format
 msgid "%d Answer"
 msgid_plural "%d Answers"
-msgstr[0] "^ ответ"
-msgstr[1] "^ ответа"
-msgstr[2] "^ ответов"
+msgstr[0] "%d ответ"
+msgstr[1] "%d ответа"
+msgstr[2] "%d ответов"
 
 #: qa-include/qa-ajax-asktitle.php:99
 msgid "Before proceeding, please check your question was not asked already:"
@@ -313,7 +313,7 @@ msgstr "Скрытое"
 
 #: qa-include/qa-app-admin.php:383 qa-include/qa-page-admin-approve.php:68
 msgid "Approve users"
-msgstr "Подтверждение пользователей"
+msgstr "Утверждение пользователей"
 
 #: qa-include/qa-app-admin.php:402
 #, php-format
