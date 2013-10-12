@@ -300,7 +300,10 @@
 	
 	//	Combine various Javascript elements in $qa_content into single array for theme layer
 	
-		$script=array('<script type="text/javascript">');
+		$script=array(
+			'<script type="text/javascript">',
+			'//<!--',
+		);
 		
 		if (isset($qa_content['script_var']))
 			foreach ($qa_content['script_var'] as $var => $value)
@@ -340,7 +343,10 @@
 			$script[]='};';
 		}
 		
-		$script[]='</script>';
+		array_push($script, 
+			'//-->',
+			'</script>'
+		);
 		
 		if (isset($qa_content['script_rel'])) {
 			$uniquerel=array_unique($qa_content['script_rel']); // remove any duplicates
