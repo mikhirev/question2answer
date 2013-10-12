@@ -845,11 +845,13 @@
 		function form_spacer($form, $columns)
 		{
 			$this->output(
+				'<tbody>',
 				'<tr>',
 				'<td colspan="'.$columns.'" class="qa-form-'.$form['style'].'-spacer">',
 				'&nbsp;',
 				'</td>',
-				'</tr>'
+				'</tr>',
+				'</tbody>'
 			);
 		}
 		
@@ -934,9 +936,9 @@
 				( (!($prefixed||$suffixed)) || (!empty($field['error'])) || (!empty($field['note'])) );
 			
 			if (isset($field['id']))
-				$this->output('<tr id="'.$field['id'].'">');
+				$this->output('<tbody id="'.$field['id'].'">', '<tr>');
 			else
-				$this->output('<tr>');
+				$this->output('<tbody>', '<tr>');
 			
 			if (($columns>1) || !empty($field['label']))
 				$this->form_label($field, $style, $columns, $prefixed, $suffixed, $colspan);
@@ -950,7 +952,7 @@
 			if (!$skipdata)
 				$this->form_data($field, $style, $columns, !($prefixed||$suffixed), $colspan);
 			
-			$this->output('</tr>');
+			$this->output('</tr>', '</tbody>');
 		}
 		
 		function form_label($field, $style, $columns, $prefixed, $suffixed, $colspan)
@@ -1073,6 +1075,7 @@
 				
 				if ($columns)
 					$this->output(
+						'<tbody>',
 						'<tr>',
 						'<td colspan="'.$columns.'" class="qa-form-'.$style.'-buttons">'
 					);
@@ -1093,7 +1096,8 @@
 				if ($columns)
 					$this->output(
 						'</td>',
-						'</tr>'
+						'</tr>',
+						'</tbody>'
 					);
 			}
 		}
