@@ -124,7 +124,7 @@
 		
 		'fields' => array(
 			'email_handle' => array(
-				'label' => qa_opt('allow_login_email_only') ? qa_html(_('Email:') : qa_html(_('Email or Username:')),
+				'label' => qa_opt('allow_login_email_only') ? qa_html(_('Email:')) : qa_html(_('Email or Username:')),
 				'tags' => 'name="emailhandle" id="emailhandle"',
 				'value' => qa_html(@$inemailhandle),
 				'error' => qa_html(@$errors['emailhandle']),
