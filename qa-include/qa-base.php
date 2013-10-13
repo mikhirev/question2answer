@@ -359,8 +359,8 @@
 		require_once QA_INCLUDE_DIR.'qa-app-options.php';
 		$locale=qa_opt('site_language');
 		//setlocale(LC_ALL, $locale);
-        putenv('LANG=ru_RU.UTF-8');
-		setlocale(LC_ALL, 'ru_RU.UTF8');
+		$locale=setlocale(LC_ALL, 'ru_RU.UTF8', 'ru_RU.UTF-8', 'ru_RU.utf8', 'ru_RU.utf-8', 'ru-RU.UTF8', 'ru-RU.UTF-8', 'ru-RU.utf8', 'ru-RU.utf-8', 'ru_RU', 'ru-RU', 'ru');
+		putenv("LANG=$locale");
 		$domain='qa-core';
 		bindtextdomain($domain, QA_BASE_DIR.'locale/');
 		bind_textdomain_codeset($domain, 'UTF-8');
