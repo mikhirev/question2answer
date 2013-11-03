@@ -46,7 +46,7 @@
 				return _('Email is invalid - please check carefully');
 			
 			if (qa_strlen($email)>QA_DB_MAX_EMAIL_LENGTH)
-				return sprintf(_('Please provide more information - at least %d characters'), QA_DB_MAX_EMAIL_LENGTH);
+				return sprintf(ngettext('Please provide more information - at least %d character', 'Please provide more information - at least %d characters', QA_DB_MAX_EMAIL_LENGTH), QA_DB_MAX_EMAIL_LENGTH);
 		}
 
 		
@@ -59,7 +59,7 @@
 				return sprintf(_('Username may not contain: %s'), '@ + /');
 			
 			if (qa_strlen($handle)>QA_DB_MAX_HANDLE_LENGTH)
-				return sprintf(_('Please provide more information - at least %d characters'), QA_DB_MAX_HANDLE_LENGTH);
+				return sprintf(ngettext('Please provide more information - at least %d character', 'Please provide more information - at least %d characters', QA_DB_MAX_HANDLE_LENGTH), QA_DB_MAX_HANDLE_LENGTH);
 		}
 		
 
@@ -77,9 +77,9 @@
 				$mintags=min(qa_opt('min_num_q_tags'), qa_opt('max_num_q_tags'));
 
 				if ($counttags<$mintags)
-					$errors['tags']=sprintf(_('Please provide at least %d tag/s'), $mintags);
+					$errors['tags']=sprintf(ngettext('Please provide at least %d tag', 'Please provide at least %d tags', $mintags), $mintags);
 				elseif ($counttags>qa_opt('max_num_q_tags'))
-					$errors['tags']=sprintf(_('A maximum of %d tags are allowed'), qa_opt('max_num_q_tags'));
+					$errors['tags']=sprintf(ngettext('A maximum of %d tag is allowed', 'A maximum of %d tags are allowed', qa_opt('max_num_q_tags')), qa_opt('max_num_q_tags'));
 				else
 					$this->validate_length($errors, 'tags', qa_tags_to_tagstring($question['tags']), 0, QA_DB_MAX_TAGS_LENGTH); // for storage
 			}
@@ -122,9 +122,9 @@
 				$length=qa_strlen($input);
 				
 				if ($length < $minlength)
-					$errors[$field]=($minlength==1) ? _('gmainse enter something in this field') : sprintf(_('Please provide more information - at least %d characters'), $minlength);
+					$errors[$field]=($minlength==1) ? _('Please enter something in this field') : sprintf(ngettext('Please provide more information - at least %d character', 'Please provide more information - at least %d characters', $minlength), $minlength);
 				elseif (isset($maxlength) && ($length > $maxlength))
-					$errors[$field]=sprintf(_('Maximum length is %d characters'), $maxlength);
+					$errors[$field]=sprintf(ngettext('Maximum length is %d character', 'Maximum length is %d characters', $maxlength), $maxlength);
 			}
 		}
 

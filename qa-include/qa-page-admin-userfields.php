@@ -85,7 +85,7 @@
 			//	Verify the name is legitimate
 			
 				if (qa_strlen($inname)>QA_DB_MAX_PROFILE_TITLE_LENGTH)
-					$errors['name']=sprintf(_('Please provide more information - at least %d characters'), QA_DB_MAX_PROFILE_TITLE_LENGTH);
+					$errors['name']=sprintf(ngettext('Please provide more information - at least %d character', 'Please provide more information - at least %d characters', QA_DB_MAX_PROFILE_TITLE_LENGTH), QA_DB_MAX_PROFILE_TITLE_LENGTH);
 	
 			//	Perform appropriate database action
 		

@@ -148,7 +148,7 @@
 				if (empty($inname))
 					$errors['name']=_('Please enter something in this field');
 				elseif (qa_strlen($inname)>QA_DB_MAX_CAT_PAGE_TITLE_LENGTH)
-					$errors['name']=sprintf(_('Maximum length is %d characters'), QA_DB_MAX_CAT_PAGE_TITLE_LENGTH);
+					$errors['name']=sprintf(ngettext('Maximum length is %d character', 'Maximum length is %d characters', QA_DB_MAX_CAT_PAGE_TITLE_LENGTH), QA_DB_MAX_CAT_PAGE_TITLE_LENGTH);
 							
 				if ($isexternal) {
 				
@@ -157,14 +157,14 @@
 					if (empty($inurl))
 						$errors['url']=_('Please enter something in this field');
 					elseif (qa_strlen($inurl)>QA_DB_MAX_CAT_PAGE_TAGS_LENGTH)
-						$errors['url']=sprintf(_('Please provide more information - at least %d characters'), QA_DB_MAX_CAT_PAGE_TAGS_LENGTH);
+						$errors['url']=sprintf(ngettext('Please provide more information - at least %d character', 'Please provide more information - at least %d characters', QA_DB_MAX_CAT_PAGE_TAGS_LENGTH), QA_DB_MAX_CAT_PAGE_TAGS_LENGTH);
 	
 				} else {
 				
 				//	Verify the heading is legitimate
 				
 					if (qa_strlen($inheading)>QA_DB_MAX_TITLE_LENGTH)
-						$errors['heading']=sprintf(_('Maximum length is %d characters'), QA_DB_MAX_TITLE_LENGTH);
+						$errors['heading']=sprintf(ngettext('Maximum length is %d character', 'Maximum length is %d characters', QA_DB_MAX_TITLE_LENGTH), QA_DB_MAX_TITLE_LENGTH);
 				
 				//	Verify the slug is legitimate (and try some defaults if we're creating a new page, and it's not)
 						
@@ -193,7 +193,7 @@
 						if (empty($inslug))
 							$errors['slug']=_('Please enter something in this field');
 						elseif (qa_strlen($inslug)>QA_DB_MAX_CAT_PAGE_TAGS_LENGTH)
-							$errors['slug']=sprintf(_('Maximum length is %d characters'), QA_DB_MAX_CAT_PAGE_TAGS_LENGTH);
+							$errors['slug']=sprintf(ngettext('Maximum length is %d character', 'Maximum length is %d characters', QA_DB_MAX_CAT_PAGE_TAGS_LENGTH), QA_DB_MAX_CAT_PAGE_TAGS_LENGTH);
 						elseif (preg_match('/[\\+\\/]/', $inslug))
 							$errors['slug']=sprintf(_('The slug may not contain these characters: %s'), '+ /');
 						elseif (qa_admin_is_slug_reserved($inslug))

@@ -139,7 +139,7 @@
 		if (!isset($error)) {
 			$minpasslen=max(QA_MIN_PASSWORD_LEN, 1);
 			if (qa_strlen($password)<$minpasslen)
-				$error=sprintf(_('Password must be at least %d characters'), $minpasslen);
+				$error=sprintf(ngettext('Password must be at least %d character', 'Password must be at least %d characters', $minpasslen), $minpasslen);
 		}		
 
 		if (isset($error))
@@ -249,7 +249,7 @@
 
 		$userinfo=qa_db_select_with_pending(qa_db_user_account_selectspec($userid, true));
 		
-		if (!qa_send_notification($userid, $userinfo['email'], $userinfo['handle'], _('^site_title - Email Address Confirmation'), _("gemailsse click below to confirm your email address for ^site_title.\n\n^url\n\nThank you,\n^site_title"), array(
+		if (!qa_send_notification($userid, $userinfo['email'], $userinfo['handle'], _('^site_title - Email Address Confirmation'), _("Please click below to confirm your email address for ^site_title.\n\n^url\n\nThank you,\n^site_title"), array(
 			'^url' => qa_get_new_confirm_url($userid, $userinfo['handle']),
 		)))
 			qa_fatal_error('Could not send email confirmation');

@@ -141,7 +141,7 @@
 		if (qa_opt('feed_for_search'))
 			$qa_content['feed']=array(
 				'url' => qa_path_html(qa_feed_request('search/'.$inquery)),
-				'label' => qa_html(sprintf(_('Search results for %s)', $inquery))),
+				'label' => qa_html(sprintf(_('Search results for %s', $inquery))),
 			);
 
 		if (empty($qa_content['page_links']))

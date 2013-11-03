@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-01 21:43+0400\n"
+"POT-Creation-Date: 2013-11-03 14:59+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1228,8 +1228,10 @@ msgstr ""
 
 #: qa-include/qa-app-users-edit.php:142
 #, php-format
-msgid "Password must be at least %d characters"
-msgstr ""
+msgid "Password must be at least %d character"
+msgid_plural "Password must be at least %d characters"
+msgstr[0] ""
+msgstr[1] ""
 
 #: qa-include/qa-app-users-edit.php:180
 #, php-format
@@ -1271,7 +1273,7 @@ msgstr ""
 
 #: qa-include/qa-app-users-edit.php:252
 msgid ""
-"gemailsse click below to confirm your email address for ^site_title.\n"
+"Please click below to confirm your email address for ^site_title.\n"
 "\n"
 "^url\n"
 "\n"
@@ -1771,6 +1773,7 @@ msgid "Recent questions tagged %s"
 msgstr ""
 
 #: qa-include/qa-feed.php:253 qa-include/qa-page-search.php:88
+#: qa-include/qa-page-search.php:144
 #, php-format
 msgid "Search results for %s"
 msgstr ""
@@ -1848,8 +1851,10 @@ msgstr ""
 #: qa-include/qa-filter-basic.php:125 qa-include/qa-page-admin-pages.php:160
 #: qa-include/qa-page-admin-userfields.php:88
 #, php-format
-msgid "Please provide more information - at least %d characters"
-msgstr ""
+msgid "Please provide more information - at least %d character"
+msgid_plural "Please provide more information - at least %d characters"
+msgstr[0] ""
+msgstr[1] ""
 
 #: qa-include/qa-filter-basic.php:56
 msgid "Username must not be empty"
@@ -1862,16 +1867,28 @@ msgstr ""
 
 #: qa-include/qa-filter-basic.php:80
 #, php-format
-msgid "Please provide at least %d tag/s"
-msgstr ""
+msgid "Please provide at least %d tag"
+msgid_plural "Please provide at least %d tags"
+msgstr[0] ""
+msgstr[1] ""
 
 #: qa-include/qa-filter-basic.php:82
 #, php-format
-msgid "A maximum of %d tags are allowed"
-msgstr ""
+msgid "A maximum of %d tag is allowed"
+msgid_plural "A maximum of %d tags are allowed"
+msgstr[0] ""
+msgstr[1] ""
 
 #: qa-include/qa-filter-basic.php:125
-msgid "gmainse enter something in this field"
+#: qa-include/qa-page-admin-categories.php:149
+#: qa-include/qa-page-admin-categories.php:189
+#: qa-include/qa-page-admin-pages.php:149
+#: qa-include/qa-page-admin-pages.php:158
+#: qa-include/qa-page-admin-pages.php:194
+#: qa-include/qa-page-admin-usertitles.php:77
+#: qa-include/qa-page-admin-usertitles.php:80
+#: qa-include/qa-page-question-post.php:632
+msgid "Please enter something in this field"
 msgstr ""
 
 #: qa-include/qa-filter-basic.php:127
@@ -1881,8 +1898,10 @@ msgstr ""
 #: qa-include/qa-page-admin-pages.php:167
 #: qa-include/qa-page-admin-pages.php:196
 #, php-format
-msgid "Maximum length is %d characters"
-msgstr ""
+msgid "Maximum length is %d character"
+msgid_plural "Maximum length is %d characters"
+msgstr[0] ""
+msgstr[1] ""
 
 #. also allows single query to be returned
 #: qa-include/qa-install.php:254 qa-include/qa-page-admin-plugins.php:88
@@ -2040,17 +2059,6 @@ msgstr ""
 
 #: qa-include/qa-page-admin-approve.php:127
 msgid "No users waiting for approval"
-msgstr ""
-
-#: qa-include/qa-page-admin-categories.php:149
-#: qa-include/qa-page-admin-categories.php:189
-#: qa-include/qa-page-admin-pages.php:149
-#: qa-include/qa-page-admin-pages.php:158
-#: qa-include/qa-page-admin-pages.php:194
-#: qa-include/qa-page-admin-usertitles.php:77
-#: qa-include/qa-page-admin-usertitles.php:80
-#: qa-include/qa-page-question-post.php:632
-msgid "Please enter something in this field"
 msgstr ""
 
 #: qa-include/qa-page-admin-categories.php:159
@@ -4799,11 +4807,6 @@ msgstr ""
 #: qa-include/qa-page-search.php:90
 #, php-format
 msgid "No results found for %s"
-msgstr ""
-
-#: qa-include/qa-page-search.php:144
-#, php-format
-msgid "Search results for %s)"
 msgstr ""
 
 #: qa-include/qa-page-search.php:151
