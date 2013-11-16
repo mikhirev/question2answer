@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: question 2answer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-03 14:59+0400\n"
+"POT-Creation-Date: 2013-11-16 15:02+0400\n"
 "PO-Revision-Date: 2013-09-08 10:40+0400\n"
 "Last-Translator: Dmitry Mikhirev <mikhirev@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -318,7 +318,7 @@ msgstr "Утверждение пользователей"
 #: qa-include/qa-app-admin.php:402
 #, php-format
 msgid "Your Question2Answer database needs to be %supgraded%s for this version."
-msgstr ""
+msgstr "Базу данных Question2Answer необходимо %sобновить%s для этой версии."
 
 #: qa-include/qa-app-admin.php:408
 #, php-format
@@ -376,6 +376,8 @@ msgid ""
 "%s,\n"
 "\n"
 msgstr ""
+"%s,\n"
+"\n"
 
 #: qa-include/qa-app-format.php:47
 #, php-format
@@ -965,8 +967,8 @@ msgstr "Конфиденциальность: Ваш электронный ад
 
 #: qa-include/qa-app-options.php:409
 #, php-format
-msgid "\"Welcome to %s, where you can ask questions and receive answers from other members of the community."
-msgstr ""
+msgid "Welcome to %s, where you can ask questions and receive answers from other members of the community."
+msgstr "Добро пожаловать на сайт %s, где вы можете задавать вопросы и получать ответы от других членов сообщества."
 
 #: qa-include/qa-app-options.php:477
 #, php-format
@@ -1226,7 +1228,7 @@ msgstr "МиБ"
 #: qa-include/qa-page-admin-default.php:942
 #, php-format
 msgid "The image could not be read. Please upload one of: %s"
-msgstr ""
+msgstr "Изображение невозможно прочитать. Поддерживаемые форматы: %s"
 
 #: qa-include/qa-app-users-edit.php:59
 msgid "Username is taken - please try another"
@@ -1255,7 +1257,11 @@ msgid ""
 "\n"
 "%s\n"
 "\n"
-msgstr "Пожалуйста, нажмите ниже, чтобы подтвердить свой адрес электронной почты.\n\n%s\n\n"
+msgstr ""
+"Пожалуйста, нажмите ниже, чтобы подтвердить свой адрес электронной почты.\n"
+"\n"
+"%s\n"
+"\n"
 
 #: qa-include/qa-app-users-edit.php:193
 msgid "Welcome to ^site_title!"
@@ -2127,7 +2133,7 @@ msgstr "Имя пользователя не должно быть пустым"
 #: qa-include/qa-filter-basic.php:59
 #, php-format
 msgid "Username may not contain: %s"
-msgstr ""
+msgstr "Имя пользователя не может содержать символы %s"
 
 #: qa-include/qa-filter-basic.php:80
 #, php-format
@@ -2179,7 +2185,7 @@ msgstr "Для модуля %s %s необходима %sинициализац�
 #: qa-include/qa-page-account.php:131 qa-include/qa-page-admin-default.php:921
 #, php-format
 msgid "This image is too big. Please scale to %d%% then try again."
-msgstr ""
+msgstr "Изображение слишком большое. Пожалуйста, измените масштаб до %d%% и попробуйте снова."
 
 #: qa-include/qa-page-account.php:177 qa-include/qa-page-login.php:90
 msgid "Password not correct"
@@ -2258,7 +2264,7 @@ msgstr "Ничего"
 #: qa-include/qa-page-account.php:308
 #, php-format
 msgid "Show my %sGravatar%s"
-msgstr ""
+msgstr "Показывать мой %sGravatar%s"
 
 #: qa-include/qa-page-account.php:331
 msgid "Avatar:"
@@ -2344,13 +2350,13 @@ msgstr "категория-%s"
 #: qa-include/qa-page-admin-pages.php:198
 #, php-format
 msgid "The slug may not contain these characters: %s"
-msgstr ""
+msgstr "Часть URL не может содержать символы %s"
 
 #. only top level is a problem
 #: qa-include/qa-page-admin-categories.php:195
 #: qa-include/qa-page-admin-pages.php:200
 msgid "This slug is reserved for use by another page"
-msgstr "Ссылка зарезервирована системой и не может быть использована"
+msgstr "Ссылка зарезервирована для другой страницы"
 
 #: qa-include/qa-page-admin-categories.php:199
 #: qa-include/qa-page-admin-pages.php:202
@@ -2370,11 +2376,11 @@ msgstr "Код безопасности устарел — попробуйте 
 #: qa-include/qa-page-admin-categories.php:257
 #, php-format
 msgid "Move questions in %s with no sub-category to:"
-msgstr ""
+msgstr "Переместить вопросы из %s без подкатегории в"
 
 #: qa-include/qa-page-admin-categories.php:258
 msgid "Move questions with no category to:"
-msgstr "Переместить вопросы без категорий в:"
+msgstr "Переместить вопросы без категорий в"
 
 #. just used for qa_recalc_click()
 #. just used for qa_recalc_click
@@ -2451,7 +2457,7 @@ msgstr "Без основной (верхний уровень)"
 #: qa-include/qa-page-admin-categories.php:369
 #, php-format
 msgid "Some options may be hidden to prevent a category going deeper than %d levels."
-msgstr ""
+msgstr "Некоторые опции могут быть скрыты, чтобы вложенность категорий не превышала %d уровней."
 
 #: qa-include/qa-page-admin-categories.php:373
 msgid "This category cannot be deleted because it has a sub-category."
@@ -2501,7 +2507,7 @@ msgstr "переместить на другой уровень"
 #: qa-include/qa-page-admin-widgets.php:220
 #, php-format
 msgid "After \"%s\""
-msgstr ""
+msgstr "После \"%s\""
 
 #: qa-include/qa-page-admin-categories.php:467
 #: qa-include/qa-page-admin-categories.php:481
@@ -2528,7 +2534,7 @@ msgstr "Подкатегории:"
 #: qa-include/qa-page-admin-categories.php:519
 #, php-format
 msgid "This category cannot have sub-categories because it is already %d levels down."
-msgstr ""
+msgstr "У этой категории не может быть подкатегорий, потому что её уровень уже %d."
 
 #: qa-include/qa-page-admin-categories.php:529
 #: qa-include/qa-page-admin-default.php:909
@@ -2536,8 +2542,8 @@ msgid "Options saved"
 msgstr "Сохранено"
 
 #: qa-include/qa-page-admin-categories.php:535
-msgid "To get started with categories, click the\t'Add Category' button."
-msgstr ""
+msgid "To get started with categories, click the 'Add Category' button."
+msgstr "Чтобы начать использовать категории, нажмите кнопку 'Добавить категорию'"
 
 #: qa-include/qa-page-admin-categories.php:565
 #, php-format
@@ -2559,13 +2565,13 @@ msgstr "Разрешить вопросы без категории"
 #, php-format
 msgid "%s question currently have no category - %sset category%s"
 msgid_plural "%s questions currently have no category - %sset category%s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s вопрос не имеет категории - %sназначить категорию%s"
+msgstr[1] "%s вопроса не имеют категории - %sназначить категорию%s"
+msgstr[2] "%s вопросов не имеют категории - %sназначить категорию%s"
 
 #: qa-include/qa-page-admin-categories.php:593
 msgid "Allow questions with a category but no sub-category"
-msgstr "Разрешить вопросы в родительской категории, а не подкатегориях"
+msgstr "Разрешить вопросы в родительской категории, но не подкатегориях"
 
 #: qa-include/qa-page-admin-categories.php:604
 #: qa-include/qa-page-admin-stats.php:237
@@ -3339,7 +3345,7 @@ msgstr "Сбросить опции"
 #: qa-include/qa-page-admin-default.php:961
 #, php-format
 msgid "The test message was sent to %s"
-msgstr ""
+msgstr "Тестовое сообщение было отправлено на %s"
 
 #: qa-include/qa-page-admin-default.php:1028
 msgid "Save Options"
@@ -3352,12 +3358,12 @@ msgstr "Восстановить значения по умолчанию"
 #: qa-include/qa-page-admin-default.php:1129
 #, php-format
 msgid " (max %d)"
-msgstr ""
+msgstr " (макс. %d)"
 
 #: qa-include/qa-page-admin-default.php:1140
 #, php-format
 msgid " - %scheck language files%s"
-msgstr ""
+msgstr " - %sпроверить языковые файлы%s"
 
 #: qa-include/qa-page-admin-default.php:1146
 msgid "The installed version of PHP was compiled without multibyte string support. Searching will be less effective for non-Roman characters."
@@ -3366,18 +3372,18 @@ msgstr "Установленная версия PHP была скомпилир�
 #: qa-include/qa-page-admin-default.php:1165
 #, php-format
 msgid " (requires %shtaccess%s file)"
-msgstr ""
+msgstr " (требуется файл %shtaccess%s)"
 
 #: qa-include/qa-page-admin-default.php:1174
 #, php-format
 msgid "Options with the %s label are working for your site's configuration. For best search engine optimization (SEO), use the first %s option available."
-msgstr ""
+msgstr "Варианты, помеченные %s, будут работать при текущей настройке сайта. Для наилучшей поисковой оптимизации (SEO) используйте первый из вариантов, помеченных %s."
 
 #: qa-include/qa-page-admin-default.php:1215
 #: qa-include/qa-page-admin-plugins.php:145
 #, php-format
 msgid "by %s"
-msgstr ""
+msgstr "от %s"
 
 #: qa-include/qa-page-admin-default.php:1238
 #: qa-include/qa-page-admin-pages.php:73 qa-include/qa-page-favorites.php:111
@@ -3404,19 +3410,19 @@ msgstr "Установленная версия PHP была скомпилир�
 #: qa-include/qa-page-admin-default.php:1314
 #: qa-include/qa-page-admin-default.php:1326
 msgid "pixels"
-msgstr "пикс."
+msgstr "пикселов"
 
 #: qa-include/qa-page-admin-default.php:1343
 msgid "characters"
-msgstr "символы"
+msgstr "символов"
 
 #: qa-include/qa-page-admin-default.php:1348
-msgid " tags"
-msgstr ""
+msgid "tags"
+msgstr "тегов"
 
 #: qa-include/qa-page-admin-default.php:1352
-msgid " days"
-msgstr " дней"
+msgid "days"
+msgstr "дней"
 
 #: qa-include/qa-page-admin-default.php:1357
 msgid "Time"
@@ -3427,8 +3433,8 @@ msgid "Votes"
 msgstr "Голосам"
 
 #: qa-include/qa-page-admin-default.php:1363
-msgid " answers"
-msgstr " ответов"
+msgid "answers"
+msgstr "ответов"
 
 #: qa-include/qa-page-admin-default.php:1368
 msgid "Always"
@@ -3443,8 +3449,8 @@ msgid "Never"
 msgstr "Никогда"
 
 #: qa-include/qa-page-admin-default.php:1376
-msgid " comments"
-msgstr " комментариев"
+msgid "comments"
+msgstr "комментариев"
 
 #: qa-include/qa-page-admin-default.php:1388
 msgid "Use a * to match any letters. Examples: doh (will only match exact word doh) , doh* (will match doh or dohno) , do*h (will match doh, dooh, dough)."
@@ -3473,8 +3479,8 @@ msgid "points"
 msgstr "баллов"
 
 #: qa-include/qa-page-admin-default.php:1470
-msgid " flags"
-msgstr " жалоб"
+msgid "flags"
+msgstr "жалоб"
 
 #: qa-include/qa-page-admin-default.php:1476
 msgid "Use a hyphen for ranges or * to match any number. Examples: 192.168.0.4 , 192.168.0.0-192.168.0.31 , 192.168.0.*"
@@ -3563,12 +3569,12 @@ msgstr "Звания и количество баллов:"
 #: qa-include/qa-page-admin-default.php:1762
 #, php-format
 msgid " - %sadd widget%s"
-msgstr ""
+msgstr " - %sдобавить виджет%s"
 
 #: qa-include/qa-page-admin-default.php:1768
 #, php-format
 msgid " - %soptions%s"
-msgstr ""
+msgstr " - %sопции%s"
 
 #: qa-include/qa-page-admin-default.php:1778
 msgid "Available widgets:"
@@ -3715,7 +3721,7 @@ msgstr "Спросить"
 #: qa-include/qa-page-admin-pages.php:184
 #, php-format
 msgid "page-%s"
-msgstr ""
+msgstr "страница-%s"
 
 #: qa-include/qa-page-admin-pages.php:294
 msgid "No link"
@@ -3741,7 +3747,7 @@ msgstr "После ссылок в подвале"
 #: qa-include/qa-page-admin-pages.php:325
 #, php-format
 msgid "After \"%s\" tab"
-msgstr ""
+msgstr "После вкладки \"%s\""
 
 #: qa-include/qa-page-admin-pages.php:343
 msgid "Text of link:"
@@ -3766,7 +3772,7 @@ msgstr "Видимый для:"
 
 #: qa-include/qa-page-admin-pages.php:376
 msgid "Page slug (URL fragment):"
-msgstr "Путь страницы (URL):"
+msgstr "Путь страницы (часть URL):"
 
 #: qa-include/qa-page-admin-pages.php:384
 msgid "URL of link - absolute or relative to Q2A root:"
@@ -3801,12 +3807,12 @@ msgstr "Ссылки в панели навигации:"
 #: qa-include/qa-page-admin-pages.php:524
 #, php-format
 msgid " (plugin module: %s)"
-msgstr ""
+msgstr " (плагин %s)"
 
 #: qa-include/qa-page-admin-pages.php:526
 #, php-format
 msgid " - %sadd link%s"
-msgstr ""
+msgstr " - %sдобавить ссылку%s"
 
 #: qa-include/qa-page-admin-pages.php:540
 msgid "Pages available via plugins:"
@@ -3815,12 +3821,12 @@ msgstr "Страницы, доступные для плагинов:"
 #: qa-include/qa-page-admin-pages.php:552
 #, php-format
 msgid " - %sedit link%s"
-msgstr ""
+msgstr " - %sправить ссылку%s"
 
 #: qa-include/qa-page-admin-pages.php:552
 #, php-format
 msgid " - %sedit page%s"
-msgstr ""
+msgstr " - %sправить страницу%s"
 
 #: qa-include/qa-page-admin-pages.php:561
 msgid "Custom pages or links:"
@@ -3837,12 +3843,12 @@ msgstr "Безымянный плагин"
 #: qa-include/qa-page-admin-plugins.php:176
 #, php-format
 msgid "Disabled - requires Question2Answer %s or later"
-msgstr ""
+msgstr "Отключено - требует Question2Answer %s или выше"
 
 #: qa-include/qa-page-admin-plugins.php:180
 #, php-format
 msgid "Disabled - requires PHP %s or later"
-msgstr ""
+msgstr "Отключено - требует PHP %s или выше"
 
 #: qa-include/qa-page-admin-points.php:95
 msgid "Save and Recalculate"
@@ -4244,9 +4250,9 @@ msgstr "Пожалуйста, ^1войдите^2 или ^3зарегистрир
 msgid "Please ^5confirm your email address^6 to ask a question."
 msgstr "Пожалуйста, ^5подтвердите адрес своей электронной почты,^6, чтобы задать вопрос."
 
-#: qa-include/qa-page-ask.php:82
-msgid "question/ask_limit"
-msgstr ""
+#: qa-include/qa-page-ask.php:82 qa-include/qa-page-question-submit.php:90
+msgid "Too many questions received - please try again in an hour"
+msgstr "Вы задаёте слишком много вопросов - попробуйте через час"
 
 #: qa-include/qa-page-ask.php:86
 msgid "Your account must be approved before you ask a question."
@@ -4307,12 +4313,12 @@ msgstr "Ссылка для подтверждения была отправле
 
 #: qa-include/qa-page-confirm.php:97
 msgid "Thank you - your email address has been confirmed"
-msgstr "Адрес вашей электронной почты подтвержден."
+msgstr "Адрес вашей электронной почты подтверждён."
 
 #: qa-include/qa-page-confirm.php:101
 #, php-format
 msgid "You may now %slog in%s to access your account."
-msgstr ""
+msgstr "Теперь вы можете %sвойти%s, чтобы получить доступ к своей учётной записи."
 
 #: qa-include/qa-page-confirm.php:110
 msgid "Code not correct - please click below to send a new link"
@@ -4321,7 +4327,7 @@ msgstr "Неверный код - нажмите ниже, чтобы отпра
 #: qa-include/qa-page-confirm.php:122
 #, php-format
 msgid " - %schange email%s"
-msgstr ""
+msgstr " - %sизменить адрес e-mail%s"
 
 #: qa-include/qa-page-confirm.php:133
 msgid "Send Confirmation Link"
@@ -4355,7 +4361,7 @@ msgstr "Нет избранных категорий"
 #: qa-include/qa-page-favorites.php:149
 #, php-format
 msgid "To add a question or other item to your favorites, click the %s at the top of its page."
-msgstr ""
+msgstr "Для добавления вопроса или любого другого элемента в избранное нажмите %s вверху страницы."
 
 #: qa-include/qa-page-feedback.php:79
 msgid "Please use this field to send some comments or suggestions"
@@ -4364,7 +4370,7 @@ msgstr "Используйте это поле для отправки комм�
 #: qa-include/qa-page-feedback.php:100
 #, php-format
 msgid "%s feedback"
-msgstr ""
+msgstr "Отзыв о %s"
 
 #: qa-include/qa-page-feedback.php:101
 msgid ""
@@ -4387,8 +4393,28 @@ msgid ""
 "^ip\n"
 "\n"
 "Browser:\n"
-"^browse"
+"^browser"
 msgstr ""
+"Комментарий:\n"
+"^message\n"
+"\n"
+"Имя:\n"
+"^name\n"
+"\n"
+"Электронная почта:\n"
+"^email\n"
+"\n"
+"Со страницы:\n"
+"^previous\n"
+"\n"
+"Пользователь:\n"
+"^url\n"
+"\n"
+"IP-адрес:\n"
+"^ip\n"
+"\n"
+"Обозреватель:\n"
+"^browser"
 
 #: qa-include/qa-page-feedback.php:136
 #, php-format
@@ -4462,7 +4488,7 @@ msgstr "Недавняя активность %s"
 #: qa-include/qa-page-ip.php:231
 #, php-format
 msgid "No activity from %s"
-msgstr ""
+msgstr "%s неактивен"
 
 #: qa-include/qa-page-login.php:97
 msgid "Too many login attempts - please try again in an hour"
@@ -4508,6 +4534,10 @@ msgid ""
 "%s\n"
 "\n"
 msgstr ""
+"Нажмите ниже, чтобы ответить %s личным сообщением:\n"
+"\n"
+"%s\n"
+"\n"
 
 #: qa-include/qa-page-message.php:121
 #, php-format
@@ -4517,6 +4547,10 @@ msgid ""
 "%s\n"
 "\n"
 msgstr ""
+"Узнать больше о %s:\n"
+"\n"
+"%s\n"
+"\n"
 
 #: qa-include/qa-page-message.php:135
 msgid "Message from ^f_handle on ^site_title"
@@ -4819,10 +4853,6 @@ msgstr "Наиболее просматриваемые вопросы в %s"
 #: qa-include/qa-page-questions.php:104
 msgid "Most viewed questions"
 msgstr "Наиболее просматриваемые ответы"
-
-#: qa-include/qa-page-question-submit.php:90
-msgid "Too many questions received - please try again in an hour"
-msgstr "Очень часто задаете вопросы - попробуйте еще раз позднее"
 
 #: qa-include/qa-page-question-submit.php:356
 #: qa-include/qa-page-question-submit.php:418
@@ -5244,15 +5274,15 @@ msgstr "Обновлений нет"
 #: qa-include/qa-page-user-profile.php:432
 #, php-format
 msgid " - %sadd category-specific privileges%s"
-msgstr ""
+msgstr " - %sдобавить привилегии в отдльных категориях%s"
 
 #: qa-include/qa-page-user-profile.php:437
 msgid "in general"
-msgstr "в общей"
+msgstr "везде"
 
 #: qa-include/qa-page-user-profile.php:449
 msgid "Upgraded to:"
-msgstr "Тип каждой категории:"
+msgstr "Повысить до:"
 
 #: qa-include/qa-page-user-profile.php:454
 msgid "for the category below:"
@@ -5269,7 +5299,7 @@ msgstr "Дополнительные привилегии:"
 
 #: qa-include/qa-page-user-profile.php:550
 msgid "Confirmed"
-msgstr "Подтверждено."
+msgstr "Подтверждено"
 
 #: qa-include/qa-page-user-profile.php:550
 msgid "Not yet confirmed"

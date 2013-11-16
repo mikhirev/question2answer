@@ -1345,11 +1345,11 @@
 					
 				case 'min_num_q_tags':
 				case 'max_num_q_tags':
-					$optionfield['note']=qa_html(_(' tags'));
+					$optionfield['note']=qa_html(_('tags'));
 					break;
 				
 				case 'show_full_date_days':
-					$optionfield['note']=qa_html(_(' days'));
+					$optionfield['note']=qa_html(_('days'));
 					break;
 					
 				case 'sort_answers_by':
@@ -1360,7 +1360,7 @@
 					break;
 					
 				case 'page_size_q_as':
-					$optionfield['note']=qa_html(_(' answers'));
+					$optionfield['note']=qa_html(_('answers'));
 					break;
 				
 				case 'show_a_form_immediate':
@@ -1373,7 +1373,7 @@
 					
 				case 'show_fewer_cs_from':
 				case 'show_fewer_cs_count':
-					$optionfield['note']=qa_html(_(' comments'));
+					$optionfield['note']=qa_html(_('comments'));
 					break;
 					
 				case 'match_related_qs':
@@ -1467,7 +1467,7 @@
 				case 'flagging_hide_after':
 				case 'flagging_notify_every':
 				case 'flagging_notify_first':
-					$optionfield['note']=qa_html(_(' flags'));
+					$optionfield['note']=qa_html(_('flags'));
 					break;
 				
 				case 'block_ips_write':

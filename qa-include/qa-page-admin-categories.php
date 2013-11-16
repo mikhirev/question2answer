@@ -532,7 +532,7 @@
 			
 			'fields' => array(
 				'intro' => array(
-					'label' => qa_html(_('To get started with categories, click the	\'Add Category\' button.')),
+					'label' => qa_html(_('To get started with categories, click the \'Add Category\' button.')),
 					'type' => 'static',
 				),
 			),

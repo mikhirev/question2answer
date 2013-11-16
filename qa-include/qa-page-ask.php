@@ -79,7 +79,7 @@
 				break;
 				
 			case 'limit':
-				$qa_content['error']=qa_html(_('question/ask_limit'));
+				$qa_content['error']=qa_html(_('Too many questions received - please try again in an hour'));
 				break;
 				
 			case 'approve':

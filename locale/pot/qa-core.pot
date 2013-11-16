@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-03 14:59+0400\n"
+"POT-Creation-Date: 2013-11-16 15:02+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -951,7 +951,7 @@ msgstr ""
 
 #: qa-include/qa-app-options.php:409
 #, php-format
-msgid "\"Welcome to %s, where you can ask questions and receive answers from other members of the community."
+msgid "Welcome to %s, where you can ask questions and receive answers from other members of the community."
 msgstr ""
 
 #: qa-include/qa-app-options.php:477
@@ -2267,7 +2267,7 @@ msgid "Options saved"
 msgstr ""
 
 #: qa-include/qa-page-admin-categories.php:535
-msgid "To get started with categories, click the\t'Add Category' button."
+msgid "To get started with categories, click the 'Add Category' button."
 msgstr ""
 
 #: qa-include/qa-page-admin-categories.php:565
@@ -3140,11 +3140,11 @@ msgid "characters"
 msgstr ""
 
 #: qa-include/qa-page-admin-default.php:1348
-msgid " tags"
+msgid "tags"
 msgstr ""
 
 #: qa-include/qa-page-admin-default.php:1352
-msgid " days"
+msgid "days"
 msgstr ""
 
 #: qa-include/qa-page-admin-default.php:1357
@@ -3156,7 +3156,7 @@ msgid "Votes"
 msgstr ""
 
 #: qa-include/qa-page-admin-default.php:1363
-msgid " answers"
+msgid "answers"
 msgstr ""
 
 #: qa-include/qa-page-admin-default.php:1368
@@ -3172,7 +3172,7 @@ msgid "Never"
 msgstr ""
 
 #: qa-include/qa-page-admin-default.php:1376
-msgid " comments"
+msgid "comments"
 msgstr ""
 
 #: qa-include/qa-page-admin-default.php:1388
@@ -3202,7 +3202,7 @@ msgid "points"
 msgstr ""
 
 #: qa-include/qa-page-admin-default.php:1470
-msgid " flags"
+msgid "flags"
 msgstr ""
 
 #: qa-include/qa-page-admin-default.php:1476
@@ -3972,8 +3972,8 @@ msgstr ""
 msgid "Please ^5confirm your email address^6 to ask a question."
 msgstr ""
 
-#: qa-include/qa-page-ask.php:82
-msgid "question/ask_limit"
+#: qa-include/qa-page-ask.php:82 qa-include/qa-page-question-submit.php:90
+msgid "Too many questions received - please try again in an hour"
 msgstr ""
 
 #: qa-include/qa-page-ask.php:86
@@ -4115,7 +4115,7 @@ msgid ""
 "^ip\n"
 "\n"
 "Browser:\n"
-"^browse"
+"^browser"
 msgstr ""
 
 #: qa-include/qa-page-feedback.php:136
@@ -4535,10 +4535,6 @@ msgstr ""
 
 #: qa-include/qa-page-questions.php:104
 msgid "Most viewed questions"
-msgstr ""
-
-#: qa-include/qa-page-question-submit.php:90
-msgid "Too many questions received - please try again in an hour"
 msgstr ""
 
 #: qa-include/qa-page-question-submit.php:356

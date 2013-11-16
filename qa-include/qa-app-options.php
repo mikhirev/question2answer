@@ -406,7 +406,7 @@
 					break;
 					
 				case 'custom_sidebar':
-					$value=qa_html(sprintf(_('"Welcome to %s, where you can ask questions and receive answers from other members of the community.'), qa_opt('site_title')));
+					$value=qa_html(sprintf(_('Welcome to %s, where you can ask questions and receive answers from other members of the community.'), qa_opt('site_title')));
 					break;
 					
 				case 'editor_for_qs':

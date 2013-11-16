@@ -98,7 +98,7 @@
 					'toemail' => qa_opt('feedback_email'),
 					'toname' => qa_opt('site_title'),
 					'subject' => sprintf(_('%s feedback'), qa_opt('site_title')),
-					'body' => strtr(_("Comments:\n^message\n\nName:\n^name\n\nEmail:\n^email\n\nPrevious page:\n^previous\n\nUser:\n^url\n\nIP address:\n^ip\n\nBrowser:\n^browse"), $subs),
+					'body' => strtr(_("Comments:\n^message\n\nName:\n^name\n\nEmail:\n^email\n\nPrevious page:\n^previous\n\nUser:\n^url\n\nIP address:\n^ip\n\nBrowser:\n^browser"), $subs),
 					'html' => false,
 				)))
 					$feedbacksent=true;
